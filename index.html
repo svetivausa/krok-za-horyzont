@@ -1702,6 +1702,31 @@ function switchReviews(type, btn) {
   document.getElementById('trev-section').style.display = type === 'text' ? '' : 'none';
 }
 
+/* ── YOUTUBE THUMBNAILS (замість iframe, щоб уникнути помилок embedding) ── */
+function ytThumb(id) {
+  return 'https://img.youtube.com/vi/' + id + '/hqdefault.jpg';
+}
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.video-thumb iframe, .vrev-thumb iframe').forEach(function(el) {
+    var m = (el.src || '').match(/embed\/([^?&]+)/);
+    if (!m) return;
+    var id = m[1];
+    var wrap = el.parentElement;
+    wrap.style.cursor = 'pointer';
+    wrap.innerHTML =
+      '<img src="' + ytThumb(id) + '" ' +
+      'style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" ' +
+      'onerror="this.src=\'https://img.youtube.com/vi/' + id + '/mqdefault.jpg\'">' +
+      '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">' +
+      '<div style="width:60px;height:60px;background:rgba(220,0,0,.92);border-radius:50%;' +
+      'display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.5rem;' +
+      'box-shadow:0 3px 16px rgba(0,0,0,.5);transition:transform .2s;">▶</div></div>';
+    wrap.addEventListener('click', function() {
+      window.open('https://www.youtube.com/watch?v=' + id, '_blank');
+    });
+  });
+});
+
 /* ── INITIAL REVEAL ── */
 const globalObs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
