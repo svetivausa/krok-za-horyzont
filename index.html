@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Крок за горизонт — Інтуїція. Прийняття рішень в умовах невизначеності</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;900&family=Nunito:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&family=Nunito:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════════
    VARIABLES & RESET
@@ -23,9 +23,9 @@
   --soft:    #f3f4fd;
   --card-bg: #ffffff;
   --text:    #1a1d3b;
-  --muted:   #7880a8;
+  --muted:   #5a6390;
   --border:  #e4e6f5;
-  --sidebar-w: 240px;
+  --sidebar-w: 260px;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -52,36 +52,34 @@ a { text-decoration: none; color: inherit; }
   transition: transform 0.3s ease;
 }
 .sidebar-logo {
-  padding: 1.6rem 1.4rem 1.2rem;
+  padding: 1.2rem 1.2rem 1rem;
   border-bottom: 1px solid rgba(255,255,255,0.07);
 }
-.sidebar-logo .logo-name {
-  font-family: 'Unbounded', sans-serif;
-  font-size: 0.92rem; font-weight: 700; color: #fff;
-  line-height: 1.3;
+.sidebar-logo-img {
+  display: block;
+  width: 100%;
+  max-width: 210px;
+  mix-blend-mode: screen;
+  margin-bottom: 0.5rem;
 }
 .sidebar-logo .logo-sub {
-  font-size: 0.65rem; color: var(--aurora);
-  margin-top: 0.3rem; letter-spacing: 0.05em;
-  opacity: 0.85;
-}
-.sidebar-logo .logo-star {
-  font-size: 1.4rem; color: var(--gold);
-  display: block; margin-bottom: 0.5rem;
-  animation: spin-slow 10s linear infinite;
+  font-size: 0.68rem; color: var(--aurora);
+  letter-spacing: 0.08em;
+  opacity: 0.85; text-transform: uppercase;
+  font-weight: 600;
 }
 @keyframes spin-slow { to { transform: rotate(360deg); } }
 
 .nav-section { padding: 0.8rem 0; }
 .nav-section-label {
-  font-size: 0.58rem; font-weight: 700; letter-spacing: 0.18em;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.16em;
   text-transform: uppercase; color: rgba(255,255,255,0.3);
   padding: 0.4rem 1.4rem 0.4rem;
 }
 .nav-item {
   display: flex; align-items: center; gap: 0.7rem;
-  padding: 0.6rem 1.4rem;
-  font-size: 0.82rem; font-weight: 600;
+  padding: 0.65rem 1.4rem;
+  font-size: 0.88rem; font-weight: 600;
   color: rgba(255,255,255,0.55);
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
@@ -97,16 +95,16 @@ a { text-decoration: none; color: inherit; }
   border-top: 1px solid rgba(255,255,255,0.07);
 }
 .sched-mini-label {
-  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em;
   text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem;
 }
 .sched-mini-item {
-  font-size: 0.72rem; color: rgba(255,255,255,0.55);
-  padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-size: 0.78rem; color: rgba(255,255,255,0.55);
+  padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.06);
   cursor: pointer; transition: color 0.2s;
 }
 .sched-mini-item:hover { color: var(--gold); }
-.sched-mini-item strong { display: block; color: rgba(255,255,255,0.8); font-size: 0.73rem; }
+.sched-mini-item strong { display: block; color: rgba(255,255,255,0.85); font-size: 0.8rem; }
 
 /* Mobile toggle */
 .sidebar-toggle {
@@ -141,13 +139,13 @@ a { text-decoration: none; color: inherit; }
   position: sticky; top: 0; z-index: 100;
 }
 .topbar-title {
-  font-family: 'Unbounded', sans-serif;
-  font-size: 0.85rem; font-weight: 600; color: var(--text);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.95rem; font-weight: 600; color: var(--text);
 }
 .topbar-actions { display: flex; gap: 0.8rem; align-items: center; }
 .btn-sm {
   display: inline-block; padding: 0.45rem 1.1rem;
-  border-radius: 100px; font-size: 0.78rem; font-weight: 700;
+  border-radius: 100px; font-size: 0.82rem; font-weight: 700;
   cursor: pointer; border: none; transition: transform 0.15s, box-shadow 0.15s;
 }
 .btn-sm:hover { transform: translateY(-1px); }
@@ -162,18 +160,18 @@ a { text-decoration: none; color: inherit; }
 .page-content { padding: 2.5rem; }
 .section-header { margin-bottom: 2rem; }
 .eyebrow {
-  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
   text-transform: uppercase; color: var(--rose);
   margin-bottom: 0.4rem;
 }
 .page-h1 {
-  font-family: 'Unbounded', sans-serif;
-  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-family: 'Raleway', sans-serif;
+  font-size: clamp(1.5rem, 2.5vw, 2.1rem);
   font-weight: 700; color: var(--text);
   line-height: 1.2; margin-bottom: 0.6rem;
 }
 .page-lead {
-  font-size: 0.95rem; color: var(--muted); max-width: 60ch; line-height: 1.75;
+  font-size: 1.05rem; color: var(--muted); max-width: 60ch; line-height: 1.8;
 }
 
 /* CARDS */
@@ -187,8 +185,8 @@ a { text-decoration: none; color: inherit; }
 
 /* TAG */
 .tag {
-  display: inline-block; padding: 0.2rem 0.6rem;
-  border-radius: 6px; font-size: 0.65rem; font-weight: 700;
+  display: inline-block; padding: 0.22rem 0.65rem;
+  border-radius: 6px; font-size: 0.7rem; font-weight: 700;
   letter-spacing: 0.06em; text-transform: uppercase;
 }
 .tag-violet { background: rgba(92,53,184,0.12); color: var(--violet); }
@@ -203,6 +201,27 @@ a { text-decoration: none; color: inherit; }
   background: linear-gradient(135deg, var(--deep) 0%, #1e1468 55%, #0f2d5e 100%);
   padding: 4rem 2.5rem 3.5rem;
   position: relative; overflow: hidden;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.hero-img {
+  width: 100%;
+  max-width: 520px;
+  display: block;
+  -webkit-mask-image: radial-gradient(ellipse 72% 78% at 50% 50%, black 25%, transparent 88%);
+  mask-image: radial-gradient(ellipse 72% 78% at 50% 50%, black 25%, transparent 88%);
 }
 .hero-block .ring {
   position: absolute; border-radius: 50%; border: 1px solid;
@@ -221,7 +240,7 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 1.5rem;
 }
 .hero-h1 {
-  font-family: 'Unbounded', sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: clamp(1.8rem, 3.5vw, 3rem);
   font-weight: 900; color: #fff;
   line-height: 1.15; margin-bottom: 1rem; max-width: 14em;
@@ -252,23 +271,28 @@ a { text-decoration: none; color: inherit; }
 /* stats strip */
 .stats-strip {
   display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 0; background: var(--navy);
+  gap: 1rem; padding: 2rem 2.5rem;
+  background: var(--soft);
 }
 .stat-item {
-  padding: 1.4rem 1.5rem;
-  border-right: 1px solid rgba(255,255,255,0.06);
+  padding: 1.6rem 1.2rem;
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 12px rgba(14,15,46,0.05);
   text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
-.stat-item:last-child { border-right: none; }
+.stat-item:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(14,15,46,0.1); }
 .stat-num {
-  font-family: 'Unbounded', sans-serif; font-size: 1.7rem; font-weight: 700;
-  line-height: 1; margin-bottom: 0.2rem;
+  font-family: 'Raleway', sans-serif; font-size: 2rem; font-weight: 700;
+  line-height: 1; margin-bottom: 0.35rem;
 }
 .stat-item:nth-child(1) .stat-num { color: var(--rose); }
-.stat-item:nth-child(2) .stat-num { color: var(--gold); }
-.stat-item:nth-child(3) .stat-num { color: var(--aurora); }
-.stat-item:nth-child(4) .stat-num { color: #c4b5fd; }
-.stat-lbl { font-size: 0.72rem; color: rgba(255,255,255,0.4); }
+.stat-item:nth-child(2) .stat-num { color: #c8960a; }
+.stat-item:nth-child(3) .stat-num { color: #0a9b8f; }
+.stat-item:nth-child(4) .stat-num { color: var(--violet); }
+.stat-lbl { font-size: 0.78rem; color: var(--muted); }
 
 /* home grid */
 .home-grid {
@@ -289,10 +313,10 @@ a { text-decoration: none; color: inherit; }
 .pillar:nth-child(1) { border-top-color: var(--rose); }
 .pillar:nth-child(2) { border-top-color: var(--violet); }
 .pillar:nth-child(3) { border-top-color: var(--aurora); }
-.pillar-ico { font-size: 1.8rem; margin-bottom: 0.7rem; }
-.pillar-title { font-family:'Unbounded',sans-serif; font-size:.82rem; font-weight:700; margin-bottom:.5rem; }
-.pillar-text { font-size:.82rem; color:var(--muted); line-height:1.8; }
-.pillar-cite { font-size:.65rem; color:var(--aurora); margin-top:.7rem; font-style:italic; }
+.pillar-ico { font-size: 2rem; margin-bottom: 0.8rem; }
+.pillar-title { font-family:'Unbounded',sans-serif; font-size:.88rem; font-weight:700; margin-bottom:.5rem; }
+.pillar-text { font-size:.88rem; color:var(--muted); line-height:1.85; }
+.pillar-cite { font-size:.7rem; color:var(--aurora); margin-top:.7rem; font-style:italic; }
 
 /* upcoming seminars */
 .seminar-row {
@@ -307,11 +331,11 @@ a { text-decoration: none; color: inherit; }
   border-radius: 10px; padding: 0.5rem 0.7rem;
   text-align: center; flex-shrink: 0; min-width: 52px;
 }
-.sem-d { font-family:'Unbounded',sans-serif; font-size:1.1rem; font-weight:700; line-height:1; }
-.sem-m { font-size:0.6rem; text-transform:uppercase; letter-spacing:.05em; opacity:.8; }
+.sem-d { font-family:'Unbounded',sans-serif; font-size:1.15rem; font-weight:700; line-height:1; }
+.sem-m { font-size:0.65rem; text-transform:uppercase; letter-spacing:.05em; opacity:.8; }
 .sem-info { flex: 1; }
-.sem-name { font-weight:700; font-size:.88rem; color:var(--text); margin-bottom:.15rem; }
-.sem-meta { font-size:.72rem; color:var(--muted); }
+.sem-name { font-weight:700; font-size:.95rem; color:var(--text); margin-bottom:.15rem; }
+.sem-meta { font-size:.78rem; color:var(--muted); }
 .sem-tag { flex-shrink: 0; }
 
 /* news card */
@@ -373,8 +397,8 @@ a { text-decoration: none; color: inherit; }
   font-size: 0.7rem; color: rgba(255,255,255,0.5); text-align: center; padding: 0 1rem;
 }
 .video-body { padding: 1rem 1.2rem; }
-.video-title { font-weight: 700; font-size: .88rem; color: var(--text); margin-bottom: .4rem; line-height: 1.4; }
-.video-meta { font-size: .72rem; color: var(--muted); display: flex; gap: .8rem; }
+.video-title { font-weight: 700; font-size: .95rem; color: var(--text); margin-bottom: .4rem; line-height: 1.4; }
+.video-meta { font-size: .78rem; color: var(--muted); display: flex; gap: .8rem; }
 .video-duration { display: flex; align-items: center; gap: .25rem; }
 
 /* featured video */
@@ -391,10 +415,10 @@ a { text-decoration: none; color: inherit; }
 }
 .vf-thumb iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
 .vf-info { padding: 2rem; color: #fff; display: flex; flex-direction: column; justify-content: center; }
-.vf-badge { font-size:.65rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); margin-bottom:.8rem; }
-.vf-title { font-family:'Unbounded',sans-serif; font-size:1.1rem; font-weight:700; line-height:1.3; margin-bottom:.8rem; }
-.vf-desc { font-size:.85rem; color:rgba(255,255,255,.55); line-height:1.8; margin-bottom:1.2rem; }
-.vf-meta { font-size:.75rem; color:rgba(255,255,255,.35); }
+.vf-badge { font-size:.7rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); margin-bottom:.8rem; }
+.vf-title { font-family:'Unbounded',sans-serif; font-size:1.15rem; font-weight:700; line-height:1.3; margin-bottom:.8rem; }
+.vf-desc { font-size:.9rem; color:rgba(255,255,255,.6); line-height:1.85; margin-bottom:1.2rem; }
+.vf-meta { font-size:.8rem; color:rgba(255,255,255,.4); }
 
 /* ═══════════════════════════════════════════════
    PAGE: ВПРАВИ (EXERCISES)
@@ -419,12 +443,12 @@ a { text-decoration: none; color: inherit; }
 .ex-card.lv3 { border-left-color: var(--rose); }
 .ex-header { display:flex; align-items:flex-start; gap:1rem; margin-bottom:1rem; }
 .ex-ico { font-size:2rem; flex-shrink:0; }
-.ex-title { font-family:'Unbounded',sans-serif; font-size:.9rem; font-weight:700; color:var(--text); margin-bottom:.3rem; }
-.ex-lvl { font-size:.65rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
-.ex-desc { font-size:.85rem; color:var(--muted); line-height:1.85; margin-bottom:1.2rem; }
+.ex-title { font-family:'Unbounded',sans-serif; font-size:.95rem; font-weight:700; color:var(--text); margin-bottom:.3rem; }
+.ex-lvl { font-size:.7rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+.ex-desc { font-size:.9rem; color:var(--muted); line-height:1.85; margin-bottom:1.2rem; }
 .ex-steps { list-style:none; display:flex; flex-direction:column; gap:.5rem; }
 .ex-steps li {
-  display:flex; gap:.7rem; font-size:.82rem; color:#444; line-height:1.7;
+  display:flex; gap:.7rem; font-size:.88rem; color:#444; line-height:1.75;
 }
 .ex-steps li::before {
   content:attr(data-n); flex-shrink:0;
@@ -434,8 +458,8 @@ a { text-decoration: none; color: inherit; }
   margin-top:3px;
 }
 .ex-footer { margin-top:1.2rem; padding-top:1rem; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
-.ex-time { font-size:.75rem; color:var(--muted); display:flex; align-items:center; gap:.3rem; }
-.ex-science { font-size:.65rem; color:var(--aurora); font-style:italic; }
+.ex-time { font-size:.8rem; color:var(--muted); display:flex; align-items:center; gap:.3rem; }
+.ex-science { font-size:.7rem; color:var(--aurora); font-style:italic; }
 .btn-ex {
   padding:.45rem 1rem; border-radius:8px;
   background:var(--soft); color:var(--violet);
@@ -481,9 +505,9 @@ a { text-decoration: none; color: inherit; }
   font-size:1.4rem;font-weight:700;color:#fff;
 }
 .vrev-body { padding:.9rem 1rem; }
-.vrev-name { font-weight:700;font-size:.85rem;color:#fff;margin-bottom:.2rem; }
-.vrev-role { font-size:.72rem;color:rgba(255,255,255,.4); }
-.vrev-quote { font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.75;margin-top:.6rem;font-style:italic; }
+.vrev-name { font-weight:700;font-size:.9rem;color:#fff;margin-bottom:.2rem; }
+.vrev-role { font-size:.78rem;color:rgba(255,255,255,.45); }
+.vrev-quote { font-size:.85rem;color:rgba(255,255,255,.6);line-height:1.8;margin-top:.6rem;font-style:italic; }
 
 /* text reviews */
 .trev-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem; display:none; }
@@ -491,16 +515,16 @@ a { text-decoration: none; color: inherit; }
   background:#fff;border-radius:14px;padding:1.6rem;
   border:1px solid var(--border);
 }
-.stars-row { color:var(--gold);font-size:.9rem;letter-spacing:2px;margin-bottom:.8rem; }
-.trev-text { font-size:.88rem;color:#444;line-height:1.9;font-style:italic;margin-bottom:1rem; }
+.stars-row { color:var(--gold);font-size:.95rem;letter-spacing:2px;margin-bottom:.8rem; }
+.trev-text { font-size:.92rem;color:#444;line-height:1.9;font-style:italic;margin-bottom:1rem; }
 .trev-person { display:flex;align-items:center;gap:.7rem; }
 .trev-av {
-  width:38px;height:38px;border-radius:50%;flex-shrink:0;
+  width:40px;height:40px;border-radius:50%;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
   font-weight:700;font-size:1rem;color:#fff;
 }
-.trev-name { font-weight:700;font-size:.84rem;color:var(--text); }
-.trev-detail { font-size:.7rem;color:var(--muted); }
+.trev-name { font-weight:700;font-size:.9rem;color:var(--text); }
+.trev-detail { font-size:.75rem;color:var(--muted); }
 
 /* ═══════════════════════════════════════════════
    PAGE: СЕМІНАРИ
@@ -520,25 +544,25 @@ a { text-decoration: none; color: inherit; }
   width:120px;height:120px;border-radius:50%;
   background:rgba(255,255,255,.06);
 }
-.sem-card-type { font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem; }
-.sem-card-name { font-family:'Unbounded',sans-serif;font-size:1rem;font-weight:700;line-height:1.3; }
+.sem-card-type { font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem; }
+.sem-card-name { font-family:'Unbounded',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.3; }
 .sem-card-body { padding:1.5rem; }
-.sem-card-desc { font-size:.85rem;color:var(--muted);line-height:1.8;margin-bottom:1.2rem; }
-.sem-detail { display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:#444;margin-bottom:.4rem; }
+.sem-card-desc { font-size:.9rem;color:var(--muted);line-height:1.85;margin-bottom:1.2rem; }
+.sem-detail { display:flex;align-items:center;gap:.5rem;font-size:.88rem;color:#444;margin-bottom:.4rem; }
 .sem-modules { margin-top:1rem; }
 .sem-modules-label { font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem; }
 .sem-module-tag {
   display:inline-block;margin:.2rem .2rem .2rem 0;
-  padding:.2rem .6rem;border-radius:6px;
-  font-size:.65rem;font-weight:700;
+  padding:.22rem .65rem;border-radius:6px;
+  font-size:.7rem;font-weight:700;
   background:var(--soft);color:var(--violet);
 }
 .sem-card-footer {
   padding:1rem 1.5rem;border-top:1px solid var(--border);
   display:flex;align-items:center;justify-content:space-between;
 }
-.sem-price { font-family:'Unbounded',sans-serif;font-size:1.1rem;font-weight:700;color:var(--violet); }
-.sem-price-note { font-size:.65rem;color:var(--muted); }
+.sem-price { font-family:'Unbounded',sans-serif;font-size:1.15rem;font-weight:700;color:var(--violet); }
+.sem-price-note { font-size:.7rem;color:var(--muted); }
 .btn-enroll {
   padding:.65rem 1.4rem;border-radius:10px;
   background:var(--violet);color:#fff;
@@ -564,12 +588,12 @@ a { text-decoration: none; color: inherit; }
   font-family:'Unbounded',sans-serif;font-size:.85rem;font-weight:700;color:var(--violet);
 }
 .lec-info {}
-.lec-title { font-weight:700;font-size:.9rem;color:var(--text);margin-bottom:.2rem; }
-.lec-meta { font-size:.72rem;color:var(--muted);display:flex;gap:.7rem; }
+.lec-title { font-weight:700;font-size:.95rem;color:var(--text);margin-bottom:.2rem; }
+.lec-meta { font-size:.78rem;color:var(--muted);display:flex;gap:.7rem; }
 .lec-actions { display:flex;gap:.5rem; }
 .lec-btn {
   padding:.4rem .9rem;border-radius:8px;
-  font-size:.72rem;font-weight:700;
+  font-size:.78rem;font-weight:700;
   border:1px solid var(--border);background:#fff;color:var(--text);
   cursor:pointer;transition:all .2s;white-space:nowrap;
 }
@@ -581,26 +605,26 @@ a { text-decoration: none; color: inherit; }
    PAGE: ПРО ПРОЕКТ
 ═══════════════════════════════════════════════ */
 .about-grid { display:grid;grid-template-columns:1.2fr 1fr;gap:2rem;align-items:start; }
-.about-body { font-size:.9rem;color:#444;line-height:2;margin-bottom:1rem; }
+.about-body { font-size:.95rem;color:#444;line-height:2;margin-bottom:1rem; }
 .about-body strong { color:var(--text); }
 .team-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:1rem; }
 .team-card {
-  background:#fff;border-radius:12px;padding:1.2rem;
+  background:#fff;border-radius:12px;padding:1.3rem;
   border:1px solid var(--border); text-align:center;
 }
 .team-av {
-  width:70px;height:70px;border-radius:50%;margin:0 auto .7rem;
+  width:72px;height:72px;border-radius:50%;margin:0 auto .7rem;
   display:flex;align-items:center;justify-content:center;
   font-size:1.8rem;font-weight:700;color:#fff;
 }
-.team-name { font-weight:700;font-size:.88rem;color:var(--text);margin-bottom:.2rem; }
-.team-role { font-size:.72rem;color:var(--muted);line-height:1.5; }
+.team-name { font-weight:700;font-size:.95rem;color:var(--text);margin-bottom:.2rem; }
+.team-role { font-size:.78rem;color:var(--muted);line-height:1.55; }
 .science-block {
   background:linear-gradient(135deg,var(--deep),#1e1468);
   border-radius:16px;padding:2rem;color:#fff;margin-top:1.5rem;
 }
 .science-block h3 { font-family:'Unbounded',sans-serif;font-size:.9rem;font-weight:700;color:var(--gold);margin-bottom:1rem; }
-.sci-item { display:flex;gap:.7rem;margin-bottom:.8rem;font-size:.82rem;color:rgba(255,255,255,.65);line-height:1.7; }
+.sci-item { display:flex;gap:.7rem;margin-bottom:.8rem;font-size:.88rem;color:rgba(255,255,255,.65);line-height:1.75; }
 .sci-item::before { content:'◎';color:var(--aurora);flex-shrink:0; }
 
 /* ═══════════════════════════════════════════════
@@ -609,11 +633,11 @@ a { text-decoration: none; color: inherit; }
 .contact-grid { display:grid;grid-template-columns:1fr 1fr;gap:2rem; }
 .contact-form { display:flex;flex-direction:column;gap:1rem; }
 .form-group { display:flex;flex-direction:column;gap:.35rem; }
-.form-label { font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted); }
+.form-label { font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted); }
 .form-input, .form-select, .form-textarea {
   border:1.5px solid var(--border); border-radius:10px;
-  padding:.7rem 1rem;font-family:'Nunito',sans-serif;
-  font-size:.9rem;color:var(--text);background:#fff;
+  padding:.75rem 1rem;font-family:'Nunito',sans-serif;
+  font-size:.95rem;color:var(--text);background:#fff;
   outline:none;transition:border-color .2s;
 }
 .form-input:focus, .form-select:focus, .form-textarea:focus { border-color:var(--violet); }
@@ -634,8 +658,8 @@ a { text-decoration: none; color: inherit; }
   display:flex;align-items:center;gap:1rem;
 }
 .ci-icon { font-size:1.6rem;flex-shrink:0; }
-.ci-label { font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.2rem; }
-.ci-value { font-weight:700;font-size:.9rem;color:var(--text); }
+.ci-label { font-size:.73rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.2rem; }
+.ci-value { font-weight:700;font-size:.95rem;color:var(--text); }
 .social-row { display:flex;gap:.6rem;margin-top:1rem; }
 .soc-btn {
   padding:.5rem 1rem;border-radius:8px;
@@ -656,16 +680,73 @@ a { text-decoration: none; color: inherit; }
    FOOTER
 ═══════════════════════════════════════════════ */
 .main-footer {
-  background:var(--deep);color:#fff;
-  padding:2rem 2.5rem;
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+  background: var(--deep); color: #fff;
+  padding: 3rem 2.5rem 1.5rem;
 }
-.mf-logo { font-family:'Unbounded',sans-serif;font-size:.85rem;font-weight:700; }
+.footer-top {
+  display: grid; grid-template-columns: 1.1fr 2fr;
+  gap: 3rem; margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.mf-logo { font-family:'Unbounded',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.45rem; }
 .mf-logo span { color:var(--gold); }
-.mf-copy { font-size:.7rem;color:rgba(255,255,255,.25); }
-.mf-links { display:flex;gap:1.5rem; }
-.mf-links a { font-size:.75rem;color:rgba(255,255,255,.35);transition:color .2s; }
-.mf-links a:hover { color:#fff; }
+.footer-tagline { font-size:.8rem;color:rgba(255,255,255,.38);margin-bottom:1.2rem;line-height:1.6;max-width:22ch; }
+.footer-social { display:flex;gap:.5rem;flex-wrap:wrap; }
+.footer-soc-btn {
+  padding:.38rem .8rem;border-radius:8px;
+  font-size:.75rem;font-weight:700;
+  background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);
+  border:1px solid rgba(255,255,255,.12);
+  cursor:pointer;transition:background .2s,color .2s,border-color .2s;
+}
+.footer-soc-btn:hover { background:var(--violet);color:#fff;border-color:var(--violet); }
+.footer-nav { display:grid;grid-template-columns:repeat(3,1fr);gap:2rem; }
+.footer-nav-label {
+  font-size:.65rem;font-weight:700;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;
+}
+.footer-nav-link {
+  display:block;font-size:.84rem;
+  color:rgba(255,255,255,.42);
+  margin-bottom:.45rem;cursor:pointer;transition:color .2s;
+}
+.footer-nav-link:hover { color:#fff; }
+.footer-bottom {
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;
+}
+.mf-copy { font-size:.75rem;color:rgba(255,255,255,.22); }
+.footer-bottom-note { font-size:.73rem;color:rgba(255,255,255,.22); }
+
+/* ═══════════════════════════════════════════════
+   HERO SOCIAL PROOF
+═══════════════════════════════════════════════ */
+.hero-social-proof {
+  background: rgba(255,255,255,0.07);
+  border-left: 3px solid var(--gold);
+  padding: 0.9rem 1.2rem;
+  border-radius: 0 10px 10px 0;
+  margin-bottom: 2rem;
+  max-width: 52ch;
+}
+.hsp-quote { font-size:.92rem;color:rgba(255,255,255,.82);font-style:italic;line-height:1.65;margin-bottom:.3rem; }
+.hsp-author { font-size:.73rem;color:var(--gold);font-weight:700; }
+
+/* ═══════════════════════════════════════════════
+   CONTACT WHY BLOCK
+═══════════════════════════════════════════════ */
+.contact-why {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem 1.6rem;
+  background: linear-gradient(135deg,#f0ebff,#e8f4ff);
+  border-radius: 14px;
+  border: 1px solid rgba(92,53,184,.15);
+}
+.contact-why-title { font-family:'Unbounded',sans-serif;font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:.5rem; }
+.contact-why-text { font-size:.9rem;color:var(--muted);line-height:1.8;margin-bottom:.9rem; }
+.contact-why-items { display:flex;flex-direction:column;gap:.35rem; }
+.contact-why-item { font-size:.88rem;color:var(--text);display:flex;align-items:center;gap:.5rem; }
+.contact-why-item::before { content:'✓';color:var(--aurora);font-weight:700;flex-shrink:0; }
 
 /* ═══════════════════════════════════════════════
    REVEAL / RESPONSIVE
@@ -674,7 +755,7 @@ a { text-decoration: none; color: inherit; }
 .reveal.visible { opacity:1;transform:none; }
 
 @media (max-width: 1100px) {
-  :root { --sidebar-w: 200px; }
+  :root { --sidebar-w: 220px; }
   .video-grid, .vrev-grid { grid-template-columns:repeat(2,1fr); }
 }
 @media (max-width: 820px) {
@@ -685,7 +766,7 @@ a { text-decoration: none; color: inherit; }
   .topbar { padding:.8rem 1.2rem .8rem 4rem; }
   .page-content { padding:1.4rem; }
   .home-grid, .about-grid, .contact-grid { grid-template-columns:1fr; }
-  .stats-strip { grid-template-columns:repeat(2,1fr); }
+  .stats-strip { grid-template-columns:repeat(2,1fr); gap:.75rem; padding:1.2rem 1.4rem; }
   .pillars-grid { grid-template-columns:1fr; }
   .video-grid,.vrev-grid { grid-template-columns:1fr; }
   .ex-grid, .seminars-grid, .team-grid { grid-template-columns:1fr; }
@@ -694,6 +775,10 @@ a { text-decoration: none; color: inherit; }
   .vf-thumb { height:220px; }
   .hero-block { padding:2.5rem 1.4rem 2rem; }
   .home-grid, .home-grid-full { padding:1rem 1.4rem; }
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+  .footer-top { grid-template-columns:1fr; gap:1.5rem; }
+  .footer-nav { grid-template-columns:repeat(2,1fr); }
 }
 </style>
 </head>
@@ -705,9 +790,8 @@ a { text-decoration: none; color: inherit; }
 <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-logo">
-    <span class="logo-star">✦</span>
-    <div class="logo-name">Крок за горизонт</div>
-    <div class="logo-sub">Інтуїція · Рішення · Невизначеність</div>
+    <img src="logo.png" alt="Svitlana Slipchenko" class="sidebar-logo-img">
+    <div class="logo-sub">Крок за горизонт</div>
   </div>
 
   <nav>
@@ -787,18 +871,123 @@ a { text-decoration: none; color: inherit; }
     <!-- Hero -->
     <div class="hero-block">
       <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
-      <div class="hero-badge">✦ Науково обґрунтована програма</div>
-      <h1 class="hero-h1">
-        Крок за горизонт:<br>
-        <span class="g">інтуїція</span> і <span class="a">рішення</span><br>
-        в умовах невизначеності
-      </h1>
-      <p class="hero-desc">
-        Навчитись чути підсвідомість — реально. Це не містика, це нейронаука. Тренінги, відеолекції та практичні вправи для тих, хто хоче думати глибше і діяти впевненіше.
-      </p>
-      <div class="hero-btns">
-        <button class="btn-hero-main" onclick="showPage('seminars')">Переглянути тренінги →</button>
-        <button class="btn-hero-ghost" onclick="showPage('videos')">Відео з семінарів</button>
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-badge">✦ Науково обґрунтована програма</div>
+          <h1 class="hero-h1">
+            Крок за горизонт:<br>
+            <span class="g">інтуїція</span> і <span class="a">рішення</span><br>
+            в умовах невизначеності
+          </h1>
+          <p class="hero-desc">
+            Навчитись чути підсвідомість — реально. Це не містика, це нейронаука. Тренінги, відеолекції та практичні вправи для тих, хто хоче думати глибше і діяти впевненіше.
+          </p>
+          <div class="hero-social-proof">
+            <div class="hsp-quote">«Найціннішим стало те, що все підкріплено наукою. Конкретні механізми, конкретні вправи — і конкретні результати вже через тиждень.»</div>
+            <div class="hsp-author">— Василь, 45 р. · Повний курс, 6 модулів</div>
+          </div>
+          <div class="hero-btns">
+            <button class="btn-hero-main" onclick="showPage('seminars')">Переглянути тренінги →</button>
+            <button class="btn-hero-ghost" onclick="showPage('videos')">Відео з семінарів</button>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img src="hero.png" alt="Людина на скелі з нейронною мережею" class="hero-img">
+          <svg viewBox="0 0 360 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+            <defs>
+              <radialGradient id="horzGlow" cx="50%" cy="100%" r="60%">
+                <stop offset="0%" stop-color="#2ec4b6" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#2ec4b6" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="bodyGlow" cx="50%" cy="50%" r="55%">
+                <stop offset="0%" stop-color="#5c35b8" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#5c35b8" stop-opacity="0"/>
+              </radialGradient>
+              <filter id="gblur"><feGaussianBlur stdDeviation="5"/></filter>
+            </defs>
+            <!-- Atmosphere -->
+            <ellipse cx="183" cy="320" rx="200" ry="55" fill="url(#horzGlow)"/>
+            <ellipse cx="183" cy="195" rx="90" ry="85" fill="url(#bodyGlow)"/>
+            <!-- Stars -->
+            <circle cx="35" cy="28" r="1.5" fill="#f4c430" opacity="0.8"/>
+            <circle cx="88" cy="14" r="1" fill="#fff" opacity="0.55"/>
+            <circle cx="148" cy="32" r="1.5" fill="#2ec4b6" opacity="0.7"/>
+            <circle cx="242" cy="16" r="1" fill="#fff" opacity="0.5"/>
+            <circle cx="308" cy="38" r="1.5" fill="#f4c430" opacity="0.6"/>
+            <circle cx="348" cy="58" r="1" fill="#fff" opacity="0.4"/>
+            <circle cx="18" cy="88" r="1" fill="#c4b5fd" opacity="0.6"/>
+            <circle cx="338" cy="105" r="1.5" fill="#2ec4b6" opacity="0.5"/>
+            <circle cx="55" cy="148" r="1" fill="#fff" opacity="0.3"/>
+            <circle cx="98" cy="52" r="1" fill="#e8526a" opacity="0.5"/>
+            <circle cx="278" cy="72" r="1" fill="#fff" opacity="0.4"/>
+            <circle cx="196" cy="8" r="1.5" fill="#c4b5fd" opacity="0.5"/>
+            <circle cx="18" cy="205" r="1.5" fill="#c4b5fd" opacity="0.35"/>
+            <circle cx="122" cy="78" r="1" fill="#fff" opacity="0.35"/>
+            <!-- Neural nodes -->
+            <circle cx="228" cy="52" r="5" fill="#f4c430">
+              <animate attributeName="opacity" values="0.85;0.3;0.85" dur="3.1s" repeatCount="indefinite"/>
+              <animate attributeName="r" values="5;6.5;5" dur="3.1s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="292" cy="82" r="4" fill="#2ec4b6">
+              <animate attributeName="opacity" values="0.75;0.25;0.75" dur="2.4s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="318" cy="148" r="5.5" fill="#7c58d4">
+              <animate attributeName="opacity" values="0.7;0.2;0.7" dur="3.9s" repeatCount="indefinite"/>
+              <animate attributeName="r" values="5.5;7;5.5" dur="3.9s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="268" cy="188" r="3.5" fill="#2ec4b6">
+              <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2.9s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="192" cy="72" r="4" fill="#e8526a">
+              <animate attributeName="opacity" values="0.65;0.2;0.65" dur="4.3s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="252" cy="122" r="4.5" fill="#f4c430">
+              <animate attributeName="opacity" values="0.6;0.15;0.6" dur="3.6s" repeatCount="indefinite"/>
+              <animate attributeName="r" values="4.5;6;4.5" dur="3.6s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="158" cy="92" r="3" fill="#c4b5fd">
+              <animate attributeName="opacity" values="0.65;0.2;0.65" dur="2.7s" repeatCount="indefinite"/>
+            </circle>
+            <!-- Neural connections -->
+            <line x1="228" y1="52" x2="292" y2="82" stroke="#f4c430" stroke-width="0.8" opacity="0.3"/>
+            <line x1="292" y1="82" x2="318" y2="148" stroke="#2ec4b6" stroke-width="0.8" opacity="0.25"/>
+            <line x1="318" y1="148" x2="268" y2="188" stroke="#7c58d4" stroke-width="0.8" opacity="0.3"/>
+            <line x1="192" y1="72" x2="228" y2="52" stroke="#e8526a" stroke-width="0.8" opacity="0.25"/>
+            <line x1="228" y1="52" x2="252" y2="122" stroke="#f4c430" stroke-width="0.8" opacity="0.22"/>
+            <line x1="252" y1="122" x2="292" y2="82" stroke="#2ec4b6" stroke-width="0.8" opacity="0.2"/>
+            <line x1="158" y1="92" x2="192" y2="72" stroke="#c4b5fd" stroke-width="0.8" opacity="0.2"/>
+            <line x1="252" y1="122" x2="268" y2="188" stroke="#7c58d4" stroke-width="0.8" opacity="0.2"/>
+            <line x1="252" y1="122" x2="195" y2="150" stroke="#f4c430" stroke-width="0.6" stroke-dasharray="4,3" opacity="0.18"/>
+            <line x1="158" y1="92" x2="178" y2="148" stroke="#c4b5fd" stroke-width="0.6" stroke-dasharray="4,3" opacity="0.14"/>
+            <!-- Horizon line -->
+            <line x1="0" y1="275" x2="360" y2="275" stroke="#2ec4b6" stroke-width="1.5" opacity="0.4"/>
+            <ellipse cx="183" cy="278" rx="170" ry="12" fill="#2ec4b6" filter="url(#gblur)" opacity="0.1"/>
+            <!-- Body aura -->
+            <ellipse cx="183" cy="205" rx="38" ry="65" fill="#5c35b8" filter="url(#gblur)" opacity="0.25"/>
+            <!-- Person silhouette -->
+            <circle cx="183" cy="155" r="22" fill="#9b7fe8" opacity="0.92"/>
+            <rect x="178" y="175" width="10" height="9" rx="3" fill="#8b6fd4" opacity="0.88"/>
+            <path d="M163 184 C163 184 170 183 183 183 C196 183 203 184 203 184 L208 242 C200 246 166 246 158 242 Z" fill="#7a55cc" opacity="0.88"/>
+            <path d="M164 188 L145 226 L153 229 L169 197 Z" fill="#8b6fd4" opacity="0.8"/>
+            <path d="M202 188 L221 226 L213 229 L197 197 Z" fill="#8b6fd4" opacity="0.8"/>
+            <path d="M165 242 L157 278 L171 278 L180 244 Z" fill="#6644bb" opacity="0.88"/>
+            <path d="M201 242 L209 278 L195 278 L186 244 Z" fill="#6644bb" opacity="0.88"/>
+            <!-- Intuition spark on chest -->
+            <circle cx="183" cy="210" r="3.5" fill="#f4c430" opacity="0.7">
+              <animate attributeName="opacity" values="0.7;0.15;0.7" dur="2.2s" repeatCount="indefinite"/>
+              <animate attributeName="r" values="3.5;5.5;3.5" dur="2.2s" repeatCount="indefinite"/>
+            </circle>
+            <!-- Head aura rings -->
+            <circle cx="183" cy="155" r="32" fill="none" stroke="#f4c430" stroke-width="1.2">
+              <animate attributeName="r" values="32;42;32" dur="4s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.22;0.04;0.22" dur="4s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="183" cy="155" r="46" fill="none" stroke="#7c58d4" stroke-width="1">
+              <animate attributeName="r" values="46;58;46" dur="5.5s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.12;0.02;0.12" dur="5.5s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
       </div>
     </div>
 
@@ -941,16 +1130,44 @@ a { text-decoration: none; color: inherit; }
     </div>
 
     <div style="height:2rem;"></div>
-    <div class="main-footer">
-      <div class="mf-logo">Крок за <span>горизонт</span></div>
-      <div class="mf-links">
-        <a onclick="showPage('about')">Про проект</a>
-        <a onclick="showPage('videos')">Відео</a>
-        <a onclick="showPage('seminars')">Семінари</a>
-        <a onclick="showPage('contact')">Контакти</a>
+    <footer class="main-footer">
+      <div class="footer-top">
+        <div>
+          <img src="logo.png" alt="Svitlana Slipchenko" style="display:block;width:160px;mix-blend-mode:screen;margin-bottom:0.4rem;">
+          <div class="footer-tagline">Крок за горизонт<br>Інтуїція · Рішення · Невизначеність</div>
+          <div class="footer-social">
+            <button class="footer-soc-btn" onclick="window.open('https://t.me/krok_za_horyzont','_blank')">Telegram</button>
+            <button class="footer-soc-btn" onclick="window.open('https://instagram.com/slipchenko_svitlana','_blank')">Instagram</button>
+            <button class="footer-soc-btn" onclick="window.open('https://youtube.com/playlist?list=PLKJZ3LmunZfTLwsVdZU7zhj_Fk9iInSKg','_blank')">YouTube</button>
+            <button class="footer-soc-btn" onclick="window.open('https://www.facebook.com/profile.php?id=100063766322110','_blank')">Facebook</button>
+          </div>
+        </div>
+        <div class="footer-nav">
+          <div>
+            <div class="footer-nav-label">Контент</div>
+            <span class="footer-nav-link" onclick="showPage('videos')">Відео з семінарів</span>
+            <span class="footer-nav-link" onclick="showPage('lectures')">Відеолекції</span>
+            <span class="footer-nav-link" onclick="showPage('exercises')">Вправи</span>
+          </div>
+          <div>
+            <div class="footer-nav-label">Навчання</div>
+            <span class="footer-nav-link" onclick="showPage('seminars')">Семінари і курси</span>
+            <span class="footer-nav-link" onclick="showPage('reviews')">Відгуки учасників</span>
+            <span class="footer-nav-link" onclick="showPage('about')">Про проект</span>
+          </div>
+          <div>
+            <div class="footer-nav-label">Зв'язок</div>
+            <span class="footer-nav-link" onclick="showPage('contact')">Записатися</span>
+            <span class="footer-nav-link" onclick="window.open('https://t.me/krok_za_horyzont','_blank')">@krok_za_horyzont</span>
+            <span class="footer-nav-link" onclick="showPage('seminars')">Розклад заходів</span>
+          </div>
+        </div>
       </div>
-      <div class="mf-copy">© 2026 Крок за горизонт</div>
-    </div>
+      <div class="footer-bottom">
+        <div class="mf-copy">© 2026 Крок за горизонт. Всі права захищені.</div>
+        <div class="footer-bottom-note">Науково обґрунтована програма розвитку інтуїції</div>
+      </div>
+    </footer>
   </div>
 
   <!-- ══════════════ PAGE: VIDEOS ══════════════ -->
@@ -1584,6 +1801,15 @@ a { text-decoration: none; color: inherit; }
       </div>
       <div class="contact-grid">
         <div>
+          <div class="contact-why">
+            <div class="contact-why-title">Напишіть нам</div>
+            <p class="contact-why-text">Відповідаємо на всі запити. Можна записатися на тренінг, дізнатись про корпоративний формат або просто поставити питання про програму — без жодних зобов'язань.</p>
+            <div class="contact-why-items">
+              <div class="contact-why-item">Відповідаємо протягом 24 годин</div>
+              <div class="contact-why-item">Консультація перед записом — безкоштовно</div>
+              <div class="contact-why-item">Корпоративні програми за запитом</div>
+            </div>
+          </div>
           <div class="contact-form">
             <div class="form-row">
               <div class="form-group">
