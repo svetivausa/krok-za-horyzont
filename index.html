@@ -745,31 +745,111 @@ a { text-decoration: none; color: inherit; }
 .reveal { opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease; }
 .reveal.visible { opacity:1;transform:none; }
 
+/* ═══════════════════════════════════════════════
+   MOBILE BOTTOM NAV
+═══════════════════════════════════════════════ */
+.mobile-bottom-nav {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0;
+  height: 62px;
+  background: var(--deep);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  z-index: 500;
+  flex-direction: row;
+  align-items: stretch;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+}
+.mbn-item {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 3px; cursor: pointer;
+  color: rgba(255,255,255,0.38);
+  transition: color 0.2s;
+  padding: 8px 4px 10px;
+  -webkit-tap-highlight-color: transparent;
+}
+.mbn-item.active { color: var(--violet2); }
+.mbn-item:active { color: var(--gold); }
+.mbn-icon { font-size: 1.15rem; line-height: 1; }
+.mbn-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1; }
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
 @media (max-width: 1100px) {
   :root { --sidebar-w: 220px; }
   .video-grid, .vrev-grid { grid-template-columns:repeat(2,1fr); }
 }
 @media (max-width: 820px) {
+  /* Sidebar */
   .sidebar { transform:translateX(-100%); }
   .sidebar.open { transform:none; }
   .sidebar-toggle { display:flex; }
-  .main-wrap { margin-left:0; }
-  .topbar { padding:.8rem 1.2rem .8rem 4rem; }
-  .page-content { padding:1.4rem; }
-  .home-grid, .about-grid, .contact-grid { grid-template-columns:1fr; }
-  .stats-strip { grid-template-columns:repeat(2,1fr); gap:.75rem; padding:1.2rem 1.4rem; }
+  .main-wrap { margin-left:0; padding-bottom:62px; }
+
+  /* Topbar */
+  .topbar { padding:.75rem 1rem .75rem 4rem; }
+  .topbar-title { font-size:.85rem; }
+  .topbar-actions .btn-outline { display:none; }
+
+  /* Layout */
+  .page-content { padding:1.2rem; }
+  .home-grid { grid-template-columns:1fr; padding:.8rem 1.2rem; }
+  .home-grid-full { padding:0 1.2rem 1.5rem; }
+  .about-grid, .contact-grid { grid-template-columns:1fr; }
+  .stats-strip { grid-template-columns:repeat(2,1fr); gap:.6rem; padding:1rem 1.2rem; }
+  .stat-num { font-size:1.6rem; }
   .pillars-grid { grid-template-columns:1fr; }
-  .video-grid,.vrev-grid { grid-template-columns:1fr; }
+  .video-grid, .vrev-grid { grid-template-columns:1fr; }
   .ex-grid, .seminars-grid, .team-grid { grid-template-columns:1fr; }
   .trev-grid { grid-template-columns:1fr; }
   .video-featured { grid-template-columns:1fr; }
   .vf-thumb { height:220px; }
-  .hero-block { padding:2.5rem 1.4rem 2rem; }
-  .home-grid, .home-grid-full { padding:1rem 1.4rem; }
-  .hero-inner { grid-template-columns: 1fr; }
-  .hero-visual { display: none; }
+
+  /* Hero */
+  .hero-block { padding:2rem 1.2rem 1.8rem; }
+  .hero-inner { grid-template-columns:1fr; }
+  .hero-visual { display:none; }
+  .hero-btns { flex-direction:column; gap:.7rem; }
+  .btn-hero-main, .btn-hero-ghost { width:100%; text-align:center; }
+  .hero-social-proof { max-width:100%; }
+
+  /* Seminar rows — приховати тег на вузьких екранах */
+  .seminar-row { gap:.7rem; padding:.9rem 1rem; }
+  .sem-tag { display:none; }
+
+  /* Лекції — кнопки під назвою */
+  .lecture-row { grid-template-columns:auto 1fr; gap:1rem; }
+  .lec-actions { display:none; }
+
+  /* Контактна форма */
+  .form-row { grid-template-columns:1fr; }
+
+  /* Footer */
   .footer-top { grid-template-columns:1fr; gap:1.5rem; }
   .footer-nav { grid-template-columns:repeat(2,1fr); }
+  .main-footer { padding:2rem 1.2rem 1.2rem; }
+
+  /* Мобільна нижня навігація */
+  .mobile-bottom-nav { display:flex; }
+}
+@media (max-width: 480px) {
+  .page-content { padding:1rem; }
+  .hero-block { padding:1.6rem 1rem 1.5rem; }
+  .hero-h1 { font-size:1.75rem; }
+  .hero-desc { font-size:.92rem; }
+  .topbar { padding:.7rem .8rem .7rem 3.8rem; }
+  .stats-strip { padding:.8rem; gap:.5rem; }
+  .stat-item { padding:1rem .8rem; }
+  .stat-num { font-size:1.4rem; }
+  .home-grid { padding:.7rem .8rem; }
+  .home-grid-full { padding:0 .8rem 1.2rem; }
+  .footer-nav { grid-template-columns:1fr; }
+  .main-footer { padding:1.5rem .8rem 1rem; }
+  .seminar-row { flex-wrap:wrap; }
+  .sem-info { min-width:0; }
+  .hero-social-proof { padding:.75rem 1rem; }
+  .hsp-quote { font-size:.85rem; }
 }
 </style>
 </head>
@@ -1897,6 +1977,7 @@ function showPage(id, navEl) {
     });
   }, 50);
   if (window.innerWidth < 820) document.getElementById('sidebar').classList.remove('open');
+  syncMobileNav(id);
 }
 
 /* ── SIDEBAR TOGGLE ── */
@@ -1985,6 +2066,38 @@ function submitForm(btn) {
   btn.style.background = 'linear-gradient(135deg,#10b981,#059669)';
   btn.disabled = true;
 }
+
+/* ── MOBILE BOTTOM NAV SYNC ── */
+function syncMobileNav(id) {
+  document.querySelectorAll('.mbn-item').forEach(m => {
+    m.classList.toggle('active', m.dataset.page === id);
+  });
+}
 </script>
+
+<!-- МОБІЛЬНА НИЖНЯ НАВІГАЦІЯ -->
+<nav class="mobile-bottom-nav">
+  <div class="mbn-item active" data-page="home" onclick="showPage('home',null)">
+    <span class="mbn-icon">🏠</span>
+    <span class="mbn-label">Головна</span>
+  </div>
+  <div class="mbn-item" data-page="videos" onclick="showPage('videos',null)">
+    <span class="mbn-icon">▶</span>
+    <span class="mbn-label">Відео</span>
+  </div>
+  <div class="mbn-item" data-page="seminars" onclick="showPage('seminars',null)">
+    <span class="mbn-icon">📅</span>
+    <span class="mbn-label">Тренінги</span>
+  </div>
+  <div class="mbn-item" data-page="reviews" onclick="showPage('reviews',null)">
+    <span class="mbn-icon">💬</span>
+    <span class="mbn-label">Відгуки</span>
+  </div>
+  <div class="mbn-item" data-page="contact" onclick="showPage('contact',null)">
+    <span class="mbn-icon">✉</span>
+    <span class="mbn-label">Контакт</span>
+  </div>
+</nav>
+
 </body>
 </html>
