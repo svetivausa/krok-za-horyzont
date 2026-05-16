@@ -1156,6 +1156,132 @@ body::after {
 @media (max-width:480px) {
   .stats-strip { padding:.8rem; }
 }
+
+/* ═══════════════════════════════════════════════
+   ТЕСТ: "Який тип інтуїтивного мислення в тебе?"
+═══════════════════════════════════════════════ */
+.test-section { padding:60px 20px; }
+.test-container {
+  max-width:720px; margin:0 auto;
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  border-radius:20px;
+  box-shadow:0 4px 48px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.08);
+  padding:48px 40px; position:relative;
+  border:1px solid rgba(255,255,255,.09);
+}
+.test-screen { display:none; animation:fadeInQ .3s ease; }
+.test-screen.active { display:block; }
+@keyframes fadeInQ {
+  from { opacity:0; transform:translateY(10px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.test-close {
+  position:absolute; top:16px; right:16px;
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1);
+  font-size:24px; color:var(--muted); cursor:pointer;
+  width:40px; height:40px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  transition:background .2s;
+}
+.test-close:hover { background:rgba(255,255,255,.14); color:#fff; }
+.test-title {
+  font-family:'Raleway',sans-serif;
+  font-size:clamp(20px,4vw,32px); font-weight:700;
+  color:var(--text); line-height:1.2; margin:0 0 16px;
+}
+.test-subtitle { font-size:clamp(15px,2vw,18px); color:var(--aurora); font-style:italic; margin:0 0 28px; }
+.test-description { font-size:15px; color:var(--muted); line-height:1.75; margin-bottom:28px; }
+.test-description p { margin:0 0 10px; }
+.test-fine-print { font-size:12px; color:var(--muted); margin-top:14px; line-height:1.5; opacity:.7; }
+.test-btn-primary {
+  background:var(--violet); color:#fff; border:none;
+  padding:14px 28px; font-size:15px; font-weight:700;
+  border-radius:12px; cursor:pointer;
+  transition:transform .2s,box-shadow .2s;
+  font-family:'Nunito',sans-serif;
+  box-shadow:0 4px 18px rgba(92,53,184,.38);
+}
+.test-btn-primary:hover { transform:translateY(-2px); box-shadow:0 0 28px rgba(92,53,184,.65); }
+.test-btn-secondary {
+  background:rgba(255,255,255,.06); color:var(--muted);
+  border:1px solid rgba(255,255,255,.1); padding:10px 20px;
+  font-size:14px; border-radius:12px; cursor:pointer;
+  transition:all .2s; font-family:'Nunito',sans-serif;
+}
+.test-btn-secondary:hover { background:rgba(255,255,255,.12); color:var(--text); }
+.test-progress { margin-bottom:28px; }
+.test-progress-bar {
+  height:5px; background:rgba(255,255,255,.1); border-radius:3px;
+  overflow:hidden; margin-bottom:8px;
+}
+.test-progress-fill {
+  height:100%; background:var(--violet2); border-radius:3px;
+  transition:width .35s ease; width:0%;
+  box-shadow:0 0 10px rgba(124,88,212,.5);
+}
+.test-progress-label { font-size:12px; color:var(--muted); }
+.test-question-text {
+  font-family:'Raleway',sans-serif;
+  font-size:clamp(17px,2.5vw,22px); font-weight:600; color:var(--text);
+  line-height:1.45; margin:0 0 28px;
+}
+.test-options { display:flex; flex-direction:column; gap:10px; margin-bottom:28px; }
+.test-option {
+  background:rgba(255,255,255,.04); border:1.5px solid rgba(255,255,255,.1);
+  padding:14px 18px; font-size:14px; text-align:left;
+  border-radius:12px; cursor:pointer; transition:all .2s;
+  font-family:'Nunito',sans-serif; color:var(--text); line-height:1.5;
+}
+.test-option:hover:not(:disabled) { border-color:var(--violet2); background:rgba(92,53,184,.12); }
+.test-option.selected {
+  border-color:var(--violet2);
+  background:rgba(92,53,184,.18);
+  color:#fff; font-weight:600;
+  box-shadow:0 0 18px rgba(92,53,184,.25);
+}
+.test-option:disabled { cursor:default; opacity:.9; }
+.test-nav { display:flex; justify-content:flex-start; }
+.test-form-placeholder { display:flex; flex-direction:column; gap:14px; margin-top:20px; }
+.test-input {
+  width:100%; padding:13px 15px; font-size:15px;
+  border:1.5px solid rgba(255,255,255,.12); border-radius:12px;
+  font-family:'Nunito',sans-serif; transition:border-color .2s;
+  box-sizing:border-box;
+  background:rgba(255,255,255,.05); color:var(--text);
+}
+.test-input::placeholder { color:var(--muted); }
+.test-input:focus { outline:none; border-color:var(--violet2); background:rgba(92,53,184,.09); }
+.test-checkbox-label { display:flex; gap:10px; font-size:13px; color:var(--muted); line-height:1.4; cursor:pointer; }
+.test-checkbox-label input { margin-top:2px; }
+.test-loader { text-align:center; padding:60px 0; }
+.test-spinner {
+  width:44px; height:44px;
+  border:3px solid rgba(255,255,255,.1); border-top-color:var(--violet2);
+  border-radius:50%; animation:testSpin .8s linear infinite;
+  margin:0 auto 20px;
+}
+@keyframes testSpin { to { transform:rotate(360deg); } }
+.btn-open-test {
+  display:inline-flex; align-items:center; gap:.5rem;
+  background:rgba(255,255,255,.07); color:rgba(255,255,255,.85);
+  padding:.85rem 2rem; border-radius:100px;
+  border:1px solid rgba(255,255,255,.2); cursor:pointer;
+  font-family:'Nunito',sans-serif; font-weight:600; font-size:.9rem;
+  transition:background .2s, border-color .2s, box-shadow .2s;
+}
+.btn-open-test:hover {
+  background:rgba(92,53,184,.25); border-color:var(--violet2);
+  box-shadow:0 0 22px rgba(92,53,184,.35);
+}
+@media (max-width:600px) {
+  .test-section { padding:20px 8px; }
+  .test-container { padding:28px 16px; }
+  .test-title { font-size:20px; }
+  .test-option { padding:12px 14px; font-size:13px; }
+  .test-btn-primary { width:100%; padding:14px; text-align:center; }
+  .btn-open-test { width:100%; justify-content:center; }
+}
 </style>
 <!-- Web3Forms — безкоштовна відправка email без бекенду -->
 <!-- Ключ: https://web3forms.com → введи svitlana@... → отримай ключ -->
@@ -1278,6 +1404,7 @@ body::after {
           <div class="hero-btns">
             <button class="btn-hero-main" onclick="showPage('seminars')">Переглянути тренінги →</button>
             <button class="btn-hero-ghost" onclick="showPage('videos')">Відео з семінарів</button>
+            <button class="btn-open-test" onclick="openTest()">🧠 Дізнатися свій тип →</button>
           </div>
         </div>
         <div class="hero-visual">
@@ -1379,6 +1506,64 @@ body::after {
         </div>
       </div>
     </div>
+
+    <!-- ТЕСТ: Який тип інтуїтивного мислення в тебе? -->
+    <section id="intuition-test" class="test-section" style="display:none;">
+      <div class="test-container">
+
+        <!-- ЕКРАН 1: ІНТРО -->
+        <div id="test-intro" class="test-screen active">
+          <button class="test-close" onclick="closeTest()" aria-label="Закрити тест">×</button>
+          <h2 class="test-title">Який тип інтуїтивного мислення в тебе?</h2>
+          <p class="test-subtitle">12 питань. 5 хвилин. Результат на основі моделей Канемана, Кляйна, Дамасіо.</p>
+          <div class="test-description">
+            <p>Тест не «вгадає», який ти. Він покаже, як працює твоя система прийняття рішень: де у неї сила, де — сліпа пляма. На основі цього отримаєш персональну рекомендацію — з чого почати тренування.</p>
+            <p>Це не магія. Це нейронаука у твоєму темпі.</p>
+          </div>
+          <button class="test-btn-primary" onclick="startTest()">Почати →</button>
+          <p class="test-fine-print">Твої відповіді не зберігаються до кінця тесту. Email запитаємо в самому кінці.</p>
+        </div>
+
+        <!-- ЕКРАН 2: ПИТАННЯ (динамічно) -->
+        <div id="test-question" class="test-screen">
+          <div class="test-progress">
+            <div class="test-progress-bar">
+              <div id="test-progress-fill" class="test-progress-fill"></div>
+            </div>
+            <span class="test-progress-label">Питання <span id="current-q">1</span> з 12</span>
+          </div>
+          <h3 id="question-text" class="test-question-text"></h3>
+          <div id="question-options" class="test-options"></div>
+          <div class="test-nav">
+            <button id="btn-back" class="test-btn-secondary" onclick="previousQuestion()">← Назад</button>
+          </div>
+        </div>
+
+        <!-- ЕКРАН 3: ФОРМА EMAIL -->
+        <div id="test-email" class="test-screen">
+          <h2 class="test-title">Ще секунда — і твій результат</h2>
+          <p class="test-subtitle">Куди надіслати персональний розбір твого типу + бонусний матеріал?</p>
+          <div class="test-form-placeholder">
+            <input type="text" id="user-name" placeholder="Імʼя" class="test-input" />
+            <input type="email" id="user-email" placeholder="Email" class="test-input" />
+            <label class="test-checkbox-label">
+              <input type="checkbox" id="user-consent" />
+              <span>Хочу отримувати безкоштовні матеріали і знижки на події. Можу відписатись будь-коли.</span>
+            </label>
+            <button class="test-btn-primary" onclick="submitEmailAndShowResult()">Отримати результат →</button>
+          </div>
+        </div>
+
+        <!-- ЕКРАН 4: ЛОАДЕР -->
+        <div id="test-redirect" class="test-screen">
+          <div class="test-loader">
+            <div class="test-spinner"></div>
+            <p style="color:var(--muted);">Готуємо твій результат...</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
 
     <!-- Stats -->
     <div class="stats-strip">
@@ -2435,6 +2620,229 @@ function syncMobileNav(id) {
   document.querySelectorAll('.mbn-item').forEach(m => {
     m.classList.toggle('active', m.dataset.page === id);
   });
+}
+
+/* ═══════════════════════════════════════════════
+   ТЕСТ: "Який тип інтуїтивного мислення в тебе?"
+═══════════════════════════════════════════════ */
+const TEST_QUESTIONS = [
+  { id:1, text:"Уяви: тобі треба прийняти важливе рішення. Що ти робиш найперше?",
+    options:[
+      {text:"Складаю список плюсів і мінусів",weights:{AN:2}},
+      {text:"Слухаю, як це резонує всередині — спокій чи напруга",weights:{IT:2}},
+      {text:"Імпульсивно роблю те, що 'відчувається правильним' — потім розберуся",weights:{IM:2}},
+      {text:"Уявляю себе через рік після кожного варіанту",weights:{ME:2}}
+    ]
+  },
+  {id:2,text:"Коли ти стресуєш, твоє тіло...",
+    options:[
+      {text:"Я не дуже звертаю на це увагу — у мене проблеми поважливіші",weights:{AN:2,IT:-1}},
+      {text:"Дає мені дуже чіткі сигнали — напруга, біль, важкість",weights:{IT:2}},
+      {text:"Реагує занадто сильно — мені здається, що я перебільшую",weights:{IT:1,IM:1}},
+      {text:"Я помічаю реакцію і свідомо її регулюю",weights:{ME:2,IT:1}}
+    ]
+  },
+  {id:3,text:"Ти памʼятаєш ситуацію, коли 'знав, що буде', а потім воно і сталось?",
+    options:[
+      {text:"Так, але я це списав на збіг — інакше це звучить ненауково",weights:{AN:2,IT:-1}},
+      {text:"Так, і таких ситуацій багато — я часто щось 'відчуваю наперед'",weights:{IT:2,IM:1}},
+      {text:"Так, але після цього я зрозумів, що насправді бачив сигнали — просто не помічав",weights:{ME:2}},
+      {text:"Не дуже — мені здається, я не 'відчуваю наперед'",weights:{AN:1}}
+    ]
+  },
+  {id:4,text:"Що ти зазвичай робиш з власними емоціями?",
+    options:[
+      {text:"Намагаюсь зрозуміти, звідки вони — і чи логічні",weights:{AN:2,ME:1}},
+      {text:"Слухаю — вони щось мені кажуть",weights:{IT:2}},
+      {text:"Реагую на них одразу — це частина мене",weights:{IM:2}},
+      {text:"Розрізняю — деякі важливі, деякі — шум",weights:{ME:2}}
+    ]
+  },
+  {id:5,text:"Коли ти приймаєш рішення, потім часто шкодуєш?",
+    options:[
+      {text:"Так, бо аналізував недостатньо — треба було збирати ще дані",weights:{AN:2}},
+      {text:"Так, бо знов послухав страх, замість того щоб довіритись собі",weights:{IM:2,ME:1}},
+      {text:"Так, бо знов знецінив свої відчуття на користь 'розумного'",weights:{IT:2}},
+      {text:"Рідко — я зазвичай у мирі з тим, як я рухаюсь",weights:{ME:2}}
+    ]
+  },
+  {id:6,text:"На зустрічі з новою людиною за перші 5 хвилин ти...",
+    options:[
+      {text:"Слухаю, що людина каже, оцінюю логіку її аргументів",weights:{AN:2}},
+      {text:"Одразу відчуваю — 'моя' чи 'не моя', навіть не розмовляючи",weights:{IT:2,IM:1}},
+      {text:"Помічаю, як вона на мене впливає — і ставлю собі питання чому",weights:{ME:2,IT:1}},
+      {text:"Підлаштовуюсь під її енергію, ще не розуміючи, як ставлюсь",weights:{IM:2}}
+    ]
+  },
+  {id:7,text:"Тебе вчили, що відчуття — це...",
+    options:[
+      {text:"Цікаво, але потрібно довіряти лише фактам",weights:{AN:2,IT:-1}},
+      {text:"Найважливіше — вони не помиляються",weights:{IM:2,ME:-1}},
+      {text:"Цінно, але мене висміювали, тому я навчився сумніватись",weights:{IT:2,ME:-1}},
+      {text:"Один з джерел інформації — серед інших",weights:{ME:2}}
+    ]
+  },
+  {id:8,text:"Коли ти приймаєш рішення на роботі, ти...",
+    options:[
+      {text:"Завжди можу обґрунтувати чому — у мене є структурна аргументація",weights:{AN:2}},
+      {text:"Часто кажу 'відчуваю, що так треба' — і це часто спрацьовує",weights:{IT:2,IM:1}},
+      {text:"Запитую думку інших — мені важливо перевірити",weights:{AN:1,ME:1}},
+      {text:"Йду на нюанси — там, де є дані, дивлюсь дані; де ні — слухаю себе",weights:{ME:2}}
+    ]
+  },
+  {id:9,text:"Ти у вільному часі найчастіше...",
+    options:[
+      {text:"Читаю, вчуся, дивлюсь лекції — мене розвиває структура",weights:{AN:2}},
+      {text:"Імпровізую, роблю те, що цікаво в моменті",weights:{IM:2}},
+      {text:"Лежу і думаю про життя — мені треба 'переварити' враження",weights:{IT:2,ME:1}},
+      {text:"Чергую — то занурююсь, то відключаюсь",weights:{ME:1}}
+    ]
+  },
+  {id:10,text:"Ти стикався з ситуацією, коли 'знав', що людина бреше?",
+    options:[
+      {text:"Лише коли були чіткі логічні нестиковки",weights:{AN:2}},
+      {text:"Постійно — у мене на це чутка",weights:{IT:2,IM:1}},
+      {text:"Так, але я часто не знав, чому 'знаю' — і це бентежило",weights:{IT:1,ME:1}},
+      {text:"Так, і я навчився перевіряти ці відчуття — іноді це проекція, іноді правда",weights:{ME:2,IT:1}}
+    ]
+  },
+  {id:11,text:"Що ти найчастіше говориш собі після помилкового рішення?",
+    options:[
+      {text:"'Я недостатньо все обдумав, треба було ретельніше'",weights:{AN:2}},
+      {text:"'Я знов послухав не той голос — страх, а не себе'",weights:{IM:2,ME:1}},
+      {text:"'Я знов проігнорував своє відчуття — більше так не буду'",weights:{IT:2}},
+      {text:"'Цікавий досвід — що я з нього винесу?'",weights:{ME:2}}
+    ]
+  },
+  {id:12,text:"Якщо ти повністю чесний з собою — твоя найслабша зона:",
+    options:[
+      {text:"Я занадто довго думаю і не дію",weights:{AN:3}},
+      {text:"Я занадто швидко вирішую і потім розгрібаю",weights:{IM:3}},
+      {text:"Я не довіряю собі настільки, щоб діяти",weights:{IT:3}},
+      {text:"Я вже на хорошому рівні — мені потрібен наступний крок",weights:{ME:3}}
+    ]
+  }
+];
+
+const MAX_SCORES = { AN:18, IM:18, IT:22, ME:22 };
+let currentQuestionIndex = 0;
+let userAnswers = [];
+let scores = { AN:0, IM:0, IT:0, ME:0 };
+
+function showTestScreen(screenId) {
+  document.querySelectorAll('.test-screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(screenId).classList.add('active');
+}
+function openTest() {
+  document.getElementById('intuition-test').style.display = 'block';
+  resetTest();
+  showTestScreen('test-intro');
+  document.getElementById('intuition-test').scrollIntoView({ behavior:'smooth' });
+}
+function closeTest() {
+  document.getElementById('intuition-test').style.display = 'none';
+}
+function resetTest() {
+  currentQuestionIndex = 0;
+  userAnswers = [];
+  scores = { AN:0, IM:0, IT:0, ME:0 };
+}
+function startTest() {
+  resetTest();
+  showTestScreen('test-question');
+  renderQuestion();
+}
+function renderQuestion() {
+  const q = TEST_QUESTIONS[currentQuestionIndex];
+  document.getElementById('current-q').textContent = currentQuestionIndex + 1;
+  document.getElementById('test-progress-fill').style.width =
+    ((currentQuestionIndex + 1) / TEST_QUESTIONS.length * 100) + '%';
+  document.getElementById('question-text').textContent = q.text;
+  const container = document.getElementById('question-options');
+  container.innerHTML = '';
+  q.options.forEach((opt, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'test-option';
+    btn.textContent = opt.text;
+    // Відновлюємо вибір тільки якщо є збережена відповідь для цього питання
+    if (userAnswers[currentQuestionIndex] === idx) btn.classList.add('selected');
+    btn.onclick = () => selectOption(idx);
+    container.appendChild(btn);
+  });
+  document.getElementById('btn-back').style.display =
+    currentQuestionIndex === 0 ? 'none' : 'inline-block';
+}
+function selectOption(optionIndex) {
+  userAnswers[currentQuestionIndex] = optionIndex;
+  // ФІКС: очищаємо відповіді на всі наступні питання —
+  // якщо користувач повернувся назад і змінив відповідь,
+  // наступне питання відкривається чистим (без старого виділення)
+  userAnswers.length = currentQuestionIndex + 1;
+
+  document.querySelectorAll('.test-option').forEach((el, i) => {
+    el.classList.toggle('selected', i === optionIndex);
+    el.disabled = true; // блокуємо подвійний клік під час переходу
+  });
+  setTimeout(() => {
+    if (currentQuestionIndex < TEST_QUESTIONS.length - 1) {
+      currentQuestionIndex++;
+      renderQuestion();
+    } else {
+      finishTest();
+    }
+  }, 400);
+}
+function previousQuestion() {
+  if (currentQuestionIndex > 0) {
+    currentQuestionIndex--;
+    renderQuestion();
+  }
+}
+function finishTest() {
+  calculateScores();
+  showTestScreen('test-email');
+}
+function calculateScores() {
+  scores = { AN:0, IM:0, IT:0, ME:0 };
+  userAnswers.forEach((optionIdx, qIdx) => {
+    const weights = TEST_QUESTIONS[qIdx].options[optionIdx].weights;
+    for (const axis in weights) { scores[axis] = (scores[axis]||0) + weights[axis]; }
+  });
+}
+function determineType() {
+  const norm = {
+    AN: scores.AN / MAX_SCORES.AN,
+    IM: scores.IM / MAX_SCORES.IM,
+    IT: scores.IT / MAX_SCORES.IT,
+    ME: scores.ME / MAX_SCORES.ME
+  };
+  if (norm.ME > 0.55 && norm.AN > 0.4 && norm.IM > 0.4 && norm.IT > 0.4) return 'integrator';
+  const sorted = Object.entries(norm).sort((a,b) => b[1]-a[1]);
+  const topAxis = sorted[0][0];
+  if (topAxis==='AN' && norm.IT<0.4) return 'analytic';
+  if (topAxis==='IM' && norm.ME<0.5) return 'impulsive';
+  if (topAxis==='IT') return 'observer';
+  const fallback = { AN:'analytic', IM:'impulsive', IT:'observer', ME:'integrator' };
+  return fallback[topAxis];
+}
+function submitEmailAndShowResult() {
+  const name  = document.getElementById('user-name').value.trim();
+  const email = document.getElementById('user-email').value.trim();
+  if (!name)  { alert('Введи, будь ласка, імʼя'); return; }
+  if (!email || !email.includes('@')) { alert('Перевір, чи правильно ввела email'); return; }
+  const type = determineType();
+  fetch('/api/subscribe', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({email, name, type})
+  }).catch(()=>{});
+  try {
+    localStorage.setItem('intuitionTestResult', JSON.stringify({name,email,type,scores,date:new Date().toISOString()}));
+  } catch(e) {}
+  showTestScreen('test-redirect');
+  setTimeout(() => {
+    window.location.href = 'result-' + type + '.html?name=' + encodeURIComponent(name);
+  }, 1500);
 }
 </script>
 
