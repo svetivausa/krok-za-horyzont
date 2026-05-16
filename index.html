@@ -1226,7 +1226,10 @@ body::after {
   font-size:clamp(17px,2.5vw,22px); font-weight:600; color:var(--text);
   line-height:1.45; margin:0 0 28px;
 }
-.test-options { display:flex; flex-direction:column; gap:10px; margin-bottom:28px; }
+.test-options {
+  display:flex; flex-direction:column; gap:10px; margin-bottom:28px;
+  animation: fadeInQ .25s ease;
+}
 .test-option {
   background:rgba(255,255,255,.04); border:1.5px solid rgba(255,255,255,.1);
   padding:14px 18px; font-size:14px; text-align:left;
@@ -2758,13 +2761,19 @@ function renderQuestion() {
   document.getElementById('test-progress-fill').style.width =
     ((currentQuestionIndex + 1) / TEST_QUESTIONS.length * 100) + '%';
   document.getElementById('question-text').textContent = q.text;
+
   const container = document.getElementById('question-options');
   container.innerHTML = '';
+
+  // Перезапускаємо анімацію контейнера — нові кнопки плавно з'являються
+  container.style.animation = 'none';
+  container.offsetHeight; // reflow
+  container.style.animation = '';
+
   q.options.forEach((opt, idx) => {
     const btn = document.createElement('button');
     btn.className = 'test-option';
     btn.textContent = opt.text;
-    // Відновлюємо вибір тільки якщо є збережена відповідь для цього питання
     if (userAnswers[currentQuestionIndex] === idx) btn.classList.add('selected');
     btn.onclick = () => selectOption(idx);
     container.appendChild(btn);
@@ -2774,23 +2783,16 @@ function renderQuestion() {
 }
 function selectOption(optionIndex) {
   userAnswers[currentQuestionIndex] = optionIndex;
-  // ФІКС: очищаємо відповіді на всі наступні питання —
-  // якщо користувач повернувся назад і змінив відповідь,
-  // наступне питання відкривається чистим (без старого виділення)
+  // Очищаємо відповіді на всі наступні питання
   userAnswers.length = currentQuestionIndex + 1;
 
-  document.querySelectorAll('.test-option').forEach((el, i) => {
-    el.classList.toggle('selected', i === optionIndex);
-    el.disabled = true; // блокуємо подвійний клік під час переходу
-  });
-  setTimeout(() => {
-    if (currentQuestionIndex < TEST_QUESTIONS.length - 1) {
-      currentQuestionIndex++;
-      renderQuestion();
-    } else {
-      finishTest();
-    }
-  }, 400);
+  // Миттєво переходимо — без затримки, щоб виділена кнопка не "зависала"
+  if (currentQuestionIndex < TEST_QUESTIONS.length - 1) {
+    currentQuestionIndex++;
+    renderQuestion();
+  } else {
+    finishTest();
+  }
 }
 function previousQuestion() {
   if (currentQuestionIndex > 0) {
