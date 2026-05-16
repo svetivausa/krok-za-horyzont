@@ -105,6 +105,25 @@ a { text-decoration: none; color: inherit; }
 .sched-mini-item:hover { color: var(--gold); }
 .sched-mini-item strong { display: block; color: rgba(255,255,255,0.85); font-size: 0.8rem; }
 
+/* Кнопка закрити сайдбар зсередини (mobile) */
+.sidebar-close-btn {
+  display: none;
+  position: absolute; top: 10px; right: 10px;
+  width: 30px; height: 30px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  color: rgba(255,255,255,0.7);
+  font-size: 1.05rem; line-height: 1;
+  cursor: pointer;
+  align-items: center; justify-content: center;
+  transition: background 0.2s, color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 10;
+}
+.sidebar-close-btn:hover { background: rgba(255,255,255,0.16); color: #fff; }
+@media (max-width: 820px) { .sidebar-close-btn { display: flex; } }
+
 /* Mobile toggle */
 .sidebar-toggle {
   display: none;
@@ -1014,6 +1033,12 @@ body::after {
 .seminar-row:hover { background:rgba(92,53,184,.12); border-color:rgba(107,66,208,.3); }
 
 /* ── Sem card ── */
+.sem-card {
+  background:rgba(255,255,255,.042);
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+}
+.sem-card:hover { border-color:rgba(107,66,208,.35); box-shadow:0 24px 64px rgba(0,0,0,.45); }
 .sem-card-body  { background:transparent; }
 .sem-card-footer{ border-color:rgba(255,255,255,.06); background:rgba(0,0,0,.15); }
 .sem-price-note { color:var(--muted); }
@@ -1152,6 +1177,7 @@ body::after {
 
 <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
+  <button class="sidebar-close-btn" onclick="closeSidebar()" aria-label="Закрити меню">✕</button>
   <div class="sidebar-logo">
     <img src="logo.png" alt="Svitlana Slipchenko" class="sidebar-logo-img">
     <div class="logo-sub">Крок за горизонт</div>
