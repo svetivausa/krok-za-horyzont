@@ -2545,6 +2545,12 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+/* ── HASH NAVIGATION (з result-*.html → #seminars) ── */
+if (window.location.hash) {
+  const page = window.location.hash.replace('#', '');
+  if (titles[page]) showPage(page);
+}
+
 /* ── INITIAL REVEAL ── */
 const globalObs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
