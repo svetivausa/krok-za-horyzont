@@ -2761,7 +2761,8 @@ function submitEmailAndShowResult() {
   const email = document.getElementById('user-email').value.trim();
   if (!name) { alert('Введи, будь ласка, імʼя'); return; }
   if (!email || !email.includes('@')) { alert('Перевір, чи правильно ввела email'); return; }
-  const type = determineType();
+      const type = determineType();
+      fetch("/api/subscribe",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email,name,type})}).catch(()=>{});
   try {
     localStorage.setItem('intuitionTestResult', JSON.stringify({
       name, email, type, scores, date: new Date().toISOString()
