@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Інтегратор — Крок за горизонт</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&family=Nunito:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep:    #0b0d2b;
+  --navy:    #141638;
+  --indigo:  #1e2268;
+  --violet:  #5c35b8;
+  --violet2: #7c58d4;
+  --aurora:  #2ec4b6;
+  --gold:    #f4c430;
+  --rose:    #e8526a;
+  --white:   #ffffff;
+  --soft:    #f3f4fd;
+  --card-bg: #ffffff;
+  --text:    #1a1d3b;
+  --muted:   #5a6390;
+  --border:  #e4e6f5;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Nunito', sans-serif; background: var(--soft); color: var(--text); min-height: 100vh; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; }
+
+.site-header {
+  background: var(--deep); padding: 1rem 2rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+}
+.site-header img { height: 44px; width: auto; display: block; }
+.header-back {
+  font-size: .82rem; font-weight: 700; color: rgba(255,255,255,.55);
+  border: 1px solid rgba(255,255,255,.15); border-radius: 8px;
+  padding: .45rem .9rem; transition: color .2s, border-color .2s; white-space: nowrap;
+}
+.header-back:hover { color: #fff; border-color: rgba(255,255,255,.4); }
+
+.result-hero {
+  background: linear-gradient(135deg, var(--deep) 0%, #1e1468 55%, #0f2d5e 100%);
+  padding: 3.5rem 2rem 3rem; text-align: center; color: #fff;
+}
+.result-icon { font-size: 3.5rem; margin-bottom: 1rem; line-height: 1; }
+.result-type-label {
+  font-size: .72rem; font-weight: 700; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--aurora); margin-bottom: .6rem;
+}
+.result-name {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2.4rem; font-weight: 800; line-height: 1.1; margin-bottom: .8rem;
+}
+.result-tagline {
+  font-size: 1.1rem; color: rgba(255,255,255,.7); font-style: italic;
+  max-width: 42ch; margin: 0 auto;
+}
+.result-name-greeting {
+  font-size: .92rem; color: var(--gold); margin-bottom: .4rem; font-weight: 600;
+}
+
+.result-main {
+  max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem;
+  display: flex; flex-direction: column; gap: 1.5rem;
+}
+.result-desc {
+  background: var(--card-bg); border-radius: 16px; padding: 2rem;
+  border: 1px solid var(--border); font-size: 1rem; line-height: 1.8; color: var(--text);
+}
+.result-desc p + p { margin-top: .8rem; }
+.result-block {
+  background: var(--card-bg); border-radius: 16px; padding: 1.6rem 2rem;
+  border: 1px solid var(--border);
+}
+.result-block-label {
+  font-family: 'Raleway', sans-serif;
+  font-size: .7rem; font-weight: 700; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--violet); margin-bottom: 1rem;
+}
+.result-block ul { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+.result-block ul li {
+  padding-left: 1.4rem; position: relative;
+  font-size: .95rem; line-height: 1.65; color: var(--text);
+}
+.result-block ul li::before {
+  content: '◎'; position: absolute; left: 0;
+  color: var(--aurora); font-size: .75rem; top: .18rem;
+}
+.result-block p { font-size: .95rem; line-height: 1.7; color: var(--text); }
+.result-format {
+  background: linear-gradient(135deg, var(--indigo), var(--violet));
+  border-radius: 16px; padding: 1.8rem 2rem; color: #fff;
+}
+.result-format .result-block-label { color: var(--gold); }
+.result-format p { font-size: .95rem; line-height: 1.7; color: rgba(255,255,255,.85); }
+.result-format strong { color: #fff; }
+.result-cta {
+  display: flex; flex-direction: column; align-items: center; gap: 1rem; padding: .5rem 0;
+}
+.btn-cta-primary {
+  display: inline-block;
+  background: var(--gold); color: var(--deep);
+  font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 800;
+  padding: 1rem 2.4rem; border-radius: 12px; border: none; cursor: pointer;
+  transition: transform .2s, box-shadow .2s; text-align: center;
+}
+.btn-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(244,196,48,.4); }
+.btn-share {
+  background: transparent; color: var(--muted);
+  border: 1px solid var(--border); border-radius: 10px;
+  padding: .7rem 1.6rem; font-size: .88rem; font-weight: 600;
+  font-family: 'Nunito', sans-serif; cursor: pointer; transition: all .2s;
+}
+.btn-share:hover { border-color: var(--violet); color: var(--violet); }
+.btn-retake {
+  font-size: .82rem; color: var(--muted); background: none; border: none;
+  cursor: pointer; font-family: 'Nunito', sans-serif;
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.btn-retake:hover { color: var(--violet); }
+.site-footer { background: var(--deep); color: rgba(255,255,255,.55); padding: 2.5rem 2rem 1.5rem; }
+.footer-inner {
+  max-width: 760px; margin: 0 auto; display: flex; flex-wrap: wrap;
+  gap: 2rem; justify-content: space-between;
+  padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,.07); margin-bottom: 1rem;
+}
+.footer-brand img { width: 130px; margin-bottom: .4rem; display: block; }
+.footer-tagline { font-size: .78rem; color: rgba(255,255,255,.35); line-height: 1.6; }
+.footer-social { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .8rem; }
+.footer-soc-btn {
+  font-size: .75rem; font-weight: 700; font-family: 'Nunito', sans-serif;
+  border: 1px solid rgba(255,255,255,.18); color: rgba(255,255,255,.55);
+  background: transparent; border-radius: 8px; padding: .4rem .85rem; cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.footer-soc-btn:hover { background: var(--violet); color: #fff; border-color: var(--violet); }
+.footer-copy { font-size: .72rem; color: rgba(255,255,255,.22); text-align: center; }
+
+@media (max-width: 600px) {
+  .site-header { padding: .8rem 1rem; }
+  .site-header img { height: 36px; }
+  .result-hero { padding: 2.5rem 1rem 2.2rem; }
+  .result-name { font-size: 1.8rem; }
+  .result-main { padding: 1.5rem 1rem 3rem; }
+  .result-desc, .result-block, .result-format { padding: 1.4rem 1.2rem; }
+  .btn-cta-primary { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html"><img src="logo.png" alt="Крок за горизонт"></a>
+  <a href="index.html" class="header-back">← На головну</a>
+</header>
+
+<div class="result-hero">
+  <div class="result-icon">🔮</div>
+  <div class="result-type-label">Твій тип інтуїтивного мислення</div>
+  <div class="result-name-greeting" id="greeting"></div>
+  <h1 class="result-name">Інтегратор</h1>
+  <p class="result-tagline">У тебе вже є все. Тепер — глибше.</p>
+</div>
+
+<main class="result-main">
+
+  <div class="result-desc">
+    <p>Ти вже на хорошому рівні. У тебе працюють і Система 1, і Система 2. Ти приймаєш рішення, поєднуючи аналіз і відчуття. Ти інтуїтивно дистанціюєшся, коли треба, і занурюєшся, коли треба. Інші люди звертаються до тебе за порадою — і часто ти даєш її точно.</p>
+    <p>Але саме тому ти тут. Бо є рівень, на якому базових інструментів вже недостатньо. Тобі цікавий не "як приймати рішення" — а "як вийти на той рівень мислення, де рішення приймаються інакше". Тобі цікавий не "як розвинути інтуїцію" — а "як працюють когерентність мозку, інтероцепція, передбачуюче кодування".</p>
+    <p>Це не курс початкового рівня. Це наступний горизонт.</p>
+  </div>
+
+  <div class="result-block">
+    <div class="result-block-label">Що тобі заважає</div>
+    <ul>
+      <li>Стеля методики початкового рівня — ти її вже досяг.</li>
+      <li>Брак спільноти таких, як ти — людей, з якими можна говорити на одному рівні глибини.</li>
+      <li>Сумнів: "я вже на хорошому рівні, можливо, далі немає куди?" Є. І набагато далі.</li>
+    </ul>
+  </div>
+
+  <div class="result-block">
+    <div class="result-block-label">Куди рухатись</div>
+    <p>Тобі потрібні просунуті лекції 7–10 (зокрема "Частотна когерентність" і "Мозок-антена") і робота в малій групі досвідчених учасників.</p>
+  </div>
+
+  <div class="result-format">
+    <div class="result-block-label">Рекомендований формат</div>
+    <p><strong>Повний курс "Крок за горизонт"</strong> — як простір для глибокого занурення з людьми, які вже не на старті. А пізніше — ретрит, який буде доступний випускникам курсу. Це формат для людей, які вже мають фундамент і шукають наступний крок.</p>
+  </div>
+
+  <div class="result-cta">
+    <a href="index.html" class="btn-cta-primary">Дізнатись про повний курс і ретрит →</a>
+    <button class="btn-share" onclick="shareResult()">Поділитись результатом</button>
+    <button class="btn-retake" onclick="window.location.href='index.html'">Пройти тест знову</button>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="logo.png" alt="Крок за горизонт">
+      <div class="footer-tagline">Крок за горизонт<br>Інтуїція · Рішення · Невизначеність</div>
+      <div class="footer-social">
+        <button class="footer-soc-btn" onclick="window.open('https://t.me/krok_za_horyzont','_blank')">Telegram</button>
+        <button class="footer-soc-btn" onclick="window.open('https://instagram.com/slipchenko_svitlana','_blank')">Instagram</button>
+        <button class="footer-soc-btn" onclick="window.open('https://youtube.com/playlist?list=PLKJZ3LmunZfTLwsVdZU7zhj_Fk9iInSKg','_blank')">YouTube</button>
+        <button class="footer-soc-btn" onclick="window.open('https://www.facebook.com/profile.php?id=100063766322110','_blank')">Facebook</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copy">© 2026 Крок за горизонт. Всі права захищені.</div>
+</footer>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const name = params.get('name');
+if (name) {
+  document.getElementById('greeting').textContent = name + ',';
+}
+
+function shareResult() {
+  const url = window.location.href;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(() => alert('Посилання скопійовано!'));
+  } else {
+    prompt('Скопіюй посилання:', url);
+  }
+}
+</script>
+</body>
+</html>
