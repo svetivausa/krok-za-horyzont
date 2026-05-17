@@ -1236,7 +1236,9 @@ body::after {
   border-radius:12px; cursor:pointer; transition:all .2s;
   font-family:'Nunito',sans-serif; color:var(--text); line-height:1.5;
 }
-.test-option:hover:not(:disabled) { border-color:var(--violet2); background:rgba(92,53,184,.12); }
+@media (hover:hover) {
+  .test-option:hover:not(:disabled) { border-color:var(--violet2); background:rgba(92,53,184,.12); }
+}
 .test-option.selected {
   border-color:var(--violet2);
   background:rgba(92,53,184,.18);
