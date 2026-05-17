@@ -1178,13 +1178,14 @@ body::after {
 }
 .test-close {
   position:absolute; top:16px; right:16px;
-  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1);
-  font-size:24px; color:var(--muted); cursor:pointer;
-  width:40px; height:40px; border-radius:50%;
-  display:flex; align-items:center; justify-content:center;
+  background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.25);
+  font-size:14px; color:#fff; cursor:pointer;
+  height:40px; padding:0 16px; border-radius:20px;
+  display:flex; align-items:center; justify-content:center; gap:6px;
   transition:background .2s;
+  white-space:nowrap;
 }
-.test-close:hover { background:rgba(255,255,255,.14); color:#fff; }
+.test-close:hover { background:rgba(255,255,255,.2); }
 .test-title {
   font-family:'Raleway',sans-serif;
   font-size:clamp(20px,4vw,32px); font-weight:700;
@@ -1518,7 +1519,7 @@ body::after {
 
         <!-- ЕКРАН 1: ІНТРО -->
         <div id="test-intro" class="test-screen active">
-          <button class="test-close" onclick="closeTest()" aria-label="Закрити тест">×</button>
+          <button class="test-close" onclick="closeTest()" aria-label="Закрити тест"><span style="font-size:20px;line-height:1">×</span><span>Закрити</span></button>
           <h2 class="test-title">Який тип інтуїтивного мислення в тебе?</h2>
           <p class="test-subtitle">12 питань. 5 хвилин. Результат на основі моделей Канемана, Кляйна, Дамасіо.</p>
           <div class="test-description">
