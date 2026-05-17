@@ -2385,24 +2385,24 @@ body::after {
               <div class="contact-why-item">Корпоративні програми за запитом</div>
             </div>
           </div>
-          <div class="contact-form">
+          <form class="contact-form" action="https://formspree.io/f/xzdwplly" method="POST">
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label">Ім'я</label>
-                <input type="text" class="form-input" placeholder="Ваше ім'я">
+                <input type="text" name="name" class="form-input" placeholder="Ваше ім'я">
               </div>
               <div class="form-group">
                 <label class="form-label">Email</label>
-                <input type="email" class="form-input" placeholder="email@example.com">
+                <input type="email" name="email" class="form-input" placeholder="email@example.com">
               </div>
             </div>
             <div class="form-group">
               <label class="form-label">Телефон</label>
-              <input type="tel" class="form-input" placeholder="+38 (___) ___-__-__">
+              <input type="tel" name="phone" class="form-input" placeholder="+38 (___) ___-__-__">
             </div>
             <div class="form-group">
               <label class="form-label">Мене цікавить</label>
-              <select class="form-select">
+              <select name="interest" class="form-select">
                 <option>Відкрита лекція (квітень, безкоштовно)</option>
                 <option>Семінар-інтенсив (травень, Київ)</option>
                 <option>Повний курс 6 модулів (червень)</option>
@@ -2413,10 +2413,10 @@ body::after {
             </div>
             <div class="form-group">
               <label class="form-label">Повідомлення</label>
-              <textarea class="form-textarea" placeholder="Ваше запитання або коментар..."></textarea>
+              <textarea name="message" class="form-textarea" placeholder="Ваше запитання або коментар..."></textarea>
             </div>
-            <button class="btn-submit" onclick="submitForm(this)">Надіслати →</button>
-          </div>
+            <button type="submit" class="btn-submit">Надіслати →</button>
+          </form>
         </div>
 
         <div class="contact-info-block">
