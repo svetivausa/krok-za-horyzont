@@ -2574,9 +2574,8 @@ document.addEventListener('DOMContentLoaded', function() {
       '<div style="width:60px;height:60px;background:rgba(220,0,0,.92);border-radius:50%;' +
       'display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.5rem;' +
       'box-shadow:0 3px 16px rgba(0,0,0,.5);transition:transform .2s;">▶</div></div>';
-    wrap.addEventListener('click', function() {
-      window.open('https://www.youtube.com/watch?v=' + id, '_blank');
-    });
+    /* Клік на превʼю не потребує окремого обробника —
+       він спливає до .video-card, де перехоплюється попапом */
   });
 });
 
@@ -2925,13 +2924,13 @@ function openVideoModal(youtubeUrl) {
   });
 }
 
-/* Перехоплюємо кліки на кнопках лекцій з YouTube-посиланнями */
-document.querySelectorAll('.lecture-row .lec-btn').forEach(btn => {
-  const onclick = btn.getAttribute('onclick') || '';
-  const match = onclick.match(/window\.open\(['"]([^'"]+)['"]/);
+/* Перехоплюємо ВСІ кліки з YouTube-посиланнями → попап */
+document.querySelectorAll('[onclick]').forEach(el => {
+  const onclick = el.getAttribute('onclick') || '';
+  const match = onclick.match(/window\.open\(['"](https?:\/\/(?:www\.)?(?:youtube\.com|youtu\.be)[^'"]+)['"]/);
   if (match) {
-    btn.removeAttribute('onclick');
-    btn.addEventListener('click', e => { e.stopPropagation(); openVideoModal(match[1]); });
+    el.removeAttribute('onclick');
+    el.addEventListener('click', e => { e.stopPropagation(); e.preventDefault(); openVideoModal(match[1]); });
   }
 });
 
