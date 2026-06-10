@@ -867,9 +867,10 @@ a { text-decoration: none; color: inherit; }
   .seminar-row { gap:.7rem; padding:.9rem 1rem; }
   .sem-tag { display:none; }
 
-  /* Лекції — кнопки під назвою */
-  .lecture-row { grid-template-columns:auto 1fr; gap:1rem; }
-  .lec-actions { display:none; }
+  /* Лекції — компактний вигляд */
+  .lecture-row { grid-template-columns:auto 1fr auto; gap:.8rem; padding:1rem; }
+  .lec-actions { display:flex; }
+  .lec-btn { padding:.35rem .7rem; font-size:.72rem; }
 
   /* Контактна форма */
   .form-row { grid-template-columns:1fr; }
@@ -2850,6 +2851,15 @@ function submitEmailAndShowResult() {
     window.location.href = 'result-' + type + '.html?name=' + encodeURIComponent(name);
   }, 1500);
 }
+
+/* Весь рядок лекції клікабельний — дублює кнопку «Дивитись» */
+document.querySelectorAll('.lecture-row').forEach(row => {
+  row.addEventListener('click', e => {
+    if (e.target.closest('.lec-btn')) return;       // клік на саму кнопку — не дублювати
+    const btn = row.querySelector('.lec-btn');
+    if (btn) btn.click();
+  });
+});
 </script>
 
 <!-- МОБІЛЬНА НИЖНЯ НАВІГАЦІЯ -->
