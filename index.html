@@ -2974,7 +2974,7 @@ function openVideoModal(youtubeUrl) {
 document.querySelectorAll('[onclick]').forEach(el => {
   const onclick = el.getAttribute('onclick') || '';
   const match = onclick.match(/window\.open\(['"](https?:\/\/(?:www\.)?(?:youtube\.com|youtu\.be)[^'"]+)['"]/);
-  if (match) {
+  if (match && !match[1].includes('/playlist')) {
     el.removeAttribute('onclick');
     el.addEventListener('click', e => { e.stopPropagation(); e.preventDefault(); openVideoModal(match[1]); });
   }
