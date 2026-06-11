@@ -2,10 +2,28 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Крок за горизонт — Інтуїція. Прийняття рішень в умовах невизначеності</title>
+<meta name="description" content="Науково обґрунтована програма розвитку інтуїції: семінари, відеолекції та практичні вправи. Нейронаука прийняття рішень в умовах невизначеності — без містики.">
+<link rel="canonical" href="https://krok-za-horyzont.vercel.app/">
+<link rel="icon" type="image/png" href="logo.png">
+<meta name="theme-color" content="#0b0d2b">
+<!-- Open Graph для шерінгу в соцмережах -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="uk_UA">
+<meta property="og:site_name" content="Крок за горизонт">
+<meta property="og:title" content="Крок за горизонт — інтуїція і рішення в умовах невизначеності">
+<meta property="og:description" content="Навчитись чути підсвідомість — реально. Це не містика, це нейронаука. Тренінги, відеолекції та практичні вправи.">
+<meta property="og:url" content="https://krok-za-horyzont.vercel.app/">
+<meta property="og:image" content="https://krok-za-horyzont.vercel.app/hero.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Крок за горизонт — інтуїція і рішення в умовах невизначеності">
+<meta name="twitter:description" content="Науково обґрунтована програма розвитку інтуїції. Нейронаука прийняття рішень — без містики.">
+<meta name="twitter:image" content="https://krok-za-horyzont.vercel.app/hero.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&family=Nunito:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="hero.webp" fetchpriority="high" media="(min-width: 821px)">
 <style>
 /* ═══════════════════════════════════════════════
    VARIABLES & RESET
@@ -827,7 +845,7 @@ a { text-decoration: none; color: inherit; }
 /* ═══════════════════════════════════════════════
    REVEAL / RESPONSIVE
 ═══════════════════════════════════════════════ */
-.reveal { opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease; }
+.reveal { opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1); }
 .reveal.visible { opacity:1;transform:none; }
 
 /* ═══════════════════════════════════════════════
@@ -836,7 +854,8 @@ a { text-decoration: none; color: inherit; }
 .mobile-bottom-nav {
   display: none;
   position: fixed; bottom: 0; left: 0; right: 0;
-  height: 62px;
+  height: calc(62px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: env(safe-area-inset-bottom, 0px);
   background: var(--deep);
   border-top: 1px solid rgba(255,255,255,0.1);
   z-index: 500;
@@ -870,7 +889,10 @@ a { text-decoration: none; color: inherit; }
   .sidebar { transform:translateX(-100%); }
   .sidebar.open { transform:none; }
   .sidebar-toggle { display:flex; }
-  .main-wrap { margin-left:0; padding-bottom:62px; }
+  .main-wrap { margin-left:0; padding-bottom:calc(62px + env(safe-area-inset-bottom, 0px)); }
+
+  /* iOS Safari зумить сторінку, якщо шрифт поля < 16px — фіксуємо */
+  .form-input, .form-select, .form-textarea, .test-input { font-size:16px; }
 
   /* Topbar */
   .topbar { padding:.75rem 1rem .75rem 3.6rem; }
@@ -1177,6 +1199,14 @@ body::after {
   border-top:1px solid rgba(255,255,255,.06);
 }
 
+/* ── Дрібні штрихи: типографіка, фокус, виділення ── */
+.hero-h1, .page-h1 { text-wrap:balance; }
+::selection { background:rgba(92,53,184,.55); color:#fff; }
+:focus-visible { outline:2px solid var(--violet2); outline-offset:2px; }
+button { -webkit-tap-highlight-color:transparent; }
+.btn-hero-main:active, .btn-enroll:active, .btn-submit:active,
+.btn-primary:active, .test-btn-primary:active { transform:translateY(0) scale(.98); }
+
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width:5px; }
 ::-webkit-scrollbar-track { background:transparent; }
@@ -1189,6 +1219,19 @@ body::after {
 /* ── Responsive stats (repeat for dark override) ── */
 @media (max-width:820px) {
   .stats-strip { padding:1rem 1.2rem; }
+  /* Орби з blur(110px) дорогі для мобільного GPU — вимикаємо */
+  .main-wrap::before, .main-wrap::after { display:none; }
+}
+
+/* ── Повага до зменшеної анімації ── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior:auto; }
+  *, *::before, *::after {
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+  }
+  .reveal { opacity:1; transform:none; }
 }
 @media (max-width:480px) {
   .stats-strip { padding:.8rem; }
@@ -1451,7 +1494,7 @@ body::after {
           </div>
         </div>
         <div class="hero-visual">
-          <img src="hero.webp" alt="Людина на скелі з нейронною мережею" class="hero-img">
+          <img src="hero.webp" alt="Людина на скелі з нейронною мережею" class="hero-img" fetchpriority="high" decoding="async">
           <svg viewBox="0 0 360 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none;">
             <defs>
               <radialGradient id="horzGlow" cx="50%" cy="100%" r="60%">
@@ -1847,67 +1890,67 @@ body::after {
         </div>
         <!-- Exercises -->
         <div class="video-card reveal" data-cat="exercise" onclick="window.open('https://www.youtube.com/watch?v=ZLINc-QFT_4','_blank')">
-          <div class="video-thumb"><iframe src="https://www.youtube.com/embed/ZLINc-QFT_4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
+          <div class="video-thumb"><iframe loading="lazy" data-src="https://www.youtube.com/embed/ZLINc-QFT_4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
           <div class="video-body"><div class="video-title">Вправа «Знайди голку»</div><div class="video-meta"><span class="tag tag-aurora">Вправа</span><span class="video-duration">⏱ 10–15 хв</span></div></div>
         </div>
         <div class="video-card reveal" data-cat="exercise" onclick="window.open('https://www.youtube.com/watch?v=ogNfQP1Hd8k','_blank')">
-          <div class="video-thumb"><iframe src="https://www.youtube.com/embed/ogNfQP1Hd8k" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
+          <div class="video-thumb"><iframe loading="lazy" data-src="https://www.youtube.com/embed/ogNfQP1Hd8k" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
           <div class="video-body"><div class="video-title">Вправа «Подвійне зв'язування»</div><div class="video-meta"><span class="tag tag-aurora">Вправа</span><span class="video-duration">⏱ 15–20 хв</span></div></div>
         </div>
         <div class="video-card reveal" data-cat="exercise" onclick="window.open('https://www.youtube.com/watch?v=ir8hQgRzYC0','_blank')">
-          <div class="video-thumb"><iframe src="https://www.youtube.com/embed/ir8hQgRzYC0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
+          <div class="video-thumb"><iframe loading="lazy" data-src="https://www.youtube.com/embed/ir8hQgRzYC0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
           <div class="video-body"><div class="video-title">Вправа «Близнюковий режим» + «Інформаційний слід»</div><div class="video-meta"><span class="tag tag-aurora">Вправа</span><span class="video-duration">⏱ 20–30 хв</span></div></div>
         </div>
         <div class="video-card reveal" data-cat="exercise" onclick="window.open('https://www.youtube.com/watch?v=eoVBnEhrLvk','_blank')">
-          <div class="video-thumb"><iframe src="https://www.youtube.com/embed/eoVBnEhrLvk" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
+          <div class="video-thumb"><iframe loading="lazy" data-src="https://www.youtube.com/embed/eoVBnEhrLvk" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
           <div class="video-body"><div class="video-title">Вправа «Траєкторне управління»</div><div class="video-meta"><span class="tag tag-aurora">Вправа</span><span class="video-duration">⏱ 20–30 хв</span></div></div>
         </div>
         <div class="video-card reveal" data-cat="exercise" onclick="window.open('https://www.youtube.com/watch?v=fusgXotfAps','_blank')">
-          <div class="video-thumb"><iframe src="https://www.youtube.com/embed/fusgXotfAps" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
+          <div class="video-thumb"><iframe loading="lazy" data-src="https://www.youtube.com/embed/fusgXotfAps" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
           <div class="video-body"><div class="video-title">Вправа «Кажан»</div><div class="video-meta"><span class="tag tag-aurora">Вправа</span><span class="video-duration">⏱ 15–20 хв</span></div></div>
         </div>
         <div class="video-card reveal" data-cat="exercise" onclick="window.open('https://www.youtube.com/watch?v=TRHgb5qhVzM','_blank')">
-          <div class="video-thumb"><iframe src="https://www.youtube.com/embed/TRHgb5qhVzM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
+          <div class="video-thumb"><iframe loading="lazy" data-src="https://www.youtube.com/embed/TRHgb5qhVzM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
           <div class="video-body"><div class="video-title">Вправа «Пошуковий режим»</div><div class="video-meta"><span class="tag tag-aurora">Вправа</span><span class="video-duration">⏱ 10–15 хв</span></div></div>
         </div>
         <div class="video-card reveal" data-cat="exercise" onclick="window.open('https://www.youtube.com/watch?v=Vf7NaWywTUY','_blank')">
-          <div class="video-thumb"><iframe src="https://www.youtube.com/embed/Vf7NaWywTUY" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
+          <div class="video-thumb"><iframe loading="lazy" data-src="https://www.youtube.com/embed/Vf7NaWywTUY" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
           <div class="video-body"><div class="video-title">Вправа «Баланс»</div><div class="video-meta"><span class="tag tag-aurora">Вправа</span><span class="video-duration">⏱ 10–15 хв</span></div></div>
         </div>
         <div class="video-card reveal" data-cat="exercise" onclick="window.open('https://www.youtube.com/watch?v=rc8IYLeDUDg','_blank')">
-          <div class="video-thumb"><iframe src="https://www.youtube.com/embed/rc8IYLeDUDg" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
+          <div class="video-thumb"><iframe loading="lazy" data-src="https://www.youtube.com/embed/rc8IYLeDUDg" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
           <div class="video-body"><div class="video-title">Вправа «Потяг» (складні системи)</div><div class="video-meta"><span class="tag tag-aurora">Вправа</span><span class="video-duration">⏱ 25–35 хв</span></div></div>
         </div>
         <div class="video-card reveal" data-cat="exercise" onclick="window.open('https://www.youtube.com/watch?v=LVdu6E4okU0','_blank')">
-          <div class="video-thumb"><iframe src="https://www.youtube.com/embed/LVdu6E4okU0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
+          <div class="video-thumb"><iframe loading="lazy" data-src="https://www.youtube.com/embed/LVdu6E4okU0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
           <div class="video-body"><div class="video-title">Вправа «Відчуття ритму»</div><div class="video-meta"><span class="tag tag-aurora">Вправа</span><span class="video-duration">⏱ 10–15 хв</span></div></div>
         </div>
         <div class="video-card reveal" data-cat="exercise" onclick="window.open('https://www.youtube.com/watch?v=1aqIYQAK_sQ','_blank')">
-          <div class="video-thumb"><iframe src="https://www.youtube.com/embed/1aqIYQAK_sQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
+          <div class="video-thumb"><iframe loading="lazy" data-src="https://www.youtube.com/embed/1aqIYQAK_sQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
           <div class="video-body"><div class="video-title">Вправа «Каталепсія»</div><div class="video-meta"><span class="tag tag-aurora">Вправа</span><span class="video-duration">⏱ 30–40 хв</span></div></div>
         </div>
         <div class="video-card reveal" data-cat="exercise" onclick="window.open('https://www.youtube.com/watch?v=NrtsaAK-z9Q','_blank')">
-          <div class="video-thumb"><iframe src="https://www.youtube.com/embed/NrtsaAK-z9Q" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
+          <div class="video-thumb"><iframe loading="lazy" data-src="https://www.youtube.com/embed/NrtsaAK-z9Q" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
           <div class="video-body"><div class="video-title">Напрацювання пошукової моделі</div><div class="video-meta"><span class="tag tag-aurora">Вправа</span><span class="video-duration">⏱ 20–30 хв</span></div></div>
         </div>
         <div class="video-card reveal" data-cat="exercise" onclick="window.open('https://www.youtube.com/watch?v=4G9sgpIy1nA','_blank')">
-          <div class="video-thumb"><iframe src="https://www.youtube.com/embed/4G9sgpIy1nA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
+          <div class="video-thumb"><iframe loading="lazy" data-src="https://www.youtube.com/embed/4G9sgpIy1nA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
           <div class="video-body"><div class="video-title">Інформаційно-польові взаємодії</div><div class="video-meta"><span class="tag tag-aurora">Вправа</span><span class="video-duration">⏱ 30–45 хв</span></div></div>
         </div>
         <div class="video-card reveal" data-cat="exercise" onclick="window.open('https://www.youtube.com/watch?v=SikZ7gR08x4','_blank')">
-          <div class="video-thumb"><iframe src="https://www.youtube.com/embed/SikZ7gR08x4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
+          <div class="video-thumb"><iframe loading="lazy" data-src="https://www.youtube.com/embed/SikZ7gR08x4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
           <div class="video-body"><div class="video-title">Вправа «Стежка страху»</div><div class="video-meta"><span class="tag tag-aurora">Вправа</span><span class="video-duration">⏱ 25–35 хв</span></div></div>
         </div>
         <div class="video-card reveal" data-cat="exercise" onclick="window.open('https://www.youtube.com/watch?v=WrF1VInpbXI','_blank')">
-          <div class="video-thumb"><iframe src="https://www.youtube.com/embed/WrF1VInpbXI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
+          <div class="video-thumb"><iframe loading="lazy" data-src="https://www.youtube.com/embed/WrF1VInpbXI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
           <div class="video-body"><div class="video-title">Вправа «Гей!»</div><div class="video-meta"><span class="tag tag-aurora">Вправа</span><span class="video-duration">⏱ 5–10 хв</span></div></div>
         </div>
         <div class="video-card reveal" data-cat="exercise" onclick="window.open('https://www.youtube.com/watch?v=F0BTSPkMUio','_blank')">
-          <div class="video-thumb"><iframe src="https://www.youtube.com/embed/F0BTSPkMUio" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
+          <div class="video-thumb"><iframe loading="lazy" data-src="https://www.youtube.com/embed/F0BTSPkMUio" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
           <div class="video-body"><div class="video-title">Вправа «Пошуковий режим» ч. 2</div><div class="video-meta"><span class="tag tag-aurora">Вправа</span><span class="video-duration">⏱ 10–15 хв</span></div></div>
         </div>
         <div class="video-card reveal" data-cat="exercise" onclick="window.open('https://www.youtube.com/watch?v=4_OSpTEvAG4','_blank')">
-          <div class="video-thumb"><iframe src="https://www.youtube.com/embed/4_OSpTEvAG4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
+          <div class="video-thumb"><iframe loading="lazy" data-src="https://www.youtube.com/embed/4_OSpTEvAG4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
           <div class="video-body"><div class="video-title">Заліки</div><div class="video-meta"><span class="tag tag-aurora">Вправа</span><span class="video-duration">⏱ 40–60 хв</span></div></div>
         </div>
         <!-- Lectures -->
@@ -2105,7 +2148,7 @@ body::after {
 
           <div class="vrev-card reveal">
             <div class="vrev-thumb">
-              <iframe src="https://www.youtube.com/embed/BE-GJ5qSLPE"
+              <iframe loading="lazy" data-src="https://www.youtube.com/embed/BE-GJ5qSLPE"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
             </div>
@@ -2118,7 +2161,7 @@ body::after {
 
           <div class="vrev-card reveal">
             <div class="vrev-thumb">
-              <iframe src="https://www.youtube.com/embed/oHd7xjcJess"
+              <iframe loading="lazy" data-src="https://www.youtube.com/embed/oHd7xjcJess"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
             </div>
@@ -2132,7 +2175,7 @@ body::after {
           <!-- ВІДЕО 3: Аліна Лисенко -->
           <div class="vrev-card reveal">
             <div class="vrev-thumb">
-              <iframe src="https://www.youtube.com/embed/tOZ75-r0ZL4"
+              <iframe loading="lazy" data-src="https://www.youtube.com/embed/tOZ75-r0ZL4"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
             </div>
@@ -2146,7 +2189,7 @@ body::after {
           <!-- ВІДЕО 5: Яригіна Юля -->
           <div class="vrev-card reveal">
             <div class="vrev-thumb">
-              <iframe src="https://www.youtube.com/embed/0e-UPy61pho"
+              <iframe loading="lazy" data-src="https://www.youtube.com/embed/0e-UPy61pho"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
             </div>
@@ -2160,7 +2203,7 @@ body::after {
           <!-- ВІДЕО 6: Олена Шинкаренко-Піц -->
           <div class="vrev-card reveal">
             <div class="vrev-thumb">
-              <iframe src="https://www.youtube.com/embed/MON57y-_D34"
+              <iframe loading="lazy" data-src="https://www.youtube.com/embed/MON57y-_D34"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
             </div>
@@ -2459,7 +2502,7 @@ body::after {
         <div class="contact-info-block">
           <div class="ci-card">
             <div class="ci-icon">✉</div>
-            <div><div class="ci-label">Email</div><div class="ci-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="741c1118181b341f061b1f591c1b060d0e1b1a005a0115">[email&#160;protected]</a></div></div>
+            <div><div class="ci-label">Email</div><div class="ci-value"><a href="mailto:hello@krok-horyzont.ua">hello@krok-horyzont.ua</a></div></div>
           </div>
           <div class="ci-card" onclick="window.open('https://t.me/krok_za_horyzont','_blank')" style="cursor:pointer;">
             <div class="ci-icon">📱</div>
@@ -2489,7 +2532,7 @@ body::after {
 
 </div><!-- /main-wrap -->
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ── PAGE NAVIGATION ── */
 const pages = document.querySelectorAll('.page');
 const navItems = document.querySelectorAll('.nav-item');
@@ -2508,14 +2551,9 @@ function showPage(id, navEl) {
   if (navEl) { navEl.classList.add('active'); }
   else { navItems.forEach(n => { if (n.getAttribute('onclick') && n.getAttribute('onclick').includes("'"+id+"'")) n.classList.add('active'); }); }
   document.getElementById('topbarTitle').textContent = titles[id] || '';
-  // re-trigger reveal
+  // re-trigger reveal (один спільний observer — без витоку пам'яті)
   setTimeout(() => {
-    document.querySelectorAll('#page-'+id+' .reveal').forEach(el => {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-      }, { threshold: 0.05 });
-      observer.observe(el);
-    });
+    document.querySelectorAll('#page-'+id+' .reveal').forEach(el => globalObs.observe(el));
   }, 50);
   if (window.innerWidth < 820) closeSidebar();
   syncMobileNav(id);
@@ -2561,13 +2599,13 @@ function ytThumb(id) {
 }
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.video-thumb iframe, .vrev-thumb iframe').forEach(function(el) {
-    var m = (el.src || '').match(/embed\/([^?&]+)/);
+    var m = (el.dataset.src || el.src || '').match(/embed\/([^?&]+)/);
     if (!m) return;
     var id = m[1];
     var wrap = el.parentElement;
     wrap.style.cursor = 'pointer';
     wrap.innerHTML =
-      '<img src="' + ytThumb(id) + '" ' +
+      '<img src="' + ytThumb(id) + '" loading="lazy" decoding="async" alt="Превʼю відео" ' +
       'style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" ' +
       'onerror="this.src=\'https://img.youtube.com/vi/' + id + '/mqdefault.jpg\'">' +
       '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">' +
@@ -2580,10 +2618,13 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /* ── HASH NAVIGATION (з result-*.html → #seminars) ── */
-if (window.location.hash) {
-  const page = window.location.hash.replace('#', '');
-  if (titles[page]) showPage(page);
-}
+/* Чекаємо DOMContentLoaded, бо мобільна нижня навігація йде після цього скрипта */
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.location.hash) {
+    const page = window.location.hash.replace('#', '');
+    if (titles[page]) showPage(page);
+  }
+});
 
 /* ── INITIAL REVEAL ── */
 const globalObs = new IntersectionObserver(entries => {
