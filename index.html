@@ -761,7 +761,7 @@ a { text-decoration: none; color: inherit; }
   padding:.5rem 1rem;border-radius:8px;
   font-size:.75rem;font-weight:700;
   border:1.5px solid var(--border);background:#fff;color:var(--text);
-  cursor:pointer;transition:all .2s;
+  cursor:pointer;transition:all .2s;text-decoration:none;display:inline-block;
 }
 .soc-btn:hover { background:var(--violet);color:#fff;border-color:var(--violet); }
 .map-placeholder {
@@ -793,7 +793,7 @@ a { text-decoration: none; color: inherit; }
   font-size:.75rem;font-weight:700;
   background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);
   border:1px solid rgba(255,255,255,.12);
-  cursor:pointer;transition:background .2s,color .2s,border-color .2s;
+  cursor:pointer;transition:background .2s,color .2s,border-color .2s;text-decoration:none;display:inline-block;
 }
 .footer-soc-btn:hover { background:var(--violet);color:#fff;border-color:var(--violet); }
 .footer-nav { display:grid;grid-template-columns:repeat(3,1fr);gap:2rem; }
@@ -1796,10 +1796,10 @@ button { -webkit-tap-highlight-color:transparent; }
           <img src="logo.png" alt="Svitlana Slipchenko" style="display:block;width:160px;margin-bottom:0.4rem;">
           <div class="footer-tagline">Крок за горизонт<br>Інтуїція · Рішення · Невизначеність</div>
           <div class="footer-social">
-            <button class="footer-soc-btn" onclick="window.open('https://t.me/krok_za_horyzont','_blank')">Telegram</button>
-            <button class="footer-soc-btn" onclick="window.open('https://instagram.com/slipchenko_svitlana','_blank')">Instagram</button>
-            <button class="footer-soc-btn" onclick="window.open('https://youtube.com/playlist?list=PLKJZ3LmunZfTLwsVdZU7zhj_Fk9iInSKg','_blank')">YouTube</button>
-            <button class="footer-soc-btn" onclick="window.open('https://www.facebook.com/profile.php?id=100063766322110','_blank')">Facebook</button>
+            <a class="footer-soc-btn" href="https://t.me/krok_za_horyzont" target="_blank" rel="noopener">Telegram</a>
+            <a class="footer-soc-btn" href="https://instagram.com/slipchenko_svitlana" target="_blank" rel="noopener">Instagram</a>
+            <a class="footer-soc-btn" href="https://youtube.com/playlist?list=PLKJZ3LmunZfTLwsVdZU7zhj_Fk9iInSKg" target="_blank" rel="noopener">YouTube</a>
+            <a class="footer-soc-btn" href="https://www.facebook.com/profile.php?id=100063766322110" target="_blank" rel="noopener">Facebook</a>
           </div>
         </div>
         <div class="footer-nav">
@@ -2515,10 +2515,10 @@ button { -webkit-tap-highlight-color:transparent; }
           <div>
             <div class="ci-label" style="margin-bottom:.5rem;">Соціальні мережі</div>
             <div class="social-row">
-              <button class="soc-btn" onclick="window.open('https://t.me/krok_za_horyzont','_blank')">Telegram</button>
-              <button class="soc-btn" onclick="window.open('https://instagram.com/slipchenko_svitlana','_blank')">Instagram</button>
-              <button class="soc-btn" onclick="window.open('https://youtube.com/playlist?list=PLKJZ3LmunZfTLwsVdZU7zhj_Fk9iInSKg','_blank')">YouTube</button>
-              <button class="soc-btn" onclick="window.open('https://www.facebook.com/profile.php?id=100063766322110','_blank')">Facebook</button>
+              <a class="soc-btn" href="https://t.me/krok_za_horyzont" target="_blank" rel="noopener">Telegram</a>
+              <a class="soc-btn" href="https://instagram.com/slipchenko_svitlana" target="_blank" rel="noopener">Instagram</a>
+              <a class="soc-btn" href="https://youtube.com/playlist?list=PLKJZ3LmunZfTLwsVdZU7zhj_Fk9iInSKg" target="_blank" rel="noopener">YouTube</a>
+              <a class="soc-btn" href="https://www.facebook.com/profile.php?id=100063766322110" target="_blank" rel="noopener">Facebook</a>
             </div>
           </div>
           <div class="map-placeholder">
