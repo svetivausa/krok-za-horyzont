@@ -1417,6 +1417,9 @@ button { -webkit-tap-highlight-color:transparent; }
       <div class="nav-item" onclick="showPage('exercises', this)">
         <span class="ni">🧘</span> Вправи
       </div>
+      <div class="nav-item" onclick="showPage('interactive', this)">
+        <span class="ni">📖</span> Інтерактивні лекції
+      </div>
     </div>
 
     <div class="nav-section">
@@ -1808,6 +1811,7 @@ button { -webkit-tap-highlight-color:transparent; }
             <span class="footer-nav-link" onclick="showPage('videos')">Відео з семінарів</span>
             <span class="footer-nav-link" onclick="showPage('lectures')">Відеолекції</span>
             <span class="footer-nav-link" onclick="showPage('exercises')">Вправи</span>
+            <span class="footer-nav-link" onclick="showPage('interactive')">Інтерактивні лекції</span>
           </div>
           <div>
             <div class="footer-nav-label">Навчання</div>
@@ -2124,6 +2128,30 @@ button { -webkit-tap-highlight-color:transparent; }
           </div>
         </div>
 
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ PAGE: INTERACTIVE LECTURES ══════════════ -->
+  <div class="page" id="page-interactive">
+    <div class="page-content">
+      <div class="section-header">
+        <div class="eyebrow">Навчання</div>
+        <h1 class="page-h1">Інтерактивні лекції</h1>
+        <p class="page-lead">Глибокі лекції з психології результату, мислення і внутрішніх процесів. Читайте, взаємодійте, проходьте тести прямо на сторінці.</p>
+      </div>
+      <div class="lectures-grid">
+        <div class="lecture-row reveal">
+          <div class="lec-num">01</div>
+          <div class="lec-info">
+            <div class="lec-title">Формула результату</div>
+            <div class="lec-meta"><span>📖 Інтерактивна лекція</span><span>⏱ ~20 хв читання</span><span>🔓 Безкоштовно</span></div>
+            <p style="font-size:.78rem;color:var(--muted);margin:.4rem 0 0;line-height:1.6;">Чому одні люди досягають, а інші буксують? Математична формула, яка пояснює результат через бажання, переконання, дію, оточення і ресурс. З тестами і вправами.</p>
+          </div>
+          <div class="lec-actions">
+            <a class="lec-btn primary" href="formula-rezultata.html" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block;">Читати</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2538,9 +2566,10 @@ const pages = document.querySelectorAll('.page');
 const navItems = document.querySelectorAll('.nav-item');
 const titles = {
   home: 'Головна', videos: 'Відео з семінарів',
-  exercises: 'Вправи', reviews: 'Відгуки',
-  lectures: 'Відеолекції', seminars: 'Семінари і курси',
-  about: 'Про проект', contact: 'Контакти'
+  exercises: 'Вправи', interactive: 'Інтерактивні лекції',
+  reviews: 'Відгуки', lectures: 'Відеолекції',
+  seminars: 'Семінари і курси', about: 'Про проект',
+  contact: 'Контакти'
 };
 
 function showPage(id, navEl) {

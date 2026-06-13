@@ -1,0 +1,2103 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Формула результату · Крок за горизонт</title>
+<style>
+:root {
+  --bg: #F5EFE6;
+  --bg2: #EDE3D0;
+  --bg3: #E3D5BC;
+  --card: #FAF5EC;
+  --terra: #B85042;
+  --terra-dark: #8E3A2F;
+  --terra-light: #D67868;
+  --gold: #C9A84C;
+  --gold-dark: #A88A30;
+  --gold-light: #E0C677;
+  --ink: #2C1A0E;
+  --ink2: #5A4530;
+  --muted: #8B7355;
+  --line: rgba(44,26,14,.12);
+  --line2: rgba(44,26,14,.06);
+  --green: #4A7C3A;
+  --blue: #3A5878;
+  --violet: #6B4A8C;
+  --burgundy: #7A2820;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.wrap-wide {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ═══════════════ HEADER ═══════════════ */
+
+header.top {
+  padding: 4rem 1.5rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+header.top::before,
+header.top::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  z-index: 0;
+}
+header.top::before {
+  width: 320px; height: 320px;
+  background: var(--bg2);
+  top: -140px;
+  left: -80px;
+  opacity: .6;
+}
+header.top::after {
+  width: 200px; height: 200px;
+  background: var(--gold);
+  opacity: .08;
+  top: 40px;
+  right: -50px;
+}
+
+header.top > * { position: relative; z-index: 1; }
+
+.series {
+  display: inline-block;
+  font-size: .72rem;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  font-weight: 700;
+  margin-bottom: 2rem;
+  padding: 6px 18px;
+  border: 1px solid var(--gold);
+  border-radius: 3px;
+}
+
+h1.lecture-title {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 700;
+  letter-spacing: -.025em;
+  line-height: 1.02;
+  color: var(--ink);
+  margin-bottom: 1rem;
+  max-width: 12em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lecture-sub {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  color: var(--terra);
+  max-width: 30em;
+  margin: 0 auto;
+}
+
+.divider-deco {
+  margin: 2.5rem auto 0;
+  width: 60px;
+  height: 1px;
+  background: var(--terra);
+  position: relative;
+}
+.divider-deco::before,
+.divider-deco::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--terra);
+}
+.divider-deco::before { left: -14px; }
+.divider-deco::after { right: -14px; }
+
+/* ═══════════════ TYPOGRAPHY ═══════════════ */
+
+section {
+  padding: 3rem 0 2rem;
+}
+
+section.deep {
+  padding: 4rem 0;
+}
+
+p {
+  margin-bottom: 1.2rem;
+  color: var(--ink);
+}
+
+p.lead {
+  font-family: 'Georgia', serif;
+  font-size: 1.32rem;
+  line-height: 1.55;
+  color: var(--ink);
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+p strong { font-weight: 700; color: var(--ink); }
+p em { font-style: italic; color: var(--terra-dark); }
+
+h2.section-title {
+  font-family: 'Georgia', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -.015em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0 0 1.5rem;
+}
+
+h3 {
+  font-family: 'Georgia', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 1.8rem 0 .8rem;
+}
+
+.kicker {
+  display: inline-block;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: .78rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  font-weight: 700;
+  margin-bottom: .8rem;
+}
+
+/* ═══════════════ WOW / QUOTE / INSIGHT ═══════════════ */
+
+.wow {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: clamp(1.3rem, 2.8vw, 1.65rem);
+  line-height: 1.4;
+  color: var(--terra);
+  text-align: center;
+  margin: 2.5rem auto;
+  padding: 1.5rem 1rem;
+  max-width: 24em;
+  position: relative;
+  font-weight: 600;
+}
+
+.wow::before,
+.wow::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 1px;
+  background: var(--terra);
+}
+.wow::before { top: 0; }
+.wow::after { bottom: 0; }
+
+.insight {
+  background: var(--card);
+  border-left: 3px solid var(--gold);
+  padding: 1.2rem 1.5rem;
+  margin: 1.8rem 0;
+  border-radius: 0 6px 6px 0;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: 1.08rem;
+  color: var(--ink2);
+}
+.insight strong { color: var(--ink); font-style: normal; }
+
+.practice {
+  background: linear-gradient(to right, var(--bg2), var(--card));
+  border-radius: 8px;
+  padding: 1.3rem 1.6rem;
+  margin: 1.8rem 0;
+}
+.practice-label {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: .76rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--terra);
+  font-weight: 700;
+  margin-bottom: .5rem;
+}
+.practice-body {
+  color: var(--ink);
+  font-size: .98rem;
+  line-height: 1.65;
+}
+
+/* ═══════════════ FORMULA REVEAL ═══════════════ */
+
+.formula-stage {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  margin: 2rem 0 3rem;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.formula-stage::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--terra), var(--gold), var(--terra));
+}
+
+.pi-banner {
+  display: inline-block;
+  font-family: 'Georgia', serif;
+  font-size: .78rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  background: var(--bg2);
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin-bottom: .5rem;
+  font-weight: 700;
+}
+.pi-sub {
+  font-size: .82rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+.formula-row {
+  margin-bottom: 1.8rem;
+}
+.formula-row:last-child { margin-bottom: 0; }
+
+.formula-label {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: .72rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: .7rem;
+}
+
+.formula-math {
+  font-family: 'Georgia', serif;
+  font-size: clamp(1.05rem, 2.6vw, 1.5rem);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -.01em;
+  line-height: 1.5;
+}
+
+.vb { color: var(--terra); }
+.vp { color: var(--violet); }
+.vd { color: var(--blue); }
+.vo { color: var(--green); }
+.vm { color: var(--gold-dark); }
+.vr { color: var(--burgundy); }
+.vbeta { color: var(--gold-dark); font-style: italic; }
+.veps { color: var(--muted); font-style: italic; }
+.op { color: var(--ink2); font-weight: 400; }
+
+/* ═══════════════ COMPONENT CARD ═══════════════ */
+
+.comp {
+  background: var(--card);
+  border-radius: 14px;
+  margin: 4rem 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  position: relative;
+}
+
+.comp-head {
+  padding: 2rem 2rem 1.5rem;
+  border-bottom: 1px solid var(--line2);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: linear-gradient(to right, var(--bg2), var(--card));
+}
+
+.comp-letter {
+  font-family: 'Georgia', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border: 2px solid currentColor;
+}
+
+.comp-name {
+  font-family: 'Georgia', serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -.01em;
+  line-height: 1.1;
+}
+.comp-name-sub {
+  font-size: .85rem;
+  color: var(--muted);
+  font-style: italic;
+  font-weight: 400;
+  margin-top: 4px;
+  letter-spacing: .03em;
+}
+
+.comp-body {
+  padding: 2rem 2rem 2.2rem;
+}
+
+/* component colour modifiers */
+.comp.c-terra .comp-letter { color: var(--terra); }
+.comp.c-violet .comp-letter { color: var(--violet); }
+.comp.c-blue .comp-letter { color: var(--blue); }
+.comp.c-green .comp-letter { color: var(--green); }
+.comp.c-gold .comp-letter { color: var(--gold-dark); }
+.comp.c-burgundy .comp-letter { color: var(--burgundy); }
+.comp.c-muted .comp-letter { color: var(--muted); }
+
+/* ═══════════════ THREE LAWS ═══════════════ */
+
+.laws {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+  margin: 2rem 0;
+}
+
+.law {
+  background: var(--card);
+  border-radius: 10px;
+  padding: 1.5rem 1.6rem 1.6rem;
+  border-top: 4px solid var(--terra);
+}
+.law:nth-child(2) { border-top-color: var(--violet); }
+.law:nth-child(3) { border-top-color: var(--gold-dark); }
+
+.law-num {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: .72rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: .4rem;
+}
+.law-title {
+  font-family: 'Georgia', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: .6rem;
+}
+.law-text {
+  font-size: .92rem;
+  color: var(--ink2);
+  line-height: 1.55;
+}
+
+/* ═══════════════ ANIMATIONS ═══════════════ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════ INTERACTIVE LAB (preserved from previous build) ═══════════════ */
+
+.lab-section {
+  background: var(--bg2);
+  margin: 4rem -1.5rem;
+  padding: 3rem 1.5rem;
+}
+
+.lab {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.lab-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.lab-title {
+  font-family: 'Georgia', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.mode-toggle {
+  display: inline-flex;
+  background: var(--bg2);
+  border-radius: 6px;
+  padding: 3px;
+  border: 1px solid var(--line);
+}
+.mode-btn {
+  background: none;
+  border: none;
+  padding: 6px 14px;
+  font-family: 'Georgia', serif;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all .2s;
+}
+.mode-btn.active {
+  background: var(--terra);
+  color: white;
+  box-shadow: 0 1px 3px rgba(184,80,66,.3);
+}
+
+.lab-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+}
+@media (max-width: 800px) {
+  .lab-grid { grid-template-columns: 1fr; }
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ctrl-row {
+  display: grid;
+  grid-template-columns: 85px 1fr 50px;
+  gap: 10px;
+  align-items: center;
+}
+
+.ctrl-label {
+  font-family: 'Georgia', serif;
+  font-size: .92rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.ctrl-label .tiny {
+  font-size: .68rem;
+  font-style: italic;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 3px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: var(--bg2);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px; height: 15px;
+  border-radius: 50%;
+  background: var(--terra);
+  cursor: pointer;
+  border: 2px solid var(--card);
+  box-shadow: 0 0 0 1px var(--terra);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 15px; height: 15px;
+  border-radius: 50%;
+  background: var(--terra);
+  cursor: pointer;
+  border: 2px solid var(--card);
+}
+
+.ctrl-val {
+  font-family: 'Georgia', serif;
+  font-size: .88rem;
+  font-weight: 700;
+  color: var(--terra-dark);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.chart-wrap { display: flex; flex-direction: column; gap: 1rem; }
+
+.chart-canvas-wrap {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1rem;
+  aspect-ratio: 16 / 9;
+}
+
+canvas { width: 100%; height: 100%; display: block; }
+
+.legend {
+  display: flex;
+  gap: 1.5rem;
+  font-size: .82rem;
+  color: var(--ink2);
+  font-family: 'Georgia', serif;
+  flex-wrap: wrap;
+}
+.legend-item { display: flex; align-items: center; gap: 6px; }
+.legend-dot { width: 16px; height: 3px; border-radius: 2px; }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .7rem;
+  margin-top: .5rem;
+}
+.stats.dual { grid-template-columns: repeat(4, 1fr); }
+.stat {
+  background: var(--bg);
+  border: 1px solid var(--line2);
+  border-radius: 6px;
+  padding: .6rem .8rem;
+}
+.stat-label {
+  font-size: .64rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+.stat-val {
+  font-family: 'Georgia', serif;
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  margin-top: 2px;
+}
+.stat.terra .stat-val { color: var(--terra); }
+.stat.gold .stat-val { color: var(--gold-dark); }
+.stat.muted .stat-val { color: var(--muted); }
+.stat.b-stat .stat-val { color: var(--blue); }
+
+.b-panel {
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 2px dashed var(--gold);
+  display: none;
+}
+.b-panel.active { display: block; }
+
+.b-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.b-title {
+  font-family: 'Georgia', serif;
+  font-size: .98rem;
+  font-weight: 700;
+  color: var(--blue);
+}
+.b-title em { color: var(--muted); font-weight: 400; font-size: .9em; }
+
+.b-presets { display: flex; gap: 6px; flex-wrap: wrap; }
+.b-preset {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  color: var(--ink2);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: .76rem;
+  cursor: pointer;
+  transition: all .2s;
+}
+.b-preset:hover { background: var(--blue); color: white; border-color: var(--blue); }
+
+.b-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: .7rem;
+}
+@media (max-width: 700px) { .b-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.b-cell {
+  background: var(--bg);
+  border: 1px solid var(--line2);
+  border-radius: 5px;
+  padding: .55rem .7rem;
+}
+.b-cell-label {
+  font-family: 'Georgia', serif;
+  font-size: .76rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+.b-cell-val { color: var(--blue); font-variant-numeric: tabular-nums; }
+.b-cell input { width: 100%; }
+.b-cell input[type="range"]::-webkit-slider-thumb { background: var(--blue); box-shadow: 0 0 0 1px var(--blue); }
+
+.scenarios-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: .8rem;
+  margin-top: 1.5rem;
+}
+.sc-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1rem 1.1rem;
+  cursor: pointer;
+  transition: all .2s;
+  text-align: left;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+.sc-card:hover { border-color: var(--terra); background: var(--bg2); transform: translateY(-2px); }
+.sc-card-num {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: .72rem;
+  color: var(--gold-dark);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: .3rem;
+}
+.sc-card-title {
+  font-family: 'Georgia', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: .3rem;
+}
+.sc-card-desc { font-size: .82rem; color: var(--ink2); line-height: 1.5; }
+
+/* ═══════════════ METHODOLOGY ═══════════════ */
+
+.method-section {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+  margin: 4rem -1.5rem 0;
+  padding: 4rem 1.5rem;
+}
+
+.method-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.method-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.4rem 1.5rem 1.5rem;
+}
+
+.method-card-tag {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: .7rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: .4rem;
+}
+.method-card-tag .tk {
+  background: var(--bg2);
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-style: normal;
+  letter-spacing: 0;
+  margin-right: 6px;
+  color: var(--terra);
+}
+.method-card-tag.gold .tk { color: var(--gold-dark); }
+.method-card-tag.blue .tk { color: var(--blue); }
+.method-card-tag.violet .tk { color: var(--violet); }
+.method-card-tag.green .tk { color: var(--green); }
+
+.method-card-title {
+  font-family: 'Georgia', serif;
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: .5rem;
+  line-height: 1.3;
+}
+
+.method-why {
+  font-size: .85rem;
+  color: var(--ink2);
+  font-style: italic;
+  border-left: 2px solid var(--gold);
+  padding-left: .7rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.method-ex-list { display: flex; flex-direction: column; gap: .55rem; }
+.method-ex {
+  display: flex;
+  gap: .55rem;
+  align-items: flex-start;
+  font-size: .85rem;
+  color: var(--ink);
+  line-height: 1.5;
+}
+.method-ex::before {
+  content: '→';
+  color: var(--terra);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.method-ex strong { font-weight: 700; }
+
+/* ═══════════════ ENDING ═══════════════ */
+
+.ending {
+  text-align: center;
+  padding: 4rem 0 5rem;
+  position: relative;
+}
+
+.ending-q {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  color: var(--terra);
+  max-width: 18em;
+  margin: 0 auto 2rem;
+  line-height: 1.3;
+}
+
+.signature {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  color: var(--muted);
+  font-size: 1rem;
+  margin-top: 2rem;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 1.5rem 3rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: .8rem;
+  font-style: italic;
+  font-family: 'Georgia', serif;
+}
+
+/* ═══════════════ RESPONSIVE FIXES ═══════════════ */
+
+@media (max-width: 600px) {
+  .comp-head { flex-direction: column; text-align: center; padding: 1.5rem 1.2rem; }
+  .comp-letter { width: 70px; height: 70px; font-size: 3rem; }
+  .comp-body { padding: 1.5rem 1.3rem 1.7rem; }
+  .formula-stage { padding: 2rem 1.2rem; }
+  .lab { padding: 1.3rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header class="top">
+  <div class="series">Крок за горизонт · Лекція</div>
+  <h1 class="lecture-title">Формула результату</h1>
+  <p class="lecture-sub">Чому в одних виходить, а в інших — ні. Сім букв, одна петля і одна правда.</p>
+  <div class="divider-deco"></div>
+</header>
+
+<!-- ═══════════════ HOOK ═══════════════ -->
+<section class="wrap deep">
+  <p class="lead">
+    У школі мене вважали невезучою.
+  </p>
+  <p>
+    Якщо на іспиті було двадцять білетів, я примудрялася витягнути саме той, який не встигла повторити. Якщо в конкурсі розігрували один невдалий варіант — він діставався мені. Подруги сміялися: «Ну це тільки ти так можеш». І, якщо чесно, я й сама в це вірила.
+  </p>
+  <p>
+    Бо невезіння було не лише в дрібницях. Мій батько пив. Удома часто були скандали. Грошей ледь вистачало на необхідне. А район, у якому ми жили, мав таку репутацію, що ввечері туди зайвий раз не заходили навіть дорослі чоловіки. Здавалося, що в лотереї життя я витягнула не найкращий квиток.
+  </p>
+  <p>
+    І знаєш, що цікаво? Тоді я дивилася на інших і думала, що все вирішує удача. Комусь дісталися хороші батьки. Комусь — гроші. Комусь — зв'язки. Комусь — упевненість у собі з дитинства. А потім минули роки — і я почала бачити дивні речі.
+  </p>
+  <p>
+    Люди, яким, здавалося, пощастило більше за мене, не завжди заходили в житті далеко. Дехто так і залишався чекати наступної удачі. Наступної можливості. Наступного щасливого випадку. А ті, кому особливо не щастило, навчилися покладатися не на везіння. Вони навчилися шукати вихід. Навчилися підніматися. Навчилися робити крок, коли гарантій немає.
+  </p>
+  <p>
+    І тоді я зрозуміла одну річ. Можливо, справа ніколи не була у везінні. Бо удача може дати хороший старт — але вона не здатна пройти шлях замість тебе. Відтоді я перестала чекати щасливого квитка й почала шукати інше: що ж насправді відрізняє тих, хто доходить, від тих, хто стоїть на місці. Я шукала це роками — у книжках, у людях, у власних падіннях і підйомах. І зрештою те, що я шукала, склалося в формулу.
+  </p>
+
+  <div class="wow">Існує формула. Не «формула успіху» з кольорових обкладинок. Справжня — рівняння, яке показує, з чого насправді складається твій результат.</div>
+
+  <p>
+    У ній сім компонентів, одна петля і один фон. Якщо хоча б один компонент стає нулем — увесь результат нуль. Якщо одна змінна йде в мінус — формула працює <em>проти</em> тебе. А якщо все в плюсі — то через час… ось тут найцікавіше. Через час починається експонента.
+  </p>
+  <p>
+    Сьогодні я виведу її повністю. Розшифрую кожну букву. Сядеш і побачиш, чому в тебе застрягло саме там, де застрягло, — і де та точка, на яку треба натиснути.
+  </p>
+  <p>
+    Сідаймо. Розбираймось.
+  </p>
+</section>
+
+<!-- ═══════════════ FORMULA REVEAL ═══════════════ -->
+<section class="wrap">
+  <div class="kicker">Ось вона</div>
+  <h2 class="section-title">Як виглядає формула</h2>
+  <p>Не лякайся букв. За мить я переведу кожну на людську мову — з кухнею, машиною, фотоапаратом і ключем у запалюванні. А поки що — просто подивись.</p>
+
+  <div class="formula-stage">
+    <div class="pi-banner">Π · Правила гри</div>
+    <div class="pi-sub">природні закони · соціальні норми · правила поля · <em>грецька «Пі», не плутати з П-Переконанням</em></div>
+
+    <div class="formula-row">
+      <div class="formula-label">Двигун · маленький результат r, що ти виробляєш у кожну мить</div>
+      <div class="formula-math">
+        <span class="op">r(t) = (</span> <span class="vb">Б</span> <span class="op">×</span> <span class="vp">П(і·п)</span> <span class="op">) ·</span> <span class="vd">Д(я·в·ч)</span> <span class="op">×</span> <span class="vo">О(к·в)</span> <span class="op">×</span> <span class="vm">М(р·р)</span> <span class="op">×</span> <span class="vr">Рес(t)</span> <span class="op">±</span> <span class="veps">ε(t)</span>
+      </div>
+    </div>
+
+    <div class="formula-row">
+      <div class="formula-label">Петля · як результат повертається назад у тебе</div>
+      <div class="formula-math">
+        <span class="vr">Рес(t+1)</span> <span class="op">=</span> <span class="vr">Рес(t)</span> <span class="op">+</span> <span class="vbeta">β</span> <span class="op">·</span> <span class="op">r(t)</span>
+      </div>
+    </div>
+
+    <div class="formula-row">
+      <div class="formula-label">Підсумок · великий Результат за весь час T</div>
+      <div class="formula-math">
+        <span class="op">R(T) = Σ r(t)</span>
+      </div>
+    </div>
+  </div>
+
+  <p>
+    Одразу поясню одну деталь, бо вона важлива. У формулі дві «ер». Маленька <strong>r</strong> — це твій результат за один крок: те, що ти зробила сьогодні, цього тижня, у цій конкретній справі. А велика <strong>R</strong> — це великий Результат, твоя ціль: те, заради чого ти все робиш.
+  </p>
+  <p>
+    І ось головне: велика <strong>R складається з маленьких r</strong>. Великий результат не падає з неба готовим. Він збирається, крок за кроком, з маленьких щоденних результатів. Значок «Σ» (грецька «сума») саме це й означає: «склади всі свої маленькі кроки за весь час — і отримаєш велику ціль». Жодна мрія не існує окремо від того, що ти робиш сьогодні.
+  </p>
+  <p>
+    Здається складно? Це нормально. Зараз ми по черзі візьмемо кожну букву й подивимось, що вона означає, де ховається в твоєму повсякденному житті і що з нею робити.
+  </p>
+  <p>
+    Перш ніж пірнати — одне правило, яке ти маєш зрозуміти першим, бо без нього все інше не складеться.
+  </p>
+</section>
+
+<!-- ═══════════════ ЗАКОН МНОЖЕННЯ ═══════════════ -->
+<section class="wrap">
+  <div class="kicker">Перший закон, який усе пояснює</div>
+  <h2 class="section-title">Усе помножується. Нічого не додається.</h2>
+
+  <p>
+    Поглянь ще раз на формулу. Між компонентами немає жодного плюса. Тільки множення. Це не випадково.
+  </p>
+  <p>
+    Більшість моделей успіху, які ти бачила — адитивні: «трохи мотивації + трохи дисципліни + трохи везіння = результат». Звучить заспокійливо. І це неправда.
+  </p>
+  <p>
+    Уяви, ти готуєш улюблений суп. Сім інгредієнтів. Якщо ти забула посолити — на скільки гірший суп? На 1/7? Ні. Він буде <em>несмачний</em>. Зовсім. А якщо забула овочі — суп взагалі не вийде. Кулінарія не складає інгредієнти. Вона їх <em>перемножує</em>.
+  </p>
+
+  <div class="wow">Будь-який компонент = 0 → увесь результат = 0.</div>
+
+  <p>
+    Це звучить жорстко. І це і є та сама причина, чому в одних людей з усіма зовнішніми ознаками успіху — статками, дипломами, родиною — всередині яма. У них одне з семи в нулі. Найчастіше нуль ховається в одному з трьох місць. Або бажання насправді не своє, а нав'язане. Або переконання працює проти людини. Або вичерпані внутрішні ресурси — і двигун просто не має на чому їхати.
+  </p>
+  <p>
+    Гарна новина: <strong>ця сама властивість працює і в інший бік</strong>. Тобі не треба бути ідеальною в усіх семи компонентах. Тобі треба, щоб жоден з них не був нулем. А далі — усе перемножиться і дасть результат.
+  </p>
+
+  <div class="insight"><strong>Перевір зараз:</strong> подумай про якусь сферу, де ти буксуєш. Не «де щось трохи не так», а саме <em>буксуєш</em>, хоч начебто робиш усе. Образно кажучи, я ставлю на те, що там обнулився рівно один компонент. Один. Спробуй його знайти.</div>
+</section>
+
+<!-- ═══════════════ Б · БАЖАННЯ ═══════════════ -->
+<section class="wrap deep">
+  <div class="comp c-terra">
+    <div class="comp-head">
+      <div class="comp-letter">Б</div>
+      <div>
+        <div class="comp-name">Бажання</div>
+        <div class="comp-name-sub">коефіцієнт запуску · [0 → 1]</div>
+      </div>
+    </div>
+    <div class="comp-body">
+      <p>
+        Без цієї букви нічого не запускається. Як машина без ключа в запалюванні. Можеш мати найкращий двигун, бак з бензином, дороги — а машина просто стоїть.
+      </p>
+      <p>
+        Спершу здається, що з Бажанням у тебе все ок. Хто з нас не хоче? Одна хоче поснідати, інша — мати свій бізнес, ще одна — щоб чоловік нарешті зрозумів, чого вона від нього хоче. Хочеш — повний холодильник цих «хочу». То чому ж результат не приходить?
+      </p>
+      <p>
+        Бо не кожне «хотіти» — це насправді Бажання.
+      </p>
+
+      <p>
+        У формулі Б — це коефіцієнт від нуля до одиниці. Нуль означає: ти насправді цього не хочеш (хоч сама собі говориш, що хочеш). Одиниця — це коли тіло саме рухається в той бік. Ти не торгуєшся з собою кожен ранок — ти просто береш і робиш. Не «треба піти в зал», а кросівки вже на ногах.
+      </p>
+
+      <p>
+        У нейронауці є відкриття, яке мене колись приголомшило. Кент Беррідж у 90-х показав: «хочу» і «подобається» — це <em>два різні сигнали</em> в мозку. «Хочу» (англ. wanting) працює на дофаміні. «Подобається» (liking) — на іншому наборі речовин і зон. І вони можуть діяти окремо. Саме тому залежна від цигарок людина хоче курити, навіть коли смак уже давно не тішить: сигнал «хочу» лишився, а «подобається» згасло.
+      </p>
+      <p>
+        Справжнє Бажання у формулі — це коли обидва сигнали збігаються. Хочу <em>і</em> подобається. Коли вони розходяться — ти або женешся за тим, що тобі не приносить радості (тоді отримаєш — і відчуєш порожнечу), або взагалі не рухаєшся, бо насправді не хочеш.
+      </p>
+      <p>
+        Так само людина може місяцями прокручувати стрічку в телефоні — хотіти цього щоразу, хоча задоволення давно немає. «Хочу» тягне руку до екрана, а «подобається» вже мовчить. Два сигнали роз'їхались, а звичка лишилась.
+      </p>
+
+      <div class="wow">Можна все життя досягати того, чого ти ніколи не хотіла. Просто тому, що хтось колись сказав, що це «треба».</div>
+
+      <p>
+        Згадай дуже знайоме. Людина роками повторює: «хочу нарешті знайти час на себе». Повторює щиро. Але щойно вільна година з'являється — одразу знаходиться термінова справа, чиєсь прохання, щось «важливіше». Це не лінь і не лицемірство. Просто справжнє Бажання тут слабше за звичку бути потрібною всім, окрім себе. На словах Б близьке до одиниці, а насправді — десь біля нуля.
+      </p>
+      <p>
+        Інколи ми просто плутаємо своє бажання з чужим. Ти кажеш: «хочу вивчити англійську» — а насправді хочеш не відставати від колег, які їздять на закордонні конференції. Щойно той тиск зникає — змінила роботу, поряд інші люди — і «бажання» вчити мову теж кудись дівається. Виходить, ти хотіла не мову. Ти хотіла не почуватися гіршою. Це різні речі, і важливо їх не сплутати.
+      </p>
+
+      <div class="practice">
+        <div class="practice-label">Тест на справжність</div>
+        <div class="practice-body">
+          Уяви, що ти досягла цієї мети — і <strong>ніхто ніколи про це не дізнається</strong>. Ні мама, ні соцмережі, ні колишня однокласниця. Чи хочеш ти цього ще? Якщо так — твоє Б справжнє. Якщо «навіщо тоді?» — це не твоє. І не треба себе мучити.
+        </div>
+      </div>
+
+      <div class="insight"><strong>Підсумок Б:</strong> Бажання — це не «треба». Це коли тіло само рухається в той бік. Якщо не рухається — питання не «як себе примусити», а «чи це справді моє».</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ П · ПЕРЕКОНАННЯ ═══════════════ -->
+<section class="wrap deep">
+  <div class="comp c-violet">
+    <div class="comp-head">
+      <div class="comp-letter">П</div>
+      <div>
+        <div class="comp-name">Переконання</div>
+        <div class="comp-name-sub">фільтр · два шари: і (ідентичність) · п (свідомі) · [−1 → +1]</div>
+      </div>
+    </div>
+    <div class="comp-body">
+      <p>
+        Це найхитріша буква у формулі. І єдина, яка може зробити твій результат <em>від'ємним</em>. Тобто не «нічого не вийде», а «вийде, але назад, у мінус». Ти будеш буквально працювати проти себе — і не помічати.
+      </p>
+      <p>
+        П — це фільтр. Як у фотоапарата. Уся інформація про світ, усі твої дії, усі ресурси проходять крізь нього, перш ніж стати результатом. Чистий фільтр (П близько до +1) — і світло проходить як є, картинка ясна. Каламутний (П близько до 0) — все ніби крізь туман. Чорний (П = −1) — і фотоапарат робить негатив: усе, що ти робиш, повертається до тебе у викривленому вигляді.
+      </p>
+
+      <p>
+        У П два шари. Я їх позначаю «і» — ідентичність, і «п» — переконання. Це не одне й те саме, і це важливо.
+      </p>
+
+      <h3>п — твої свідомі переконання</h3>
+      <p>
+        Це те, що ти можеш проговорити. «Я вірю, що можна заробляти на улюбленому ділі». «Я думаю, що мені не світить вища посада, бо я з провінції». Це шар, який легше помічати і змінювати. Прочитала книжку, побачила приклад іншої — і переконання посунулось.
+      </p>
+
+      <h3>і — твоя ідентичність</h3>
+      <p>
+        А це — глибший шар. Не «я думаю, що…», а «я <em>є</em> людиною, яка…». «Я людина, яка завжди в тіні». «Я та, кому не довіряють важливе». «Я та, хто з усіма миром, але без свого». Це працює автоматично. Ти не помічаєш, як виходиш на 39-й співбесіді невпевнено — тіло знає сценарій, кістки пам'ятають. Це не «думка». Це <em>ти така</em> (вважаєш ти).
+      </p>
+
+      <div class="wow">Свідомі переконання можна перечитати. Ідентичність — треба прожити заново.</div>
+
+      <p>
+        І ось чому П може йти у мінус. Якщо ідентичність каже «я та, кому добре не буває», а ти раптом починаєш робити все правильно, починає приходити добре — мозок це сприймає як <em>загрозу</em>. Він захищає твою картину світу. І влаштовує саботаж. Запізнюєшся на важливу зустріч (хоча ніколи не запізнюєшся). «Випадково» ображаєш людину, яка могла відкрити двері. Хворієш напередодні. Це не «карма» — це твоя ідентичність захищає себе.
+      </p>
+      <p>
+        Нейронаука це описує через системи, які працюють у мозку без твоєї згоди. Передня поясна кора весь час перевіряє: «те, що зараз відбувається, відповідає тому, ким я себе вважаю?». Якщо ні — мигдалина дає сигнал тривоги, і ти неусвідомлено робиш щось, щоб повернутись у звичне. Навіть якщо звичне — це біль.
+      </p>
+
+      <div class="practice">
+        <div class="practice-label">Тест на ідентичність</div>
+        <div class="practice-body">
+          Візьми аркуш. Напиши «Я є людиною, яка…» і закінчи речення 20 разів. Швидко, без редагування. Перші 5–7 будуть очікувані («я є людиною, яка любить читати»). Цікаве починається після десятого. Там вилазить те, що працює фоном: «я є людиною, до якої не дослухаються», «я є людиною, що завжди мусить тягнути». Ось ці фрази й показують тобі, у що ти насправді віриш про себе — твоє глибинне П.
+        </div>
+      </div>
+
+      <div class="insight"><strong>Підсумок П:</strong> Якщо все робиш правильно, а результат повзе у мінус — питання не «що ще зробити». Питання «у що я насправді вірю про себе». Це лікується. Не за вечір. Але лікується.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ Д · ДІЇ ═══════════════ -->
+<section class="wrap deep">
+  <div class="comp c-blue">
+    <div class="comp-head">
+      <div class="comp-letter">Д</div>
+      <div>
+        <div class="comp-name">Дії</div>
+        <div class="comp-name-sub">я (якість) × в (вектор) × ч (частота)</div>
+      </div>
+    </div>
+    <div class="comp-body">
+      <p>
+        Ця буква — найбільша обманка у всій формулі. Бо вона ж і єдина, яка <strong>повністю в твоїх руках прямо зараз</strong>. Не «коли вирішу психологічні питання». Не «коли з'являться сили». Зараз.
+      </p>
+      <p>
+        Чому обманка? Бо здається, що Дії — це просто «робити багато». А насправді Д має три параметри, і якщо хоч один — нуль, дії не дають результату. Як і вся формула, всередині Д теж множення.
+      </p>
+
+      <h3>я — якість</h3>
+      <p>
+        Не «робити багато», а «робити добре». Сто email-розсилок, написаних абияк, дадуть менше, ніж десять, написаних з душею. Один годинний воркаут, де ти у формі, замінює три, де ти тягнеш гирі впівсили. Це не про перфекціонізм — це про мінімальний поріг, нижче якого дія перестає працювати.
+      </p>
+
+      <h3>в — вектор</h3>
+      <p>
+        Куди саме стріляєш. Ти можеш бути найкращим стрільцем у світі, але якщо мішень не та — все марно. Я знаю людину, яка десять років бездоганно вибудовувала кар'єру в галузі, яка її випалювала. Дії були ідеальні. Вектор — ні. У такому випадку ефективність працює <em>проти</em> тебе: ти швидше потрапиш не туди, куди хочеш.
+      </p>
+
+      <h3>ч — частота</h3>
+      <p>
+        Регулярність. Одне геніальне тренування на місяць не дає форми. П'ять середніх — дають. Тут працює не «героїчне зусилля», а «достатньо часто, щоб не випадати». І мозок, і тіло вчаться через повторення в часі — не через інтенсивність одного дня.
+      </p>
+
+      <p>
+        Тепер уявімо машину. Якість — це чи їде вона взагалі, чи розвалена. Вектор — куди ти крутиш кермо. Частота — як часто ти заводиш двигун. Можна мати чудову машину з ідеальним керуванням — і весь рік простояти в гаражі. Можна виїжджати щодня — але в напрямку, де нічого немає. Можна їхати в правильний бік на старій таратайці, що ось-ось розсиплеться. У кожному з цих випадків дій начебто багато, а доїжджаєш рідко.
+      </p>
+
+      <div class="wow">Дія — єдина змінна, яку ти можеш змінити в найближчі п'ять хвилин. Не «з понеділка». Зараз.</div>
+
+      <p>
+        І ще одне. Більшість людей застряють у Д не тому, що ліниві. А тому, що чекають мотивації або натхнення, щоб почати. У нейронауці це називається «помилкою порядку»: ми думаємо, що мотивація → дія. А насправді частіше дія → мотивація. Зробила перші 10 хвилин — і прийшло «бажання продовжити». Чекала натхнення — воно так і не прийшло.
+      </p>
+
+      <div class="practice">
+        <div class="practice-label">Аудит власних Д</div>
+        <div class="practice-body">
+          Візьми тиждень. Запиши все, що ти робила в робочий час. Тепер три колонки: <strong>якість</strong> (з якою я з цього найбільш задоволена), <strong>вектор</strong> (чи це наближає мене до того, чого я насправді хочу), <strong>частота</strong> (чи я це роблю системно). Те, що в усіх трьох колонках отримало плюс — це твої справжні Д. Решта — ілюзія діяльності.
+        </div>
+      </div>
+
+      <div class="insight"><strong>Підсумок Д:</strong> Питання не «як себе примусити робити більше», а «чи кожна дія добра, у правильному напрямку і чи я її повторюю». Якщо так — навіть мало вистачить. Якщо ні — й море не допоможе.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ О · ОБСТАВИНИ ═══════════════ -->
+<section class="wrap deep">
+  <div class="comp c-green">
+    <div class="comp-head">
+      <div class="comp-letter">О</div>
+      <div>
+        <div class="comp-name">Обставини</div>
+        <div class="comp-name-sub">к (контекст) × в (вибір середовища)</div>
+      </div>
+    </div>
+    <div class="comp-body">
+      <p>
+        А ось буква, з якою всі мають найскладніші стосунки. Бо здається, що обставини — це «доля», «карма», «з ким народилась», «де живу». Те, на що я не впливаю. І це <em>напівправда</em>. Якраз тому ця буква така хитра.
+      </p>
+
+      <p>
+        О — це те, де ти зараз перебуваєш у широкому сенсі. Країна, місто, родина, оточення, культурний контекст, історичний момент. Це поле, на якому ти граєш. І так, частина цього поля вже задана. Ти народилась там, де народилась. Ти не вибирала рік народження.
+      </p>
+
+      <p>
+        Але всередині О є дві частини, і вони грають по-різному.
+      </p>
+
+      <h3>к — контекст</h3>
+      <p>
+        Те, що задано без твоєї участі. Епоха, мова, у якій ти виросла, перші 18 років оточення. Це справді не змінити. І це впливає сильно — не будемо обманювати ні себе, ні одна одну.
+      </p>
+
+      <h3>в — вибір середовища</h3>
+      <p>
+        А ось це — змінюється. Кого ти впускаєш у своє життя зараз. У якому місті ти живеш. З ким ти проводиш п'ять найближчих годин на тиждень. Які книжки, подкасти, голоси ти впускаєш у вуха. У якому професійному цеху ти варишся.
+      </p>
+
+      <p>
+        А тепер найважливіше. Уяви ту саму себе у двох різних колективах. На одній роботі ти тиха й непомітна, «сіра мишка»: ідеї не озвучуєш, на нарадах мовчиш, увечері йдеш виснажена й порожня. Переходиш в інший колектив — і за кілька тижнів тебе не впізнати. Смієшся, пропонуєш, сперечаєшся, тебе чути. Ти не стала іншою людиною за цей час. Змінилося поле — і воно витягнуло те, що перше середовище глушило.
+      </p>
+
+      <div class="wow">Найбільший вплив у формулі. Найменше керування. Звідси — практично всі сюрпризи.</div>
+
+      <p>
+        Тут є штука, про яку рідко говорять, бо звучить трохи моторошно. У нейронауці є явище — <em>дзеркальні нейрони</em>. Вони активуються в твоєму мозку, коли ти просто <em>дивишся</em> на дію іншої людини. Так, наче ти сама її робиш. Це механізм навчання — і одночасно механізм «зараження». Спілкуєшся з людьми, які постійно скаржаться — у тебе всередині запускається той самий патерн. Спілкуєшся з людьми, які беруть і роблять — у тебе теж щось починає рухатись. Без жодного вольового зусилля з твого боку.
+      </p>
+      <p>
+        Соціолог Ніколас Крістакіс показав, що щастя, депресія, ожиріння, успіх — усе це поширюється в соцмережі людей як вірус. На два кроки. Тобто на тебе впливає не тільки твоя подруга, а й <em>подруга твоєї подруги</em>, з якою ти ніколи не зустрічалась. Через ту, спільну.
+      </p>
+
+      <div class="practice">
+        <div class="practice-label">Аудит середовища</div>
+        <div class="practice-body">
+          Випиши п'ятьох людей, з якими ти найбільше спілкуєшся за останній місяць (не за бажанням — за фактом часу). Тепер чесно: куди вони рухаються в житті? Зростають, стоять, падають? Які цінності, які теми, який рівень амбіцій? Є відоме твердження, що ми стаємо схожими на тих п'ятьох, з ким проводимо найбільше часу. Це радше влучне спостереження, ніж точний науковий закон, — але напрям воно вловлює правильно. Подивись на свою картину. Якщо вона тобі не подобається — змінюй середовище. Не людей переробляй — себе пересуни.
+        </div>
+      </div>
+
+      <div class="insight"><strong>Підсумок О:</strong> Не картай себе за те, що тебе народили не там, де хотілося б. Дивись на те, що ти <em>обираєш навколо себе зараз</em>: місто, роботу, людей, голоси у вухах. Часто справа не в тобі, а в полі, на якому ти стоїш. Переставити себе в інше поле — іноді найсильніша дія з усіх можливих.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ М · МОЖЛИВОСТІ ═══════════════ -->
+<section class="wrap deep">
+  <div class="comp c-gold">
+    <div class="comp-head">
+      <div class="comp-letter">М</div>
+      <div>
+        <div class="comp-name">Можливості</div>
+        <div class="comp-name-sub">р (розпізнавання) × р (реалізація)</div>
+      </div>
+    </div>
+    <div class="comp-body">
+      <p>
+        Уяви: дві жінки зайшли в одне й те саме кафе. Одна вийшла з новою роботою. Друга — з кавою. Особливо вони нічим не відрізнялись. Що сталось?
+      </p>
+      <p>
+        Перша побачила можливість, друга — ні. Хоча можливість лежала на столі для обох.
+      </p>
+
+      <p>
+        М у формулі — це якраз про це. І знов: усередині М множення двох частин.
+      </p>
+
+      <h3>р — розпізнавання</h3>
+      <p>
+        Уміння побачити, що ось воно. Випадкова розмова в черзі — це не просто розмова, а потенційне знайомство. Лекція на ютубі — не «треба колись подивитись», а пряма відповідь на твоє питання вже зараз. Це навичка. Її можна тренувати.
+      </p>
+
+      <h3>р — реалізація</h3>
+      <p>
+        Уміння взяти. Помітити мало — треба ще зробити крок. Підійти, написати, спробувати, запитати. Тут блокує страх відмови, незручність, «не моя справа». Можна побачити двадцять можливостей за день — і не використати жодну.
+      </p>
+
+      <p>
+        У лісі ростуть гриби. Хтось іде і збирає повний кошик. Хтось іде поряд і не бачить нічого. Гриби однакові. Збирає той, хто знає, що саме хоче побачити, і той, хто, побачивши, нахилиться, щоб зрізати. Розпізнавання × реалізація.
+      </p>
+
+      <div class="wow">Можливості не створюються. Вони розпізнаються і використовуються.</div>
+
+      <p>
+        У мозку за цю функцію відповідає так звана ретикулярна формація. Це фільтр, який вирішує, що з мільйонів сигналів довкола тебе потрапить у свідомість, а що відсіється як шум. Дивишся на людину в новому светрі, помічаєш светр — а решту обстановки твій мозок відкинув. Це не помилка. Це необхідність: якби ти усвідомлювала все, що бачать твої очі, ти б не витримала цього потоку.
+      </p>
+      <p>
+        Але цей фільтр <em>навчається</em>. Він пропускає те, на що ти його <em>налаштувала</em>. Якщо ти останніми тижнями активно думаєш «де знайти роботу» — твій мозок раптом починає чути про роботу скрізь. Розмови сусідки, оголошення в кафе, допис у фейсбуці, який місяць тому ти б проґавила. Можливості не з'явились — вони були завжди. Просто ти їх раніше не помічала.
+      </p>
+
+      <div class="practice">
+        <div class="practice-label">Налаштування фільтра</div>
+        <div class="practice-body">
+          На тиждень: запиши одне конкретне формулювання — «я шукаю Х». «Я шукаю замовника на текстову роботу». «Я шукаю людину, з якою можна обговорити свою книжку». Перечитуй вранці. Ввечері — фіксуй, що з цього сьогодні промайнуло перед очима. <strong>Не очікуй, що відразу станеться</strong>. Просто помічай. Через 7 днів подивись свій список. Подиву не буде кінця.
+        </div>
+      </div>
+
+      <div class="insight"><strong>Підсумок М:</strong> Можливостей завжди більше, ніж ти бачиш. Проблема не в їхній відсутності, а в тому, що твій внутрішній фільтр налаштований не на них. Налаштуй його — і вони почнуть «з'являтись». Хоча насправді вони були завжди, просто ти їх не помічала.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ Рес · РЕСУРСИ ═══════════════ -->
+<section class="wrap deep">
+  <div class="comp c-burgundy">
+    <div class="comp-head">
+      <div class="comp-letter">Рес</div>
+      <div>
+        <div class="comp-name">Ресурси</div>
+        <div class="comp-name-sub">в (внутрішні) ; з (зовнішні) · змінюються в часі</div>
+      </div>
+    </div>
+    <div class="comp-body">
+      <p>
+        Багато людей думають, що ресурси — це гроші. Це правда, але не вся. Якби справа була тільки в грошах, не було б того явища, коли мільйонери лежать з вигоранням, а люди з маленьким бюджетом будують прекрасне життя.
+      </p>
+      <p>
+        У формулі Рес — це паливо, на якому працює твій двигун. І воно ділиться на два контури.
+      </p>
+
+      <h3>в — внутрішні ресурси</h3>
+      <p>
+        Те, що в тебе всередині. Їх п'ять:
+      </p>
+      <p>
+        <strong>Здібності.</strong> Те, що твій мозок і тіло вже вміють робити. Це не «талант від бога» — це накопичена нейронна архітектура. Те, що ти повторювала, на що звертала увагу, у що вкладала час.
+      </p>
+      <p>
+        <strong>Енергія.</strong> Не фігурально. Буквально — здатність тіла видавати дію без виснаження. Сон, харчування, рух, відновлення. Без цього вся формула буксує.
+      </p>
+      <p>
+        <strong>Увага.</strong> Це окрема валюта. Може бути енергії повно, а уваги — рознесено на двадцять задач, і нічого не складається.
+      </p>
+      <p>
+        <strong>Час.</strong> Той, який ти реально контролюєш. Не «у мене 24 години», а «у мене дві вільні години після укладання дітей».
+      </p>
+      <p>
+        <strong>Психічний капітал.</strong> Стійкість, здатність переживати невдачі і вертатись. Здатність не зрозчаровуватись з першого разу. Це теж ресурс, і він теж витрачається й накопичується.
+      </p>
+
+      <h3>з — зовнішні ресурси</h3>
+      <p>
+        Фінанси, соціальний капітал (хто тебе знає і за тебе скаже добре слово), інструменти (від комп'ютера до доступу до інтернету), інформація (доступ до того, що відбувається й за якими правилами грають у твоїй сфері). Це теж важливо. Але я навмисне ставлю це на друге місце.
+      </p>
+
+      <p>
+        Бо є один секрет.
+      </p>
+
+      <div class="wow">Ресурси — не статичні. Вони змінюються залежно від твого результату. Це петля. І це найголовніша магія формули.</div>
+
+      <p>
+        Подивись на запис формули ще раз. Бачиш стрілку «Рес(t+1) = Рес(t) + β · r(t)»? Це означає: те, що ти сьогодні зробила, <em>додається</em> до твоїх ресурсів на завтра. Не повертає тебе у нуль — додає.
+      </p>
+      <p>
+        Сьогодні ти провела важку розмову — завтра твій психічний капітал трохи виріс. Сьогодні ти зробила нову складну задачу — завтра твоя здібність трохи більша. Сьогодні ти познайомилась з людиною — завтра твій соцкапітал збільшився. <em>Кожна дія годує наступну дію</em>.
+      </p>
+      <p>
+        Це і є та сама причина, чому через десять років люди, які постійно діяли, опиняються в зовсім інших точках, ніж ті, хто стояв. Не тому що вони стартували краще. А тому що ресурси накопичувались.
+      </p>
+
+      <div class="practice">
+        <div class="practice-label">Інвентаризація ресурсів</div>
+        <div class="practice-body">
+          Зроби чесний огляд по всіх п'яти внутрішніх + чотирьох зовнішніх ресурсах. Не «оцінити від 1 до 10», а написати: <em>де я зараз</em>. «Здібності — добре в текстах, посередньо в перемовинах, погано в обліку». «Енергія — постійне виснаження зранку». Знайди свою <strong>найслабшу ланку</strong>. Не найгіршу взагалі, а ту, яка обмежує саме твою формулу <em>зараз</em>. Лікуй її — а не всі одразу.
+        </div>
+      </div>
+
+      <div class="insight"><strong>Підсумок Рес:</strong> Не «де взяти ресурси, щоб почати». А «що почати, щоб ресурси почали накопичуватись». Це інверсія, яка звільняє. Тобі не треба чекати ідеальної готовності. Тобі треба запустити петлю — і вона тебе сама годуватиме.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ β · КОНВЕРТАЦІЯ ═══════════════ -->
+<section class="wrap deep">
+  <div class="comp c-gold">
+    <div class="comp-head">
+      <div class="comp-letter" style="font-style:italic;">β</div>
+      <div>
+        <div class="comp-name">Коефіцієнт конвертації</div>
+        <div class="comp-name-sub">наскільки твій результат повертається в тебе як ресурс</div>
+      </div>
+    </div>
+    <div class="comp-body">
+      <p>
+        Якщо хтось колись запитає мене, який <em>один</em> компонент формули найбільше визначає твоє життя через десять років — я скажу: β.
+      </p>
+      <p>
+        Бо це і є те, що я колись сприймала як загадку. Чому з однакового старту, з однакових подій, з однакових провалів і успіхів двоє людей опиняються в зовсім різних точках. Не в «трохи різних» — між ними виростає <em>прірва</em>.
+      </p>
+      <p>
+        Дві жінки відкрили однаковий бізнес, обидві провалили його через рік. Одна після того п'ять років намагається оговтатись, друга через рік запускає інший — і він іде. У чому різниця? У β.
+      </p>
+
+      <p>
+        β — це <strong>наскільки ти вмієш вчитися зі своєї власної дії</strong>. Зі свого власного результату. З того, що ти прожила.
+      </p>
+      <p>
+        Якщо β висока — кожна дія, навіть провальна, додає тобі ресурсів. Знань, досвіду, людей, розуміння себе. Завтра ти стартуєш з трохи кращої точки.
+      </p>
+      <p>
+        Якщо β низька — ти можеш робити багато, переживати багато, провалюватись багато — і нічого не накопичується. Зранку ти знов нуль.
+      </p>
+
+      <p>
+        Уяви складні відсотки в банку. Якщо ти кладеш гроші під 1% річних — через 20 років матимеш трохи більше. Під 7% — через 20 років матимеш в 4 рази більше. Різниця в стартовій ставці — крихітна. Різниця у фінальній сумі — драматична. Це через те, що відсотки <em>нараховуються на відсотки</em>. Гроші ростуть на грошах.
+      </p>
+      <p>
+        β у формулі робить те саме з твоїми ресурсами. Кожна твоя дія приносить результат. Частина результату повертається в тебе. Завтрашня дія стартує з більших ресурсів. Дає більший результат. Більше повертається. І так далі.
+      </p>
+
+      <div class="wow">Експоненту в житті дає не наполегливість. А β. Здатність вчитися зі свого досвіду.</div>
+
+      <p>
+        У мозку за β відповідає, насамперед, префронтальна кора — твій «командний пункт». І зокрема — здатність до того, що нейровчені називають метакогніція: думати про власне мислення, спостерігати за тим, як ти діяла, видобувати з цього висновки.
+      </p>
+      <p>
+        Це навичка. Її можна тренувати. І це — найкраща інвестиція твого часу з усіх можливих. Бо β множиться на всю решту формули. Збільшила β на 10% — збільшила <em>усе</em> накопичене за 10 років разів у п'ять.
+      </p>
+
+      <h3>Що знижує β</h3>
+      <p>
+        Найгірше для β — <em>обходити болюче</em>. Провалилась — і скоріше забути, як страшний сон. Не розбираючись, що саме сталось. У такому випадку наступного разу ти знов наступиш на ті самі граблі — бо мозок не записав, де вони лежали.
+      </p>
+      <p>
+        Друге — <em>забирати все на себе</em> у поразці, і нічого — в успіху. «Це я винна, не вийшло» — записується в ідентичність (П). «Тут просто пощастило» — не записується ніде. Через 10 років усередині — лише список провалів, ніби успіхів не було. Хоч були.
+      </p>
+
+      <h3>Що піднімає β</h3>
+      <p>
+        <strong>Журнал післядії.</strong> Після кожної значущої дії (хороший проєкт, провал, важка розмова, рішення) — три питання: <em>Що сталось насправді? Чого я з цього навчилась? Що я зроблю інакше наступного разу?</em>
+      </p>
+      <p>
+        <strong>Видобуток принципу.</strong> Не запам'ятовуй подію. Видобувай з неї правило. «Я не вмію вести перемовини» — не правило. А ось «коли я заздалегідь не визначаю свою ціну, я завжди погоджуюсь на меншу» — це правило. Це вже можна врахувати і змінити наступного разу.
+      </p>
+      <p>
+        <strong>Метаувага.</strong> Питай не «що я зробила», а «чому це мене навчило». Інший фокус — інший вихід.
+      </p>
+
+      <div class="practice">
+        <div class="practice-label">Ритуал β</div>
+        <div class="practice-body">
+          Раз на тиждень, у фіксований день і час (у мене це неділя ввечері) — 15 хвилин з блокнотом. Три питання. <strong>Чого я навчилась за цей тиждень і що важливого для себе винесла?</strong> <strong>Який принцип я з цього виношу?</strong> <strong>Що я беру для застосування на майбутнє?</strong> Якщо робитимеш це рік — за рік ти буквально станеш іншою людиною. Не від «прочитання», а від <em>видобутку зі свого прожитого тижня</em>.
+        </div>
+      </div>
+
+      <div class="insight"><strong>Підсумок β:</strong> Це найвпливовіша точка всієї системи — і саме її майже ніхто свідомо не тренує. Вона відрізняє жінку, яка прожила десять років і виросла, від тієї, що прожила ті самі десять років і лишилася на місці. Головне питання тут не «що зі мною відбувається», а «як я переробляю те, що зі мною відбувається, на досвід».</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ T · ЧАС ═══════════════ -->
+<section class="wrap deep">
+  <div class="comp c-muted">
+    <div class="comp-head">
+      <div class="comp-letter">T</div>
+      <div>
+        <div class="comp-name">Час</div>
+        <div class="comp-name-sub">період накопичення · нелінійний мультиплікатор усього</div>
+      </div>
+    </div>
+    <div class="comp-body">
+      <p>
+        Час у формулі — не просто секунди й роки. Це <em>період, протягом якого петля встигає прокрутитись</em>. І чим довше вона крутиться — тим більший результат. Не лінійно. Експоненційно.
+      </p>
+
+      <p>
+        Знаєш чудову алегорію з бамбуком? Розповідають, що деякі види бамбука перші роки після посадки майже не показуються над землею. Збоку здається, що нічого не росте, що зусилля марні. А потім — за дуже короткий час — пагін стрімко витягується вгору, ніби диво.
+      </p>
+      <p>
+        Секрет простий. Поки нагорі нічого не видно, бамбук будує корінь — глибокий, розгалужений, потужний. Уся робота йде вниз, у невидиме. І лише коли коренева система готова, стовбур виходить нагору з тією швидкістю, яку дозволяє накопичена опора.
+      </p>
+
+      <div class="wow">Мала різниця на одному кроці стає прірвою через деякий час. Це не метафора. Це математика.</div>
+
+      <p>
+        Уяви двох людей. У одної β = 0.10. У другої β = 0.12. Дрібниця, правда? 2%, не великодне диво. Решта компонентів — однакова.
+      </p>
+      <p>
+        Через рік — друга трохи попереду. Не дуже помітно.
+      </p>
+      <p>
+        Через п'ять — вона вже у явно іншій точці.
+      </p>
+      <p>
+        Через десять — це <em>зовсім інше життя</em>. Без бахвальства, без агресивних дій, без надмірного «зусилля волі». Просто з кращим перетворенням свого досвіду на ресурси. На <strong>два відсотки</strong>.
+      </p>
+
+      <p>
+        І в цьому — найжорстокіше і найкрасивіше водночас. Жорстокість: ти не побачиш різниці перший рік. Тобі здаватиметься, що зміни нікуди не ведуть. Хочеться кинути. Краса: якщо не кинеш — через п'ять років буде уже зовсім інакше. Це питання довіри до власного руху.
+      </p>
+
+      <p>
+        Я зробила інтерактивний інструмент, де ти можеш покрутити цифри і подивитись сама, як це працює. Він тут же нижче на сторінці — після усіх букв.
+      </p>
+
+      <div class="practice">
+        <div class="practice-label">Згадка на пам'ять</div>
+        <div class="practice-body">
+          У моменти, коли тобі здаватиметься, що «нічого не змінюється», згадай бамбук. Більшу частину будь-якої історії змін нічого не видно: зростання йде в корінь. Видиме починається тоді, коли головне вже сталося всередині. <strong>Найбезглуздіше — кинути саме перед стрибком</strong>, бо ззовні він нічим не відрізняється від застою.
+        </div>
+      </div>
+
+      <div class="insight"><strong>Підсумок T:</strong> Час — не пасивний фон. Це активний помножувач усього. І він не нагороджує тих, хто пробігає швидко. Він нагороджує тих, хто його розумно використовує — крок за кроком, не кидаючи на півдорозі.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ε · ВИПАДКОВІСТЬ ═══════════════ -->
+<section class="wrap deep">
+  <div class="comp c-muted">
+    <div class="comp-head">
+      <div class="comp-letter" style="font-style:italic;">ε</div>
+      <div>
+        <div class="comp-name">Випадковість</div>
+        <div class="comp-name-sub">шум · некерована · ±</div>
+      </div>
+    </div>
+    <div class="comp-body">
+      <p>
+        Чесно — є частина результату, яку ти не контролюєш. І в цій формулі ми її чесно називаємо своїм іменем. ε — це шум. Везіння і невезіння. Те, що додає або забирає, незалежно від того, що ти робиш.
+      </p>
+      <p>
+        Зустріч, яка змінила все, тому що ти випадково затрималась і не пішла в ту кав'ярню в інший день. Літак, на який ти не сіла. Людина, яка тебе помітила. Або навпаки — хвороба, що зруйнувала плани. Бомбардування, що зруйнувало місто. Я з України пишу і добре знаю, як ε може звести нанівець велику частину формули за одну ніч.
+      </p>
+
+      <div class="wow">Будуй стійкість, а не ілюзію контролю. Будь готова до ε з обох боків.</div>
+
+      <p>
+        Тут є парадокс. Чим більше у тебе тренована вся решта формули — тим <em>більше</em> ти отримуєш від плюсового ε. Везіння приходить до всіх — тільки одні готові його взяти, а інші проходять повз.
+      </p>
+      <p>
+        А чим краще ти будуєш петлю β і Рес — тим краще ти витримуєш мінусове ε. Бо в тебе є з чого почати спочатку. Накопичені здібності, накопичений психічний капітал, накопичені люди довкола.
+      </p>
+      <p>
+        Тому правильна стратегія щодо випадковості — не намагатися її контролювати (марно), а будувати таку формулу, яка <em>добре приймає і плюс, і мінус</em>.
+      </p>
+
+      <div class="insight"><strong>Підсумок ε:</strong> Не «нічого не залежить від мене». І не «все залежить від мене». А чесно: <em>багато залежить, дещо ні</em>. Перше — твоя справа. Друге — твоя стійкість.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ Π · ПРАВИЛА ГРИ ═══════════════ -->
+<section class="wrap deep">
+  <div class="comp c-violet">
+    <div class="comp-head">
+      <div class="comp-letter">Π</div>
+      <div>
+        <div class="comp-name">Правила гри</div>
+        <div class="comp-name-sub">природні закони · соціальні норми · правила поля, на якому ти граєш</div>
+      </div>
+    </div>
+    <div class="comp-body">
+      <p>
+        А це — те, що стоїть зверху над усією формулою. Не змінна всередині, а рамка, у якій уся формула <em>взагалі може існувати</em>.
+      </p>
+      <p>
+        Одразу домовимось, щоб не сплутати. Цей складник я позначаю грецькою літерою «Пі» — Π. Так, на письмі вона схожа на наше П, а на слух звучить майже однаково. Але це <em>різні речі</em>. П-Переконання — це фільтр усередині тебе. А Π-Правила гри — це рамка зовні, поле, на якому ти граєш. Тримай цю різницю в голові до кінця розділу.
+      </p>
+      <p>
+        Π — це правила гри. Тут три шари.
+      </p>
+
+      <h3>Природні закони</h3>
+      <p>
+        Те, що задано фізикою, біологією, часом і простором. Доба має 24 години, не 30. Тіло потребує сну. Розрив зв'язків боляче. Це не «несправедливо» — це <em>як є</em>. Спроби це обійти забирають ресурси, не дають результату.
+      </p>
+
+      <h3>Соціальні норми</h3>
+      <p>
+        Правила суспільства, в якому ти живеш. Що цінується, що ні. Які професії, який стиль. Що дозволено жінці, що чоловіку. У різні часи й у різних країнах — різні. Це гнучкі правила — їх можна порушувати, але з ціною. Платиш увагою, плітками, відносинами. Іноді — варто заплатити. Іноді — ні. Це твоє рішення.
+      </p>
+
+      <h3>Правила конкретного поля</h3>
+      <p>
+        Найгнучкіший шар. Правила саме твоєї індустрії, твоєї ніші, твого міста, твоєї конкретної ситуації. Які тут шляхи, які бар'єри, як тут зростають. У IT правила одні, у мистецтві — інші, у науці — треті.
+      </p>
+
+      <p>
+        Найкоротше про Π — уявімо шахи і шашки. На одній і тій самій 64-клітинній дошці. Якщо ти прийшла грати в шашки, а партнер грає в шахи — ти будеш програвати весь час, не розуміючи, чому. Твої правила не діють. Уся твоя стратегія марна не тому, що погана, а тому що <em>не та гра</em>.
+      </p>
+
+      <div class="wow">Π визначає діапазон можливого результату. Знаєш правила — і навіть з гіршими складовими виграєш. Не знаєш — і з найкращими програєш.</div>
+
+      <p>
+        Ось чому переїзд із однієї країни в іншу іноді міняє все. Не тому що людина стала іншою, а тому що <em>там інші правила</em>. Те, за що тут карали — там нагороджують. Те, що тут вважалось «безперспективним» — там у попиті.
+      </p>
+
+      <div class="practice">
+        <div class="practice-label">Інвентаризація правил гри</div>
+        <div class="practice-body">
+          Запиши, у яку <em>гру</em> ти зараз граєш. Не «у мене кар'єра в Х», а «правила цієї конкретної гри — такі-то». Що цінується? Що карається? Які шляхи доступні, які ні? Хто арбітри, хто гравці? <strong>Часто проблема не в тобі, а в тому, що ти граєш не в ту гру.</strong> Або граєш у потрібну, але не за правилами.
+        </div>
+      </div>
+
+      <div class="insight"><strong>Підсумок Π:</strong> Перш ніж грати — переконайся, що ти зрозуміла гру. Інакше всі зусилля підуть на бездоганне виконання неправильних дій.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ТРИ ЗАКОНИ ═══════════════ -->
+<section class="wrap deep">
+  <div class="kicker">Підсумкова рамка</div>
+  <h2 class="section-title">Три залізні закони, з яких неможливо вийти</h2>
+
+  <p>
+    З формули випливають три закони. Не «принципи», не «настанови» — а саме закони. Як гравітація: можеш не вірити, але вони працюють і без твоєї згоди.
+  </p>
+
+  <div class="laws">
+    <div class="law">
+      <div class="law-num">Закон I</div>
+      <div class="law-title">Закон нуля</div>
+      <div class="law-text">
+        Будь-який компонент = 0 → весь результат = 0. Знайди свій нуль і працюй з ним — а не лікуй усе одночасно.
+      </div>
+    </div>
+    <div class="law">
+      <div class="law-num">Закон II</div>
+      <div class="law-title">Закон саботажу</div>
+      <div class="law-text">
+        Якщо П уходить у мінус — формула працює <em>проти тебе</em>. Чим більше зусиль, тим гірше. Точка натиску тут — ідентичність, а не дисципліна.
+      </div>
+    </div>
+    <div class="law">
+      <div class="law-num">Закон III</div>
+      <div class="law-title">Закон прірви</div>
+      <div class="law-text">
+        Мала різниця на одному кроці → з часом стає прірвою. Це експонента. Її не побачиш за тиждень. Її видно через достатній проміжок часу.
+      </div>
+    </div>
+  </div>
+
+  <p>
+    Останнє, перш ніж піти до лабораторії: ці закони — не вирок. Вони — карта. Якщо тобі здається, що «всюди закрито» — придивись, до якого закону це належить. Майже завжди це Закон I (десь нуль) або Закон II (десь саботаж).
+  </p>
+  <p>
+    А тепер — пограємось з формулою наживо. У лабораторії нижче ти можеш покрутити цифри й побачити, як це працює <em>математично</em>. Особливо рекомендую тиснути «Закон III» — там видно ту саму бамбукову експоненту.
+  </p>
+</section>
+
+<!-- ═══════════════ INTERACTIVE LAB ═══════════════ -->
+<section class="lab-section">
+  <div class="wrap-wide">
+    <div class="kicker" style="text-align:center; display:block;">Лабораторія</div>
+    <h2 class="section-title" style="text-align:center;">Покрути формулу руками</h2>
+    <p style="text-align:center; max-width:38em; margin:0 auto 2rem; color:var(--ink2);">Це жива формула, а не картинка. Покрути повзунки — побач, як працює петля, як вибухає експонента, як саботаж їсть ресурси, як крихітні різниці через час стають прірвою.</p>
+  </div>
+
+  <div class="lab">
+    <div class="lab-head">
+      <div class="lab-title">Лабораторія формули</div>
+      <div class="mode-toggle">
+        <button class="mode-btn active" id="mode-single" onclick="setMode('single')">Один сценарій</button>
+        <button class="mode-btn" id="mode-dual" onclick="setMode('dual')">Дві траєкторії</button>
+      </div>
+    </div>
+
+    <div class="lab-grid">
+      <div class="controls">
+        <div class="ctrl-row"><span class="ctrl-label">Б <span class="tiny">бажання</span></span><input type="range" id="s-b" min="0" max="1" step="0.01" value="0.8"><span class="ctrl-val" id="v-b">0.80</span></div>
+        <div class="ctrl-row"><span class="ctrl-label">П <span class="tiny">переконання</span></span><input type="range" id="s-p" min="-1" max="1" step="0.01" value="0.7"><span class="ctrl-val" id="v-p">+0.70</span></div>
+        <div class="ctrl-row"><span class="ctrl-label">Д <span class="tiny">дії</span></span><input type="range" id="s-d" min="0" max="1" step="0.01" value="0.6"><span class="ctrl-val" id="v-d">0.60</span></div>
+        <div class="ctrl-row"><span class="ctrl-label">О <span class="tiny">обставини</span></span><input type="range" id="s-o" min="0" max="1" step="0.01" value="0.7"><span class="ctrl-val" id="v-o">0.70</span></div>
+        <div class="ctrl-row"><span class="ctrl-label">М <span class="tiny">можливості</span></span><input type="range" id="s-m" min="0" max="1" step="0.01" value="0.6"><span class="ctrl-val" id="v-m">0.60</span></div>
+        <div class="ctrl-row"><span class="ctrl-label">Рес₀ <span class="tiny">старт</span></span><input type="range" id="s-res" min="0.1" max="3" step="0.05" value="1"><span class="ctrl-val" id="v-res">1.00</span></div>
+        <div class="ctrl-row"><span class="ctrl-label">β <span class="tiny">конверсія</span></span><input type="range" id="s-beta" min="0" max="0.3" step="0.005" value="0.1"><span class="ctrl-val" id="v-beta">0.10</span></div>
+        <div class="ctrl-row"><span class="ctrl-label">ε <span class="tiny">шум</span></span><input type="range" id="s-eps" min="0" max="0.5" step="0.01" value="0.05"><span class="ctrl-val" id="v-eps">0.05</span></div>
+        <div class="ctrl-row"><span class="ctrl-label">T <span class="tiny">кроків</span></span><input type="range" id="s-t" min="20" max="365" step="1" value="100"><span class="ctrl-val" id="v-t">100</span></div>
+      </div>
+
+      <div class="chart-wrap">
+        <div class="chart-canvas-wrap"><canvas id="chart"></canvas></div>
+        <div class="legend">
+          <div class="legend-item"><span class="legend-dot" style="background:var(--terra);"></span>R(t) · A</div>
+          <div class="legend-item"><span class="legend-dot" style="background:var(--gold);"></span>Рес(t) · A</div>
+          <div class="legend-item dual-only" style="display:none;"><span class="legend-dot" style="background:var(--blue);"></span>R(t) · Б</div>
+          <div class="legend-item dual-only" style="display:none;"><span class="legend-dot" style="background:var(--green);"></span>Рес(t) · Б</div>
+        </div>
+        <div class="stats" id="stats-grid">
+          <div class="stat terra"><div class="stat-label">R(T) · A</div><div class="stat-val" id="st-r">—</div></div>
+          <div class="stat gold"><div class="stat-label">Рес(T) · A</div><div class="stat-val" id="st-res">—</div></div>
+          <div class="stat muted"><div class="stat-label">r макс · A</div><div class="stat-val" id="st-rmax">—</div></div>
+          <div class="stat b-stat" id="st-b-r-wrap" style="display:none;"><div class="stat-label">R(T) · Б</div><div class="stat-val" id="st-b-r">—</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="b-panel" id="b-panel">
+      <div class="b-head">
+        <div class="b-title">Сценарій <span style="color:var(--blue);">Б</span> <em>· відхилення від А</em></div>
+        <div class="b-presets">
+          <button class="b-preset" onclick="setBDeltas({b:0,p:0,d:0.05,o:0,beta:0})">+0.05 до Д</button>
+          <button class="b-preset" onclick="setBDeltas({b:0,p:0,d:0,o:0,beta:0.03})">+0.03 до β</button>
+          <button class="b-preset" onclick="setBDeltas({b:0.05,p:0.05,d:0.05,o:0,beta:0.02})">«трохи краще всюди»</button>
+          <button class="b-preset" onclick="setBDeltas({b:0,p:0,d:0,o:0,beta:0})">Б = А</button>
+        </div>
+      </div>
+      <div class="b-grid">
+        <div class="b-cell"><div class="b-cell-label">ΔБ <span class="b-cell-val" id="vb-b">+0.00</span></div><input type="range" id="db-b" min="-0.3" max="0.3" step="0.01" value="0"></div>
+        <div class="b-cell"><div class="b-cell-label">ΔП <span class="b-cell-val" id="vb-p">+0.00</span></div><input type="range" id="db-p" min="-0.5" max="0.5" step="0.01" value="0"></div>
+        <div class="b-cell"><div class="b-cell-label">ΔД <span class="b-cell-val" id="vb-d">+0.00</span></div><input type="range" id="db-d" min="-0.3" max="0.3" step="0.01" value="0"></div>
+        <div class="b-cell"><div class="b-cell-label">ΔО <span class="b-cell-val" id="vb-o">+0.00</span></div><input type="range" id="db-o" min="-0.3" max="0.3" step="0.01" value="0"></div>
+        <div class="b-cell"><div class="b-cell-label">Δβ <span class="b-cell-val" id="vb-beta">+0.00</span></div><input type="range" id="db-beta" min="-0.1" max="0.1" step="0.005" value="0"></div>
+      </div>
+    </div>
+
+    <div class="scenarios-row">
+      <button class="sc-card" onclick="setScenario('zero')">
+        <div class="sc-card-num">Закон I</div>
+        <div class="sc-card-title">Закон нуля</div>
+        <div class="sc-card-desc">Усе є, крім дій. Дивись, як петля стоїть.</div>
+      </button>
+      <button class="sc-card" onclick="setScenario('sabotage')">
+        <div class="sc-card-num">Закон II</div>
+        <div class="sc-card-title">Саботаж</div>
+        <div class="sc-card-desc">П у мінусі. Дивись, як ресурси тануть.</div>
+      </button>
+      <button class="sc-card" onclick="setScenario('chasm')">
+        <div class="sc-card-num">Закон III</div>
+        <div class="sc-card-title">Прірва через час</div>
+        <div class="sc-card-desc">Дві майже однакові траєкторії. Через 200 кроків — прірва.</div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ МЕТОДИЧКА ═══════════════ -->
+<section class="method-section">
+  <div class="method-inner">
+    <div class="kicker" style="display:block;">∴ Від формули до практики</div>
+    <h2 class="section-title">Методичка вправ — що звідки росте</h2>
+    <p style="max-width:42em; color:var(--ink2); margin-bottom:1rem;">
+      Якщо формула чесна — вона має <strong>підказувати, що тренувати</strong>. Кожна вправа в методичці виростає з конкретної частини рівняння. Не «розвиток особистості взагалі», а <em>точкова робота на конкретному компоненті</em>. Ось п'ять напрямів з прямою прив'язкою.
+    </p>
+
+    <div class="method-grid">
+
+      <div class="method-card">
+        <div class="method-card-tag gold"><span class="tk">β</span>петля</div>
+        <div class="method-card-title">Конвертація результату в ресурси</div>
+        <div class="method-why">Найвпливовіша точка. Чим вищий β — тим швидша експонента.</div>
+        <div class="method-ex-list">
+          <div class="method-ex"><span><strong>Журнал післядії.</strong> Після кожної значущої події — три питання: що сталось, що я з цього зрозуміла, що зміниться у мені.</span></div>
+          <div class="method-ex"><span><strong>Видобуток принципу.</strong> Кожний тиждень — одне правило, виведене з власного досвіду.</span></div>
+          <div class="method-ex"><span><strong>Метаувага.</strong> Питання не «що сталось», а «як це мене змінило».</span></div>
+        </div>
+      </div>
+
+      <div class="method-card">
+        <div class="method-card-tag blue"><span class="tk">Д·О</span>новизна</div>
+        <div class="method-card-title">Будувати нову нейронну мережу</div>
+        <div class="method-why">Складність мережі росте через те, чого мозок раніше не робив. Повторення мієлінізує старе. Новизна — будує нові містки.</div>
+        <div class="method-ex-list">
+          <div class="method-ex"><span><strong>Один новий досвід на тиждень.</strong> Принципово новий тип діяльності.</span></div>
+          <div class="method-ex"><span><strong>Зміна сенсорних патернів.</strong> Інша рука, інший маршрут, інший контекст для звичної справи.</span></div>
+          <div class="method-ex"><span><strong>Перетин дисциплін.</strong> Фізично-розумові гібриди.</span></div>
+        </div>
+      </div>
+
+      <div class="method-card">
+        <div class="method-card-tag"><span class="tk">LTP</span>закріплення</div>
+        <div class="method-card-title">Інтенсивність × багатоканальність</div>
+        <div class="method-why">Сила нових нейронних зв'язків = яскравість × кількість каналів × емоційний маркер. Слабкий, монотонний досвід — слабкі зв'язки.</div>
+        <div class="method-ex-list">
+          <div class="method-ex"><span><strong>Багатосенсорна практика.</strong> Зір + слух + дотик + рух одночасно.</span></div>
+          <div class="method-ex"><span><strong>Емоційний маркер до старту.</strong> Чітке «це важливо для мене» перед практикою.</span></div>
+          <div class="method-ex"><span><strong>Пік замість тривалості.</strong> 20 яскравих хвилин краще за 2 нудні години.</span></div>
+        </div>
+      </div>
+
+      <div class="method-card">
+        <div class="method-card-tag violet"><span class="tk">П(і·п)</span>фільтр</div>
+        <div class="method-card-title">Переконання й ідентичність</div>
+        <div class="method-why">П — єдиний компонент, що може зробити R від'ємним. Робота тут — виявлення саботажних патернів і перебудова ідентичності.</div>
+        <div class="method-ex-list">
+          <div class="method-ex"><span><strong>Аудит ідентичності.</strong> 20 завершень речення «я є людиною, яка…».</span></div>
+          <div class="method-ex"><span><strong>Калібрування фактами.</strong> Перевірка обмежувальних переконань на доказах.</span></div>
+          <div class="method-ex"><span><strong>Дія, що випереджає переконання.</strong> Маленька дія від нової ідентичності.</span></div>
+        </div>
+      </div>
+
+      <div class="method-card">
+        <div class="method-card-tag green"><span class="tk">Рес(в)</span>паливо</div>
+        <div class="method-card-title">Енергія, увага, час</div>
+        <div class="method-why">Двигун без палива не їде. Рес(в) — це не «розкіш для саморозвитку», а базова умова, щоб формула працювала.</div>
+        <div class="method-ex-list">
+          <div class="method-ex"><span><strong>Гігієна сну й відновлення.</strong> Не «коли встигну», а як обов'язкова частина системи.</span></div>
+          <div class="method-ex"><span><strong>Тренування фокусу.</strong> Відключення від інформаційного шуму.</span></div>
+          <div class="method-ex"><span><strong>Розпізнавання вікон М.</strong> Метакогнітивна навичка помічати можливості.</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ЗАКІНЧЕННЯ ═══════════════ -->
+<section class="ending wrap">
+  <div class="kicker">Що з цим робити</div>
+  <h2 class="section-title">Формула — це не вирок. Це карта.</h2>
+
+  <p style="max-width:36em; margin:0 auto 1.5rem;">
+    Тепер, коли ти бачиш карту цілком, у тебе є рідкісна перевага: ти можеш <em>не лікувати все одночасно</em>. Не «стати кращою версією себе». Не «прокачати своє життя».
+  </p>
+  <p style="max-width:36em; margin:0 auto 1.5rem;">
+    А натомість — подивитись чесно і знайти свою точку натиску. У когось це Б (рухається не туди). У когось — П (саботаж зсередини). У когось — О (середовище, яке висмоктує). У когось — β (живе багато, а не вчиться).
+  </p>
+  <p style="max-width:36em; margin:0 auto 2.5rem;">
+    Зазвичай — один-два компоненти. Решта — нормально. І зміна одного з них змінює <em>усе</em>, бо формула перемножує.
+  </p>
+
+  <p style="max-width:36em; margin:0 auto 2.5rem;">
+    Пам'ятаєш дівчинку з початку, яка вважала себе невезучою? Те, що вона колись шукала роками, тепер лежить перед тобою цілком — на одній сторінці. Тоді я бачила лише ε, випадковий квиток лотереї, і думала, що все вирішує він. А вся решта формули весь цей час була в моїх руках. Удача справді може дати хороший старт. Але великий Результат вона не збере за тебе — його складаєш ти сама, з маленьких щоденних кроків.
+  </p>
+
+  <div class="ending-q">З якого компонента почнеш ти?</div>
+
+  <p class="signature">— Світлана Сліпченко, психолог, авторка курсу «Крок за горизонт»</p>
+</section>
+
+<footer>
+  Крок за горизонт · Лекція «Формула результату»
+</footer>
+
+
+<script>
+// ════════ STATE ════════
+const ids = ['b','p','d','o','m','res','beta','eps','t'];
+const state = {};
+const deltaIds = ['b','p','d','o','beta'];
+const deltaB = { b:0, p:0, d:0, o:0, beta:0 };
+let mode = 'single';
+
+ids.forEach(id => {
+  const slider = document.getElementById('s-' + id);
+  state[id] = parseFloat(slider.value);
+  slider.addEventListener('input', () => {
+    state[id] = parseFloat(slider.value);
+    updateValueLabels();
+    simulate();
+  });
+});
+
+deltaIds.forEach(id => {
+  const slider = document.getElementById('db-' + id);
+  slider.addEventListener('input', () => {
+    deltaB[id] = parseFloat(slider.value);
+    updateBLabels();
+    simulate();
+  });
+});
+
+function fmtSigned(n) { return (n >= 0 ? '+' : '') + n.toFixed(2); }
+
+function updateValueLabels() {
+  document.getElementById('v-b').textContent = state.b.toFixed(2);
+  document.getElementById('v-p').textContent = fmtSigned(state.p);
+  document.getElementById('v-d').textContent = state.d.toFixed(2);
+  document.getElementById('v-o').textContent = state.o.toFixed(2);
+  document.getElementById('v-m').textContent = state.m.toFixed(2);
+  document.getElementById('v-res').textContent = state.res.toFixed(2);
+  document.getElementById('v-beta').textContent = state.beta.toFixed(2);
+  document.getElementById('v-eps').textContent = state.eps.toFixed(2);
+  document.getElementById('v-t').textContent = Math.round(state.t);
+}
+
+function updateBLabels() {
+  document.getElementById('vb-b').textContent = fmtSigned(deltaB.b);
+  document.getElementById('vb-p').textContent = fmtSigned(deltaB.p);
+  document.getElementById('vb-d').textContent = fmtSigned(deltaB.d);
+  document.getElementById('vb-o').textContent = fmtSigned(deltaB.o);
+  document.getElementById('vb-beta').textContent = fmtSigned(deltaB.beta);
+}
+
+function setBDeltas(d) {
+  Object.keys(d).forEach(k => {
+    deltaB[k] = d[k];
+    document.getElementById('db-' + k).value = d[k];
+  });
+  updateBLabels();
+  simulate();
+}
+
+function setMode(m) {
+  mode = m;
+  document.getElementById('mode-single').classList.toggle('active', m === 'single');
+  document.getElementById('mode-dual').classList.toggle('active', m === 'dual');
+  document.getElementById('b-panel').classList.toggle('active', m === 'dual');
+  document.getElementById('st-b-r-wrap').style.display = m === 'dual' ? '' : 'none';
+  document.getElementById('stats-grid').classList.toggle('dual', m === 'dual');
+  document.querySelectorAll('.legend-item.dual-only').forEach(el => {
+    el.style.display = m === 'dual' ? '' : 'none';
+  });
+  simulate();
+}
+
+// ════════ SIM ════════
+function mulberry32(seed) {
+  return function() {
+    let t = seed += 0x6D2B79F5;
+    t = Math.imul(t ^ t >>> 15, t | 1);
+    t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+
+function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+function runSimWith(params, seed) {
+  const T = Math.round(state.t);
+  const rand = mulberry32(seed);
+  let Res = state.res;
+  let cumR = 0;
+  const cumPoints = [];
+  const resPoints = [];
+  let rMax = -Infinity;
+  for (let t = 0; t < T; t++) {
+    const noise = (rand() - 0.5) * 2 * state.eps;
+    const r = (params.b * params.p) * params.d * params.o * params.m * Res + noise;
+    Res = Res + params.beta * r;
+    cumR += r;
+    if (r > rMax) rMax = r;
+    cumPoints.push(cumR);
+    resPoints.push(Res);
+  }
+  return { cumPoints, resPoints, rMax };
+}
+
+function buildParams(useDelta) {
+  return {
+    b:    clamp(state.b    + (useDelta ? deltaB.b    : 0), 0, 1),
+    p:    clamp(state.p    + (useDelta ? deltaB.p    : 0), -1, 1),
+    d:    clamp(state.d    + (useDelta ? deltaB.d    : 0), 0, 1),
+    o:    clamp(state.o    + (useDelta ? deltaB.o    : 0), 0, 1),
+    m:    state.m,
+    beta: clamp(state.beta + (useDelta ? deltaB.beta : 0), 0, 1)
+  };
+}
+
+// ════════ CHART ════════
+const canvas = document.getElementById('chart');
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas() {
+  const wrap = canvas.parentElement;
+  const dpr = window.devicePixelRatio || 1;
+  const w = wrap.clientWidth - 32;
+  const h = wrap.clientHeight - 32;
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  canvas.style.width = w + 'px';
+  canvas.style.height = h + 'px';
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.scale(dpr, dpr);
+}
+
+function drawLine(data, x0, plotW, y0, plotH, yMin, yMax, color, width) {
+  const T = data.length;
+  ctx.strokeStyle = color;
+  ctx.lineWidth = width;
+  ctx.beginPath();
+  data.forEach((v, i) => {
+    const x = x0 + (i / Math.max(T - 1, 1)) * plotW;
+    const y = y0 + plotH - ((v - yMin) / (yMax - yMin)) * plotH;
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  });
+  ctx.stroke();
+}
+
+function drawChart(dataA, dataB) {
+  const dpr = window.devicePixelRatio || 1;
+  const W = canvas.width / dpr;
+  const H = canvas.height / dpr;
+  const padL = 50, padR = 12, padT = 12, padB = 28;
+  const plotW = W - padL - padR;
+  const plotH = H - padT - padB;
+  ctx.clearRect(0, 0, W, H);
+
+  const all = [...dataA.cumPoints, ...dataA.resPoints];
+  if (dataB) all.push(...dataB.cumPoints, ...dataB.resPoints);
+  let yMin = Math.min(...all, 0);
+  let yMax = Math.max(...all, state.res);
+  if (yMax === yMin) yMax = yMin + 1;
+  const yRange = yMax - yMin;
+  yMin -= yRange * 0.05;
+  yMax += yRange * 0.05;
+
+  ctx.strokeStyle = 'rgba(44,26,14,.06)';
+  ctx.lineWidth = 1;
+  for (let i = 0; i <= 4; i++) {
+    const y = padT + (plotH / 4) * i;
+    ctx.beginPath();
+    ctx.moveTo(padL, y);
+    ctx.lineTo(W - padR, y);
+    ctx.stroke();
+  }
+
+  if (yMin < 0 && yMax > 0) {
+    const y0 = padT + plotH - ((0 - yMin) / (yMax - yMin)) * plotH;
+    ctx.strokeStyle = 'rgba(44,26,14,.25)';
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.moveTo(padL, y0);
+    ctx.lineTo(W - padR, y0);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  ctx.fillStyle = '#8B7355';
+  ctx.font = '11px Georgia, serif';
+  ctx.textAlign = 'right';
+  for (let i = 0; i <= 4; i++) {
+    const v = yMax - ((yMax - yMin) / 4) * i;
+    const y = padT + (plotH / 4) * i;
+    ctx.fillText(v.toFixed(1), padL - 8, y + 4);
+  }
+
+  const T = dataA.cumPoints.length;
+  ctx.textAlign = 'center';
+  for (let i = 0; i <= 5; i++) {
+    const t = Math.round((T - 1) * (i / 5));
+    const x = padL + plotW * (i / 5);
+    ctx.fillText('t=' + t, x, H - 8);
+  }
+
+  if (dataB) {
+    drawLine(dataB.resPoints, padL, plotW, padT, plotH, yMin, yMax, '#4A7C3A', 1.8);
+    drawLine(dataB.cumPoints, padL, plotW, padT, plotH, yMin, yMax, '#3A5878', 2.2);
+  }
+  drawLine(dataA.resPoints, padL, plotW, padT, plotH, yMin, yMax, '#C9A84C', 2);
+  drawLine(dataA.cumPoints, padL, plotW, padT, plotH, yMin, yMax, '#B85042', 2.5);
+
+  ctx.strokeStyle = 'rgba(44,26,14,.2)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(padL, padT);
+  ctx.lineTo(padL, padT + plotH);
+  ctx.lineTo(W - padR, padT + plotH);
+  ctx.stroke();
+}
+
+function simulate() {
+  const paramsA = buildParams(false);
+  const dataA = runSimWith(paramsA, 42);
+  let dataB = null;
+  if (mode === 'dual') {
+    const paramsB = buildParams(true);
+    dataB = runSimWith(paramsB, 42);
+  }
+  drawChart(dataA, dataB);
+
+  document.getElementById('st-r').textContent = formatNum(dataA.cumPoints[dataA.cumPoints.length - 1]);
+  document.getElementById('st-res').textContent = formatNum(dataA.resPoints[dataA.resPoints.length - 1]);
+  document.getElementById('st-rmax').textContent = formatNum(dataA.rMax);
+  if (dataB) {
+    document.getElementById('st-b-r').textContent = formatNum(dataB.cumPoints[dataB.cumPoints.length - 1]);
+  }
+}
+
+function formatNum(n) {
+  if (Math.abs(n) >= 1000) return n.toFixed(0);
+  if (Math.abs(n) >= 100) return n.toFixed(1);
+  if (Math.abs(n) >= 10) return n.toFixed(2);
+  return n.toFixed(3);
+}
+
+// ════════ SCENARIOS ════════
+const scenarios = {
+  zero:     { b: 0.8, p: 0.7,  d: 0.0, o: 0.7, m: 0.6, res: 1.0, beta: 0.1,  eps: 0.05, t: 100 },
+  sabotage: { b: 0.8, p: -0.4, d: 0.6, o: 0.7, m: 0.6, res: 1.0, beta: 0.15, eps: 0.05, t: 100 },
+  chasm:    { b: 0.7, p: 0.7,  d: 0.6, o: 0.6, m: 0.6, res: 1.0, beta: 0.15, eps: 0.05, t: 200 }
+};
+
+function setScenario(name) {
+  const s = scenarios[name];
+  Object.keys(s).forEach(k => {
+    state[k] = s[k];
+    document.getElementById('s-' + k).value = s[k];
+  });
+  if (name === 'chasm') {
+    setMode('dual');
+    setBDeltas({ b: 0, p: 0, d: 0.05, o: 0, beta: 0.02 });
+  } else {
+    if (mode === 'dual') setMode('single');
+  }
+  updateValueLabels();
+  simulate();
+  document.querySelector('.lab-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// ════════ SCROLL REVEALS ════════
+function setupReveals() {
+  const sections = document.querySelectorAll('section, .comp, .law, .method-card');
+  sections.forEach(el => el.classList.add('reveal'));
+  if (!('IntersectionObserver' in window)) {
+    sections.forEach(el => el.classList.add('visible'));
+    return;
+  }
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+  sections.forEach(el => obs.observe(el));
+}
+
+// ════════ INIT ════════
+window.addEventListener('resize', () => {
+  resizeCanvas();
+  simulate();
+});
+
+resizeCanvas();
+updateValueLabels();
+updateBLabels();
+simulate();
+setupReveals();
+</script>
+
+</body>
+</html>
