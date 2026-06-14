@@ -404,6 +404,62 @@ h3 {
 .comp.c-burgundy .comp-letter { color: var(--burgundy); }
 .comp.c-muted .comp-letter { color: var(--muted); }
 
+/* ═══════════════ STICKY MINI-FORMULA ═══════════════ */
+
+.sticky-formula {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  background: rgba(250, 245, 236, .96);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 2px 12px -6px rgba(44,26,14,.25);
+  padding: .7rem 1rem;
+  text-align: center;
+  transform: translateY(-110%);
+  transition: transform .35s ease;
+  pointer-events: none;
+}
+.sticky-formula.visible {
+  transform: translateY(0);
+}
+
+.sticky-formula-inner {
+  font-family: 'Georgia', serif;
+  font-size: clamp(.72rem, 2.1vw, 1rem);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -.01em;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.sticky-formula-inner::-webkit-scrollbar { display: none; }
+
+.sticky-formula .tok {
+  color: var(--ink2);
+  font-weight: 400;
+  transition: all .25s ease;
+  padding: 1px 2px;
+  border-radius: 3px;
+}
+.sticky-formula .tok.var {
+  font-weight: 700;
+}
+.sticky-formula .tok.active {
+  background: var(--terra);
+  color: #fff;
+  font-weight: 700;
+  padding: 2px 7px;
+  box-shadow: 0 1px 4px rgba(184,80,66,.4);
+}
+
 /* ═══════════════ THREE LAWS ═══════════════ */
 
 .laws {
@@ -882,6 +938,13 @@ footer {
 </head>
 <body>
 
+<!-- ═══════════════ STICKY MINI-FORMULA ═══════════════ -->
+<div class="sticky-formula" id="stickyFormula" aria-hidden="true">
+  <div class="sticky-formula-inner">
+    r = ( <span class="tok var" data-tok="b">Б</span> × <span class="tok var" data-tok="p">П</span> ) · <span class="tok var" data-tok="d">Д</span> × <span class="tok var" data-tok="o">О</span> × <span class="tok var" data-tok="m">М</span> × <span class="tok var" data-tok="res">Рес</span> ± <span class="tok var" data-tok="eps">ε</span>&nbsp;&nbsp;<span class="tok" style="opacity:.5;">| петля</span> <span class="tok var" data-tok="beta">β</span> <span class="tok" style="opacity:.5;">· час</span> <span class="tok var" data-tok="t">T</span> <span class="tok" style="opacity:.5;">· рамка</span> <span class="tok var" data-tok="pi">Π</span>
+  </div>
+</div>
+
 <!-- ═══════════════ HEADER ═══════════════ -->
 <header class="top">
   <div class="series">Крок за горизонт · Лекція</div>
@@ -999,7 +1062,7 @@ footer {
 
 <!-- ═══════════════ Б · БАЖАННЯ ═══════════════ -->
 <section class="wrap deep">
-  <div class="comp c-terra">
+  <div data-comp="b" class="comp c-terra">
     <div class="comp-head">
       <div class="comp-letter">Б</div>
       <div>
@@ -1055,7 +1118,7 @@ footer {
 
 <!-- ═══════════════ П · ПЕРЕКОНАННЯ ═══════════════ -->
 <section class="wrap deep">
-  <div class="comp c-violet">
+  <div data-comp="p" class="comp c-violet">
     <div class="comp-head">
       <div class="comp-letter">П</div>
       <div>
@@ -1108,7 +1171,7 @@ footer {
 
 <!-- ═══════════════ Д · ДІЇ ═══════════════ -->
 <section class="wrap deep">
-  <div class="comp c-blue">
+  <div data-comp="d" class="comp c-blue">
     <div class="comp-head">
       <div class="comp-letter">Д</div>
       <div>
@@ -1163,7 +1226,7 @@ footer {
 
 <!-- ═══════════════ О · ОБСТАВИНИ ═══════════════ -->
 <section class="wrap deep">
-  <div class="comp c-green">
+  <div data-comp="o" class="comp c-green">
     <div class="comp-head">
       <div class="comp-letter">О</div>
       <div>
@@ -1221,7 +1284,7 @@ footer {
 
 <!-- ═══════════════ М · МОЖЛИВОСТІ ═══════════════ -->
 <section class="wrap deep">
-  <div class="comp c-gold">
+  <div data-comp="m" class="comp c-gold">
     <div class="comp-head">
       <div class="comp-letter">М</div>
       <div>
@@ -1278,7 +1341,7 @@ footer {
 
 <!-- ═══════════════ Рес · РЕСУРСИ ═══════════════ -->
 <section class="wrap deep">
-  <div class="comp c-burgundy">
+  <div data-comp="res" class="comp c-burgundy">
     <div class="comp-head">
       <div class="comp-letter">Рес</div>
       <div>
@@ -1349,7 +1412,7 @@ footer {
 
 <!-- ═══════════════ β · КОНВЕРТАЦІЯ ═══════════════ -->
 <section class="wrap deep">
-  <div class="comp c-gold">
+  <div data-comp="beta" class="comp c-gold">
     <div class="comp-head">
       <div class="comp-letter" style="font-style:italic;">β</div>
       <div>
@@ -1427,7 +1490,7 @@ footer {
 
 <!-- ═══════════════ T · ЧАС ═══════════════ -->
 <section class="wrap deep">
-  <div class="comp c-muted">
+  <div data-comp="t" class="comp c-muted">
     <div class="comp-head">
       <div class="comp-letter">T</div>
       <div>
@@ -1484,7 +1547,7 @@ footer {
 
 <!-- ═══════════════ ε · ВИПАДКОВІСТЬ ═══════════════ -->
 <section class="wrap deep">
-  <div class="comp c-muted">
+  <div data-comp="eps" class="comp c-muted">
     <div class="comp-head">
       <div class="comp-letter" style="font-style:italic;">ε</div>
       <div>
@@ -1519,7 +1582,7 @@ footer {
 
 <!-- ═══════════════ Π · ПРАВИЛА ГРИ ═══════════════ -->
 <section class="wrap deep">
-  <div class="comp c-violet">
+  <div data-comp="pi" class="comp c-violet">
     <div class="comp-head">
       <div class="comp-letter">Π</div>
       <div>
@@ -2086,6 +2149,57 @@ function setupReveals() {
   sections.forEach(el => obs.observe(el));
 }
 
+// ════════ STICKY MINI-FORMULA ════════
+function setupStickyFormula() {
+  const bar = document.getElementById('stickyFormula');
+  if (!bar) return;
+  const cards = Array.from(document.querySelectorAll('.comp[data-comp]'));
+  if (!cards.length) return;
+  const tokens = {};
+  bar.querySelectorAll('.tok[data-tok]').forEach(t => { tokens[t.dataset.tok] = t; });
+
+  // first component card top and the boundary where the breakdown zone ends
+  const lawsSection = document.querySelector('.comp[data-comp="pi"]');
+
+  let activeKey = null;
+  function setActive(key) {
+    if (key === activeKey) return;
+    activeKey = key;
+    Object.values(tokens).forEach(t => t.classList.remove('active'));
+    if (key && tokens[key]) tokens[key].classList.add('active');
+  }
+
+  // IntersectionObserver to know which card is most central
+  const visible = new Map();
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) visible.set(e.target, e.intersectionRatio);
+      else visible.delete(e.target);
+    });
+    // choose the most visible card
+    let best = null, bestRatio = 0;
+    visible.forEach((ratio, el) => {
+      if (ratio > bestRatio) { bestRatio = ratio; best = el; }
+    });
+    if (best) setActive(best.dataset.comp);
+  }, { threshold: [0.15, 0.3, 0.5, 0.7], rootMargin: '-15% 0px -35% 0px' });
+
+  cards.forEach(c => io.observe(c));
+
+  // show bar only while inside the breakdown zone
+  const firstCard = cards[0];
+  function onScroll() {
+    const firstTop = firstCard.getBoundingClientRect().top;
+    const lastCard = cards[cards.length - 1];
+    const lastBottom = lastCard.getBoundingClientRect().bottom;
+    // visible when the first card has scrolled to near top and last hasn't fully passed
+    const inZone = firstTop < 80 && lastBottom > 120;
+    bar.classList.toggle('visible', inZone);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
 // ════════ INIT ════════
 window.addEventListener('resize', () => {
   resizeCanvas();
@@ -2097,6 +2211,7 @@ updateValueLabels();
 updateBLabels();
 simulate();
 setupReveals();
+setupStickyFormula();
 </script>
 
 </body>
