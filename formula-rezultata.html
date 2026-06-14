@@ -2171,18 +2171,30 @@ function setupStickyFormula() {
 
   // IntersectionObserver to know which card is most central
   const visible = new Map();
+  var isMobile = window.innerWidth < 768;
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) visible.set(e.target, e.intersectionRatio);
       else visible.delete(e.target);
     });
-    // choose the most visible card
     let best = null, bestRatio = 0;
     visible.forEach((ratio, el) => {
       if (ratio > bestRatio) { bestRatio = ratio; best = el; }
     });
     if (best) setActive(best.dataset.comp);
-  }, { threshold: [0.15, 0.3, 0.5, 0.7], rootMargin: '-15% 0px -35% 0px' });
+    else if (!visible.size) {
+      var closest = null, closestDist = Infinity;
+      cards.forEach(function(c) {
+        var r = c.getBoundingClientRect();
+        var d = Math.abs(r.top + r.height / 2 - window.innerHeight / 2);
+        if (d < closestDist) { closestDist = d; closest = c; }
+      });
+      if (closest && closestDist < window.innerHeight) setActive(closest.dataset.comp);
+    }
+  }, {
+    threshold: isMobile ? [0.05, 0.1, 0.2, 0.3] : [0.15, 0.3, 0.5, 0.7],
+    rootMargin: isMobile ? '-5% 0px -15% 0px' : '-15% 0px -35% 0px'
+  });
 
   cards.forEach(c => io.observe(c));
 
