@@ -928,11 +928,20 @@ footer {
 /* ═══════════════ RESPONSIVE FIXES ═══════════════ */
 
 @media (max-width: 600px) {
+  .wrap { padding: 0 1.8rem; }
+  .wrap-wide { padding: 0 1.8rem; }
+  header.top { padding-left: 1.8rem; padding-right: 1.8rem; }
   .comp-head { flex-direction: column; text-align: center; padding: 1.5rem 1.2rem; }
   .comp-letter { width: 70px; height: 70px; font-size: 3rem; }
   .comp-body { padding: 1.5rem 1.3rem 1.7rem; }
   .formula-stage { padding: 2rem 1.2rem; }
   .lab { padding: 1.3rem; }
+}
+@media (max-width: 420px) {
+  .wrap { padding: 0 1.2rem; }
+  .wrap-wide { padding: 0 1.2rem; }
+  header.top { padding-left: 1.2rem; padding-right: 1.2rem; }
+  body { font-size: 16px; }
 }
 </style>
 </head>
@@ -943,6 +952,11 @@ footer {
   <div class="sticky-formula-inner">
     r = ( <span class="tok var" data-tok="b">Б</span> × <span class="tok var" data-tok="p">П</span> ) · <span class="tok var" data-tok="d">Д</span> × <span class="tok var" data-tok="o">О</span> × <span class="tok var" data-tok="m">М</span> × <span class="tok var" data-tok="res">Рес</span> ± <span class="tok var" data-tok="eps">ε</span>&nbsp;&nbsp;<span class="tok" style="opacity:.5;">| петля</span> <span class="tok var" data-tok="beta">β</span> <span class="tok" style="opacity:.5;">· час</span> <span class="tok var" data-tok="t">T</span> <span class="tok" style="opacity:.5;">· рамка</span> <span class="tok var" data-tok="pi">Π</span>
   </div>
+</div>
+
+<!-- ═══════════════ BACK BUTTON ═══════════════ -->
+<div style="padding:1rem 1.5rem 0;">
+  <a href="javascript:void(0)" onclick="window.close(); if(!window.closed) window.location.href='https://krok-za-horyzont.vercel.app/';" style="display:inline-block;font-size:.85rem;color:var(--terra);text-decoration:none;font-weight:600;">← Повернутись</a>
 </div>
 
 <!-- ═══════════════ HEADER ═══════════════ -->
