@@ -2260,6 +2260,9 @@ function setupStickyFormula() {
   }
 
   // IntersectionObserver to know which card is most central
+  const isMobile = window.innerWidth <= 600;
+  const ioThreshold = isMobile ? [0.05, 0.1, 0.2, 0.3] : [0.15, 0.3, 0.5, 0.7];
+  const ioMargin = isMobile ? '-5% 0px -15% 0px' : '-15% 0px -35% 0px';
   const visible = new Map();
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -2271,8 +2274,19 @@ function setupStickyFormula() {
     visible.forEach((ratio, el) => {
       if (ratio > bestRatio) { bestRatio = ratio; best = el; }
     });
+    // fallback: find closest card to screen center
+    if (!best && cards.length) {
+      const cy = window.innerHeight / 2;
+      let minDist = Infinity;
+      cards.forEach(c => {
+        const r = c.getBoundingClientRect();
+        const mid = (r.top + r.bottom) / 2;
+        const d = Math.abs(mid - cy);
+        if (d < minDist) { minDist = d; best = c; }
+      });
+    }
     if (best) setActive(best.dataset.comp);
-  }, { threshold: [0.15, 0.3, 0.5, 0.7], rootMargin: '-15% 0px -35% 0px' });
+  }, { threshold: ioThreshold, rootMargin: ioMargin });
 
   cards.forEach(c => io.observe(c));
 
