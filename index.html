@@ -1453,6 +1453,9 @@ button { -webkit-tap-highlight-color:transparent; }
       <div class="nav-item" onclick="showPage('interactive', this)">
         <span class="ni">📖</span> Інтерактивні лекції
       </div>
+      <div class="nav-item" onclick="showPage('practicum', this)">
+        <span class="ni">✏️</span> Практикуми
+      </div>
     </div>
 
     <div class="nav-section">
@@ -1845,6 +1848,7 @@ button { -webkit-tap-highlight-color:transparent; }
             <span class="footer-nav-link" onclick="showPage('lectures')">Відеолекції</span>
             <span class="footer-nav-link" onclick="showPage('exercises')">Вправи</span>
             <span class="footer-nav-link" onclick="showPage('interactive')">Інтерактивні лекції</span>
+            <span class="footer-nav-link" onclick="showPage('practicum')">Практикуми</span>
           </div>
           <div>
             <div class="footer-nav-label">Навчання</div>
@@ -2183,6 +2187,30 @@ button { -webkit-tap-highlight-color:transparent; }
           </div>
           <div class="lec-actions">
             <button class="lec-btn primary" onclick="openLectureModal('formula-rezultata.html')">Читати</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ PAGE: PRACTICUM ══════════════ -->
+  <div class="page" id="page-practicum">
+    <div class="page-content">
+      <div class="section-header">
+        <div class="eyebrow">Практика</div>
+        <h1 class="page-h1">Практикуми</h1>
+        <p class="page-lead">Покрокові методички з вправами до лекцій. Не просто знати, а робити і змінюватись.</p>
+      </div>
+      <div class="lectures-grid">
+        <div class="lecture-row reveal">
+          <div class="lec-num">01</div>
+          <div class="lec-info">
+            <div class="lec-title">Практикум β: як навчитися рости зі свого досвіду</div>
+            <div class="lec-meta"><span>✏️ Практикум</span><span>⏱ ~40 хв</span><span>🔓 Безкоштовно</span></div>
+            <p style="font-size:.78rem;color:var(--muted);margin:.4rem 0 0;line-height:1.6;">Десять вправ на найвпливовіший компонент формули результату. Три рівні: помічати, видобувати, застосовувати. З прогрес-трекером і контрольними точками.</p>
+          </div>
+          <div class="lec-actions">
+            <button class="lec-btn primary" onclick="openLectureModal('metodychka-beta.html')">Почати</button>
           </div>
         </div>
       </div>
@@ -2600,7 +2628,7 @@ const pages = document.querySelectorAll('.page');
 const navItems = document.querySelectorAll('.nav-item');
 const titles = {
   home: 'Головна', videos: 'Відео з семінарів',
-  exercises: 'Вправи', interactive: 'Інтерактивні лекції',
+  exercises: 'Вправи', interactive: 'Інтерактивні лекції', practicum: 'Практикуми',
   reviews: 'Відгуки', lectures: 'Відеолекції',
   seminars: 'Семінари і курси', about: 'Про проект',
   contact: 'Контакти'

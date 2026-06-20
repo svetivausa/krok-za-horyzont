@@ -915,6 +915,80 @@ canvas { width: 100%; height: 100%; display: block; }
   margin-top: 2rem;
 }
 
+/* ═══════════════ BRIDGE TO PRACTICUM ═══════════════ */
+.bridge {
+  max-width: 620px;
+  margin: 3rem auto 0;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 2rem 2rem 2.2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.bridge::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--terra), var(--gold));
+}
+.bridge-beta {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--gold-dark);
+  line-height: 1;
+  display: block;
+  margin-bottom: .6rem;
+}
+.bridge-kicker {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: .76rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  font-weight: 700;
+  margin-bottom: .8rem;
+}
+.bridge-title {
+  font-family: 'Georgia', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: .8rem;
+  line-height: 1.2;
+}
+.bridge-text {
+  font-size: 1rem;
+  color: var(--ink2);
+  line-height: 1.6;
+  max-width: 34em;
+  margin: 0 auto 1.5rem;
+}
+.bridge-btn {
+  display: inline-block;
+  background: var(--terra);
+  color: #fff;
+  font-family: 'Georgia', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 13px 28px;
+  border-radius: 8px;
+  transition: all .25s ease;
+  box-shadow: 0 4px 14px -6px rgba(184,80,66,.5);
+}
+.bridge-btn:hover {
+  background: var(--terra-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -8px rgba(184,80,66,.6);
+}
+
 footer {
   text-align: center;
   padding: 2rem 1.5rem 3rem;
@@ -928,20 +1002,11 @@ footer {
 /* ═══════════════ RESPONSIVE FIXES ═══════════════ */
 
 @media (max-width: 600px) {
-  .wrap { padding: 0 1.8rem; }
-  .wrap-wide { padding: 0 1.8rem; }
-  header.top { padding-left: 1.8rem; padding-right: 1.8rem; }
   .comp-head { flex-direction: column; text-align: center; padding: 1.5rem 1.2rem; }
   .comp-letter { width: 70px; height: 70px; font-size: 3rem; }
   .comp-body { padding: 1.5rem 1.3rem 1.7rem; }
   .formula-stage { padding: 2rem 1.2rem; }
   .lab { padding: 1.3rem; }
-}
-@media (max-width: 420px) {
-  .wrap { padding: 0 1.2rem; }
-  .wrap-wide { padding: 0 1.2rem; }
-  header.top { padding-left: 1.2rem; padding-right: 1.2rem; }
-  body { font-size: 16px; }
 }
 </style>
 </head>
@@ -1868,6 +1933,19 @@ footer {
   <p class="signature">— Світлана Сліпченко, психолог, авторка курсу «Крок за горизонт»</p>
 </section>
 
+<!-- ═══════════════ МІСТОК ДО ПРАКТИКУМУ ═══════════════ -->
+<div class="wrap">
+  <div class="bridge">
+    <span class="bridge-beta">β</span>
+    <div class="bridge-kicker">Від розуміння — до дії</div>
+    <div class="bridge-title">Готова потренувати найвпливовішу точку?</div>
+    <p class="bridge-text">
+      Тепер ти знаєш, що β — серце формули. Але знати замало: β тренується, як м'яз. Я зібрала для тебе практикум — десять вправ, які крок за кроком вчать рости зі свого досвіду.
+    </p>
+    <a href="metodychka-beta.html" class="bridge-btn">Перейти до практикуму β →</a>
+  </div>
+</div>
+
 <footer>
   Крок за горизонт · Лекція «Формула результату»
 </footer>
@@ -2180,30 +2258,18 @@ function setupStickyFormula() {
 
   // IntersectionObserver to know which card is most central
   const visible = new Map();
-  var isMobile = window.innerWidth < 768;
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) visible.set(e.target, e.intersectionRatio);
       else visible.delete(e.target);
     });
+    // choose the most visible card
     let best = null, bestRatio = 0;
     visible.forEach((ratio, el) => {
       if (ratio > bestRatio) { bestRatio = ratio; best = el; }
     });
     if (best) setActive(best.dataset.comp);
-    else if (!visible.size) {
-      var closest = null, closestDist = Infinity;
-      cards.forEach(function(c) {
-        var r = c.getBoundingClientRect();
-        var d = Math.abs(r.top + r.height / 2 - window.innerHeight / 2);
-        if (d < closestDist) { closestDist = d; closest = c; }
-      });
-      if (closest && closestDist < window.innerHeight) setActive(closest.dataset.comp);
-    }
-  }, {
-    threshold: isMobile ? [0.05, 0.1, 0.2, 0.3] : [0.15, 0.3, 0.5, 0.7],
-    rootMargin: isMobile ? '-5% 0px -15% 0px' : '-15% 0px -35% 0px'
-  });
+  }, { threshold: [0.15, 0.3, 0.5, 0.7], rootMargin: '-15% 0px -35% 0px' });
 
   cards.forEach(c => io.observe(c));
 
