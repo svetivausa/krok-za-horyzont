@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Практикум П · Крок за горизонт</title>
+<style>
+:root {
+  --bg: #F5EFE6;
+  --bg2: #EDE3D0;
+  --bg3: #E3D5BC;
+  --card: #FAF5EC;
+  --terra: #B85042;
+  --terra-dark: #8E3A2F;
+  --gold: #C9A84C;
+  --gold-dark: #A88A30;
+  --ink: #2C1A0E;
+  --ink2: #5A4530;
+  --muted: #8B7355;
+  --line: rgba(44,26,14,.12);
+  --line2: rgba(44,26,14,.06);
+  --green: #4A7C3A;
+  --blue: #3A5878;
+  --violet: #6B4A8C;
+  --violet-dk: #553A73;
+  --violet-li: #8B6BA8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ═══════ HEADER ═══════ */
+header.top {
+  padding: 4rem 1.5rem 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+header.top::before {
+  content: '';
+  position: absolute;
+  width: 300px; height: 300px;
+  background: var(--violet);
+  opacity: .07;
+  border-radius: 50%;
+  top: -120px; right: -60px;
+}
+header.top > * { position: relative; z-index: 1; }
+
+.series {
+  display: inline-block;
+  font-size: .72rem;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  color: var(--violet-dk);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding: 6px 18px;
+  border: 1px solid var(--violet);
+  border-radius: 3px;
+}
+
+.glyph {
+  font-family: 'Georgia', serif;
+  font-weight: 700;
+  font-size: clamp(4rem, 12vw, 7rem);
+  color: var(--violet);
+  line-height: 1;
+  display: block;
+  margin-bottom: .3rem;
+}
+.glyph-sub {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: .9rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+h1.title {
+  font-family: 'Georgia', serif;
+  font-size: clamp(1.9rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -.02em;
+  line-height: 1.08;
+  color: var(--ink);
+  margin-bottom: 1rem;
+  max-width: 14em;
+  margin-left: auto; margin-right: auto;
+}
+.subtitle {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  color: var(--violet);
+  max-width: 28em;
+  margin: 0 auto;
+}
+.divider-deco {
+  margin: 2rem auto 0; width: 60px; height: 1px;
+  background: var(--violet); position: relative;
+}
+.divider-deco::before, .divider-deco::after {
+  content: ''; position: absolute; top: -3px;
+  width: 7px; height: 7px; border-radius: 50%; background: var(--violet);
+}
+.divider-deco::before { left: -14px; }
+.divider-deco::after { right: -14px; }
+
+/* ═══════ TYPOGRAPHY ═══════ */
+section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+p { margin-bottom: 1.1rem; color: var(--ink); }
+p.lead {
+  font-family: 'Georgia', serif;
+  font-size: 1.28rem; line-height: 1.55; margin-bottom: 1.5rem;
+}
+p strong { font-weight: 700; color: var(--ink); }
+p em { font-style: italic; color: var(--violet-dk); }
+
+h2.section-title {
+  font-family: 'Georgia', serif;
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  font-weight: 700; letter-spacing: -.015em; line-height: 1.15;
+  color: var(--ink); margin: 0 0 1.2rem;
+}
+.kicker {
+  display: inline-block;
+  font-family: 'Georgia', serif; font-style: italic;
+  font-size: .78rem; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--violet-dk); font-weight: 700; margin-bottom: .7rem;
+}
+
+.wow {
+  font-family: 'Georgia', serif; font-style: italic;
+  font-size: clamp(1.25rem, 2.8vw, 1.55rem); line-height: 1.4;
+  color: var(--violet); text-align: center;
+  margin: 2rem auto; padding: 1.3rem 1rem; max-width: 24em;
+  position: relative; font-weight: 600;
+}
+.wow::before, .wow::after {
+  content: ''; position: absolute; left: 50%;
+  transform: translateX(-50%); width: 40px; height: 1px; background: var(--violet);
+}
+.wow::before { top: 0; } .wow::after { bottom: 0; }
+
+/* ═══════ SAFETY NOTE ═══════ */
+.safety {
+  background: var(--card);
+  border: 1px solid var(--violet-li);
+  border-radius: 10px;
+  padding: 1.3rem 1.5rem;
+  margin: 1.8rem 0;
+}
+.safety-label {
+  font-family: 'Georgia', serif; font-weight: 700;
+  color: var(--violet-dk); font-size: .95rem; margin-bottom: .4rem;
+  display: flex; align-items: center; gap: .5rem;
+}
+.safety-label::before { content: '♡'; font-size: 1.1rem; }
+.safety-body { font-size: .95rem; color: var(--ink2); line-height: 1.6; }
+
+/* ═══════ HOW TO USE ═══════ */
+.howto { background: var(--bg2); margin: 2rem -1.5rem; padding: 2.5rem 1.5rem; }
+.howto-inner { max-width: 760px; margin: 0 auto; }
+.howto-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.2rem; }
+.howto-item { display: flex; gap: 1rem; align-items: flex-start; }
+.howto-num {
+  flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%;
+  background: var(--violet); color: #fff; font-family: 'Georgia', serif;
+  font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: .95rem;
+}
+.howto-text { color: var(--ink); font-size: .98rem; line-height: 1.55; }
+.howto-text strong { font-weight: 700; }
+
+/* ═══════ PROGRESS ═══════ */
+.progress-wrap {
+  position: sticky; top: 0; z-index: 40;
+  background: rgba(245,239,230,.95);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  padding: .8rem 1.5rem; border-bottom: 1px solid var(--line);
+}
+.progress-inner { max-width: 760px; margin: 0 auto; display: flex; align-items: center; gap: 1rem; }
+.progress-label { font-family: 'Georgia', serif; font-size: .82rem; color: var(--ink2); white-space: nowrap; font-weight: 600; }
+.progress-track { flex: 1; height: 8px; background: var(--bg3); border-radius: 4px; overflow: hidden; }
+.progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--violet-li), var(--violet)); border-radius: 4px; transition: width .4s ease; }
+.progress-count { font-family: 'Georgia', serif; font-weight: 700; color: var(--violet-dk); font-variant-numeric: tabular-nums; font-size: .9rem; white-space: nowrap; }
+
+/* ═══════ LEVEL HEADER ═══════ */
+.level-head { margin: 3.5rem 0 1.5rem; text-align: center; }
+.level-tag {
+  display: inline-block; font-family: 'Georgia', serif; font-style: italic;
+  font-size: .75rem; letter-spacing: .2em; text-transform: uppercase;
+  color: #fff; background: var(--violet); font-weight: 700;
+  padding: 5px 16px; border-radius: 4px; margin-bottom: .8rem;
+}
+.level-title { font-family: 'Georgia', serif; font-size: 1.7rem; font-weight: 700; color: var(--ink); margin-bottom: .4rem; }
+.level-desc { font-size: .95rem; color: var(--muted); font-style: italic; max-width: 28em; margin: 0 auto; }
+
+/* ═══════ EXERCISE ═══════ */
+.ex { background: var(--card); border: 1px solid var(--line); border-radius: 12px; margin: 1.5rem 0; overflow: hidden; transition: box-shadow .3s, border-color .3s; }
+.ex.done { border-color: var(--violet); box-shadow: 0 0 0 1px var(--violet); }
+.ex-head { display: flex; align-items: flex-start; gap: 1rem; padding: 1.4rem 1.5rem 1rem; }
+.ex-check {
+  flex-shrink: 0; width: 28px; height: 28px; border-radius: 8px;
+  border: 2px solid var(--muted); background: var(--bg); cursor: pointer;
+  display: flex; align-items: center; justify-content: center; transition: all .2s; margin-top: 2px;
+}
+.ex-check:hover { border-color: var(--violet); }
+.ex.done .ex-check { background: var(--violet); border-color: var(--violet-dk); }
+.ex-check svg { width: 16px; height: 16px; opacity: 0; transition: opacity .2s; }
+.ex.done .ex-check svg { opacity: 1; }
+.ex-num { font-family: 'Georgia', serif; font-style: italic; font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: var(--violet-dk); font-weight: 700; margin-bottom: .2rem; }
+.ex-title { font-family: 'Georgia', serif; font-size: 1.3rem; font-weight: 700; color: var(--ink); line-height: 1.2; }
+.ex-body { padding: 0 1.5rem 1.5rem; }
+.ex-mech { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.1rem; }
+.tag { font-family: 'Georgia', serif; font-size: .74rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; letter-spacing: .02em; }
+.tag-mech { background: var(--bg3); color: var(--violet-dk); }
+.tag-pain { background: rgba(184,80,66,.1); color: var(--terra-dark); }
+.ex-section-label { font-family: 'Georgia', serif; font-style: italic; font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin: 1.1rem 0 .5rem; }
+.ex-steps { list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: .6rem; }
+.ex-steps li { counter-increment: step; position: relative; padding-left: 2rem; font-size: .95rem; line-height: 1.55; color: var(--ink); }
+.ex-steps li::before {
+  content: counter(step); position: absolute; left: 0; top: 0;
+  width: 22px; height: 22px; border-radius: 50%; background: var(--violet); color: #fff;
+  font-family: 'Georgia', serif; font-size: .78rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px;
+}
+.ex-example { background: var(--bg2); border-radius: 8px; padding: .9rem 1.1rem; margin-top: .5rem; font-size: .9rem; color: var(--ink2); line-height: 1.6; }
+.ex-example strong { color: var(--ink); }
+.ex-control { display: flex; gap: .6rem; align-items: flex-start; margin-top: 1.1rem; padding-top: 1rem; border-top: 1px dashed var(--line); font-size: .9rem; color: var(--ink2); line-height: 1.55; }
+.ex-control::before { content: '✓'; color: var(--violet-dk); font-weight: 700; flex-shrink: 0; }
+.ex-control strong { color: var(--ink); }
+
+/* ═══════ BOT BRIDGE ═══════ */
+.bot {
+  margin-top: 1.2rem;
+  background: linear-gradient(135deg, var(--violet-dk), var(--violet));
+  border-radius: 10px;
+  padding: 1.1rem 1.3rem;
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+}
+.bot-text { flex: 1; min-width: 200px; color: #fff; font-size: .92rem; line-height: 1.5; }
+.bot-text strong { font-weight: 700; }
+.bot-btn {
+  display: inline-block; background: #fff; color: var(--violet-dk);
+  font-family: 'Georgia', serif; font-weight: 700; font-size: .95rem;
+  text-decoration: none; padding: 10px 20px; border-radius: 7px;
+  transition: transform .2s, box-shadow .2s; white-space: nowrap;
+}
+.bot-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px -6px rgba(0,0,0,.4); }
+
+/* ═══════ FINAL ═══════ */
+.checkpoints, .mistakes { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1.8rem 1.8rem 2rem; margin: 2rem 0; }
+.cp-list, .mk-list { display: flex; flex-direction: column; gap: .8rem; margin-top: 1rem; }
+.cp-item, .mk-item { display: flex; gap: .7rem; align-items: flex-start; font-size: .95rem; line-height: 1.55; color: var(--ink); }
+.cp-item::before { content: '▲'; color: var(--green); flex-shrink: 0; font-size: .8rem; margin-top: 3px; }
+.mk-item::before { content: '✕'; color: var(--terra); flex-shrink: 0; font-weight: 700; }
+.cp-item strong, .mk-item strong { font-weight: 700; }
+
+.reflect { background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%); margin: 3rem -1.5rem 0; padding: 3rem 1.5rem; }
+.reflect-inner { max-width: 760px; margin: 0 auto; }
+.reflect-q { font-family: 'Georgia', serif; font-size: 1.1rem; color: var(--ink); padding: 1rem 0; border-bottom: 1px solid var(--line); display: flex; gap: .8rem; }
+.reflect-q:last-child { border-bottom: none; }
+.reflect-q span { color: var(--violet-dk); font-weight: 700; flex-shrink: 0; }
+
+.ending { text-align: center; padding-top: 3.5rem; padding-bottom: 4rem; }
+.ending-q { font-family: 'Georgia', serif; font-style: italic; font-size: clamp(1.4rem, 3.5vw, 2rem); color: var(--violet); max-width: 20em; margin: 0 auto 1.5rem; line-height: 1.3; }
+.signature { font-family: 'Georgia', serif; font-style: italic; color: var(--muted); font-size: 1rem; margin-top: 1.5rem; }
+.back-link { display: inline-block; margin-top: 2rem; font-family: 'Georgia', serif; font-size: .95rem; color: var(--violet-dk); text-decoration: none; border-bottom: 1px solid var(--violet); padding-bottom: 2px; }
+
+footer { text-align: center; padding: 2rem 1.5rem 3rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .8rem; font-style: italic; font-family: 'Georgia', serif; }
+
+.reset-btn { background: none; border: 1px solid var(--line); color: var(--muted); font-family: inherit; font-size: .8rem; padding: 5px 12px; border-radius: 4px; cursor: pointer; transition: all .2s; }
+.reset-btn:hover { border-color: var(--violet); color: var(--violet); }
+
+@media (max-width: 600px) {
+  .ex-head { padding: 1.2rem 1.1rem .8rem; }
+  .ex-body { padding: 0 1.1rem 1.2rem; }
+  .progress-label { display: none; }
+  .howto { margin-left: 0; margin-right: 0; }
+  .reflect { margin-left: 0; margin-right: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ PROGRESS ═══════ -->
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <span class="progress-label">Твій шлях:</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-count" id="progressCount">0 / 10</span>
+  </div>
+</div>
+
+<!-- ═══════ HEADER ═══════ -->
+<header class="top">
+  <div class="series">Крок за горизонт · Практикум</div>
+  <span class="glyph">П</span>
+  <div class="glyph-sub">переконання · фільтр, крізь який ти бачиш себе</div>
+  <h1 class="title">Як перестати працювати проти себе</h1>
+  <p class="subtitle">Десять вправ на компонент, який єдиний може зробити твій результат від'ємним</p>
+  <div class="divider-deco"></div>
+</header>
+
+<!-- ═══════ INTRO ═══════ -->
+<section class="wrap">
+  <p class="lead">
+    У лекції про Формулу результату П — Переконання — була найхитрішою літерою. Бо це єдиний компонент, який може зробити результат не нулем, а <em>мінусом</em>. Тобто не «нічого не вийшло», а «я сама все злила» — і не помітила як.
+  </p>
+  <p>
+    Уяви фільтр на об'єктиві фотоапарата. Усе, що ти робиш, бачиш і отримуєш, проходить крізь нього, перш ніж стати результатом. Чистий фільтр — і світло проходить як є. Каламутний — усе в тумані. А буває фільтр, який робить негатив: ти стараєшся, а виходить навпаки.
+  </p>
+  <p>
+    У П два шари. <strong>Свідомі переконання</strong> — те, що ти можеш проговорити: «у мене не вийде», «я не вмію виступати». І <strong>ідентичність</strong> — глибше, на рівні «я <em>є</em> людиною, яка…». Це працює автоматично, ти навіть не чуєш цей голос. Але саме він керує.
+  </p>
+
+  <div class="wow">Свідоме переконання можна оскаржити фактами. Ідентичність — змінюється тільки через новий досвід.</div>
+
+  <p>
+    Цей практикум веде тебе трьома рівнями: спершу <em>побачити</em> свій фільтр, потім <em>перевірити</em> його на реальність, і нарешті — обережно <em>перепрошити</em> ідентичність. Не за вечір. Але крок за кроком.
+  </p>
+
+  <div class="safety">
+    <div class="safety-label">Перш ніж почати — найважливіше</div>
+    <div class="safety-body">
+      Ми тут <strong>не «ламаємо» переконання</strong> і не вмовляємо себе «думати позитивно». Це не працює і тільки дратує. Багато твоїх переконань колись тебе <em>захищали</em> — і заслуговують поваги, а не війни. Ми просто вчимося їх бачити й чесно перевіряти. Якщо якась вправа підіймає сильний біль — це не команда «продавлювати». Це сигнал сповільнитись, видихнути, а за потреби — звернутись по підтримку до близьких чи фахівця. Бережи себе. Тут нема куди поспішати.
+    </div>
+  </div>
+
+  <p style="font-size:.92rem; color:var(--muted); font-style:italic; margin-top:1.2rem;">
+    Маленька примітка: я звертаюсь на «ти» — і це однаково про жінок і про чоловіків. Переконання про себе фільтрують реальність усім, незалежно від статі.
+  </p>
+</section>
+
+<!-- ═══════ HOW TO USE ═══════ -->
+<div class="howto">
+  <div class="howto-inner">
+    <span class="kicker">Як це працює</span>
+    <h2 class="section-title">Як користуватись практикумом</h2>
+    <div class="howto-list">
+      <div class="howto-item">
+        <div class="howto-num">1</div>
+        <div class="howto-text"><strong>Це робота, а не читання.</strong> Переконання не змінюються від прочитання про них. Тільки від чесного погляду на себе й маленьких дій.</div>
+      </div>
+      <div class="howto-item">
+        <div class="howto-num">2</div>
+        <div class="howto-text"><strong>По порядку й без поспіху.</strong> Спершу навчись бачити фільтр, лише потім — перевіряти й міняти. Перестрибувати немає сенсу.</div>
+      </div>
+      <div class="howto-item">
+        <div class="howto-num">3</div>
+        <div class="howto-text"><strong>З цікавістю, а не з осудом.</strong> Головний інструмент тут — не сила волі, а допитливість. «О, цікаво, звідки це в мене?» працює краще за «яка ж я погана».</div>
+      </div>
+      <div class="howto-item">
+        <div class="howto-num">4</div>
+        <div class="howto-text"><strong>Поряд із тобою — бот «Опора».</strong> Деякі вправи мають кнопку, щоб продовжити роботу в живому діалозі з ботом-коучем. Він допоможе поглибити те, що ти почав чи почала на папері.</div>
+      </div>
+      <div class="howto-item">
+        <div class="howto-num">5</div>
+        <div class="howto-text"><strong>Постав галочку, коли вправа стала твоєю.</strong> Не коли «прочитав/прочитала», а коли реально зробив чи зробила. Прогрес згори показує пройдений шлях.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ РІВЕНЬ 1 ═══════ -->
+<div class="wrap">
+  <div class="level-head">
+    <span class="level-tag">Рівень 1 · Основа</span>
+    <div class="level-title">Побачити фільтр</div>
+    <p class="level-desc">Найскладніше в переконаннях те, що ми не відчуваємо їх як переконання. Вони здаються просто «правдою про мене». Перший крок — навчитися їх помічати.</p>
+  </div>
+
+  <!-- Вправа 1 -->
+  <div class="ex" data-ex="1">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div>
+        <div class="ex-num">Вправа 1</div>
+        <div class="ex-title">Спіймати «я-думку»</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: усвідомлення автоматичних думок</span>
+        <span class="tag tag-pain">біль: «самооцінка залежить від інших»</span>
+      </div>
+      <p>Протягом дня мозок постійно коментує тебе — швидко, тихо, майже непомітно. «Знову не встиг». «Куди мені». «Добре, що ніхто не бачив». Ці думки пролітають за частку секунди, але саме вони формують фільтр. Спершу їх треба просто почути.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Постав собі на телефоні 3–4 нагадування протягом дня — у випадкові моменти.</li>
+        <li>Коли дзвенить — зупинись і запитай: «що я щойно подумала про себе?» Запиши дослівно, навіть якщо дрібниця.</li>
+        <li>Не оцінюй і не виправляй. Просто лови й записуй. Як ентомолог, що накопичує колекцію — без осуду.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад:</strong> «11:00 — подумала „я завжди все ускладнюю". 15:30 — „мене ніхто не сприймає серйозно". 19:00 — „я погана мати, бо втомлена"».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> наприкінці тижня в тебе є список із 10–15 «я-думок». Ти з подивом помічаєш, що деякі повторюються майже дослівно. Це і є твій фільтр — уперше видимий.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 2 -->
+  <div class="ex" data-ex="2">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div>
+        <div class="ex-num">Вправа 2</div>
+        <div class="ex-title">Слова-маркери</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: лінгвістичні сигнали ригідних переконань</span>
+        <span class="tag tag-pain">біль: «що б не робила — здається мало»</span>
+      </div>
+      <p>У жорстких переконань є впізнавані слова-прапорці. «Завжди», «ніколи», «всі», «ніхто», «я така», «знову», «як завжди». Коли ти їх вживаєш про себе — це майже напевно не факт, а переконання, що видає себе за факт.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Візьми список «я-думок» із вправи 1. Підкресли в них слова-маркери: завжди, ніколи, всі, ніхто, як завжди.</li>
+        <li>Кожну підкреслену фразу перепиши чесніше, з конкретикою. «Я завжди все провалюю» → «цього разу не вийшло те-то».</li>
+        <li>Відчуй різницю на тілі. Перша фраза давить, друга — лишає повітря.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад:</strong> «Мене ніхто не слухає» → «на сьогоднішній нараді мене перебили двічі». Перше — вирок назавжди. Друге — конкретна подія, з якою можна щось зробити.
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти починаєш ловити слова «завжди/ніколи» прямо в мовленні — своєму і чужому — і всередині спрацьовує «стоп, це переконання, а не факт».</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 3 -->
+  <div class="ex" data-ex="3">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div>
+        <div class="ex-num">Вправа 3</div>
+        <div class="ex-title">Карта фільтра</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: локалізація сфер спотворення</span>
+        <span class="tag tag-pain">біль: «можу більше, але стою на місці»</span>
+      </div>
+      <p>Фільтр рідко каламутний скрізь однаково. У роботі ти можеш почуватися впевнено, а в стосунках — ні. Або навпаки. Ця вправа показує, де саме твій фільтр спотворює найсильніше — щоб ти знав чи знала, куди дивитись.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Випиши 5–6 сфер життя: робота, гроші, тіло, стосунки, материнство, дружба, творчість.</li>
+        <li>Біля кожної постав чесну оцінку: наскільки тут спрацьовує «у мене не виходить / я не така / мені не можна» — від 0 до 10.</li>
+        <li>Обведи дві сфери з найвищими балами. Це твої зони найкаламутнішого фільтра. Саме з ними працюватимемо далі.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад:</strong> «Робота — 3 (тут я ок). Гроші — 8 („мені не дано заробляти"). Тіло — 7. Стосунки — 4». Видно одразу: працювати треба з грошима й тілом, а не «з усім життям».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> у тебе є дві конкретні сфери-мішені, а не розмите відчуття «зі мною щось не так». Конкретика — це вже половина полегшення.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ РІВЕНЬ 2 ═══════ -->
+<div class="wrap">
+  <div class="level-head">
+    <span class="level-tag">Рівень 2 · Ядро</span>
+    <div class="level-title">Перевірити й розхитати</div>
+    <p class="level-desc">Побачити переконання — мало. Тепер головне: звірити його з реальністю. Бо більшість обмежувальних переконань не витримують чесної перевірки фактами.</p>
+  </div>
+
+  <!-- Вправа 4 -->
+  <div class="ex" data-ex="4">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div>
+        <div class="ex-num">Вправа 4</div>
+        <div class="ex-title">Факт чи інтерпретація</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: розділення події та її оцінки</span>
+        <span class="tag tag-pain">біль: «що б не робив — здається мало»</span>
+      </div>
+      <p>Між тим, що сталося, і тим, що ти з цього вирішив про себе, — прірва. «Мені не передзвонили» — це факт. «Бо я нецікавий» — це вже інтерпретація, яку домалював фільтр. Ця вправа вчить різати по живому між ними.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Візьми ситуацію, яка тебе зачепила цього тижня. Опиши її двома колонками.</li>
+        <li>Ліва колонка — <em>тільки факти</em>: що буквально сталося, що зняла б камера. Без жодних «бо» і «значить».</li>
+        <li>Права — <em>інтерпретації</em>: що ти з цього вирішив про себе. А тепер чесно: це єдине можливе пояснення? Чи фільтр обрав найгірше?</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> Факт: «написав знайомому, він не відповів два дні». Інтерпретація: «я йому нецікавий, я взагалі нав'язливий». А реальність? Людина могла бути зайнята, хвора, забути. Фактів для висновку «я нав'язливий» — нуль.
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти починаєш автоматично питати «це факт чи я вже додумав?» — і часто ловиш, що боляче саме від інтерпретації, а не від самої події.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 5 -->
+  <div class="ex" data-ex="5">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div>
+        <div class="ex-num">Вправа 5</div>
+        <div class="ex-title">Калібрування фактами</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: пошук контрдоказів · перевірка гіпотези</span>
+        <span class="tag tag-pain">біль: «настрій залежить від чужої оцінки»</span>
+      </div>
+      <p>Переконання поводиться як упереджений суддя: помічає лише докази «за» і не бачить «проти». Ця вправа повертає рівновагу — ти свідомо шукаєш факти, які переконанню суперечать. І вони майже завжди знаходяться.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Візьми одне обмежувальне переконання зі своєї карти фільтра (вправа 3). Напиши його зверху аркуша.</li>
+        <li>Тепер як адвокат, а не прокурор: випиши всі факти зі свого життя, які цьому переконанню <em>суперечать</em>. Навіть дрібні. Навіть давні.</li>
+        <li>Подивись на список. Переконання все ще звучить як «чиста правда» — чи вже як перебільшення?</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> Переконання: «я не вмію доводити справи до кінця». Контрдокази: закінчив(ла) навчання, виносив(ла) дитину, довів(ла) ремонт, дочитав(ла) товсту книжку торік. Виявляється, доводиш — і не раз. Правда радше: «мені важко з тим, що не дуже хочу».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> старе переконання вже не звучить абсолютним. З'являється «іноді так, іноді ні» — а це вже свобода замість вироку.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 6 -->
+  <div class="ex" data-ex="6">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div>
+        <div class="ex-num">Вправа 6</div>
+        <div class="ex-title">Звідки цей голос</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: атрибуція джерела переконання</span>
+        <span class="tag tag-pain">біль: «живу на автоматі, не знаю, чого хочу»</span>
+      </div>
+      <p>Більшість глибинних переконань про себе — не твої. Їх колись хтось сказав, а ти прийняв їх за правду, бо був малий і не міг сперечатися. Коли чуєш голос, який це говорить, — він майже ніколи не звучить твоїм.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Візьми переконання, з яким працюєш. Заплющ очі й тихо промов його вголос кілька разів.</li>
+        <li>Прислухайся: чий це голос? Інтонація, темп, слова — на кого схоже? Мама, батько, вчителька, хтось із дитинства?</li>
+        <li>Коли впізнаєш — скажи подумки: «це твоя думка, не моя. Дякую, я далі сам / сама». Без війни. Просто повертаєш чуже власнику.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Не висовуйся, бо засміють» — і раптом чується бабусина інтонація. Це була її стратегія виживання у свій час. Вона захищала. Але це її страх, не твій — і не обов'язково твоя правда сьогодні.
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> переконання перестає відчуватися як «істина про мене» й починає відчуватися як «чужий голос, який я носив(ла) у собі». А чужий голос уже можна стишити.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 7 -->
+  <div class="ex" data-ex="7">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div>
+        <div class="ex-num">Вправа 7</div>
+        <div class="ex-title">Що це переконання колись захищало</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: визнання захисної функції · самоспівчуття</span>
+        <span class="tag tag-pain">біль: «почуття провини, відсутність опори»</span>
+      </div>
+      <p>Це найглибша вправа рівня. Жодне переконання не виникло «просто так». Колись воно тебе берегло — від болю, від сорому, від небезпеки. Якщо просто оголосити його «ворогом» і виривати з коренем, психіка спротивиться. Тому спершу — подяка, і лише потім відпускання.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Візьми переконання, яке найбільше заважає. Запитай м'яко: «від чого ти мене колись беріг?»</li>
+        <li>Дай відповідь чесно. Можливо, «не висовуйся» вберегло від приниження. «Нікому не довіряй» — від зради. «Будь зручною» — від конфлікту, який був небезпечним.</li>
+        <li>Подякуй цьому переконанню за роботу. А тоді тихо скажи: «дякую, але тепер я доросл(ий/а) і впораюсь інакше». Відпускати легше те, що ти спершу зрозумів, а не зненавидів.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Я маю бути зручною для всіх» — колись це берегло дитину від гніву дорослого. Тоді це було розумно. Сьогодні — забирає життя. Можна подякувати тій стратегії й обрати нову, дорослу.
+      </div>
+      <div class="bot">
+        <div class="bot-text"><strong>Це місце, де добре не залишатися наодинці.</strong> Робота з тим, що переконання захищало, буває глибокою. Бот «Опора» допоможе пройти її в живому діалозі — м'яко, у твоєму темпі.</div>
+        <a href="https://t.me/opora_krok_bot" class="bot-btn">Поговорити з «Опорою»</a>
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти відчуваєш до старого переконання не злість, а щось схоже на вдячність і спокій. Це знак, що воно більше не керує тобою з тіні.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ РІВЕНЬ 3 ═══════ -->
+<div class="wrap">
+  <div class="level-head">
+    <span class="level-tag">Рівень 3 · Закріплення</span>
+    <div class="level-title">Перепрошити ідентичність</div>
+    <p class="level-desc">Найглибший рівень. Свідоме переконання можна перевірити фактами. А ідентичність — те, ким ти себе вважаєш на рівні «я є», — змінюється тільки через прожитий новий досвід.</p>
+  </div>
+
+  <!-- Вправа 8 -->
+  <div class="ex" data-ex="8">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div>
+        <div class="ex-num">Вправа 8</div>
+        <div class="ex-title">Аудит «я є людиною, яка…»</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: виявлення ідентичнісного шару</span>
+        <span class="tag tag-pain">біль: «не знаю, хто я насправді»</span>
+      </div>
+      <p>Тут ми дістаємо найглибший шар — той, що працює фоном і керує без твоєї згоди. Він ховається у фразі «я є людиною, яка…». Те, що ти впишеш після десятого повтору, скаже про тебе більше, ніж години роздумів.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Візьми аркуш. Напиши «Я є людиною, яка…» і заверши речення 20 разів поспіль. Швидко, без редагування й цензури.</li>
+        <li>Перші 5–7 будуть очікувані («яка любить каву»). Не зупиняйся. Цікаве починається після десятого.</li>
+        <li>Підкресли ті, від яких щось стискається всередині. Це твоя ідентичність — уперше на папері.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> Після десятого рядка раптом виходить: «я є людиною, до якої не дослухаються», «яка завжди мусить тягнути», «яка не має права на втому». Ось де живе фільтр на найглибшому рівні.
+      </div>
+      <div class="bot">
+        <div class="bot-text"><strong>Розібрати знахідки легше в діалозі.</strong> Те, що випливло після десятого рядка, варто промовити вголос комусь, хто не осудить. Бот «Опора» проведе тебе цим списком і допоможе побачити, що з ним робити.</div>
+        <a href="https://t.me/opora_krok_bot" class="bot-btn">Поговорити з «Опорою»</a>
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти можеш назвати 2–3 ідентичнісні твердження, які працювали в тобі непомітно. Назване вголос уже втрачає частину влади.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 9 -->
+  <div class="ex" data-ex="9">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div>
+        <div class="ex-num">Вправа 9</div>
+        <div class="ex-title">Дія, що випереджає віру</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: зміна ідентичності через поведінку · самосприйняття</span>
+        <span class="tag tag-pain">біль: «кажу „так", коли хочу сказати „ні"»</span>
+      </div>
+      <p>Головна пастка: ми чекаємо, поки повіримо в себе, щоб почати діяти. Але працює навпаки. Мозок робить висновок «хто я» зі своїх дій. Тому ідентичність змінює не аутотренінг, а маленька дія, зроблена <em>до</em> того, як з'явилась віра.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Візьми ідентичність, яку хочеш мати замість старої. Не «впевнений у собі» загалом, а конкретно: «людина, яка озвучує свою думку».</li>
+        <li>Придумай найменшу можливу дію від імені цієї нової ідентичності. Таку дрібну, щоб точно зробити. Сказати одну думку на одній зустрічі.</li>
+        <li>Зроби її — попри те, що ще не «почуваєшся такою людиною». Дія перша, віра наздожене.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> Стара ідентичність: «я зручний, я мовчу». Нова: «я людина, яка має голос». Найменша дія: на сімейній вечері озвучити, який фільм хочеш подивитися саме ти. Дрібниця. Але мозок записує: «о, виявляється, я з тих, хто говорить».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> після кількох таких мікродій ти ловиш момент, коли вчинив(ла) по-новому <em>без</em> внутрішньої боротьби. Це нова ідентичність зробила перший самостійний крок.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 10 -->
+  <div class="ex" data-ex="10">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div>
+        <div class="ex-num">Вправа 10</div>
+        <div class="ex-title">Нова заява про себе</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: консолідація нової ідентичності на фактах</span>
+        <span class="tag tag-pain">біль: «важливо, щоб визнали інші»</span>
+      </div>
+      <p>Завершальна вправа. Тут ти збираєш усе пройдене в одну нову заяву про себе — але не порожню афірмацію «я найкращий», а чесне твердження, сперте на реальні факти й дії з попередніх вправ. Таке, у яке можна повірити, бо воно правда.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Візьми стару ідентичність (вправа 8) і нову, яку вирощуєш (вправа 9).</li>
+        <li>Сформулюй нову заяву, додавши до неї <em>доказ</em>. Не «я впевнена людина», а «я людина, яка вчиться говорити — і вже двічі озвучила свою думку цього тижня».</li>
+        <li>Запиши її туди, де бачитимеш щодня. Перечитуй не як заклинання, а як констатацію факту, що накопичується.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> Замість «я нікчема» (стара) і замість «я геній» (порожня афірмація) — чесне й сперте на факт: «я людина, яка довела чимало справ і вчиться доводити навіть ті, що лякають». У це віриться, бо за цим стоять докази з вправи 5.
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти промовляєш нову заяву про себе — і всередині більше не схоплюється звичне «та де вже мені, яка з мене…». Заперечувати нема чого, бо заява спирається на реальні факти, а не на вигадку. Це і є нова, чесна опора.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ КОНТРОЛЬНІ ТОЧКИ ═══════ -->
+<div class="wrap">
+  <div class="checkpoints">
+    <span class="kicker">Як зрозуміти, що фільтр чистішає</span>
+    <h2 class="section-title" style="font-size:1.5rem;">Ознаки, а не бали</h2>
+    <p style="font-size:.95rem; color:var(--ink2); margin-bottom:.5rem;">П не виміряти в цифрах. Але є ознаки, що фільтр стає прозорішим. Звіряйся з ними раз на місяць.</p>
+    <div class="cp-list">
+      <div class="cp-item"><span>Ти ловиш слова «завжди / ніколи / я така» <strong>прямо в мовленні</strong> — і всередині спрацьовує «стоп, це переконання».</span></div>
+      <div class="cp-item"><span>Між подією і висновком про себе з'являється <strong>пауза</strong>: «це факт чи я вже додумав(ла)?»</span></div>
+      <div class="cp-item"><span>Старі переконання звучать уже не як істина, а як <strong>чужий голос</strong>, який можна стишити.</span></div>
+      <div class="cp-item"><span>Ти інколи дієш <strong>по-новому без внутрішньої боротьби</strong> — нова ідентичність робить кроки сама.</span></div>
+      <div class="cp-item"><span>З'являється <strong>самоспівчуття</strong> замість самоз'їдання. Це, можливо, головна ознака.</span></div>
+    </div>
+  </div>
+
+  <!-- ═══════ ЧАСТІ ПОМИЛКИ ═══════ -->
+  <div class="mistakes">
+    <span class="kicker">Обережно</span>
+    <h2 class="section-title" style="font-size:1.5rem;">Що не працює з П</h2>
+    <p style="font-size:.95rem; color:var(--ink2); margin-bottom:.5rem;">Три поширені пастки, які лише зміцнюють старий фільтр.</p>
+    <div class="mk-list">
+      <div class="mk-item"><span><strong>Позитивне мислення як самообман.</strong> Повторювати «я багатий», коли всередині не віриш, — мозок чує брехню й опирається ще сильніше. Заяви мають спиратися на факти.</span></div>
+      <div class="mk-item"><span><strong>Продавлювати біль.</strong> Якщо вправа підіймає гостре — це не привід «терпіти й робити через силу». Сповільнись, а за потреби — звернись по підтримку.</span></div>
+      <div class="mk-item"><span><strong>Воювати з собою.</strong> «Яка ж я погана, що так думаю» — це той самий фільтр, тільки з іншого боку. Працює цікавість, а не ненависть до себе.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ САМОРЕФЛЕКСІЯ ═══════ -->
+<div class="reflect">
+  <div class="reflect-inner">
+    <span class="kicker">На завершення</span>
+    <h2 class="section-title">Питання, з якими варто побути</h2>
+    <div class="reflect-q"><span>1.</span> Яке переконання про себе я найдовше вважав(ла) «просто правдою» — а воно виявилось чиїмось голосом?</div>
+    <div class="reflect-q"><span>2.</span> Від чого мене колись уберегли мої обмеження — і чи потрібен мені цей захист сьогодні?</div>
+    <div class="reflect-q"><span>3.</span> Ким я був(ла) б, якби не вірив(ла) в те найгірше, що думаю про себе?</div>
+    <div class="reflect-q"><span>4.</span> Яку маленьку дію від нової ідентичності я можу зробити вже сьогодні?</div>
+    <div class="reflect-q"><span>5.</span> Що змінилося б у моєму результаті за формулою, якби П із мінуса стало плюсом?</div>
+  </div>
+</div>
+
+<!-- ═══════ ЗАКІНЧЕННЯ ═══════ -->
+<section class="ending wrap">
+  <span class="kicker">І наостанок</span>
+  <p style="max-width:34em; margin:0 auto 1.5rem;">
+    Переконання — найтихіший і найвпливовіший компонент формули. Його не видно, але саме воно вирішує, чи помножиться вся твоя робота на плюс, чи на мінус.
+  </p>
+  <p style="max-width:34em; margin:0 auto 2rem;">
+    Не треба переробити себе за вечір. Досить почати помічати свій фільтр — і ставитися до нього з цікавістю, а не з війною. Решта прийде крок за кроком.
+  </p>
+
+  <div class="bot" style="max-width:520px; margin:0 auto 2rem;">
+    <div class="bot-text"><strong>Не залишайся з цим наодинці.</strong> Бот «Опора» супроводить тебе у вправах, допоможе побачити свій фільтр і знайти свою точку — у живому діалозі, у твоєму темпі.</div>
+    <a href="https://t.me/opora_krok_bot" class="bot-btn">Поговорити з «Опорою»</a>
+  </div>
+
+  <div class="ending-q">Чий голос ти нарешті стишиш?</div>
+
+  <p class="signature">— Світлана Сліпченко, психолог, авторка курсу «Крок за горизонт»</p>
+
+  <a href="formula-rezultata.html" class="back-link">← Повернутись до лекції «Формула результату»</a>
+
+  <div style="margin-top:2.5rem;">
+    <button class="reset-btn" id="resetBtn">Скинути мій прогрес</button>
+  </div>
+</section>
+
+<footer>
+  Крок за горизонт · Практикум П · практикум до лекції «Формула результату»
+</footer>
+
+<script>
+(function() {
+  const STORAGE_KEY = 'metodychka-p-progress';
+  const cards = Array.from(document.querySelectorAll('.ex[data-ex]'));
+  const total = cards.length;
+  const fill = document.getElementById('progressFill');
+  const count = document.getElementById('progressCount');
+  let done = {};
+  try { const saved = localStorage.getItem(STORAGE_KEY); if (saved) done = JSON.parse(saved) || {}; } catch(e){ done = {}; }
+  function save(){ try { localStorage.setItem(STORAGE_KEY, JSON.stringify(done)); } catch(e){} }
+  function updateProgress(){
+    const n = Object.values(done).filter(Boolean).length;
+    const pct = total ? Math.round((n/total)*100) : 0;
+    if (fill) fill.style.width = pct + '%';
+    if (count) count.textContent = n + ' / ' + total;
+  }
+  function applyState(card){
+    const id = card.dataset.ex;
+    const check = card.querySelector('.ex-check');
+    const isDone = !!done[id];
+    card.classList.toggle('done', isDone);
+    if (check) check.setAttribute('aria-checked', isDone ? 'true':'false');
+  }
+  function toggle(card){
+    const id = card.dataset.ex;
+    done[id] = !done[id];
+    applyState(card); save(); updateProgress();
+  }
+  cards.forEach(card => {
+    const check = card.querySelector('.ex-check');
+    applyState(card);
+    if (check){
+      check.addEventListener('click', () => toggle(card));
+      check.addEventListener('keydown', (e) => { if (e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(card); } });
+    }
+  });
+  updateProgress();
+  const resetBtn = document.getElementById('resetBtn');
+  if (resetBtn) resetBtn.addEventListener('click', () => { done={}; save(); cards.forEach(applyState); updateProgress(); });
+})();
+</script>
+
+</body>
+</html>
