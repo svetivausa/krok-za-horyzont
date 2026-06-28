@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Практикум Д · Крок за горизонт</title>
+<style>
+:root {
+  --bg: #F5EFE6;
+  --bg2: #EDE3D0;
+  --bg3: #E3D5BC;
+  --card: #FAF5EC;
+  --terra: #B85042;
+  --terra-dark: #8E3A2F;
+  --gold: #C9A84C;
+  --gold-dark: #A88A30;
+  --blue: #3A5878;
+  --blue-dk: #2A4060;
+  --blue-li: #5A7898;
+  --ink: #2C1A0E;
+  --ink2: #5A4530;
+  --muted: #8B7355;
+  --line: rgba(44,26,14,.12);
+  --green: #4A7C3A;
+  --violet: #6B4A8C;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; font-size: 17px; line-height: 1.7; min-height: 100vh; overflow-x: hidden; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ═══════ HEADER ═══════ */
+header.top { padding: 4rem 1.5rem 2.5rem; text-align: center; position: relative; overflow: hidden; }
+header.top::before { content: ''; position: absolute; width: 300px; height: 300px; background: var(--blue); opacity: .07; border-radius: 50%; top: -120px; right: -60px; }
+header.top > * { position: relative; z-index: 1; }
+.series { display: inline-block; font-size: .72rem; letter-spacing: .35em; text-transform: uppercase; color: var(--blue-dk); font-weight: 700; margin-bottom: 1.5rem; padding: 6px 18px; border: 1px solid var(--blue); border-radius: 3px; }
+.glyph { font-family: 'Georgia', serif; font-weight: 700; font-size: clamp(4rem, 12vw, 7rem); color: var(--blue); line-height: 1; display: block; margin-bottom: .3rem; }
+.glyph-sub { font-family: 'Georgia', serif; font-style: italic; font-size: .9rem; color: var(--muted); margin-bottom: 1rem; }
+h1.title { font-family: 'Georgia', serif; font-size: clamp(1.9rem, 5vw, 3rem); font-weight: 700; letter-spacing: -.02em; line-height: 1.08; color: var(--ink); margin-bottom: 1rem; max-width: 14em; margin-left: auto; margin-right: auto; }
+.subtitle { font-family: 'Georgia', serif; font-style: italic; font-size: clamp(1.05rem, 2.2vw, 1.3rem); color: var(--blue); max-width: 28em; margin: 0 auto; }
+.divider-deco { margin: 2rem auto 0; width: 60px; height: 1px; background: var(--blue); position: relative; }
+.divider-deco::before, .divider-deco::after { content: ''; position: absolute; top: -3px; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
+.divider-deco::before { left: -14px; } .divider-deco::after { right: -14px; }
+
+/* ═══════ TYPOGRAPHY ═══════ */
+section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+p { margin-bottom: 1.1rem; color: var(--ink); }
+p.lead { font-family: 'Georgia', serif; font-size: 1.28rem; line-height: 1.55; margin-bottom: 1.5rem; }
+p strong { font-weight: 700; color: var(--ink); }
+p em { font-style: italic; color: var(--blue-dk); }
+h2.section-title { font-family: 'Georgia', serif; font-size: clamp(1.6rem, 4vw, 2.3rem); font-weight: 700; letter-spacing: -.015em; line-height: 1.15; color: var(--ink); margin: 0 0 1.2rem; }
+.kicker { display: inline-block; font-family: 'Georgia', serif; font-style: italic; font-size: .78rem; letter-spacing: .25em; text-transform: uppercase; color: var(--blue-dk); font-weight: 700; margin-bottom: .7rem; }
+
+.wow { font-family: 'Georgia', serif; font-style: italic; font-size: clamp(1.25rem, 2.8vw, 1.55rem); line-height: 1.4; color: var(--blue); text-align: center; margin: 2rem auto; padding: 1.3rem 1rem; max-width: 24em; position: relative; font-weight: 600; }
+.wow::before, .wow::after { content: ''; position: absolute; left: 50%; transform: translateX(-50%); width: 40px; height: 1px; background: var(--blue); }
+.wow::before { top: 0; } .wow::after { bottom: 0; }
+
+/* ═══════ HOW TO USE ═══════ */
+.howto { background: var(--bg2); margin: 2rem -1.5rem; padding: 2.5rem 1.5rem; }
+.howto-inner { max-width: 760px; margin: 0 auto; }
+.howto-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.2rem; }
+.howto-item { display: flex; gap: 1rem; align-items: flex-start; }
+.howto-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--blue); color: #fff; font-family: 'Georgia', serif; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: .95rem; }
+.howto-text { color: var(--ink); font-size: .98rem; line-height: 1.55; }
+.howto-text strong { font-weight: 700; }
+
+/* ═══════ PROGRESS ═══════ */
+.progress-wrap { position: sticky; top: 0; z-index: 40; background: rgba(245,239,230,.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: .8rem 1.5rem; border-bottom: 1px solid var(--line); }
+.progress-inner { max-width: 760px; margin: 0 auto; display: flex; align-items: center; gap: 1rem; }
+.progress-label { font-family: 'Georgia', serif; font-size: .82rem; color: var(--ink2); white-space: nowrap; font-weight: 600; }
+.progress-track { flex: 1; height: 8px; background: var(--bg3); border-radius: 4px; overflow: hidden; }
+.progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--blue-li), var(--blue)); border-radius: 4px; transition: width .4s ease; }
+.progress-count { font-family: 'Georgia', serif; font-weight: 700; color: var(--blue-dk); font-variant-numeric: tabular-nums; font-size: .9rem; white-space: nowrap; }
+
+/* ═══════ LEVEL ═══════ */
+.level-head { margin: 3.5rem 0 1.5rem; text-align: center; }
+.level-tag { display: inline-block; font-family: 'Georgia', serif; font-style: italic; font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; color: #fff; background: var(--blue); font-weight: 700; padding: 5px 16px; border-radius: 4px; margin-bottom: .8rem; }
+.level-title { font-family: 'Georgia', serif; font-size: 1.7rem; font-weight: 700; color: var(--ink); margin-bottom: .4rem; }
+.level-desc { font-size: .95rem; color: var(--muted); font-style: italic; max-width: 28em; margin: 0 auto; }
+
+/* ═══════ EXERCISE ═══════ */
+.ex { background: var(--card); border: 1px solid var(--line); border-radius: 12px; margin: 1.5rem 0; overflow: hidden; transition: box-shadow .3s, border-color .3s; }
+.ex.done { border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue); }
+.ex-head { display: flex; align-items: flex-start; gap: 1rem; padding: 1.4rem 1.5rem 1rem; }
+.ex-check { flex-shrink: 0; width: 28px; height: 28px; border-radius: 8px; border: 2px solid var(--muted); background: var(--bg); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; margin-top: 2px; }
+.ex-check:hover { border-color: var(--blue); }
+.ex.done .ex-check { background: var(--blue); border-color: var(--blue-dk); }
+.ex-check svg { width: 16px; height: 16px; opacity: 0; transition: opacity .2s; }
+.ex.done .ex-check svg { opacity: 1; }
+.ex-num { font-family: 'Georgia', serif; font-style: italic; font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: var(--blue-dk); font-weight: 700; margin-bottom: .2rem; }
+.ex-title { font-family: 'Georgia', serif; font-size: 1.3rem; font-weight: 700; color: var(--ink); line-height: 1.2; }
+.ex-body { padding: 0 1.5rem 1.5rem; }
+.ex-mech { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.1rem; }
+.tag { font-family: 'Georgia', serif; font-size: .74rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; letter-spacing: .02em; }
+.tag-mech { background: var(--bg3); color: var(--blue-dk); }
+.tag-pain { background: rgba(184,80,66,.1); color: var(--terra-dark); }
+.ex-section-label { font-family: 'Georgia', serif; font-style: italic; font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin: 1.1rem 0 .5rem; }
+.ex-steps { list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: .6rem; }
+.ex-steps li { counter-increment: step; position: relative; padding-left: 2rem; font-size: .95rem; line-height: 1.55; color: var(--ink); }
+.ex-steps li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--blue); color: #fff; font-family: 'Georgia', serif; font-size: .78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+.ex-example { background: var(--bg2); border-radius: 8px; padding: .9rem 1.1rem; margin-top: .5rem; font-size: .9rem; color: var(--ink2); line-height: 1.6; }
+.ex-example strong { color: var(--ink); }
+.ex-control { display: flex; gap: .6rem; align-items: flex-start; margin-top: 1.1rem; padding-top: 1rem; border-top: 1px dashed var(--line); font-size: .9rem; color: var(--ink2); line-height: 1.55; }
+.ex-control::before { content: '✓'; color: var(--blue-dk); font-weight: 700; flex-shrink: 0; }
+.ex-control strong { color: var(--ink); }
+
+/* ═══════ BOT ═══════ */
+.bot { margin-top: 1.2rem; background: linear-gradient(135deg, var(--blue-dk), var(--blue)); border-radius: 10px; padding: 1.1rem 1.3rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.bot-text { flex: 1; min-width: 200px; color: #fff; font-size: .92rem; line-height: 1.5; }
+.bot-text strong { font-weight: 700; }
+.bot-btn { display: inline-block; background: #fff; color: var(--blue-dk); font-family: 'Georgia', serif; font-weight: 700; font-size: .95rem; text-decoration: none; padding: 10px 20px; border-radius: 7px; transition: transform .2s, box-shadow .2s; white-space: nowrap; }
+.bot-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px -6px rgba(0,0,0,.4); }
+
+/* ═══════ FINAL ═══════ */
+.checkpoints, .mistakes { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1.8rem 1.8rem 2rem; margin: 2rem 0; }
+.cp-list, .mk-list { display: flex; flex-direction: column; gap: .8rem; margin-top: 1rem; }
+.cp-item, .mk-item { display: flex; gap: .7rem; align-items: flex-start; font-size: .95rem; line-height: 1.55; color: var(--ink); }
+.cp-item::before { content: '▲'; color: var(--green); flex-shrink: 0; font-size: .8rem; margin-top: 3px; }
+.mk-item::before { content: '✕'; color: var(--terra); flex-shrink: 0; font-weight: 700; }
+.cp-item strong, .mk-item strong { font-weight: 700; }
+.reflect { background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%); margin: 3rem -1.5rem 0; padding: 3rem 1.5rem; }
+.reflect-inner { max-width: 760px; margin: 0 auto; }
+.reflect-q { font-family: 'Georgia', serif; font-size: 1.1rem; color: var(--ink); padding: 1rem 0; border-bottom: 1px solid var(--line); display: flex; gap: .8rem; }
+.reflect-q:last-child { border-bottom: none; }
+.reflect-q span { color: var(--blue-dk); font-weight: 700; flex-shrink: 0; }
+.ending { text-align: center; padding-top: 3.5rem; padding-bottom: 4rem; }
+.ending-q { font-family: 'Georgia', serif; font-style: italic; font-size: clamp(1.4rem, 3.5vw, 2rem); color: var(--blue); max-width: 20em; margin: 0 auto 1.5rem; line-height: 1.3; }
+.signature { font-family: 'Georgia', serif; font-style: italic; color: var(--muted); font-size: 1rem; margin-top: 1.5rem; }
+.back-link { display: inline-block; margin-top: 2rem; font-family: 'Georgia', serif; font-size: .95rem; color: var(--blue-dk); text-decoration: none; border-bottom: 1px solid var(--blue); padding-bottom: 2px; }
+footer { text-align: center; padding: 2rem 1.5rem 3rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .8rem; font-style: italic; font-family: 'Georgia', serif; }
+.reset-btn { background: none; border: 1px solid var(--line); color: var(--muted); font-family: inherit; font-size: .8rem; padding: 5px 12px; border-radius: 4px; cursor: pointer; transition: all .2s; }
+.reset-btn:hover { border-color: var(--blue); color: var(--blue); }
+@media (max-width: 600px) { .ex-head { padding: 1.2rem 1.1rem .8rem; } .ex-body { padding: 0 1.1rem 1.2rem; } .progress-label { display: none; } .howto { margin-left: 0; margin-right: 0; } .reflect { margin-left: 0; margin-right: 0; } }
+</style>
+</head>
+<body>
+
+<!-- PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <span class="progress-label">Твій шлях:</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-count" id="progressCount">0 / 10</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="top">
+  <div class="series">Крок за горизонт · Практикум</div>
+  <span class="glyph">Д</span>
+  <div class="glyph-sub">дії · якість × напрямок × регулярність</div>
+  <h1 class="title">Як рухатись, а не просто метушитись</h1>
+  <p class="subtitle">Десять вправ на компонент, який єдиний повністю в твоїй владі прямо зараз</p>
+  <div class="divider-deco"></div>
+</header>
+
+<!-- INTRO -->
+<section class="wrap">
+  <p class="lead">
+    У формулі результату Д — Дії — єдиний компонент, який ти можеш змінити в найближчі п'ять хвилин. Не завтра. Не «коли буде настрій». Зараз.
+  </p>
+  <p>
+    Але дія дії — різниця. Всередині Д є три множники: <strong>якість</strong> (чи взагалі їде ця машина), <strong>напрямок</strong> (куди крутиш кермо) і <strong>регулярність</strong> (як часто заводиш двигун). І якщо хоч один із них падає в нуль — результату нема, навіть якщо решта ідеальна.
+  </p>
+  <p>
+    Найчастіша причина «стою на місці» — не лінь і не брак сили волі. Це або дія <em>не туди</em> (машина мчить, але не в той бік), або дія <em>не достатньо часто</em> (виїжджаємо раз на місяць), або дія <em>на нулі ресурсів</em> (мотлох, що розсипається вже на виїзді). Практикум допоможе зрозуміти, що саме — і що з цим робити.
+  </p>
+
+  <div class="wow">Не «більше зусиль». А правильніший напрямок і хоча б трохи частіше.</div>
+
+  <p>
+    Головне застереження: цей практикум — <strong>не про продуктивність і таймери</strong>. Тут не буде «встань о п'ятій ранку» чи «розбий день на блоки». Тут про те, як почати рухатись, коли нема ні натхнення, ні ясності, ні зайвих сил. Кроками, які точно підйомні.
+  </p>
+
+  <p style="font-size:.92rem; color:var(--muted); font-style:italic; margin-top:1rem;">
+    Звертання на «ти» — однаково до жінок і чоловіків.
+  </p>
+</section>
+
+<!-- HOW TO USE -->
+<div class="howto">
+  <div class="howto-inner">
+    <span class="kicker">Як це працює</span>
+    <h2 class="section-title">Як користуватись практикумом</h2>
+    <div class="howto-list">
+      <div class="howto-item"><div class="howto-num">1</div><div class="howto-text"><strong>Це не плануваня, а спостереження.</strong> Спершу чесно побач, що є. Більшість помилок у діях — від того, що ми не дивимось на них тверезо.</div></div>
+      <div class="howto-item"><div class="howto-num">2</div><div class="howto-text"><strong>Послідовно й без поспіху.</strong> Спершу аудит (що роблю), потім напрямок (куди), потім регулярність (як часто). Не навпаки.</div></div>
+      <div class="howto-item"><div class="howto-num">3</div><div class="howto-text"><strong>Менше, але правильніше.</strong> Одна дія у правильний бік щодня дасть більше, ніж десять героїчних ривків раз на квартал.</div></div>
+      <div class="howto-item"><div class="howto-num">4</div><div class="howto-text"><strong>Поряд із тобою — бот «Опора».</strong> Деякі вправи мають кнопку для продовження в живому діалозі. Бот допоможе знайти свій правильний напрямок, якщо він поки незрозумілий.</div></div>
+      <div class="howto-item"><div class="howto-num">5</div><div class="howto-text"><strong>Постав галочку, коли вправа стала твоєю.</strong> Не коли «прочитав/прочитала», а коли реально зробив(ла). Прогрес вгорі показує пройдений шлях.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- РІВЕНЬ 1 -->
+<div class="wrap">
+  <div class="level-head">
+    <span class="level-tag">Рівень 1 · Основа</span>
+    <div class="level-title">Побачити свою машину</div>
+    <p class="level-desc">Перш ніж щось міняти в діях — треба чесно подивитись, що відбувається насправді. Не що плануєш, а що реально. Часто саме тут перше відкриття.</p>
+  </div>
+
+  <!-- Вправа 1 -->
+  <div class="ex" data-ex="1">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 1</div><div class="ex-title">Аудит реальних дій</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: усвідомлення поточної поведінки · самоспостереження</span>
+        <span class="tag tag-pain">біль: «можу більше, але стою на місці»</span>
+      </div>
+      <p>Ми рідко бачимо свої дії такими, якими вони є. У голові — «я весь час зайнятий(а)». На ділі — значна частина цієї зайнятості може взагалі не вести до результату. Тому спершу — тверезий погляд без осуду.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Візьми один звичайний день минулого тижня. Не ідеальний — звичайний.</li>
+        <li>Спробуй по пам'яті відтворити, що ти реально робив(ла) від підйому до сну. Що займало час — не що планував(ла), а що було насправді.</li>
+        <li>Розклади дії на три колонки: <em>рухає мене до цілі</em>, <em>потрібне, але не рухає</em>, <em>ні те ні те</em>. Подивись на пропорції чесно.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Думала, що весь день працювала. А як розклала — три години нарад без рішень, дві години пошти, годину читав(ла) нетермінове. Рухало до мети — може, дві години. І то не певна». Це не вирок — це точка відліку.
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти маєш чесну картину одного дня — і можеш назвати, яка частка дій реально веде тебе вперед. Навіть якщо вона мала — це вже знання, з яким можна працювати.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 2 -->
+  <div class="ex" data-ex="2">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 2</div><div class="ex-title">Куди їде машина</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: перевірка вектора дій · узгодженість із ціллю</span>
+        <span class="tag tag-pain">біль: «стараюсь, але нічого не виходить»</span>
+      </div>
+      <p>Можна їхати швидко — і не туди. Це одна з найбільших пасток у діях: людина реально старається, але те, що вона робить, просто не веде до бажаного результату. Вектор — важливіший за швидкість.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Назви одну важливу ціль, до якої рухаєшся (або хочеш рухатись).</li>
+        <li>Тепер чесно спитай: «що я роблю щотижня, що реально наближає мене до неї?» Не в теорії — а конкретні дії, які вже відбуваються.</li>
+        <li>Якщо таких дій або нема, або вони зовсім дрібні — це і є відповідь: машина або стоїть, або їде не туди. І це можна виправити.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> Ціль — «запустити свій проєкт». Що роблю щотижня? «Читаю про підприємництво, дивлюсь відео успішних людей, думаю». Але нема жодної дії, яка наблизила б до запуску. Машина стоїть з увімкненим радіо.
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти можеш назвати хоча б одну конкретну дію, яку робиш щотижня і яка реально наближає до твоєї цілі. Якщо не можеш — ось де і є робота.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 3 -->
+  <div class="ex" data-ex="3">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 3</div><div class="ex-title">Метушня чи рух</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: розрізнення активності та результативності</span>
+        <span class="tag tag-pain">біль: «весь час щось роблю, а результату нема»</span>
+      </div>
+      <p>Зайнятість і продуктивність — не одне й те саме. Метушня — це коли багато руху, але мало зміщення. Рух — коли кожна дія, хай і маленька, реально змінює стан справ. Вправа вчить їх розрізняти — у собі, не в теорії.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Згадай останній тиждень. Які дії дали реальний результат — щось змінилось, щось зроблено, щось просунулось?</li>
+        <li>А що було «активністю без результату» — перемовини ні про що, підготовка до підготовки, читання без застосування?</li>
+        <li>Визнач свій основний «метушня-шаблон»: що саме ти робиш замість головного, коли хочеш відчути себе зайнятим(ою)?</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Мій метушня-шаблон — переписувати список завдань. Витрачаю на це добру годину й відчуваю, що „зробив(ла) щось". А насправді — просто перемістив(ла) слова з одного місця в інше». Знання шаблону — вже половина звільнення від нього.
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти знаєш свій головний «метушня-шаблон» і можеш упізнати його в момент, коли він запускається. Тепер у тебе є пауза між «починаю метушитись» і «роблю насправді».</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- РІВЕНЬ 2 -->
+<div class="wrap">
+  <div class="level-head">
+    <span class="level-tag">Рівень 2 · Ядро</span>
+    <div class="level-title">Полагодити й направити</div>
+    <p class="level-desc">Тепер — прибрати те, що гальмує, і вирівняти вектор. Не більше дій, а правильніші — і туди, куди справді треба.</p>
+  </div>
+
+  <!-- Вправа 4 -->
+  <div class="ex" data-ex="4">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 4</div><div class="ex-title">Прибрати «дії заради дій»</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: вивільнення ресурсу через відмову від зайвого</span>
+        <span class="tag tag-pain">біль: «немає сил на важливе»</span>
+      </div>
+      <p>Часто проблема не в тому, що бракує дій. А в тому, що весь час і енергія йдуть на дії, які нічого не дають. Зупинити щось — це теж дія. Інколи найважливіша.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Подивись на свій список справ або тижневий ритм. Що там є такого, що ти робиш регулярно — але якби зупинив(ла), нічого б суттєво не змінилось?</li>
+        <li>Спитай про кожну таку справу: «що станеться, якщо я цього не зроблю цього тижня?» Якщо відповідь «нічого серйозного» — це кандидат на зупинку.</li>
+        <li>Обери одну справу, яку зупиниш на місяць як експеримент. Лише одну — але реально.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Щотижня роблю детальний звіт для себе, якого ніхто не читає — навіть я. Витрачаю три години. Зупинила — нічого не змінилось. Ці три години тепер ідуть на справи, що рухають».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти зупинив(ла) хоча б одну регулярну дію — і вивільнений час чи енергія пішли на щось, що реально важливе. Відмова від зайвого — це не лінь, а стратегія.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 5 -->
+  <div class="ex" data-ex="5">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 5</div><div class="ex-title">Один крок із найбільшим важелем</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: пошук дії з максимальним ефектом · принцип важеля</span>
+        <span class="tag tag-pain">біль: «роблю багато, а результату мало»</span>
+      </div>
+      <p>Не всі дії однаково цінні. Є одна-дві, які дають більше результату, ніж решта разом. Це і є важіль: знайти їх — і дати їм пріоритет, навіть якщо вони не найлегші. Найважче в цій вправі — чесність із собою щодо того, що справді важливо.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Візьми свою головну ціль (як у вправі 2). Уяви, що маєш лише одну годину на тиждень для цієї цілі. Яку дію обереш — ту, що дасть найбільше зрушення?</li>
+        <li>Запиши цю дію. Не список — одну.</li>
+        <li>Тепер подивись, скільки часу ця дія займає у твоєму реальному тижні. Якщо нуль або майже нуль — ось де є що змінити.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> Ціль — знайти нових клієнтів. Дія з найбільшим важелем — особистий контакт із потенційним клієнтом. Скільки таких контактів за тиждень? Нуль. А часу витрачається — десятки годин на «підготовку» й соцмережі. Важіль знайдено.
+      </div>
+      <div class="bot">
+        <div class="bot-text"><strong>Незрозуміло, яка дія дасть найбільший важіль?</strong> Бот «Опора» допоможе розібратись у твоїй конкретній ситуації — що справді рухає, а що лише створює відчуття руху.</div>
+        <a href="https://t.me/opora_krok_bot" class="bot-btn" target="_blank" rel="noopener">Поговорити з «Опорою»</a>
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти знаєш свій «важільний крок» і він з'явився у твоєму тижні — хоча б раз. Це зрушення.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 6 -->
+  <div class="ex" data-ex="6">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 6</div><div class="ex-title">Намір реалізації</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: implementation intention · психологія виконання намірів</span>
+        <span class="tag tag-pain">біль: «знаю, що треба, але не роблю»</span>
+      </div>
+      <p>Є добре досліджений феномен: люди, які планують не лише <em>що</em> зроблять, а й <em>коли, де і як</em> — виконують наміри значно частіше. «Займуся спортом» лишається мрією. «Вівторок, 19:00, парк біля дому, 20 хвилин» — уже майже дія.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Візьми свій «важільний крок» із вправи 5 (або будь-яку важливу дію, яку відкладаєш).</li>
+        <li>Заплануй її за формулою: <em>«Я зроблю [дія] у [конкретний день] о [конкретний час] у [конкретному місці]».</em></li>
+        <li>Постав нагадування або запиши в календар. Не «пам'ятатиму» — а зафіксуй. Мозок ставиться до записаного серйозніше.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> Замість «треба написати тому клієнту» → «Середа, 10:00, за столом вдома, напишу одного листа Олексію щодо зустрічі». Конкретність прибирає відмовки — немає питання «коли?», є лише «зробив(ла) чи ні».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти зробив(ла) заплановану дію у запланований час хоча б двічі поспіль. Намір реалізації почав перетворюватися на звичку.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 7 -->
+  <div class="ex" data-ex="7">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 7</div><div class="ex-title">Найменша можлива дія</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: зниження порогу входу · подолання початкового опору</span>
+        <span class="tag tag-pain">біль: «починаю і кидаю, не можу зрушити»</span>
+      </div>
+      <p>Найбільший опір — не в процесі, а на старті. Мозок переоцінює складність і вмикає гальма ще до початку. Ліки — зробити початок настільки дрібним, щоб відмовлятись від нього було б смішно. Не «написати статтю», а «відкрити документ і написати перше речення».</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Візьми дію, яку постійно відкладаєш. Ту, від якої стає важко ще до початку.</li>
+        <li>Розріж її до найменшого можливого першого кроку. Такого, що займає 2–5 хвилин і не потребує «правильного настрою».</li>
+        <li>Зроби лише цей крок. Ніяких зобов'язань продовжувати — просто цей. І подивись, що станеться далі.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Не можу почати розбирати фінанси — здається жахливим». Найменша дія: відкрити таблицю і вписати одну цифру. Одну. Майже завжди після цього продовжуєш — бо старт зроблено, опір упав.
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти починаєш застосовувати цей принцип автоматично — коли щось відкладається, запитуєш «яка тут найменша можлива дія?» і робиш її, не чекаючи натхнення.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- РІВЕНЬ 3 -->
+<div class="wrap">
+  <div class="level-head">
+    <span class="level-tag">Рівень 3 · Закріплення</span>
+    <div class="level-title">Тримати регулярність</div>
+    <p class="level-desc">Одна правильна дія — добре. Та сама дія регулярно — ось де народжується результат. Цей рівень про те, як не зупинитись через тиждень.</p>
+  </div>
+
+  <!-- Вправа 8 -->
+  <div class="ex" data-ex="8">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 8</div><div class="ex-title">Прив'язати до якоря</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: habit stacking · прив'язка нової дії до наявної звички</span>
+        <span class="tag tag-pain">біль: «починаю і кидаю»</span>
+      </div>
+      <p>Нова дія тримається куди краще, якщо прив'язана до вже наявної звички — «якоря». Мозок вже знає цей ритм, і нова дія ковзає в нього майже без опору. Не треба пам'ятати, не треба вирішувати — просто «після X роблю Y».</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Обери дію, яку хочеш зробити регулярною (найкраще — з вправи 5 чи 6).</li>
+        <li>Знайди у своєму дні стійкий якір — те, що ти вже точно робиш щодня: ранкова кава, вихід із дому, обід, вечірній душ.</li>
+        <li>Сформулюй зв'язку: «Після [якір] я [нова дія]». І тримайся цієї формули без виключень перші два тижні.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Після ранкової кави — п'ять хвилин на найважливішу задачу дня». Кава вже є кожного ранку. Нова дія зачепилась за якір — і перестала залежати від настрою чи пам'яті.
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти тримаєш зв'язку «якір + нова дія» десять днів поспіль без нагадувань. Це знак, що пара почала зрощуватись у звичку.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 9 -->
+  <div class="ex" data-ex="9">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 9</div><div class="ex-title">Пружина після паузи</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: відновлення після збою без самоз'їдання</span>
+        <span class="tag tag-pain">біль: «починаю — і кидаю після першого збою»</span>
+      </div>
+      <p>Пропуск — неминучий. Хвороба, форс-мажор, просто поганий день. Проблема не в пропуску. Проблема в тому, що після нього люди часто кидають зовсім: «ну, і так уже зіпсував(ла) — яка різниця». Ця вправа — про те, як повертатись без драми.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Прийми правило: один пропуск — це пропуск. Два поспіль — початок нової звички (поганої). Тому після будь-якого пропуску наступного разу — обов'язково повертаєшся.</li>
+        <li>Коли повертаєшся після паузи — зроби найменшу версію дії, не повну. Прийти в зал і пройтись 10 хвилин краще, ніж не прийти тому, що «нема сил на повне тренування».</li>
+        <li>Не картай себе за пропуск — просто зафіксуй повернення: «я повернув(ла)ся». Це і є результат.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Три дні не писав(ла) — хвороба. Замість „усе, провалив(ла)" — наступного дня написав(ла) один абзац. Один. Але повернув(ла)ся. І потоку не перервав(ла) — лише пригальмував(ла)».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти хоча б раз повернув(ла)ся після паузи без самоз'їдання — просто відновив(ла) дію в мінімальній версії. Це і є пружина: стиснулась — і повернулась назад.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 10 -->
+  <div class="ex" data-ex="10">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 10</div><div class="ex-title">Ревізія якості й напрямку</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: петля зворотного зв'язку · регулярна перевірка вектора</span>
+        <span class="tag tag-pain">біль: «роблю, але не розумію, чи є толк»</span>
+      </div>
+      <p>Регулярність без перевірки — це їхати з правильною частотою, але можливо, давно вже не туди. Раз на місяць варто зупинитись і запитати: «мої дії ще ведуть туди, куди я хочу? Чи щось змінилось?» Не щоб сумніватись — а щоб скоригувати вектор, поки не відхилився надто далеко.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Раз на місяць, у фіксований день (наприклад, останній тиждень місяця), задай собі три питання.</li>
+        <li><em>Чи є результат від моїх регулярних дій — хоч маленький?</em> Якщо ні за місяць — треба щось міняти.</li>
+        <li><em>Чи змінились обставини чи ціль</em> так, що мої дії вже не актуальні? Якщо так — оновлюй дії, не сили волі.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Місяць робив(ла) холодні розсилки — нуль відповідей. Ревізія показала: ринок змінився, цей канал більше не працює так. Замість «треба більше старатись» — переключив(ла)ся на рекомендації. Вектор оновлено».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти провів(ла) місячну ревізію і за її підсумком або підтвердив(ла) напрямок, або скоригував(ла) дію. Будь-який з результатів — правильний. Головне — не їхати на автопілоті місяцями без перевірки.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- КОНТРОЛЬНІ ТОЧКИ -->
+<div class="wrap">
+  <div class="checkpoints">
+    <span class="kicker">Як зрозуміти, що Д працює</span>
+    <h2 class="section-title" style="font-size:1.5rem;">Ознаки, а не бали</h2>
+    <p style="font-size:.95rem; color:var(--ink2); margin-bottom:.5rem;">Не «зробив(ла) більше», а «рухаюсь правильніше і регулярніше». Звіряйся раз на місяць.</p>
+    <div class="cp-list">
+      <div class="cp-item"><span>Ти можеш назвати <strong>одну конкретну дію</strong>, яку робиш щотижня і яка реально наближає до цілі.</span></div>
+      <div class="cp-item"><span>Ти знаєш свій <strong>«метушня-шаблон»</strong> і помічаєш його до того, як він з'їв(ла) кілька годин.</span></div>
+      <div class="cp-item"><span>Після пропуску ти <strong>повертаєшся</strong> — у мінімальній версії, без самоз'їдання.</span></div>
+      <div class="cp-item"><span>Хоча б одна важлива дія <strong>прив'язана до якоря</strong> і відбувається без щоденного вирішення «робити чи ні».</span></div>
+      <div class="cp-item"><span>Раз на місяць ти <strong>перевіряєш вектор</strong> — і не боїшся його скоригувати, якщо щось змінилось.</span></div>
+    </div>
+  </div>
+
+  <div class="mistakes">
+    <span class="kicker">Обережно</span>
+    <h2 class="section-title" style="font-size:1.5rem;">Що не працює з Д</h2>
+    <p style="font-size:.95rem; color:var(--ink2); margin-bottom:.5rem;">Три пастки, через які рух перетворюється на метушню або зупиняється.</p>
+    <div class="mk-list">
+      <div class="mk-item"><span><strong>Більше дій замість правильніших.</strong> Коли не виходить — природний імпульс «треба більше старатись». Але якщо вектор хибний, більша швидкість лише швидше заводить не туди.</span></div>
+      <div class="mk-item"><span><strong>Кидати після першого пропуску.</strong> Один пропуск — це пропуск. Два поспіль — вже нова (погана) звичка. Повернення після збою важливіше, ніж бездоганна серія.</span></div>
+      <div class="mk-item"><span><strong>Планувати замість робити.</strong> Детальний план дає відчуття прогресу без реального руху. Один реальний крок у правильний бік дорожчий за годину планування.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- САМОРЕФЛЕКСІЯ -->
+<div class="reflect">
+  <div class="reflect-inner">
+    <span class="kicker">На завершення</span>
+    <h2 class="section-title">Питання, з якими варто побути</h2>
+    <div class="reflect-q"><span>1.</span> Яка одна дія — якби я робив(ла) її регулярно — змінила б мою ситуацію найбільше?</div>
+    <div class="reflect-q"><span>2.</span> Де я плутаю зайнятість із рухом — і що насправді займає мій час?</div>
+    <div class="reflect-q"><span>3.</span> Що я роблю регулярно, але давно варто зупинити — бо воно вже нікуди не веде?</div>
+    <div class="reflect-q"><span>4.</span> Після якого мого «якоря» найлегше вставити нову важливу дію?</div>
+    <div class="reflect-q"><span>5.</span> Якби я зміг(ла) щодня робити лише одну справу — яку б обрав(ла)?</div>
+  </div>
+</div>
+
+<!-- ЗАКІНЧЕННЯ -->
+<section class="ending wrap">
+  <span class="kicker">І наостанок</span>
+  <p style="max-width:34em; margin:0 auto 1.5rem;">
+    Д — єдиний компонент формули, який повністю в твоїй владі прямо зараз. Не з понеділка. Не «коли буде час». Прямо після того, як закриєш цю сторінку.
+  </p>
+  <p style="max-width:34em; margin:0 auto 2rem;">
+    Одна дія у правильний бік. Регулярно. Без героїзму — але без зупинок. Саме з цього і складається великий R.
+  </p>
+
+  <div class="bot" style="max-width:520px; margin:0 auto 2rem;">
+    <div class="bot-text"><strong>Не знаєш, з якої дії почати?</strong> Бот «Опора» допоможе знайти свій перший правильний крок — у живому діалозі, без зайвого тиску.</div>
+    <a href="https://t.me/opora_krok_bot" class="bot-btn" target="_blank" rel="noopener">Поговорити з «Опорою»</a>
+  </div>
+
+  <div class="ending-q">Яка одна дія — прямо сьогодні?</div>
+
+  <p class="signature">— Світлана Сліпченко, психолог, авторка курсу «Крок за горизонт»</p>
+  <a href="formula-rezultata.html" class="back-link" target="_blank" rel="noopener">← Повернутись до лекції «Формула результату»</a>
+  <div style="margin-top:2.5rem;"><button class="reset-btn" id="resetBtn">Скинути мій прогрес</button></div>
+</section>
+
+<footer>Крок за горизонт · Практикум Д · практикум до лекції «Формула результату»</footer>
+
+<script>
+(function() {
+  const STORAGE_KEY = 'metodychka-d-progress';
+  const cards = Array.from(document.querySelectorAll('.ex[data-ex]'));
+  const total = cards.length;
+  const fill = document.getElementById('progressFill');
+  const count = document.getElementById('progressCount');
+  let done = {};
+  try { const saved = localStorage.getItem(STORAGE_KEY); if (saved) done = JSON.parse(saved) || {}; } catch(e){ done = {}; }
+  function save(){ try { localStorage.setItem(STORAGE_KEY, JSON.stringify(done)); } catch(e){} }
+  function updateProgress(){
+    const n = Object.values(done).filter(Boolean).length;
+    const pct = total ? Math.round((n/total)*100) : 0;
+    if (fill) fill.style.width = pct + '%';
+    if (count) count.textContent = n + ' / ' + total;
+  }
+  function applyState(card){
+    const id = card.dataset.ex;
+    const check = card.querySelector('.ex-check');
+    const isDone = !!done[id];
+    card.classList.toggle('done', isDone);
+    if (check) check.setAttribute('aria-checked', isDone ? 'true':'false');
+  }
+  function toggle(card){
+    const id = card.dataset.ex;
+    done[id] = !done[id];
+    applyState(card); save(); updateProgress();
+  }
+  cards.forEach(card => {
+    const check = card.querySelector('.ex-check');
+    applyState(card);
+    if (check){
+      check.addEventListener('click', () => toggle(card));
+      check.addEventListener('keydown', (e) => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(card); } });
+    }
+  });
+  updateProgress();
+  const resetBtn = document.getElementById('resetBtn');
+  if (resetBtn) resetBtn.addEventListener('click', () => { done={}; save(); cards.forEach(applyState); updateProgress(); });
+})();
+</script>
+</body>
+</html>
