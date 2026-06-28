@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Практикум О · Крок за горизонт</title>
+<style>
+:root {
+  --bg: #F5EFE6;
+  --bg2: #EDE3D0;
+  --bg3: #E3D5BC;
+  --card: #FAF5EC;
+  --terra: #B85042;
+  --terra-dark: #8E3A2F;
+  --gold: #C9A84C;
+  --gold-dark: #A88A30;
+  --green: #4A7C3A;
+  --green-dk: #336028;
+  --green-li: #6A9C5A;
+  --ink: #2C1A0E;
+  --ink2: #5A4530;
+  --muted: #8B7355;
+  --line: rgba(44,26,14,.12);
+  --blue: #3A5878;
+  --violet: #6B4A8C;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; font-size: 17px; line-height: 1.7; min-height: 100vh; overflow-x: hidden; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+header.top { padding: 4rem 1.5rem 2.5rem; text-align: center; position: relative; overflow: hidden; }
+header.top::before { content: ''; position: absolute; width: 300px; height: 300px; background: var(--green); opacity: .07; border-radius: 50%; top: -120px; right: -60px; }
+header.top > * { position: relative; z-index: 1; }
+.series { display: inline-block; font-size: .72rem; letter-spacing: .35em; text-transform: uppercase; color: var(--green-dk); font-weight: 700; margin-bottom: 1.5rem; padding: 6px 18px; border: 1px solid var(--green); border-radius: 3px; }
+.glyph { font-family: 'Georgia', serif; font-weight: 700; font-size: clamp(4rem, 12vw, 7rem); color: var(--green); line-height: 1; display: block; margin-bottom: .3rem; }
+.glyph-sub { font-family: 'Georgia', serif; font-style: italic; font-size: .9rem; color: var(--muted); margin-bottom: 1rem; }
+h1.title { font-family: 'Georgia', serif; font-size: clamp(1.9rem, 5vw, 3rem); font-weight: 700; letter-spacing: -.02em; line-height: 1.08; color: var(--ink); margin-bottom: 1rem; max-width: 14em; margin-left: auto; margin-right: auto; }
+.subtitle { font-family: 'Georgia', serif; font-style: italic; font-size: clamp(1.05rem, 2.2vw, 1.3rem); color: var(--green); max-width: 28em; margin: 0 auto; }
+.divider-deco { margin: 2rem auto 0; width: 60px; height: 1px; background: var(--green); position: relative; }
+.divider-deco::before, .divider-deco::after { content: ''; position: absolute; top: -3px; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+.divider-deco::before { left: -14px; } .divider-deco::after { right: -14px; }
+
+section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+p { margin-bottom: 1.1rem; color: var(--ink); }
+p.lead { font-family: 'Georgia', serif; font-size: 1.28rem; line-height: 1.55; margin-bottom: 1.5rem; }
+p strong { font-weight: 700; color: var(--ink); }
+p em { font-style: italic; color: var(--green-dk); }
+h2.section-title { font-family: 'Georgia', serif; font-size: clamp(1.6rem, 4vw, 2.3rem); font-weight: 700; letter-spacing: -.015em; line-height: 1.15; color: var(--ink); margin: 0 0 1.2rem; }
+.kicker { display: inline-block; font-family: 'Georgia', serif; font-style: italic; font-size: .78rem; letter-spacing: .25em; text-transform: uppercase; color: var(--green-dk); font-weight: 700; margin-bottom: .7rem; }
+
+.wow { font-family: 'Georgia', serif; font-style: italic; font-size: clamp(1.25rem, 2.8vw, 1.55rem); line-height: 1.4; color: var(--green); text-align: center; margin: 2rem auto; padding: 1.3rem 1rem; max-width: 24em; position: relative; font-weight: 600; }
+.wow::before, .wow::after { content: ''; position: absolute; left: 50%; transform: translateX(-50%); width: 40px; height: 1px; background: var(--green); }
+.wow::before { top: 0; } .wow::after { bottom: 0; }
+
+.howto { background: var(--bg2); margin: 2rem -1.5rem; padding: 2.5rem 1.5rem; }
+.howto-inner { max-width: 760px; margin: 0 auto; }
+.howto-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.2rem; }
+.howto-item { display: flex; gap: 1rem; align-items: flex-start; }
+.howto-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--green); color: #fff; font-family: 'Georgia', serif; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: .95rem; }
+.howto-text { color: var(--ink); font-size: .98rem; line-height: 1.55; }
+.howto-text strong { font-weight: 700; }
+
+.progress-wrap { position: sticky; top: 0; z-index: 40; background: rgba(245,239,230,.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: .8rem 1.5rem; border-bottom: 1px solid var(--line); }
+.progress-inner { max-width: 760px; margin: 0 auto; display: flex; align-items: center; gap: 1rem; }
+.progress-label { font-family: 'Georgia', serif; font-size: .82rem; color: var(--ink2); white-space: nowrap; font-weight: 600; }
+.progress-track { flex: 1; height: 8px; background: var(--bg3); border-radius: 4px; overflow: hidden; }
+.progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--green-li), var(--green)); border-radius: 4px; transition: width .4s ease; }
+.progress-count { font-family: 'Georgia', serif; font-weight: 700; color: var(--green-dk); font-variant-numeric: tabular-nums; font-size: .9rem; white-space: nowrap; }
+
+.level-head { margin: 3.5rem 0 1.5rem; text-align: center; }
+.level-tag { display: inline-block; font-family: 'Georgia', serif; font-style: italic; font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; color: #fff; background: var(--green); font-weight: 700; padding: 5px 16px; border-radius: 4px; margin-bottom: .8rem; }
+.level-title { font-family: 'Georgia', serif; font-size: 1.7rem; font-weight: 700; color: var(--ink); margin-bottom: .4rem; }
+.level-desc { font-size: .95rem; color: var(--muted); font-style: italic; max-width: 28em; margin: 0 auto; }
+
+.ex { background: var(--card); border: 1px solid var(--line); border-radius: 12px; margin: 1.5rem 0; overflow: hidden; transition: box-shadow .3s, border-color .3s; }
+.ex.done { border-color: var(--green); box-shadow: 0 0 0 1px var(--green); }
+.ex-head { display: flex; align-items: flex-start; gap: 1rem; padding: 1.4rem 1.5rem 1rem; }
+.ex-check { flex-shrink: 0; width: 28px; height: 28px; border-radius: 8px; border: 2px solid var(--muted); background: var(--bg); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; margin-top: 2px; }
+.ex-check:hover { border-color: var(--green); }
+.ex.done .ex-check { background: var(--green); border-color: var(--green-dk); }
+.ex-check svg { width: 16px; height: 16px; opacity: 0; transition: opacity .2s; }
+.ex.done .ex-check svg { opacity: 1; }
+.ex-num { font-family: 'Georgia', serif; font-style: italic; font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: var(--green-dk); font-weight: 700; margin-bottom: .2rem; }
+.ex-title { font-family: 'Georgia', serif; font-size: 1.3rem; font-weight: 700; color: var(--ink); line-height: 1.2; }
+.ex-body { padding: 0 1.5rem 1.5rem; }
+.ex-mech { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.1rem; }
+.tag { font-family: 'Georgia', serif; font-size: .74rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; letter-spacing: .02em; }
+.tag-mech { background: var(--bg3); color: var(--green-dk); }
+.tag-pain { background: rgba(184,80,66,.1); color: var(--terra-dark); }
+.ex-section-label { font-family: 'Georgia', serif; font-style: italic; font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin: 1.1rem 0 .5rem; }
+.ex-steps { list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: .6rem; }
+.ex-steps li { counter-increment: step; position: relative; padding-left: 2rem; font-size: .95rem; line-height: 1.55; color: var(--ink); }
+.ex-steps li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--green); color: #fff; font-family: 'Georgia', serif; font-size: .78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+.ex-example { background: var(--bg2); border-radius: 8px; padding: .9rem 1.1rem; margin-top: .5rem; font-size: .9rem; color: var(--ink2); line-height: 1.6; }
+.ex-example strong { color: var(--ink); }
+.ex-control { display: flex; gap: .6rem; align-items: flex-start; margin-top: 1.1rem; padding-top: 1rem; border-top: 1px dashed var(--line); font-size: .9rem; color: var(--ink2); line-height: 1.55; }
+.ex-control::before { content: '✓'; color: var(--green-dk); font-weight: 700; flex-shrink: 0; }
+.ex-control strong { color: var(--ink); }
+
+.bot { margin-top: 1.2rem; background: linear-gradient(135deg, var(--green-dk), var(--green)); border-radius: 10px; padding: 1.1rem 1.3rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.bot-text { flex: 1; min-width: 200px; color: #fff; font-size: .92rem; line-height: 1.5; }
+.bot-text strong { font-weight: 700; }
+.bot-btn { display: inline-block; background: #fff; color: var(--green-dk); font-family: 'Georgia', serif; font-weight: 700; font-size: .95rem; text-decoration: none; padding: 10px 20px; border-radius: 7px; transition: transform .2s, box-shadow .2s; white-space: nowrap; }
+.bot-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px -6px rgba(0,0,0,.4); }
+
+.checkpoints, .mistakes { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1.8rem 1.8rem 2rem; margin: 2rem 0; }
+.cp-list, .mk-list { display: flex; flex-direction: column; gap: .8rem; margin-top: 1rem; }
+.cp-item, .mk-item { display: flex; gap: .7rem; align-items: flex-start; font-size: .95rem; line-height: 1.55; color: var(--ink); }
+.cp-item::before { content: '▲'; color: var(--green); flex-shrink: 0; font-size: .8rem; margin-top: 3px; }
+.mk-item::before { content: '✕'; color: var(--terra); flex-shrink: 0; font-weight: 700; }
+.cp-item strong, .mk-item strong { font-weight: 700; }
+.reflect { background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%); margin: 3rem -1.5rem 0; padding: 3rem 1.5rem; }
+.reflect-inner { max-width: 760px; margin: 0 auto; }
+.reflect-q { font-family: 'Georgia', serif; font-size: 1.1rem; color: var(--ink); padding: 1rem 0; border-bottom: 1px solid var(--line); display: flex; gap: .8rem; }
+.reflect-q:last-child { border-bottom: none; }
+.reflect-q span { color: var(--green-dk); font-weight: 700; flex-shrink: 0; }
+.ending { text-align: center; padding-top: 3.5rem; padding-bottom: 4rem; }
+.ending-q { font-family: 'Georgia', serif; font-style: italic; font-size: clamp(1.4rem, 3.5vw, 2rem); color: var(--green); max-width: 20em; margin: 0 auto 1.5rem; line-height: 1.3; }
+.signature { font-family: 'Georgia', serif; font-style: italic; color: var(--muted); font-size: 1rem; margin-top: 1.5rem; }
+.back-link { display: inline-block; margin-top: 2rem; font-family: 'Georgia', serif; font-size: .95rem; color: var(--green-dk); text-decoration: none; border-bottom: 1px solid var(--green); padding-bottom: 2px; }
+footer { text-align: center; padding: 2rem 1.5rem 3rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .8rem; font-style: italic; font-family: 'Georgia', serif; }
+.reset-btn { background: none; border: 1px solid var(--line); color: var(--muted); font-family: inherit; font-size: .8rem; padding: 5px 12px; border-radius: 4px; cursor: pointer; transition: all .2s; }
+.reset-btn:hover { border-color: var(--green); color: var(--green); }
+@media (max-width: 600px) { .ex-head { padding: 1.2rem 1.1rem .8rem; } .ex-body { padding: 0 1.1rem 1.2rem; } .progress-label { display: none; } .howto { margin-left: 0; margin-right: 0; } .reflect { margin-left: 0; margin-right: 0; } }
+</style>
+</head>
+<body>
+
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <span class="progress-label">Твій шлях:</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-count" id="progressCount">0 / 10</span>
+  </div>
+</div>
+
+<header class="top">
+  <div class="series">Крок за горизонт · Практикум</div>
+  <span class="glyph">О</span>
+  <div class="glyph-sub">оточення · поле, яке формує тебе без твого дозволу</div>
+  <h1 class="title">Як свідомо обирати поле, в якому ростеш</h1>
+  <p class="subtitle">Десять вправ на компонент, який «заражає» — і на те, щоб це знання поставити собі на службу</p>
+  <div class="divider-deco"></div>
+</header>
+
+<section class="wrap">
+  <p class="lead">
+    Уяви ту саму людину у двох різних колективах. В одному — тиха, непомітна, ідеї не озвучує, ввечері виходить порожньою. В іншому — за місяць не впізнати: сміється, пропонує, сперечається. Та сама людина. Змінилось поле — і воно витягнуло те, що перше глушило.
+  </p>
+  <p>
+    У нейронауці є термін — дзеркальні нейрони. Вони вмикаються в мозку, коли ти просто <em>дивишся</em> на іншу людину. Тобто оточення «заражає» без твого зусилля й без твого дозволу: чужий спокій заспокоює, чужа тривога — розганяє тривогу в тобі, чужий рух — надихає на рух. Це не метафора. Це механізм.
+  </p>
+  <p>
+    Всередині О є два шари. <strong>к — контекст</strong>: те, що задано без твоєї участі — перші роки, родина, епоха. Це справді важко змінити. І <strong>в — вибір середовища</strong>: те, що ти обираєш зараз — людей, місто, голоси у вухах, професійне коло. Саме з цим і працює практикум.
+  </p>
+
+  <div class="wow">Не «виганяй поганих людей». Усвідомлюй поле, в якому стоїш — і роби свідомі вибори.</div>
+
+  <p>
+    Головне застереження: цей практикум — <strong>не про «токсичних людей»</strong> і не про те, щоб когось видалити з життя. Часто найважливіше — просто побачити, яке поле тебе оточує зараз. А далі — маленькі, свідомі вибори. Навіть там, де повної свободи нема.
+  </p>
+  <p style="font-size:.92rem; color:var(--muted); font-style:italic; margin-top:1rem;">
+    Звертання на «ти» — однаково до жінок і чоловіків.
+  </p>
+</section>
+
+<div class="howto">
+  <div class="howto-inner">
+    <span class="kicker">Як це працює</span>
+    <h2 class="section-title">Як користуватись практикумом</h2>
+    <div class="howto-list">
+      <div class="howto-item"><div class="howto-num">1</div><div class="howto-text"><strong>Без осуду до людей.</strong> Вправи — про спостереження за полем, а не про вирок людям. Хтось «забирає енергію» — не тому що погана людина, а тому що так складаються стосунки зараз.</div></div>
+      <div class="howto-item"><div class="howto-num">2</div><div class="howto-text"><strong>Послідовно й без поспіху.</strong> Спершу побач поле, потім — перевір вплив, тоді — роби вибори. Не навпаки.</div></div>
+      <div class="howto-item"><div class="howto-num">3</div><div class="howto-text"><strong>Маленькі вибори — теж вибори.</strong> Не завжди можна змінити оточення повністю. Але завжди можна щось додати або трохи зменшити. Навіть це змінює поле.</div></div>
+      <div class="howto-item"><div class="howto-num">4</div><div class="howto-text"><strong>Поряд із тобою — бот «Опора».</strong> Деякі вправи мають кнопку для продовження в живому діалозі. Особливо корисно там, де вправа зачіпає конкретні стосунки.</div></div>
+      <div class="howto-item"><div class="howto-num">5</div><div class="howto-text"><strong>Постав галочку, коли вправа стала твоєю.</strong> Не коли «прочитав/прочитала», а коли реально зробив(ла). Прогрес вгорі показує пройдений шлях.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- РІВЕНЬ 1 -->
+<div class="wrap">
+  <div class="level-head">
+    <span class="level-tag">Рівень 1 · Основа</span>
+    <div class="level-title">Побачити своє поле</div>
+    <p class="level-desc">Оточення впливає на нас постійно — але зазвичай це залишається поза нашою увагою. Перший крок — просто побачити це поле таким, яким воно є зараз.</p>
+  </div>
+
+  <!-- Вправа 1 -->
+  <div class="ex" data-ex="1">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 1</div><div class="ex-title">Карта енергії людей</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: усвідомлення емоційного впливу оточення</span>
+        <span class="tag tag-pain">біль: «самотність серед людей, ніхто не розуміє»</span>
+      </div>
+      <p>Це не про «хороших» і «поганих» людей. Це про те, як ти виходиш із взаємодії — повним(ою) чи порожнім(ою). Обидва стани — інформація. Вона допомагає робити свідоміші вибори про те, з ким і як ти проводиш час.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Випиши 8–10 людей, з якими найчастіше спілкуєшся. Не «найближчих», а найчастіших — за фактом часу.</li>
+        <li>Біля кожного запитай себе: «як я зазвичай почуваюсь після спілкування з цією людиною — повніше чи порожніше?» Позначай знаком + або −.</li>
+        <li>Подивись на загальну картину без осуду. Де більше «+»? Де «−»? Чи є це сюрпризом?</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Виписав(ла) десятьох. Виявилось: три людини стабільно дають «+», дві — стабільно «−», решта залежить від теми. І несподіванка: колега, з якою я найбільше часу, — майже завжди «−». Не тому що зла. Просто наші розмови зводяться до скарг».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти маєш чесну картину свого кола — хто наповнює, хто виснажує. Не щоб когось прибрати, а щоб розподіляти увагу й час свідоміше.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 2 -->
+  <div class="ex" data-ex="2">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 2</div><div class="ex-title">Голоси у вухах</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: медіасередовище як частина оточення</span>
+        <span class="tag tag-pain">біль: «хронічна тривога, не можу зупинитись»</span>
+      </div>
+      <p>Оточення — це не лише живі люди. Те, що ти читаєш, слухаєш і дивишся щодня, теж формує твоє поле — тихо, непомітно, але потужно. Подкасти, соцмережі, новини, книжки, серіали — все це голоси, які постійно в тебе у вухах. І вони теж «заражають».</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Протягом одного дня відстежуй, що ти споживаєш інформаційно: які акаунти, які теми, який тон. Не оцінюй — просто фіксуй.</li>
+        <li>Ввечері запитай: «який загальний настрій дало мені сьогоднішнє інформаційне середовище — тривогу, натхнення, порожнечу, спокій?»</li>
+        <li>Визнач один-два «голоси», які регулярно дають тобі негативний залишок — і один-два, що надихають або заспокоюють.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Слідкую за двадцятьма акаунтами. Більшість — тривожні новини або чужі успіхи, від яких стає не по собі. Надихають — двоє: один автор пише про науку просто, інший — про ремесло. Після них хочеться щось робити. Після решти — лягти».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти знаєш, які медіаджерела стабільно забирають енергію, а які додають. І маєш конкретні кандидати на «менше» і «більше».</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 3 -->
+  <div class="ex" data-ex="3">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 3</div><div class="ex-title">Дзеркало середовища</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: ідентичність крізь оточення · дзеркальні нейрони</span>
+        <span class="tag tag-pain">біль: «не знаю, хто я, живу не своє»</span>
+      </div>
+      <p>Оточення не лише впливає на настрій — воно формує те, ким ти себе вважаєш. Різні компанії витягують різні версії тебе. Ця вправа допомагає побачити, яку версію тебе витягує твоє теперішнє поле — і чи це та версія, якою ти хочеш бути.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Згадай дві-три різні компанії чи середовища зі свого життя — нинішні або минулі. Робоче коло, друзі, родина, спортивна секція.</li>
+        <li>Для кожного запитай: «якою(яким) людиною я стаю поряд із ними? Які мої якості тут проявляються — а які зникають?»</li>
+        <li>Порівняй. Яка версія тебе ближча до тієї, якою ти хочеш бути? В якому середовищі вона з'являється?</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «З колегами на роботі — мовчу, погоджуюсь, ніколи не пропоную. З друзями зі студентських часів — сміюсь, фонтаную ідеями, відстоюю думку. Та сама людина — два різні поля, дві різні версії».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти можеш назвати середовище, де з'являється «твоя» версія тебе — і середовище, де вона губиться. Це вже знання, з яким можна щось робити.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- РІВЕНЬ 2 -->
+<div class="wrap">
+  <div class="level-head">
+    <span class="level-tag">Рівень 2 · Ядро</span>
+    <div class="level-title">Перевірити вплив</div>
+    <p class="level-desc">Побачити поле — мало. Треба розібрати, де оточення допомагає рости, а де непомітно тримає на місці. Й навчитись захищати своє.</p>
+  </div>
+
+  <!-- Вправа 4 -->
+  <div class="ex" data-ex="4">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 4</div><div class="ex-title">Поле росту чи поле стагнації</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: оцінка середовища як чинника розвитку</span>
+        <span class="tag tag-pain">біль: «можу більше, але стою на місці»</span>
+      </div>
+      <p>Деякі середовища розширюють — в них хочеться рости, пробувати, ризикувати. Інші звужують — в них краще сидіти тихо й не висуватись. Обидва типи трапляються у кожного — це нормально. Питання — яке поле займає більшу частину твого часу.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Оціни своє головне робоче або соціальне середовище за трьома ознаками росту: чи заохочується тут нова ідея? Чи помилка — це вирок чи досвід? Чи є поряд хтось, хто рухається вперед?</li>
+        <li>Тепер — ознаки стагнації: чи прийнято тут «не висовуватись»? Чи успіх інших сприймається із заздрістю? Чи розмови зводяться до скарг?</li>
+        <li>Дай чесну оцінку: більше росту чи стагнації? І що з цим реально можна зробити — навіть якщо не можна змінити поле повністю?</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Поле стагнації: на роботі прийнято мовчати, ідеї не підтримуються, нарікання — норма. Але є дві ознаки росту: один колега, якого я поважаю, і можливість ходити на зовнішні заходи. Починаю з них — і паралельно шукаю інше поле».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти чесно оцінив(ла) своє головне середовище — і знаєш, де в ньому є хоч маленькі точки росту. Навіть у полі стагнації вони є майже завжди.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 5 -->
+  <div class="ex" data-ex="5">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 5</div><div class="ex-title">Невидимі правила кола</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: усвідомлення засвоєних соціальних норм</span>
+        <span class="tag tag-pain">біль: «живу не своє, весь час усім винен(на)»</span>
+      </div>
+      <p>Кожне коло має негласні правила — що тут «нормально», а що «не прийнято». Ці правила засвоюються несвідомо й починають здаватися природними. Але часто за цим стоїть не твоя цінність, а норма твого оточення.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Подумай про своє головне коло спілкування. Які речі там «прийнято»? Які «не прийнято»? Спробуй сформулювати негласні правила — ті, що ніколи не проговорюються вголос.</li>
+        <li>Тепер перевір кожне правило: «це <em>моя</em> цінність — чи я просто взяв(ла) її від середовища?»</li>
+        <li>Чи є серед цих правил те, що тебе обмежує — і від чого ти б хотів(ла) відмовитись?</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «У нашій родині не прийнято говорити про гроші вголос. Не прийнято хвалитись успіхом. Не прийнято просити допомоги — треба справлятись самому. Я прийняв(ла) це як норму. А тепер бачу: деякі з цих правил мені заважають — і вони не мої».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти назвав(ла) хоча б одне невидиме правило свого кола — і можеш відповісти, чи воно твоє. Усвідомлене правило вже не має такої влади, як невидиме.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 6 -->
+  <div class="ex" data-ex="6">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 6</div><div class="ex-title">Порівняння, що надихає, і порівняння, що знецінює</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: розрізнення соціального порівняння знизу і зверху</span>
+        <span class="tag tag-pain">біль: «залежність від чужого схвалення»</span>
+      </div>
+      <p>Порівнювати себе з іншими — природно. Але є два різні типи: «хочу так само — це показує, що можливо» і «я нікчема поряд з ним(нею)». Перше надихає, друге знецінює. Різниця — не в тому, на кого дивишся, а в тому, який висновок робиш про себе.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Згадай людину або акаунт, після якого тобі стає гірше. Який висновок про себе ти робиш після перегляду?</li>
+        <li>Тепер — людину, після якої хочеться діяти. Що відрізняє ці дві реакції?</li>
+        <li>Сформулюй своє особисте правило: «коли порівняння надихає мене, а коли — знецінює». Це допомагає свідоміше обирати, на кого дивитись.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Після одного блогера думаю „я ніколи так не зможу". Після іншого — „о, і я так можу спробувати". Різниця: перший показує результат без шляху, другий — процес із помилками. Тепер я знаю, чого шукати».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти можеш у конкретному моменті розрізнити — це порівняння надихає чи знецінює? І свідомо обрати, що з ним робити.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 7 -->
+  <div class="ex" data-ex="7">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 7</div><div class="ex-title">Кордон як турбота</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: практика меж без вини · захист власного поля</span>
+        <span class="tag tag-pain">біль: «кажу „так", коли хочу сказати „ні"»</span>
+      </div>
+      <p>Кордон — це не стіна між тобою й іншою людиною. Це лінія між тим, що твоє, і тим, що чуже. Він захищає обох: тебе — від виснаження, іншу людину — від нечесної взаємодії. Казати «ні» — це не жорстокість. Це чесність.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Визнач одну ситуацію, де ти регулярно кажеш «так», хоча хочеш «ні» — і виходиш із неї виснаженим(ою) або образеним(ою) на себе.</li>
+        <li>Сформулюй свій кордон коротко й без вибачень: «я не можу», «мені не підходить», «цього разу ні». Без довгих пояснень — пояснення часто звучать як прохання дозволу.</li>
+        <li>Спробуй цю фразу в найближчій подібній ситуації. Хоча б один раз. Навіть якщо незручно — зроби і поміть, що сталося.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Колега постійно просить допомогти в останню хвилину. Я погоджуюсь і сиджу до ночі. Цього разу сказав(ла): „Сьогодні не зможу, у мене заплановано". Без пояснень. Він(вона) знайшов(ла) інший вихід. Нічого не зруйнувалось».
+      </div>
+      <div class="bot">
+        <div class="bot-text"><strong>Важко знайти слова або є конкретна ситуація, де не виходить?</strong> Бот «Опора» допоможе розібратись у живій розмові — де саме застрягає кордон і що за цим стоїть.</div>
+        <a href="https://t.me/opora_krok_bot" class="bot-btn" target="_blank" rel="noopener">Поговорити з «Опорою»</a>
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти хоча б раз сказав(ла) «ні» без довгих пояснень і вибачень — і нічого страшного не сталось. Перший кордон найважчий. Далі — легше.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- РІВЕНЬ 3 -->
+<div class="wrap">
+  <div class="level-head">
+    <span class="level-tag">Рівень 3 · Закріплення</span>
+    <div class="level-title">Свідомо формувати поле</div>
+    <p class="level-desc">Не чекати, що все зміниться саме. Робити маленькі свідомі вибори — додати, зменшити, створити. Навіть там, де повної свободи нема.</p>
+  </div>
+
+  <!-- Вправа 8 -->
+  <div class="ex" data-ex="8">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 8</div><div class="ex-title">Додати один голос</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: розширення інформаційного та соціального поля</span>
+        <span class="tag tag-pain">біль: «нереалізованість, стою на місці»</span>
+      </div>
+      <p>Найменша зміна поля — додати в нього один новий голос, що розширює. Не прибирати старе (це важче), а просто впустити щось нове. Один автор, один подкаст, одна людина. Поле змінюється поступово — і часто один новий голос тягне за собою ціле нове середовище.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Визнач, чого тобі не вистачає в теперішньому полі: натхнення, спокою, глибини, руху, гумору, мудрості.</li>
+        <li>Знайди одне конкретне джерело, яке це дає: автора, подкаст, спільноту, людину, яка є в твоєму житті, але ти рідко з нею спілкуєшся.</li>
+        <li>Додай цей голос у своє регулярне середовище — і потримай хоча б місяць, перш ніж оцінювати.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Не вистачало відчуття руху — всі навколо, здається, стоять. Підписав(ла)ся на одного автора, що документує свій проєкт із нуля — з провалами й кроками. За місяць помітив(ла): стало більше „а спробую і я". Один голос — а поле трохи інше».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> новий голос у твоєму полі вже місяць — і ти можеш назвати, що конкретно він дав. Хай маленьке, але відчутне.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 9 -->
+  <div class="ex" data-ex="9">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 9</div><div class="ex-title">Мінімальний контакт</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: регулювання дози контакту без розриву стосунків</span>
+        <span class="tag tag-pain">біль: «немає сил, хронічна втома»</span>
+      </div>
+      <p>Не завжди можна — або потрібно — прибирати людину з життя. Але можна зменшити дозу контакту. Рідше зустрічатись, коротші розмови, менше емоційної включеності. Це не байдужість — це регуляція власного поля без розриву стосунків.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Визнач одну людину, після спілкування з якою стабільно відчуваєш виснаження — але яку «прибирати» не хочеш або не можеш.</li>
+        <li>Знайди, де можна зменшити дозу: рідше зустрічатись, скорочувати розмови, не відповідати одразу, не ділитись усім підряд.</li>
+        <li>Спробуй зменшену дозу протягом місяця. Поміть, чи змінився твій стан після цих зустрічей.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Є близька людина, яка дзвонить щодня на годину. Люблю її, але щодня — занадто. Почав(ла) відповідати через день і скорочувати до 20 хвилин. Стосунки збереглись. Сил — помітно більше».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти знайшов(ла) спосіб зменшити виснажливий контакт — і стосунки не зруйнувались. Дозування — це не відкидання. Це піклування про себе в межах стосунків.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 10 -->
+  <div class="ex" data-ex="10">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 10</div><div class="ex-title">Створити своє поле</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: активне формування середовища · соціальний капітал</span>
+        <span class="tag tag-pain">біль: «самотність серед людей, ніхто не розуміє»</span>
+      </div>
+      <p>Найсильніший хід — не шукати готове поле, а почати формувати своє. Навіть маленька спільнота навколо чогось важливого для тебе — пара людей зі схожим напрямком — змінює поле більше, ніж будь-які зовнішні умови. Ти перестаєш бути пасивним елементом поля й стаєш тим, хто поле задає.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Визнач, навколо чого тобі важливо мати спільноту: тема, цінність, спосіб мислення, вид діяльності.</li>
+        <li>Знайди або запроси одну-дві людини, з якими це є спільним. Не «мережа» — просто конкретні люди для конкретних розмов.</li>
+        <li>Придумай найменший формат регулярного контакту: раз на місяць за кавою, спільний чат із двох людей, взаємний фідбек на проєкти. Мале, але регулярне — сильніше за велике й разове.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Не міг(ла) знайти людей, що думають схоже. Написав(ла) двом знайомим, з якими цікаво говорити, — запропонував(ла) зустрічатись раз на місяць. Вони погодились. За пів року ці дві зустрічі стали найбільш живильною частиною мого місяця.
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> у тебе є хоча б одна регулярна точка контакту з людьми, поряд із якими ти відчуваєш себе «своїм(своєю)» — і де з'являється та версія тебе, якою ти хочеш бути.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- КОНТРОЛЬНІ ТОЧКИ -->
+<div class="wrap">
+  <div class="checkpoints">
+    <span class="kicker">Як зрозуміти, що поле змінюється</span>
+    <h2 class="section-title" style="font-size:1.5rem;">Ознаки, а не бали</h2>
+    <p style="font-size:.95rem; color:var(--ink2); margin-bottom:.5rem;">Поле змінюється поступово — і зміни помітні не одразу. Звіряйся раз на місяць.</p>
+    <div class="cp-list">
+      <div class="cp-item"><span>Ти знаєш, <strong>хто в твоєму колі наповнює</strong>, а хто виснажує — і розподіляєш увагу свідоміше.</span></div>
+      <div class="cp-item"><span>Ти помічаєш <strong>невидимі правила</strong> свого середовища і можеш розрізнити, які з них твої, а які позичені.</span></div>
+      <div class="cp-item"><span>Ти вмієш казати <strong>«ні» без довгих пояснень</strong> — і не руйнуєш від цього стосунки.</span></div>
+      <div class="cp-item"><span>У твоєму полі є <strong>хоча б один голос</strong>, що розширює, а не лише підтримує статус-кво.</span></div>
+      <div class="cp-item"><span>Є хоча б <strong>одна регулярна точка контакту</strong>, де ти відчуваєш себе «своїм(своєю)».</span></div>
+    </div>
+  </div>
+
+  <div class="mistakes">
+    <span class="kicker">Обережно</span>
+    <h2 class="section-title" style="font-size:1.5rem;">Що не працює з О</h2>
+    <div class="mk-list">
+      <div class="mk-item"><span><strong>«Токсичних — геть».</strong> Різкі вирізання людей із життя рідко дають полегшення і залишають провину. Частіше працює дозування і додавання нового — а не тільки прибирання старого.</span></div>
+      <div class="mk-item"><span><strong>Чекати ідеального оточення.</strong> Його не буде. Поле завжди недосконале. Питання — чи є в ньому хоч щось, що тебе розширює, і чи можна це «щось» збільшити.</span></div>
+      <div class="mk-item"><span><strong>Ігнорувати медіасередовище.</strong> Живі люди — це лише частина поля. Те, що ти споживаєш інформаційно щодня, формує тебе не менше. Іноді починати варто саме тут.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- САМОРЕФЛЕКСІЯ -->
+<div class="reflect">
+  <div class="reflect-inner">
+    <span class="kicker">На завершення</span>
+    <h2 class="section-title">Питання, з якими варто побути</h2>
+    <div class="reflect-q"><span>1.</span> Яким(якою) ти стаєш поряд із людьми, які займають найбільше твого часу — і чи це та версія тебе, якою ти хочеш бути?</div>
+    <div class="reflect-q"><span>2.</span> Які невидимі правила твого кола ти несвідомо прийняв(ла) — і чи готовий(а) підписатись під ними сьогодні?</div>
+    <div class="reflect-q"><span>3.</span> Де у твоєму житті є люди чи середовища, поряд із якими з'являється «твоя» версія тебе?</div>
+    <div class="reflect-q"><span>4.</span> Що тобі простіше — додати нове поле чи зменшити старе? З чого почнеш?</div>
+    <div class="reflect-q"><span>5.</span> Якби ти міг(ла) свідомо обрати оточення на наступний рік — що в ньому обов'язково було б?</div>
+  </div>
+</div>
+
+<!-- ЗАКІНЧЕННЯ -->
+<section class="ending wrap">
+  <span class="kicker">І наостанок</span>
+  <p style="max-width:34em; margin:0 auto 1.5rem;">
+    Ти не рослина, що не може обрати ґрунт. Ти людина, яка може свідомо формувати поле навколо себе — навіть маленькими кроками, навіть там, де свободи мало.
+  </p>
+  <p style="max-width:34em; margin:0 auto 2rem;">
+    Один новий голос. Один кордон. Одна зустріч із людиною, поряд із якою ти стаєш собою. Поле змінюється поступово — але воно змінюється.
+  </p>
+
+  <div class="bot" style="max-width:520px; margin:0 auto 2rem;">
+    <div class="bot-text"><strong>Є конкретна ситуація чи людина, де не знаєш, як діяти?</strong> Бот «Опора» допоможе розібратись у живій розмові — без осуду й поспіху.</div>
+    <a href="https://t.me/opora_krok_bot" class="bot-btn" target="_blank" rel="noopener">Поговорити з «Опорою»</a>
+  </div>
+
+  <div class="ending-q">Яке поле ти починаєш будувати вже сьогодні?</div>
+
+  <p class="signature">— Світлана Сліпченко, психолог, авторка курсу «Крок за горизонт»</p>
+  <a href="formula-rezultata.html" class="back-link" target="_blank" rel="noopener">← Повернутись до лекції «Формула результату»</a>
+  <div style="margin-top:2.5rem;"><button class="reset-btn" id="resetBtn">Скинути мій прогрес</button></div>
+</section>
+
+<footer>Крок за горизонт · Практикум О · практикум до лекції «Формула результату»</footer>
+
+<script>
+(function() {
+  const STORAGE_KEY = 'metodychka-o-progress';
+  const cards = Array.from(document.querySelectorAll('.ex[data-ex]'));
+  const total = cards.length;
+  const fill = document.getElementById('progressFill');
+  const count = document.getElementById('progressCount');
+  let done = {};
+  try { const saved = localStorage.getItem(STORAGE_KEY); if (saved) done = JSON.parse(saved) || {}; } catch(e){ done = {}; }
+  function save(){ try { localStorage.setItem(STORAGE_KEY, JSON.stringify(done)); } catch(e){} }
+  function updateProgress(){
+    const n = Object.values(done).filter(Boolean).length;
+    const pct = total ? Math.round((n/total)*100) : 0;
+    if (fill) fill.style.width = pct + '%';
+    if (count) count.textContent = n + ' / ' + total;
+  }
+  function applyState(card){
+    const id = card.dataset.ex;
+    const check = card.querySelector('.ex-check');
+    const isDone = !!done[id];
+    card.classList.toggle('done', isDone);
+    if (check) check.setAttribute('aria-checked', isDone ? 'true':'false');
+  }
+  function toggle(card){
+    const id = card.dataset.ex;
+    done[id] = !done[id];
+    applyState(card); save(); updateProgress();
+  }
+  cards.forEach(card => {
+    const check = card.querySelector('.ex-check');
+    applyState(card);
+    if (check){
+      check.addEventListener('click', () => toggle(card));
+      check.addEventListener('keydown', (e) => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(card); } });
+    }
+  });
+  updateProgress();
+  const resetBtn = document.getElementById('resetBtn');
+  if (resetBtn) resetBtn.addEventListener('click', () => { done={}; save(); cards.forEach(applyState); updateProgress(); });
+})();
+</script>
+</body>
+</html>
