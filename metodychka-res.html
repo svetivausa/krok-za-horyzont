@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Практикум Рес · Крок за горизонт</title>
+<style>
+:root {
+  --bg: #F5EFE6;
+  --bg2: #EDE3D0;
+  --bg3: #E3D5BC;
+  --card: #FAF5EC;
+  --terra: #B85042;
+  --terra-dark: #8E3A2F;
+  --gold: #C9A84C;
+  --gold-dark: #A88A30;
+  --burg: #7A2820;
+  --burg-dk: #5C1C14;
+  --burg-li: #A04840;
+  --ink: #2C1A0E;
+  --ink2: #5A4530;
+  --muted: #8B7355;
+  --line: rgba(44,26,14,.12);
+  --green: #4A7C3A;
+  --blue: #3A5878;
+  --violet: #6B4A8C;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; font-size: 17px; line-height: 1.7; min-height: 100vh; overflow-x: hidden; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+header.top { padding: 4rem 1.5rem 2.5rem; text-align: center; position: relative; overflow: hidden; }
+header.top::before { content: ''; position: absolute; width: 300px; height: 300px; background: var(--burg); opacity: .07; border-radius: 50%; top: -120px; right: -60px; }
+header.top > * { position: relative; z-index: 1; }
+.series { display: inline-block; font-size: .72rem; letter-spacing: .35em; text-transform: uppercase; color: var(--burg-dk); font-weight: 700; margin-bottom: 1.5rem; padding: 6px 18px; border: 1px solid var(--burg); border-radius: 3px; }
+.glyph { font-family: 'Georgia', serif; font-weight: 700; font-size: clamp(3rem, 10vw, 5.5rem); color: var(--burg); line-height: 1; display: block; margin-bottom: .3rem; }
+.glyph-sub { font-family: 'Georgia', serif; font-style: italic; font-size: .9rem; color: var(--muted); margin-bottom: 1rem; }
+h1.title { font-family: 'Georgia', serif; font-size: clamp(1.9rem, 5vw, 3rem); font-weight: 700; letter-spacing: -.02em; line-height: 1.08; color: var(--ink); margin-bottom: 1rem; max-width: 14em; margin-left: auto; margin-right: auto; }
+.subtitle { font-family: 'Georgia', serif; font-style: italic; font-size: clamp(1.05rem, 2.2vw, 1.3rem); color: var(--burg); max-width: 28em; margin: 0 auto; }
+.divider-deco { margin: 2rem auto 0; width: 60px; height: 1px; background: var(--burg); position: relative; }
+.divider-deco::before, .divider-deco::after { content: ''; position: absolute; top: -3px; width: 7px; height: 7px; border-radius: 50%; background: var(--burg); }
+.divider-deco::before { left: -14px; } .divider-deco::after { right: -14px; }
+
+section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+p { margin-bottom: 1.1rem; color: var(--ink); }
+p.lead { font-family: 'Georgia', serif; font-size: 1.28rem; line-height: 1.55; margin-bottom: 1.5rem; }
+p strong { font-weight: 700; color: var(--ink); }
+p em { font-style: italic; color: var(--burg-dk); }
+h2.section-title { font-family: 'Georgia', serif; font-size: clamp(1.6rem, 4vw, 2.3rem); font-weight: 700; letter-spacing: -.015em; line-height: 1.15; color: var(--ink); margin: 0 0 1.2rem; }
+.kicker { display: inline-block; font-family: 'Georgia', serif; font-style: italic; font-size: .78rem; letter-spacing: .25em; text-transform: uppercase; color: var(--burg-dk); font-weight: 700; margin-bottom: .7rem; }
+
+.wow { font-family: 'Georgia', serif; font-style: italic; font-size: clamp(1.25rem, 2.8vw, 1.55rem); line-height: 1.4; color: var(--burg); text-align: center; margin: 2rem auto; padding: 1.3rem 1rem; max-width: 24em; position: relative; font-weight: 600; }
+.wow::before, .wow::after { content: ''; position: absolute; left: 50%; transform: translateX(-50%); width: 40px; height: 1px; background: var(--burg); }
+.wow::before { top: 0; } .wow::after { bottom: 0; }
+
+.safety { background: var(--card); border: 1px solid var(--burg-li); border-radius: 10px; padding: 1.3rem 1.5rem; margin: 1.8rem 0; }
+.safety-label { font-family: 'Georgia', serif; font-weight: 700; color: var(--burg-dk); font-size: .95rem; margin-bottom: .4rem; display: flex; align-items: center; gap: .5rem; }
+.safety-label::before { content: '♡'; font-size: 1.1rem; }
+.safety-body { font-size: .95rem; color: var(--ink2); line-height: 1.6; }
+
+.howto { background: var(--bg2); margin: 2rem -1.5rem; padding: 2.5rem 1.5rem; }
+.howto-inner { max-width: 760px; margin: 0 auto; }
+.howto-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.2rem; }
+.howto-item { display: flex; gap: 1rem; align-items: flex-start; }
+.howto-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--burg); color: #fff; font-family: 'Georgia', serif; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: .95rem; }
+.howto-text { color: var(--ink); font-size: .98rem; line-height: 1.55; }
+.howto-text strong { font-weight: 700; }
+
+.progress-wrap { position: sticky; top: 0; z-index: 40; background: rgba(245,239,230,.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: .8rem 1.5rem; border-bottom: 1px solid var(--line); }
+.progress-inner { max-width: 760px; margin: 0 auto; display: flex; align-items: center; gap: 1rem; }
+.progress-label { font-family: 'Georgia', serif; font-size: .82rem; color: var(--ink2); white-space: nowrap; font-weight: 600; }
+.progress-track { flex: 1; height: 8px; background: var(--bg3); border-radius: 4px; overflow: hidden; }
+.progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--burg-li), var(--burg)); border-radius: 4px; transition: width .4s ease; }
+.progress-count { font-family: 'Georgia', serif; font-weight: 700; color: var(--burg-dk); font-variant-numeric: tabular-nums; font-size: .9rem; white-space: nowrap; }
+
+.level-head { margin: 3.5rem 0 1.5rem; text-align: center; }
+.level-tag { display: inline-block; font-family: 'Georgia', serif; font-style: italic; font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; color: #fff; background: var(--burg); font-weight: 700; padding: 5px 16px; border-radius: 4px; margin-bottom: .8rem; }
+.level-title { font-family: 'Georgia', serif; font-size: 1.7rem; font-weight: 700; color: var(--ink); margin-bottom: .4rem; }
+.level-desc { font-size: .95rem; color: var(--muted); font-style: italic; max-width: 28em; margin: 0 auto; }
+
+.ex { background: var(--card); border: 1px solid var(--line); border-radius: 12px; margin: 1.5rem 0; overflow: hidden; transition: box-shadow .3s, border-color .3s; }
+.ex.done { border-color: var(--burg); box-shadow: 0 0 0 1px var(--burg); }
+.ex-head { display: flex; align-items: flex-start; gap: 1rem; padding: 1.4rem 1.5rem 1rem; }
+.ex-check { flex-shrink: 0; width: 28px; height: 28px; border-radius: 8px; border: 2px solid var(--muted); background: var(--bg); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; margin-top: 2px; }
+.ex-check:hover { border-color: var(--burg); }
+.ex.done .ex-check { background: var(--burg); border-color: var(--burg-dk); }
+.ex-check svg { width: 16px; height: 16px; opacity: 0; transition: opacity .2s; }
+.ex.done .ex-check svg { opacity: 1; }
+.ex-num { font-family: 'Georgia', serif; font-style: italic; font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: var(--burg-dk); font-weight: 700; margin-bottom: .2rem; }
+.ex-title { font-family: 'Georgia', serif; font-size: 1.3rem; font-weight: 700; color: var(--ink); line-height: 1.2; }
+.ex-body { padding: 0 1.5rem 1.5rem; }
+.ex-mech { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.1rem; }
+.tag { font-family: 'Georgia', serif; font-size: .74rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; letter-spacing: .02em; }
+.tag-mech { background: var(--bg3); color: var(--burg-dk); }
+.tag-pain { background: rgba(107,74,140,.1); color: var(--violet); }
+.ex-section-label { font-family: 'Georgia', serif; font-style: italic; font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin: 1.1rem 0 .5rem; }
+.ex-steps { list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: .6rem; }
+.ex-steps li { counter-increment: step; position: relative; padding-left: 2rem; font-size: .95rem; line-height: 1.55; color: var(--ink); }
+.ex-steps li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--burg); color: #fff; font-family: 'Georgia', serif; font-size: .78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+.ex-example { background: var(--bg2); border-radius: 8px; padding: .9rem 1.1rem; margin-top: .5rem; font-size: .9rem; color: var(--ink2); line-height: 1.6; }
+.ex-example strong { color: var(--ink); }
+.ex-control { display: flex; gap: .6rem; align-items: flex-start; margin-top: 1.1rem; padding-top: 1rem; border-top: 1px dashed var(--line); font-size: .9rem; color: var(--ink2); line-height: 1.55; }
+.ex-control::before { content: '✓'; color: var(--burg-dk); font-weight: 700; flex-shrink: 0; }
+.ex-control strong { color: var(--ink); }
+
+.bot { margin-top: 1.2rem; background: linear-gradient(135deg, var(--burg-dk), var(--burg)); border-radius: 10px; padding: 1.1rem 1.3rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.bot-text { flex: 1; min-width: 200px; color: #fff; font-size: .92rem; line-height: 1.5; }
+.bot-text strong { font-weight: 700; }
+.bot-btn { display: inline-block; background: #fff; color: var(--burg-dk); font-family: 'Georgia', serif; font-weight: 700; font-size: .95rem; text-decoration: none; padding: 10px 20px; border-radius: 7px; transition: transform .2s, box-shadow .2s; white-space: nowrap; }
+.bot-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px -6px rgba(0,0,0,.4); }
+
+.checkpoints, .mistakes { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1.8rem 1.8rem 2rem; margin: 2rem 0; }
+.cp-list, .mk-list { display: flex; flex-direction: column; gap: .8rem; margin-top: 1rem; }
+.cp-item, .mk-item { display: flex; gap: .7rem; align-items: flex-start; font-size: .95rem; line-height: 1.55; color: var(--ink); }
+.cp-item::before { content: '▲'; color: var(--green); flex-shrink: 0; font-size: .8rem; margin-top: 3px; }
+.mk-item::before { content: '✕'; color: var(--terra); flex-shrink: 0; font-weight: 700; }
+.cp-item strong, .mk-item strong { font-weight: 700; }
+.reflect { background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%); margin: 3rem -1.5rem 0; padding: 3rem 1.5rem; }
+.reflect-inner { max-width: 760px; margin: 0 auto; }
+.reflect-q { font-family: 'Georgia', serif; font-size: 1.1rem; color: var(--ink); padding: 1rem 0; border-bottom: 1px solid var(--line); display: flex; gap: .8rem; }
+.reflect-q:last-child { border-bottom: none; }
+.reflect-q span { color: var(--burg-dk); font-weight: 700; flex-shrink: 0; }
+.ending { text-align: center; padding-top: 3.5rem; padding-bottom: 4rem; }
+.ending-q { font-family: 'Georgia', serif; font-style: italic; font-size: clamp(1.4rem, 3.5vw, 2rem); color: var(--burg); max-width: 20em; margin: 0 auto 1.5rem; line-height: 1.3; }
+.signature { font-family: 'Georgia', serif; font-style: italic; color: var(--muted); font-size: 1rem; margin-top: 1.5rem; }
+.back-link { display: inline-block; margin-top: 2rem; font-family: 'Georgia', serif; font-size: .95rem; color: var(--burg-dk); text-decoration: none; border-bottom: 1px solid var(--burg); padding-bottom: 2px; }
+footer { text-align: center; padding: 2rem 1.5rem 3rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .8rem; font-style: italic; font-family: 'Georgia', serif; }
+.reset-btn { background: none; border: 1px solid var(--line); color: var(--muted); font-family: inherit; font-size: .8rem; padding: 5px 12px; border-radius: 4px; cursor: pointer; transition: all .2s; }
+.reset-btn:hover { border-color: var(--burg); color: var(--burg); }
+@media (max-width: 600px) { .ex-head { padding: 1.2rem 1.1rem .8rem; } .ex-body { padding: 0 1.1rem 1.2rem; } .progress-label { display: none; } .howto { margin-left: 0; margin-right: 0; } .reflect { margin-left: 0; margin-right: 0; } }
+</style>
+</head>
+<body>
+
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <span class="progress-label">Твій шлях:</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-count" id="progressCount">0 / 10</span>
+  </div>
+</div>
+
+<header class="top">
+  <div class="series">Крок за горизонт · Практикум</div>
+  <span class="glyph">Рес</span>
+  <div class="glyph-sub">ресурси · паливо, без якого двигун не їде</div>
+  <h1 class="title">Як наповнювати себе, а не лише витрачати</h1>
+  <p class="subtitle">Десять вправ на компонент, що живить усю формулу результату</p>
+  <div class="divider-deco"></div>
+</header>
+
+<section class="wrap">
+  <p class="lead">
+    У формулі результату Рес — ресурси — це паливо. І якщо воно на нулі, решта формули не має значення: навіть правильний вектор, навіть живе бажання, навіть найсильніша ідентичність не рухаються без пального.
+  </p>
+  <p>
+    Ресурси бувають двох видів. <strong>Внутрішні</strong> — енергія, увага, час, психічна стійкість, здатність витримувати удари й повертатись. <strong>Зовнішні</strong> — гроші, зв'язки, інструменти, доступ до потрібної інформації. Обидва важливі. І обидва не статичні.
+  </p>
+  <p>
+    Ось найважливіше, що варто зрозуміти про ресурси: <em>вони не дані за замовчуванням</em>. Ти напрацьовуєш їх сам(а). Кожна дія повертається до тебе новим паливом — новою навичкою, новим контактом, трохи більшою стійкістю. І завтра ти стартуєш уже з більшого. Це петля. Але щоб вона запустилась — треба мати хоч якийсь мінімум для першого кроку.
+  </p>
+
+  <div class="wow">Не «де взяти ресурси, щоб почати». А «що почати, щоб ресурси почали накопичуватись».</div>
+
+  <div class="safety">
+    <div class="safety-label">Перш ніж почати</div>
+    <div class="safety-body">
+      Є ситуації, де ресурс справді вичерпаний до нуля — хвороба, горе, війна поруч, хронічне виснаження роками. У таких ситуаціях жодна «техніка» не замінить живої підтримки — людини поруч, фахівця, часу. Якщо відчуваєш, що порожньо до самого дна і не можеш зрушитись, — це не слабкість і не провал. Це сигнал звернутись по допомогу, а не робити ще одну вправу.
+    </div>
+  </div>
+</section>
+
+<div class="howto">
+  <div class="howto-inner">
+    <span class="kicker">Як це працює</span>
+    <h2 class="section-title">Як користуватись практикумом</h2>
+    <div class="howto-list">
+      <div class="howto-item"><div class="howto-num">1</div><div class="howto-text"><strong>Спершу побачити, потім зупинити, тоді наповнювати.</strong> Безглуздо лити воду в діряве відро. Тому спершу — де витікає, тоді — зупинити злив, і лише потім — наповнення.</div></div>
+      <div class="howto-item"><div class="howto-num">2</div><div class="howto-text"><strong>Послідовно й без поспіху.</strong> Не треба робити все одночасно. Одна зміна, яка триває довго, дає більше, ніж десять, які тримаються три дні.</div></div>
+      <div class="howto-item"><div class="howto-num">3</div><div class="howto-text"><strong>Без порожніх порад.</strong> Тут — конкретні маленькі кроки, які підйомні навіть коли мало сил і часу.</div></div>
+      <div class="howto-item"><div class="howto-num">4</div><div class="howto-text"><strong>Поряд із тобою — бот «Опора».</strong> Деякі вправи мають кнопку для продовження в живому діалозі. Особливо там, де вправа зачіпає щось глибше.</div></div>
+      <div class="howto-item"><div class="howto-num">5</div><div class="howto-text"><strong>Постав галочку, коли вправа стала твоєю.</strong> Не коли «прочитав/прочитала», а коли реально зробив(ла). Прогрес вгорі показує пройдений шлях.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- РІВЕНЬ 1 -->
+<div class="wrap">
+  <div class="level-head">
+    <span class="level-tag">Рівень 1 · Основа</span>
+    <div class="level-title">Побачити паливо</div>
+    <p class="level-desc">Перш ніж наповнювати — треба чесно побачити, скільки палива лишилось і де воно витікає. Без цього будь-яке «відновлення» — залатування дірок навмання.</p>
+  </div>
+
+  <!-- Вправа 1 -->
+  <div class="ex" data-ex="1">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 1</div><div class="ex-title">Термометр ресурсів</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: усвідомлення поточного рівня ресурсів</span>
+        <span class="tag tag-pain">біль: «втома від „треба", немає сил на важливе»</span>
+      </div>
+      <p>Ми рідко зупиняємось, щоб просто чесно запитати: скільки в мене палива? Звично тягнути на залишках, не помічаючи, що бак майже порожній. Цей зріз — точка відліку.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Оціни кожен вид ресурсу за шкалою від 0 до 10: фізична енергія, емоційний ресурс, увага (здатність зосередитись), відчуття часу (що він є і ти ним керуєш), психічна стійкість.</li>
+        <li>Запиши цифри чесно — не «як хотілось би», а як є прямо зараз.</li>
+        <li>Подивись на картину цілком. Де найнижча цифра? Що це говорить про те, де твоя система найбільш виснажена?</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Фізична — 6, емоційна — 3, увага — 4, час — 2, стійкість — 5. Найнижчий — час і емоції. Не дивно, що важко зрушити: я постійно перемикаюсь і не маю де відновитись емоційно».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти маєш чесний знімок своїх ресурсів — і бачиш, що найбільше виснажено. Це не вирок. Це карта, з якою можна працювати.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 2 -->
+  <div class="ex" data-ex="2">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 2</div><div class="ex-title">Де витікає</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: виявлення хронічних джерел виснаження</span>
+        <span class="tag tag-pain">біль: «весь час втомлена/втомлений, нічого не лишається»</span>
+      </div>
+      <p>Ресурс рідко витікає через одну велику дірку — частіше через десяток маленьких, кожна з яких «нічого особливого». Але разом вони тримають бак напівпорожнім постійно. Вправа допомагає знайти ці «дірки» — хронічні, регулярні виснажувачі.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Подумай про минулий тиждень. Що регулярно забирало більше, ніж давало? Не катастрофи — буденні речі: незавершені справи, напружені стосунки, тривожні думки на фоні, шум інформації.</li>
+        <li>Випиши 5–7 таких «витоків». Без осуду — просто фіксуй.</li>
+        <li>Познач: які з них можна зупинити чи зменшити? А які — поки не можна, але важливо хоча б бачити?</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Незавершена розмова з партнером — фонить весь день. Новини кожну годину — тривога накопичується. Пошта без меж — увага розпорошена. Три речі, і бак уже наполовину порожній до обіду».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти знаєш свої головні «дірки» — і хоча б одну з них можеш зменшити вже цього тижня. Навіть невелике зменшення витоку — це збільшення ресурсу.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 3 -->
+  <div class="ex" data-ex="3">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 3</div><div class="ex-title">Сигнали спустошення</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: інтероцепція · розпізнавання ранніх сигналів виснаження</span>
+        <span class="tag tag-pain">біль: «хронічна тривога, не можу зупинитись»</span>
+      </div>
+      <p>Ресурс рідко закінчується раптово. Тіло й поведінка попереджають задовго до критичної точки — але ми навчились їх ігнорувати. Ця вправа вчить розпізнавати особисті ранні сигнали, щоб реагувати, поки ще є що відновлювати.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Пригадай момент, коли ти був(ла) справді виснажений(а). Які ознаки з'явились <em>до</em> того, як стало зовсім погано?</li>
+        <li>Запиши свої особисті «ранні сигнали»: тілесні (напруга, безсоння, головний біль), поведінкові (дратівливість, прокрастинація, їжа без голоду), емоційні (безпорадність, цинізм, відстороненість).</li>
+        <li>Визнач свій «жовтий рівень» — два-три сигнали, після яких треба зупинитись і відновитись, не чекаючи червоного.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Мої ранні сигнали: починаю огризатись на дрібниці, перестаю відповідати на повідомлення, прокидаюсь о четвертій і думаю про роботу. Жовтий рівень — коли є два з трьох. Раніше чекав(ла) всіх трьох. Тепер — реагую на два».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти знаєш свій «жовтий рівень» — і наступного разу, коли він спрацює, у тебе є план: зупинитись і відновитись, а не тягнути до червоного.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- РІВЕНЬ 2 -->
+<div class="wrap">
+  <div class="level-head">
+    <span class="level-tag">Рівень 2 · Ядро</span>
+    <div class="level-title">Зупинити витік</div>
+    <p class="level-desc">Перш ніж наповнювати — зупинити злив. Безглуздо лити воду в діряве відро. Тут прибираємо те, що постійно виснажує, і вчимось справді відновлюватись.</p>
+  </div>
+
+  <!-- Вправа 4 -->
+  <div class="ex" data-ex="4">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 4</div><div class="ex-title">Прибрати одну «дірку»</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: зниження хронічного виснаження · вивільнення ресурсу</span>
+        <span class="tag tag-pain">біль: «немає сил на важливе»</span>
+      </div>
+      <p>Зі списку «витоків» із вправи 2 — обери одну дірку і зупини її. Не всі одразу. Одну. Іноді найпростіша зміна дає непропорційно великий приріст ресурсу — бо зупиняє хронічний фоновий злив.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Обери з вправи 2 один витік, який реально можна зменшити — не ідеально усунути, а просто зробити меншим.</li>
+        <li>Сформулюй конкретну зміну: не «менше новин», а «перевіряю новини лише двічі на день — вранці й увечері».</li>
+        <li>Тримай цю зміну тиждень. Відміть, чи з'явилось більше ресурсу — навіть трохи.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Дірка: пошта без меж — перевіряю постійно, увага розпорошена. Зміна: пошта тричі на день — 9:00, 13:00, 17:00. Решта — закрита. За тиждень відчув(ла): думки стали зібранішими, зробив(ла) більше за той самий час».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти зупинив(ла) одну хронічну дірку на тиждень — і відчув(ла) різницю. Навіть мала — це вже сигнал, що петля почала закриватись.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 5 -->
+  <div class="ex" data-ex="5">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 5</div><div class="ex-title">Захист уваги</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: управління увагою як ресурсом · когнітивне навантаження</span>
+        <span class="tag tag-pain">біль: «живу на автоматі, голова ніколи не відпочиває»</span>
+      </div>
+      <p>Увага — найдефіцитніший ресурс. Гроші можна заробити, сон — доспати. А увагу, розпорошену на сто подразників, відновити набагато важче. І сучасний світ спроектований так, щоб забирати її постійно. Захист уваги — це не розкіш, це необхідність.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Знайди в своєму дні головних «пожирачів уваги»: сповіщення, переключення між задачами, фонові розмови, незакрите незавершене.</li>
+        <li>Обери один захисний захід: вимкнути сповіщення на блок роботи, закрити непотрібні вкладки, одягнути навушники, призначити час для «перемикань».</li>
+        <li>Спробуй один захисний захід протягом тижня. Поміть, як змінилась якість твоєї уваги.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Вимкнув(ла) всі сповіщення телефону крім дзвінків. Перший день — незручно, рука тягнеться. Третій день — помітив(ла), що думки стали довшими, роботу роблю глибше. Увага — це м'яз, і він почав відпочивати».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> є хоча б один щоденний блок, де твоя увага захищена від переривань. Навіть 30 хвилин на день — це вже інша якість мислення.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 6 -->
+  <div class="ex" data-ex="6">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 6</div><div class="ex-title">Відновлення, що відновлює</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: розрізнення справжнього відпочинку від «переключення»</span>
+        <span class="tag tag-pain">біль: «відпочиваю — а все одно втомлений(а)»</span>
+      </div>
+      <p>Є речі, які здаються відпочинком — але насправді лише переключають, не відновлюють. Стрічка соцмереж, серіал у фоні, розмова ні про що — увага зайнята, а ресурс не росте. Справжній відпочинок для кожного різний. Вправа допомагає знайти свій.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Пригадай 3–4 речі, які ти робиш «для відпочинку». Після кожної запитай: «я після цього маю більше сил чи приблизно стільки ж?»</li>
+        <li>Розрізни «переключення» (увага зайнята, але не заряджається) від «відновлення» (після — реально більше ресурсу).</li>
+        <li>Визнач 1–2 речі, що справді відновлюють саме тебе. І заплануй їх — як важливу зустріч, а не «якщо залишиться час».</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Серіал — переключення, після нього приблизно так само. Прогулянка без телефону — відновлення, після неї ясніша голова. Готування їжі в тиші — відновлення, руки зайняті, голова відпочиває. Тепер заплановую прогулянку як робочу зустріч — у календарі».
+      </div>
+      <div class="bot">
+        <div class="bot-text"><strong>Важко зрозуміти, що саме тебе відновлює?</strong> Бот «Опора» допоможе розібратись у живій розмові — що за твоїм відчуттям справді дає ресурс, а що лише виглядає як відпочинок.</div>
+        <a href="https://t.me/opora_krok_bot" class="bot-btn" target="_blank" rel="noopener">Поговорити з «Опорою»</a>
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти можеш назвати 1–2 речі, що справді відновлюють саме тебе — і вони з'явились у твоєму тижні як заплановані, а не випадкові.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 7 -->
+  <div class="ex" data-ex="7">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 7</div><div class="ex-title">Мінімальний захисний ритуал</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: мікрорутини відновлення · регулярне підживлення</span>
+        <span class="tag tag-pain">біль: «немає часу на себе»</span>
+      </div>
+      <p>Велике відновлення раз на рік — відпустка, ретрит, «дай все покину» — дає менше, ніж маленький захисний ритуал щодня. Мета цієї вправи — знайти найменшу регулярну дію для себе, яка тримає ресурс від повного виснаження.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Придумай один ритуал, який займає 5–15 хвилин і реально підживлює тебе. Не «ідеальний ранок на годину», а мінімально достатній захист.</li>
+        <li>Прив'яжи його до якоря (як у практикумі Д): «після ранкової кави», «перед сном», «після роботи».</li>
+        <li>Тримай цей ритуал як непорушний — навіть у найзатятіші дні. Саме в такі дні він найважливіший.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Мій мінімальний ритуал: 10 хвилин вранці без телефону — тільки кава і тиша. Нічого більше. Коли є — день відчувається інакше. Коли пропускаю — помітно. Це найменше, що можу зробити для себе щодня».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> у тебе є один мінімальний ритуал, що тримається навіть у важкі дні — і ти відчуваєш різницю в ті дні, коли він є, і коли його нема.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- РІВЕНЬ 3 -->
+<div class="wrap">
+  <div class="level-head">
+    <span class="level-tag">Рівень 3 · Закріплення</span>
+    <div class="level-title">Напрацювати й примножити</div>
+    <p class="level-desc">Ресурс не лише відновлюється — він росте. Кожна дія повертається новим паливом. Цей рівень про те, як запустити петлю самовідновлення.</p>
+  </div>
+
+  <!-- Вправа 8 -->
+  <div class="ex" data-ex="8">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 8</div><div class="ex-title">Дія, що повертається ресурсом</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: петля β + Рес · накопичення через дію</span>
+        <span class="tag tag-pain">біль: «стою на місці, не бачу результату»</span>
+      </div>
+      <p>Найцікавіше в ресурсах — вони ростуть від дії. Провів(ла) важку розмову — додалась стійкість. Зробив(ла) щось нове — додалась навичка. Витримав(ла) невдачу й виніс(ла) урок — додалось розуміння. Це і є петля: результат повертається ресурсом. Ця вправа допомагає її побачити.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Пригадай три речі, які ти зробив(ла) за останні місяці — навіть маленькі, навіть не ідеально.</li>
+        <li>Для кожної запитай: «що ця дія мені повернула? Яку навичку, стійкість, контакт, розуміння?»</li>
+        <li>Запиши ці «повернення» — і поміть: ресурс уже зріс. Просто ти не завжди це бачив(ла).</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Рік тому взяв(ла) перший платний проєкт — боявся(лась) жахливо. Що повернулось? Впевненість, що можу, реальний досвід переговорів, один клієнт, що порекомендував далі. Три ресурси з однієї дії — і я цього не рахував(ла)».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти бачиш, що твої дії вже повертались ресурсом — і починаєш відстежувати ці «повернення» свідомо. Це і є петля β+Рес у дії.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 9 -->
+  <div class="ex" data-ex="9">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 9</div><div class="ex-title">Аудит зовнішніх ресурсів</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: інвентаризація наявного соціального й матеріального капіталу</span>
+        <span class="tag tag-pain">біль: «нема з ким, нема чим, нема звідки»</span>
+      </div>
+      <p>Зовнішні ресурси — гроші, зв'язки, інструменти, інформація — часто є, але не помічаються або не використовуються. Люди, яким можна зателефонувати, але не телефонуєш. Інструменти, що лежать невикористані. Знання, яке є, але не застосовується. Ця вправа — інвентаризація того, що вже є.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Пройдись по чотирьох видах зовнішніх ресурсів: люди (хто міг би допомогти, якби ти попросив/попросила), інструменти (що вже є, але не використовується), знання (до якої інформації маєш доступ, але ігноруєш), фінанси (чи є щось, що можна перерозподілити).</li>
+        <li>Для кожного виду напиши 1–2 конкретні незадіяні ресурси.</li>
+        <li>Обери один — і активуй його цього тижня. Не «колись попрошу» — а конкретно й зараз.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Люди: є знайомий у тій сфері, куди хочу перейти — жодного разу не написав(ла). Інструменти: підписка на сервіс, якою не користуюсь. Знання: курс, куплений рік тому, не відкритий. Починаю з людини — пишу цього тижня».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти активував(ла) хоча б один зовнішній ресурс, що раніше лежав незадіяним. Інвентаризація показала: ресурсів більше, ніж здавалось.</span></div>
+    </div>
+  </div>
+
+  <!-- Вправа 10 -->
+  <div class="ex" data-ex="10">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Вправа 10</div><div class="ex-title">Маховик</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">механізм: запуск петлі самовідновлення · накопичення через малі кроки</span>
+        <span class="tag tag-pain">біль: «нереалізованість, чекаю кращих умов»</span>
+      </div>
+      <p>Маховик — важкий механізм. Перші оберти даються з напруженням, але з кожним колом він прискорюється сам. Так само з ресурсом: перший крок забирає більше, ніж дає. Але якщо не зупинятись — петля розкручується, і ресурс починає рости сам від себе. Завершальна вправа — запустити свій маховик.</p>
+      <div class="ex-section-label">Як робити</div>
+      <ol class="ex-steps">
+        <li>Визнач одну сферу, де хочеш запустити петлю зростання ресурсу. Це може бути фізична енергія, стійкість, соціальний капітал, фінансовий буфер.</li>
+        <li>Визнач найменший перший оберт маховика: одна маленька регулярна дія, яка з часом буде повертатись ресурсом. Не «кардинальна зміна» — перший крок.</li>
+        <li>Зроби його — і домовся з собою: три місяці без оцінки результату. Маховик розкручується повільно. Зупинитись через тиждень через «нічого не змінилось» — значить так і не запустити.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Приклад.</strong> «Хочу більше фізичної енергії. Маховик: 20 хвилин руху щодня — будь-якого. Перші тижні — через силу. Через місяць — помічаю, що сплю краще. Через три — маю більше сил увечері. Маховик розкрутився».
+      </div>
+      <div class="ex-control"><span><strong>Контрольна точка:</strong> ти три місяці тримаєш перший оберт маховика — і помічаєш, що він починає крутитись легше. Ресурс росте не від натхнення, а від регулярності.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- КОНТРОЛЬНІ ТОЧКИ -->
+<div class="wrap">
+  <div class="checkpoints">
+    <span class="kicker">Як зрозуміти, що ресурс зростає</span>
+    <h2 class="section-title" style="font-size:1.5rem;">Ознаки, а не цифри</h2>
+    <p style="font-size:.95rem; color:var(--ink2); margin-bottom:.5rem;">Ресурс не виміряти в балах. Але є ознаки, що петля запустилась. Звіряйся раз на місяць.</p>
+    <div class="cp-list">
+      <div class="cp-item"><span>Ти знаєш свій <strong>«жовтий рівень»</strong> виснаження і реагуєш до того, як стало критично.</span></div>
+      <div class="cp-item"><span>У тебе є <strong>мінімальний захисний ритуал</strong>, що тримається навіть у важкі дні.</span></div>
+      <div class="cp-item"><span>Ти помічаєш, як <strong>дії повертаються ресурсом</strong> — навичкою, стійкістю, зв'язком.</span></div>
+      <div class="cp-item"><span>У твоєму тижні є <strong>справжній відпочинок</strong> — не переключення, а те, що реально відновлює.</span></div>
+      <div class="cp-item"><span><strong>Маховик крутиться</strong>: є одна сфера, де ресурс стабільно зростає завдяки регулярній малій дії.</span></div>
+    </div>
+  </div>
+
+  <div class="mistakes">
+    <span class="kicker">Обережно</span>
+    <h2 class="section-title" style="font-size:1.5rem;">Що не працює з Рес</h2>
+    <div class="mk-list">
+      <div class="mk-item"><span><strong>Чекати на «велике відновлення».</strong> Відпустка раз на рік, «от відпочину і почну» — не працює. Ресурс підтримується малими регулярними діями, а не рідкими великими.</span></div>
+      <div class="mk-item"><span><strong>Наповнювати, не зупиняючи витік.</strong> Якщо хронічні «дірки» не закриті, жодне відновлення не дає стійкого ефекту. Спершу — зупинити злив.</span></div>
+      <div class="mk-item"><span><strong>Ігнорувати сигнали тіла.</strong> «Потерплю» — найдорожча стратегія. Рання реакція на «жовтий рівень» коштує набагато менше, ніж відновлення після «червоного».</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- САМОРЕФЛЕКСІЯ -->
+<div class="reflect">
+  <div class="reflect-inner">
+    <span class="kicker">На завершення</span>
+    <h2 class="section-title">Питання, з якими варто побути</h2>
+    <div class="reflect-q"><span>1.</span> Де в моєму житті зараз найбільший витік ресурсу — і чи можу я його зменшити?</div>
+    <div class="reflect-q"><span>2.</span> Що справді відновлює саме мене — і коли я востаннє це робив(ла)?</div>
+    <div class="reflect-q"><span>3.</span> Які мої дії вже повертались ресурсом — а я цього не помічав(ла)?</div>
+    <div class="reflect-q"><span>4.</span> Які зовнішні ресурси в мене є, але лежать незадіяними?</div>
+    <div class="reflect-q"><span>5.</span> Який маховик я хочу запустити — і який найменший перший оберт для цього?</div>
+  </div>
+</div>
+
+<!-- ЗАКІНЧЕННЯ -->
+<section class="ending wrap">
+  <span class="kicker">І наостанок</span>
+  <p style="max-width:34em; margin:0 auto 1.5rem;">
+    Ресурс — не те, що в тебе є або немає від народження. Це те, що ти напрацьовуєш щодня — маленькими діями, захисними ритуалами, свідомими виборами. І що повертається до тебе щоразу більшим.
+  </p>
+  <p style="max-width:34em; margin:0 auto 2rem;">
+    Не «де взяти сили». А «що почати, щоб вони почали накопичуватись». Перший оберт маховика — найважчий. Але він і є найважливішим.
+  </p>
+
+  <div class="bot" style="max-width:520px; margin:0 auto 2rem;">
+    <div class="bot-text"><strong>Відчуваєш, що ресурс на нулі і не знаєш, з чого почати?</strong> Бот «Опора» допоможе знайти перший крок — у живому діалозі, без тиску і без токсичного позитиву.</div>
+    <a href="https://t.me/opora_krok_bot" class="bot-btn" target="_blank" rel="noopener">Поговорити з «Опорою»</a>
+  </div>
+
+  <div class="ending-q">Який перший оберт твого маховика — вже сьогодні?</div>
+
+  <p class="signature">— Світлана Сліпченко, психолог, авторка курсу «Крок за горизонт»</p>
+  <a href="formula-rezultata.html" class="back-link" target="_blank" rel="noopener">← Повернутись до лекції «Формула результату»</a>
+  <div style="margin-top:2.5rem;"><button class="reset-btn" id="resetBtn">Скинути мій прогрес</button></div>
+</section>
+
+<footer>Крок за горизонт · Практикум Рес · практикум до лекції «Формула результату»</footer>
+
+<script>
+(function() {
+  const STORAGE_KEY = 'metodychka-res-progress';
+  const cards = Array.from(document.querySelectorAll('.ex[data-ex]'));
+  const total = cards.length;
+  const fill = document.getElementById('progressFill');
+  const count = document.getElementById('progressCount');
+  let done = {};
+  try { const saved = localStorage.getItem(STORAGE_KEY); if (saved) done = JSON.parse(saved) || {}; } catch(e){ done = {}; }
+  function save(){ try { localStorage.setItem(STORAGE_KEY, JSON.stringify(done)); } catch(e){} }
+  function updateProgress(){
+    const n = Object.values(done).filter(Boolean).length;
+    const pct = total ? Math.round((n/total)*100) : 0;
+    if (fill) fill.style.width = pct + '%';
+    if (count) count.textContent = n + ' / ' + total;
+  }
+  function applyState(card){
+    const id = card.dataset.ex;
+    const check = card.querySelector('.ex-check');
+    const isDone = !!done[id];
+    card.classList.toggle('done', isDone);
+    if (check) check.setAttribute('aria-checked', isDone ? 'true':'false');
+  }
+  function toggle(card){
+    const id = card.dataset.ex;
+    done[id] = !done[id];
+    applyState(card); save(); updateProgress();
+  }
+  cards.forEach(card => {
+    const check = card.querySelector('.ex-check');
+    applyState(card);
+    if (check){
+      check.addEventListener('click', () => toggle(card));
+      check.addEventListener('keydown', (e) => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(card); } });
+    }
+  });
+  updateProgress();
+  const resetBtn = document.getElementById('resetBtn');
+  if (resetBtn) resetBtn.addEventListener('click', () => { done={}; save(); cards.forEach(applyState); updateProgress(); });
+})();
+</script>
+</body>
+</html>
