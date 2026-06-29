@@ -107,6 +107,21 @@ a { text-decoration: none; color: inherit; }
 .nav-item.active { background: rgba(92,53,184,0.35); color: #fff; border-color: var(--violet2); }
 .nav-item .ni { font-size: 1rem; flex-shrink: 0; }
 
+.nav-quiz-promo {
+  display: flex; align-items: center; gap: 0.7rem;
+  margin: 0.2rem 1rem; padding: 0.7rem 0.9rem;
+  border-radius: 10px;
+  border-left: 3px solid var(--gold);
+  background: linear-gradient(120deg, rgba(244,196,48,0.18), rgba(232,82,106,0.18));
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+.nav-quiz-promo:hover { background: linear-gradient(120deg, rgba(244,196,48,0.28), rgba(232,82,106,0.28)); transform: translateX(2px); }
+.nqp-icon { font-size: 1.3rem; flex-shrink: 0; }
+.nqp-text { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+.nqp-text strong { font-size: 0.85rem; color: #fff; font-weight: 700; }
+.nqp-text span { font-size: 0.72rem; color: rgba(255,255,255,0.65); }
+
 .sidebar-schedule {
   margin: auto 0 0;
   padding: 1rem 1.2rem;
@@ -337,6 +352,37 @@ a { text-decoration: none; color: inherit; }
 .btn-hero-ghost:hover { background: rgba(255,255,255,0.14); }
 
 /* stats strip */
+/* formula quiz banner */
+.formula-quiz-banner {
+  display: flex; align-items: center; gap: 1.4rem;
+  margin: 0 2.5rem 1.6rem;
+  padding: 1.4rem 1.8rem;
+  border-radius: 16px;
+  background: linear-gradient(120deg, var(--gold), var(--rose));
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 6px 24px rgba(232,82,106,0.25);
+}
+.formula-quiz-banner:hover { transform: scale(1.005); box-shadow: 0 10px 32px rgba(232,82,106,0.32); }
+.fqb-icon { font-size: 3rem; flex-shrink: 0; line-height: 1; }
+.fqb-text { flex: 1; min-width: 0; }
+.fqb-title { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 1.15rem; color: #1a1330; margin-bottom: 0.3rem; }
+.fqb-sub { font-size: 0.85rem; color: rgba(26,19,48,0.78); line-height: 1.5; }
+.fqb-cta {
+  flex-shrink: 0;
+  background: #0b0d2b; color: #fff;
+  font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 0.92rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+@media (max-width: 820px) {
+  .formula-quiz-banner { margin: 0 1.2rem 1.4rem; padding: 1.2rem 1.4rem; flex-wrap: wrap; }
+  .fqb-icon { font-size: 2.2rem; }
+  .fqb-cta { width: 100%; text-align: center; }
+}
+
 .stats-strip {
   display: grid; grid-template-columns: repeat(4, 1fr);
   gap: 1rem; padding: 2rem 2.5rem;
@@ -1440,6 +1486,16 @@ button { -webkit-tap-highlight-color:transparent; }
     </div>
 
     <div class="nav-section">
+      <a href="quiz-formula-rezultatu.html" class="nav-quiz-promo">
+        <span class="nqp-icon">🎯</span>
+        <span class="nqp-text">
+          <strong>Безкоштовний тест</strong>
+          <span>Знайди слабку компоненту</span>
+        </span>
+      </a>
+    </div>
+
+    <div class="nav-section">
       <div class="nav-section-label">Контент</div>
       <div class="nav-item" onclick="showPage('videos', this)">
         <span class="ni">▶</span> Відео з семінарів
@@ -1631,6 +1687,16 @@ button { -webkit-tap-highlight-color:transparent; }
         </div>
       </div>
     </div>
+
+    <!-- БАНЕР: Тест «Формула результату» -->
+    <a href="quiz-formula-rezultatu.html" class="formula-quiz-banner">
+      <div class="fqb-icon">🎯</div>
+      <div class="fqb-text">
+        <div class="fqb-title">Безкоштовний тест: «Знайди свою слабку компоненту»</div>
+        <div class="fqb-sub">7 компонент · 28 питань · 5 хвилин. Дізнайся над чим працювати, щоб отримувати бажані результати — і отримай персональні рекомендації на email.</div>
+      </div>
+      <div class="fqb-cta">Пройти тест →</div>
+    </a>
 
     <!-- ТЕСТ: Який тип інтуїтивного мислення в тебе? -->
     <section id="intuition-test" class="test-section" style="display:none;">
