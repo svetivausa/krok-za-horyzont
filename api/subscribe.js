@@ -11,7 +11,8 @@ export default async function handler(req, res) {
     'formula-o':    'Формула - Обставини',
     'formula-m':    'Формула - Можливості',
     'formula-res':  'Формула - Ресурси',
-    'formula-beta': 'Формула - β'
+    'formula-beta': 'Формула - β',
+    'formula-application': 'Формула - Заявка'
   };
   const groupName = groupMap[type];
   if (!groupName) return res.status(400).json({ error: 'Unknown type' });

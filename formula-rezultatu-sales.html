@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Формула результату | Крок за горизонт</title>
+<style>
+  :root {
+    --cream: #F5EFE6;
+    --cream-dark: #EDE4D6;
+    --brown: #2C1A0E;
+    --brown-light: #5C3D2E;
+    --terra: #B85042;
+    --terra-light: #D4695A;
+    --gold: #C9A84C;
+    --gold-light: #E2C070;
+    --green: #4A7C6F;
+    --ink: #1A1008;
+    --font-display: Georgia, 'Times New Roman', serif;
+    --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--brown);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(245,239,230,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--cream-dark);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .site-logo {
+    font-family: var(--font-display);
+    color: var(--brown);
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .site-logo span { color: var(--terra); }
+  .header-cta {
+    background: var(--terra);
+    color: white;
+    padding: 0.5rem 1.3rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .header-cta:hover { background: var(--terra-light); }
+
+  /* HERO */
+  .hero {
+    background: var(--brown);
+    color: var(--cream);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    width: 60%;
+    height: 200%;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 50%;
+    height: 150%;
+    background: radial-gradient(ellipse, rgba(184,80,66,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+  .hero-eyebrow {
+    display: inline-block;
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    font-weight: 500;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    font-weight: normal;
+  }
+  .hero-title em {
+    color: var(--gold);
+    font-style: normal;
+  }
+  .hero-sub {
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
+    color: rgba(245,239,230,0.75);
+    max-width: 540px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+  }
+  .hero-formula {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 8px;
+    padding: 0.8rem 1.5rem;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    font-family: var(--font-body);
+    text-decoration: none;
+  }
+  .btn-primary { background: var(--terra); color: white; }
+  .btn-primary:hover { background: var(--terra-light); transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: var(--cream); border: 1.5px solid rgba(245,239,230,0.3); }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .btn-gold { background: var(--gold); color: var(--brown); }
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-ghost { background: transparent; color: var(--terra); border: 1.5px solid var(--terra); }
+  .btn-ghost:hover { background: var(--terra); color: white; }
+
+  /* SECTIONS */
+  .section { padding: 5rem 2rem; }
+  .section-inner { max-width: 760px; margin: 0 auto; }
+  .section-wide { max-width: 960px; margin: 0 auto; }
+
+  .section-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--terra);
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    line-height: 1.2;
+    color: var(--brown);
+    margin-bottom: 1.2rem;
+  }
+  .section-title em { color: var(--terra); font-style: normal; }
+  .section-lead {
+    font-size: 1.05rem;
+    color: var(--brown-light);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  /* PAIN SECTION */
+  .pain-section { background: var(--ink); color: var(--cream); }
+  .pain-section .section-eyebrow { color: var(--gold); }
+  .pain-section .section-title { color: var(--cream); }
+  .pain-section .section-lead { color: rgba(245,239,230,0.7); }
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .pain-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    font-size: 0.95rem;
+    color: rgba(245,239,230,0.8);
+    line-height: 1.5;
+  }
+  .pain-card::before {
+    content: '—';
+    color: var(--terra);
+    margin-right: 0.4rem;
+    font-family: var(--font-display);
+  }
+
+  /* WHAT IS */
+  .what-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  .what-text p { margin-bottom: 1rem; color: var(--brown-light); font-size: 1rem; }
+  .what-visual {
+    background: var(--brown);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+  }
+  .formula-display {
+    font-family: var(--font-display);
+    color: var(--gold);
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+  .formula-components {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: left;
+  }
+  .formula-comp {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.82rem;
+    color: rgba(245,239,230,0.7);
+  }
+  .formula-comp-letter {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    color: var(--gold);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  /* FOR WHOM */
+  .for-whom-section { background: var(--cream-dark); }
+  .for-whom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .for-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.3rem;
+    border-left: 3px solid var(--terra);
+  }
+  .for-card p { font-size: 0.92rem; color: var(--brown-light); line-height: 1.5; }
+
+  /* HOW IT WORKS */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 2rem;
+    position: relative;
+  }
+  .steps::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 40px;
+    bottom: 40px;
+    width: 1px;
+    background: var(--cream-dark);
+  }
+  .step {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 1.5rem 0;
+    position: relative;
+  }
+  .step-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--terra);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .step-content h4 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--brown);
+    margin-bottom: 0.3rem;
+  }
+  .step-content p { font-size: 0.92rem; color: var(--brown-light); }
+
+  /* PACKAGES */
+  .packages-section { background: var(--brown); color: var(--cream); }
+  .packages-section .section-eyebrow { color: var(--gold); }
+  .packages-section .section-title { color: var(--cream); }
+  .packages-section .section-lead { color: rgba(245,239,230,0.7); }
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin-top: 2.5rem;
+  }
+  .package-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 1.8rem;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .package-card:hover { border-color: rgba(201,168,76,0.3); }
+  .package-card.featured {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.07);
+  }
+  .package-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--brown);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.8rem;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .package-name {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+  .package-tagline {
+    font-size: 0.82rem;
+    color: rgba(245,239,230,0.5);
+    margin-bottom: 1.2rem;
+    font-style: italic;
+  }
+  .package-price {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--cream);
+    margin-bottom: 0.2rem;
+    line-height: 1;
+  }
+  .package-price span {
+    font-size: 1rem;
+    color: rgba(245,239,230,0.5);
+    font-family: var(--font-body);
+  }
+  .package-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+    margin: 1.2rem 0;
+  }
+  .package-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+  }
+  .package-features li {
+    font-size: 0.88rem;
+    color: rgba(245,239,230,0.75);
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    line-height: 1.4;
+  }
+  .package-features li::before {
+    content: '✓';
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+  .package-btn {
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  /* OBJECTIONS */
+  .obj-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .obj-item {
+    border: 1px solid var(--cream-dark);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .obj-q {
+    padding: 1.1rem 1.3rem;
+    font-weight: 600;
+    color: var(--brown);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    font-size: 0.95rem;
+  }
+  .obj-q::after { content: '+'; color: var(--terra); font-size: 1.2rem; font-weight: 400; }
+  .obj-q.open::after { content: '–'; }
+  .obj-a {
+    display: none;
+    padding: 1rem 1.3rem 1.3rem;
+    color: var(--brown-light);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    background: white;
+    border-top: 1px solid var(--cream-dark);
+  }
+  .obj-a.visible { display: block; }
+
+  /* AUTHOR */
+  .author-section { background: var(--cream-dark); }
+  .author-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .author-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--brown);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--gold);
+    flex-shrink: 0;
+    border: 3px solid var(--gold);
+  }
+  .author-name {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--brown);
+    margin-bottom: 0.3rem;
+  }
+  .author-title {
+    font-size: 0.85rem;
+    color: var(--terra);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .author-bio p {
+    color: var(--brown-light);
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+  /* FORM */
+  .form-section { background: var(--brown); color: var(--cream); }
+  .form-section .section-eyebrow { color: var(--gold); }
+  .form-section .section-title { color: var(--cream); }
+  .form-section .section-lead { color: rgba(245,239,230,0.7); }
+  .form-wrap {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 2.5rem;
+    max-width: 520px;
+    margin: 2rem auto 0;
+  }
+  .form-row { margin-bottom: 1.2rem; }
+  .form-label {
+    display: block;
+    font-size: 0.82rem;
+    color: rgba(245,239,230,0.6);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+  }
+  .form-input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: rgba(255,255,255,0.07);
+    border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    color: var(--cream);
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-input:focus { border-color: var(--gold); }
+  .form-input::placeholder { color: rgba(245,239,230,0.3); }
+  .form-select {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: rgba(255,255,255,0.07);
+    border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    color: var(--cream);
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A84C' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+  }
+  .form-select option { background: var(--brown); color: var(--cream); }
+  .form-fine {
+    font-size: 0.78rem;
+    color: rgba(245,239,230,0.4);
+    text-align: center;
+    margin-top: 1rem;
+    line-height: 1.5;
+  }
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+  }
+  .form-success-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  .form-success h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  .form-success p {
+    color: rgba(245,239,230,0.7);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--ink);
+    color: rgba(245,239,230,0.4);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.82rem;
+  }
+  .footer a { color: var(--gold); text-decoration: none; }
+
+  /* DIVIDER */
+  .divider-line {
+    height: 1px;
+    background: var(--cream-dark);
+    margin: 0;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    .packages-grid { grid-template-columns: 1fr; }
+    .what-grid { grid-template-columns: 1fr; }
+    .author-grid { grid-template-columns: 1fr; }
+    .author-avatar { width: 80px; height: 80px; font-size: 1.8rem; }
+    .hero { padding: 3.5rem 1.5rem 3rem; }
+    .section { padding: 3.5rem 1.5rem; }
+    .form-wrap { padding: 1.8rem 1.3rem; }
+    .site-header { padding: 0.8rem 1.2rem; }
+    .pain-grid { grid-template-columns: 1fr; }
+    .for-whom-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="/" class="site-logo">Крок за <span>горизонт</span></a>
+  <a href="#form" class="header-cta">Залишити заявку</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Авторська програма Світлани Сліпченко</div>
+    <h1 class="hero-title">
+      Формула результату:<br>
+      чому все є, а <em>результату немає</em>
+    </h1>
+    <p class="hero-sub">
+      Нейронаукова програма для тих, хто втомився старатися без відчутного руху вперед. Зрозумій де збій. Виправ його. Рухайся.
+    </p>
+    <div class="hero-formula">
+      R = Б × П · Д × О × М × Рес × β
+    </div>
+    <div class="hero-btns">
+      <a href="#form" class="btn btn-primary">Залишити заявку</a>
+      <a href="#packages" class="btn btn-outline">Переглянути пакети</a>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="section pain-section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Впізнаєш себе?</div>
+    <h2 class="section-title">Ти робиш все «як треба».<br>Але щось не так.</h2>
+    <p class="section-lead">
+      Читаєш книги, ходиш на тренінги, ставиш цілі. І все одно є відчуття що крутишся на місці. Що справжнього - свого - ще не почалося.
+    </p>
+    <div class="pain-grid">
+      <div class="pain-card">Робиш з відчуття «треба», а не «хочу» - і не розумієш звідки втома</div>
+      <div class="pain-card">Знаєш що здатна на більше, але роки йдуть, а «більше» так і не настає</div>
+      <div class="pain-card">Спираєшся на чужі думки, схвалення, очікування - а не на себе</div>
+      <div class="pain-card">Багато зусиль, мало результату - і не розумієш де саме щось іде не так</div>
+      <div class="pain-card">Старт є, середина є, а до фінішу чомусь не доходить</div>
+      <div class="pain-card">Відчуваєш що живеш «поряд» зі своїм життям, а не всередині нього</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Що це таке</div>
+    <div class="what-grid">
+      <div class="what-text">
+        <h2 class="section-title">Не мотивація.<br>Не <em>«повір у себе»</em>.<br>Механіка.</h2>
+        <p>Результат - це не везіння і не характер. Це система з семи компонентів. Якщо хоча б один дорівнює нулю - результат теж нуль. Незалежно від того як сильно ти стараєшся.</p>
+        <p>Формула результату - це авторська нейронаукова програма яка дає тобі карту: де саме в тебе збій, і що з цим робити конкретно.</p>
+        <p>Не загальні поради. Твоя особиста точка входу.</p>
+      </div>
+      <div class="what-visual">
+        <div class="formula-display">R = Б × П · Д × О × М × Рес × β</div>
+        <div class="formula-components">
+          <div class="formula-comp"><div class="formula-comp-letter">Б</div>Бажання - справжнє паливо</div>
+          <div class="formula-comp"><div class="formula-comp-letter">П</div>Переконання - фільтр реальності</div>
+          <div class="formula-comp"><div class="formula-comp-letter">Д</div>Дії - якість і вектор руху</div>
+          <div class="formula-comp"><div class="formula-comp-letter">О</div>Обставини - поле де ти граєш</div>
+          <div class="formula-comp"><div class="formula-comp-letter">М</div>Можливості - що помічає мозок</div>
+          <div class="formula-comp"><div class="formula-comp-letter">Р</div>Ресурси - паливо для руху</div>
+          <div class="formula-comp"><div class="formula-comp-letter">β</div>Петля росту - множник досвіду</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+<!-- FOR WHOM -->
+<section class="section for-whom-section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Для кого</div>
+    <h2 class="section-title">Ця програма для тебе, якщо...</h2>
+    <div class="for-whom-grid">
+      <div class="for-card"><p>Ти відчуваєш, що живеш за чужим сценарієм і давно не пам'ятаєш чого хочеш насправді</p></div>
+      <div class="for-card"><p>Ти стараєшся, але результат не відповідає вкладеним зусиллям</p></div>
+      <div class="for-card"><p>Тобі бракує внутрішньої опори - рішення приймаються через страх або думку інших</p></div>
+      <div class="for-card"><p>Ти починаєш і кидаєш, або робиш все правильно але без руху вперед</p></div>
+      <div class="for-card"><p>Ти хочеш зрозуміти механіку, а не просто «повірити в себе»</p></div>
+      <div class="for-card"><p>Ти готовий(а) до чесного погляду на себе без самозвинувачення</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Як це працює</div>
+    <h2 class="section-title">Три кроки до <em>ясності</em></h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Інтерактивна лекція з симулятором</h4>
+          <p>Дізнаєшся як працює кожен з семи компонентів. Власноруч бачиш у симуляторі як підсилення або ослаблення одного елемента змінює весь результат.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Сім практикумів з ботом «Опора»</h4>
+          <p>Покроково опрацьовуєш кожен компонент у своєму житті. Бот «Опора» веде тебе через вправи, відповідає на питання і не дає зупинитися на півдорозі.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Підтримка і розбір особистої формули</h4>
+          <p>У пакеті «Провідник» - особиста сесія зі Світланою і 14 днів особистого супроводу. Розбираємо твою конкретну ситуацію.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="section packages-section" id="packages">
+  <div class="section-wide">
+    <div class="section-eyebrow">Пакети програми</div>
+    <h2 class="section-title">Обери свій формат</h2>
+    <p class="section-lead">Перший потік - обмежена кількість місць.</p>
+    <div class="packages-grid">
+
+      <div class="package-card">
+        <div class="package-name">«Карта»</div>
+        <div class="package-tagline">Зрозуміти механіку</div>
+        <div class="package-price">590 <span>грн</span></div>
+        <div class="package-divider"></div>
+        <ul class="package-features">
+          <li>Інтерактивна лекція «Формула результату»</li>
+          <li>Симулятор компонентів - побач результат воочію</li>
+          <li>Довічний доступ до матеріалів</li>
+        </ul>
+        <a href="#form" class="btn btn-ghost package-btn" onclick="setPackage('Карта')">Обрати «Карту»</a>
+      </div>
+
+      <div class="package-card featured">
+        <div class="package-badge">Найпопулярніший</div>
+        <div class="package-name">«Маршрут»</div>
+        <div class="package-tagline">Зрозуміти і опрацювати</div>
+        <div class="package-price">1 490 <span>грн</span></div>
+        <div class="package-divider"></div>
+        <ul class="package-features">
+          <li>Інтерактивна лекція з симулятором</li>
+          <li>7 практикумів з покроковими вправами</li>
+          <li>Бот «Опора» - підтримка протягом усього шляху</li>
+          <li>Довічний доступ до матеріалів</li>
+        </ul>
+        <a href="#form" class="btn btn-gold package-btn" onclick="setPackage('Маршрут')">Обрати «Маршрут»</a>
+      </div>
+
+      <div class="package-card">
+        <div class="package-name">«Провідник»</div>
+        <div class="package-tagline">Зрозуміти, опрацювати і пройти зі Світ</div>
+        <div class="package-price">3 490 <span>грн</span></div>
+        <div class="package-divider"></div>
+        <ul class="package-features">
+          <li>Все з пакету «Маршрут»</li>
+          <li>14 днів особистого супроводу від Світлани</li>
+          <li>Особиста сесія 60 хв - розбір твоєї формули</li>
+          <li>Пріоритетна відповідь протягом 24 годин</li>
+        </ul>
+        <a href="#form" class="btn btn-primary package-btn" onclick="setPackage('Провідник')">Обрати «Провідник»</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OBJECTIONS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Питання</div>
+    <h2 class="section-title">Що тебе може зупиняти</h2>
+    <div class="obj-list">
+      <div class="obj-item">
+        <div class="obj-q" onclick="toggleObj(this)">Я вже проходила багато курсів і нічого не змінилося</div>
+        <div class="obj-a">Це і є одна з ознак що якийсь компонент у тебе на нулі. Курси дають знання, але якщо П (переконання) або Б (бажання) не в порядку, жодні знання не перетворяться на результат. Тут ми спочатку знаходимо збій, а потім вже працюємо.</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-q" onclick="toggleObj(this)">Чи не ще одна «мотиваційна» програма?</div>
+        <div class="obj-a">Ні. Мотивація не лікується мотивацією. Тут нейронаука і конкретна механіка: чому мозок саботує, як працює петля β, чому обставини впливають на тебе більше ніж ти думаєш. Жодних «повір у себе».</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-q" onclick="toggleObj(this)">Скільки часу це займає?</div>
+        <div class="obj-a">Лекція - близько 40 хвилин. Кожен практикум - 20-30 хвилин. Загалом 3-4 години розподілених у зручному для тебе темпі. Доступ безстроковий - повертайся коли зручно.</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-q" onclick="toggleObj(this)">Що якщо мені не підійде?</div>
+        <div class="obj-a">Напиши мені. Разом розберемося. Якщо матеріал справді не дав тобі нічого нового - поговоримо про це чесно.</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-q" onclick="toggleObj(this)">Коли починати?</div>
+        <div class="obj-a">Відразу після підтвердження заявки. Доступ відкривається протягом 24 годин після отримання оплати.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHOR -->
+<section class="section author-section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Хто за цим стоїть</div>
+    <div class="author-grid">
+      <div class="author-avatar">С</div>
+      <div>
+        <div class="author-name">Світлана Сліпченко</div>
+        <div class="author-title">Психолог · 40 років стажу</div>
+        <div class="author-bio">
+          <p>Психолог з 40-річним стажем. Ведуча авторського тренінгу «Крок за горизонт». Заслужений тренер України з кікбоксингу. Співавтор книги «Тайський бокс для тебе».</p>
+          <p>Виховала 8 Чемпіонів Світу з кікбоксингу. Тому коли говорю про Формулу результату - це не теорія. Це те що я бачила в дії сотні разів: на рингу, в залі, в житті.</p>
+          <p>Результат - це система. І її можна збудувати. Я знаю як.</p>
+          <p>Формула результату - це не теорія з книжки. Це роки спостережень за собою і людьми, підкріплені нейронаукою. Я вивела її тому що сама потребувала чіткої карти, а не натхненних слів.</p>
+          <p>Зараз я допомагаю людям знаходити їхній збій і починати рухатися. Не швидко. Але справжньо.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="section form-section" id="form">
+  <div class="section-inner" style="text-align:center;">
+    <div class="section-eyebrow">Перший потік</div>
+    <h2 class="section-title" style="color:var(--cream);">Залиш заявку.<br>Я напишу тобі особисто.</h2>
+    <p class="section-lead">Місць обмежено. Після заявки я зв'яжуся з тобою протягом 24 годин і надішлю деталі.</p>
+    <div class="form-wrap">
+      <div id="formContent">
+        <div class="form-row">
+          <label class="form-label" for="nameInput">Як до тебе звертатися</label>
+          <input type="text" class="form-input" id="nameInput" placeholder="Твоє ім'я">
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="emailInput">Email</label>
+          <input type="email" class="form-input" id="emailInput" placeholder="твій@email.com">
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="packageSelect">Пакет</label>
+          <select class="form-select" id="packageSelect">
+            <option value="">Оберіть пакет</option>
+            <option value="Карта">«Карта» - 590 грн</option>
+            <option value="Маршрут">«Маршрут» - 1 490 грн</option>
+            <option value="Провідник">«Провідник» - 3 490 грн</option>
+          </select>
+        </div>
+        <button class="btn btn-gold" style="width:100%; margin-top:0.5rem; font-size:1rem;" onclick="submitForm()">
+          Залишити заявку
+        </button>
+        <p class="form-fine">Натискаючи кнопку, ти погоджуєшся що я зв'яжуся з тобою щодо програми. Ніякого спаму.</p>
+      </div>
+      <div class="form-success" id="formSuccess">
+        <div class="form-success-icon">✉️</div>
+        <h3>Заявку отримано!</h3>
+        <p>Я напишу тобі особисто протягом 24 годин. Перевір пошту і, якщо хочеш, одразу напиши мені в Telegram - так швидше.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2026 Світлана Сліпченко · <a href="/">Крок за горизонт</a></p>
+</footer>
+
+<script>
+function toggleObj(el) {
+  const answer = el.nextElementSibling;
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.obj-q').forEach(q => {
+    q.classList.remove('open');
+    q.nextElementSibling.classList.remove('visible');
+  });
+  if (!isOpen) {
+    el.classList.add('open');
+    answer.classList.add('visible');
+  }
+}
+
+function setPackage(name) {
+  document.getElementById('packageSelect').value = name;
+}
+
+function submitForm() {
+  const name = document.getElementById('nameInput').value.trim();
+  const email = document.getElementById('emailInput').value.trim();
+  const pkg = document.getElementById('packageSelect').value;
+
+  if (!name) {
+    document.getElementById('nameInput').focus();
+    document.getElementById('nameInput').style.borderColor = 'var(--terra)';
+    setTimeout(() => document.getElementById('nameInput').style.borderColor = '', 2000);
+    return;
+  }
+  if (!email || !email.includes('@')) {
+    document.getElementById('emailInput').focus();
+    document.getElementById('emailInput').style.borderColor = 'var(--terra)';
+    setTimeout(() => document.getElementById('emailInput').style.borderColor = '', 2000);
+    return;
+  }
+
+  // Надсилаємо заявку
+  // Підключити до свого сервісу або Telegram-бота
+  fetch('/api/subscribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, name, type: 'formula-application', package: pkg })
+  }).catch(() => {});
+
+  document.getElementById('formContent').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+</script>
+
+</body>
+</html>

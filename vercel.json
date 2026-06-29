@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/formula-rezultatu-sales", "destination": "/formula-rezultatu-sales.html" }
+  ]
+}
