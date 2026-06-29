@@ -12,7 +12,9 @@ export default async function handler(req, res) {
     'formula-m':    'Формула - Можливості',
     'formula-res':  'Формула - Ресурси',
     'formula-beta': 'Формула - β',
-    'formula-application': 'Формула - Заявка'
+    'formula-application-карта':     'Формула - Заявка - Карта',
+    'formula-application-маршрут':   'Формула - Заявка - Маршрут',
+    'formula-application-провідник': 'Формула - Заявка - Провідник'
   };
   const groupName = groupMap[type];
   if (!groupName) return res.status(400).json({ error: 'Unknown type' });

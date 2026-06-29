@@ -934,13 +934,20 @@ function submitForm() {
     setTimeout(() => document.getElementById('emailInput').style.borderColor = '', 2000);
     return;
   }
+  if (!pkg) {
+    document.getElementById('packageSelect').focus();
+    document.getElementById('packageSelect').style.borderColor = 'var(--terra)';
+    setTimeout(() => document.getElementById('packageSelect').style.borderColor = '', 2000);
+    return;
+  }
 
   // Надсилаємо заявку
   // Підключити до свого сервісу або Telegram-бота
+  const type = 'formula-application-' + pkg.toLowerCase();
   fetch('/api/subscribe', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, name, type: 'formula-application', package: pkg })
+    body: JSON.stringify({ email, name, type, package: pkg })
   }).catch(() => {});
 
   document.getElementById('formContent').style.display = 'none';
