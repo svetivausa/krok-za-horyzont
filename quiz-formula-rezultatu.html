@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Перевір свою Формулу результату за 7 хвилин | Крок за горизонт</title>
+<style>
+  :root {
+    --cream: #F5EFE6;
+    --cream-dark: #EDE4D6;
+    --brown: #2C1A0E;
+    --brown-light: #5C3D2E;
+    --terra: #B85042;
+    --terra-light: #D4695A;
+    --gold: #C9A84C;
+    --gold-light: #E2C070;
+    --green: #4A7C6F;
+    --font-display: Georgia, 'Times New Roman', serif;
+    --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--brown);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--brown);
+    padding: 1.2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-family: var(--font-display);
+    color: var(--gold);
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+  }
+  .logo span { color: var(--cream); }
+
+  /* PROGRESS */
+  .progress-wrap {
+    background: var(--brown);
+    padding: 0 2rem 1.2rem;
+  }
+  .progress-label {
+    color: var(--cream-dark);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .progress-bar-bg {
+    height: 6px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--terra-light));
+    border-radius: 3px;
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+  .progress-components {
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 0.7rem;
+    flex-wrap: wrap;
+  }
+  .comp-dot {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 0.2rem 0.6rem;
+    transition: all 0.3s;
+    font-family: var(--font-display);
+    letter-spacing: 0.05em;
+  }
+  .comp-dot.active {
+    color: var(--gold);
+    background: rgba(201,168,76,0.2);
+    border: 1px solid var(--gold);
+  }
+  .comp-dot.done {
+    color: var(--cream);
+    background: rgba(255,255,255,0.15);
+  }
+
+  /* MAIN */
+  .main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  /* INTRO */
+  .intro-block {
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+  .intro-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+  }
+  .intro-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    line-height: 1.2;
+    color: var(--brown);
+    margin-bottom: 1.2rem;
+  }
+  .intro-title em {
+    color: var(--terra);
+    font-style: normal;
+  }
+  .intro-sub {
+    color: var(--brown-light);
+    font-size: 1.05rem;
+    max-width: 480px;
+    margin: 0 auto 0.8rem;
+  }
+  .intro-meta {
+    font-size: 0.85rem;
+    color: var(--brown-light);
+    opacity: 0.7;
+    margin-bottom: 2rem;
+  }
+  .intro-formula {
+    background: var(--brown);
+    color: var(--gold);
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    display: inline-block;
+    margin-bottom: 2rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* BTN */
+  .btn {
+    display: inline-block;
+    background: var(--terra);
+    color: white;
+    padding: 0.9rem 2.2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    font-family: var(--font-body);
+    letter-spacing: 0.02em;
+  }
+  .btn:hover { background: var(--terra-light); transform: translateY(-1px); }
+  .btn:active { transform: translateY(0); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--terra);
+    border: 2px solid var(--terra);
+  }
+  .btn-ghost:hover { background: var(--terra); color: white; }
+  .btn-gold {
+    background: var(--gold);
+    color: var(--brown);
+  }
+  .btn-gold:hover { background: var(--gold-light); }
+
+  /* BLOCK */
+  .block {
+    display: none;
+    animation: fadeIn 0.4s ease;
+  }
+  .block.visible { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .block-header {
+    margin-bottom: 2rem;
+  }
+  .block-number {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--terra);
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .block-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--brown);
+    margin-bottom: 0.3rem;
+  }
+  .block-subtitle {
+    color: var(--brown-light);
+    font-size: 0.95rem;
+    font-style: italic;
+  }
+  .block-accent {
+    display: inline-block;
+    background: var(--terra);
+    color: white;
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: bold;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    line-height: 52px;
+    text-align: center;
+    margin-bottom: 0.8rem;
+  }
+
+  /* QUESTION */
+  .question-wrap {
+    margin-bottom: 1.8rem;
+  }
+  .question-text {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--brown);
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+  }
+  .question-num {
+    color: var(--terra);
+    margin-right: 0.3rem;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .option {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid #D8CEBF;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: white;
+    font-size: 0.95rem;
+    line-height: 1.45;
+    color: var(--brown-light);
+    text-align: left;
+  }
+  .option:hover {
+    border-color: var(--terra);
+    background: #FDF7F1;
+    color: var(--brown);
+  }
+  .option.selected {
+    border-color: var(--terra);
+    background: #FFF0ED;
+    color: var(--brown);
+  }
+  .option-radio {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #C8BAA8;
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: all 0.2s;
+    background: white;
+    position: relative;
+  }
+  .option.selected .option-radio {
+    border-color: var(--terra);
+    background: var(--terra);
+  }
+  .option.selected .option-radio::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--cream-dark);
+    margin: 1.8rem 0;
+  }
+
+  /* NAV */
+  .block-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 1rem;
+  }
+  .nav-hint {
+    font-size: 0.8rem;
+    color: var(--brown-light);
+    opacity: 0.6;
+  }
+
+  /* RESULTS */
+  .results-block { display: none; }
+  .results-block.visible { display: block; animation: fadeIn 0.5s ease; }
+
+  .result-header {
+    text-align: center;
+    padding: 2rem 0 1.5rem;
+    border-bottom: 1px solid var(--cream-dark);
+    margin-bottom: 2rem;
+  }
+  .result-header h2 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--brown);
+    margin-bottom: 0.5rem;
+  }
+  .result-header p {
+    color: var(--brown-light);
+    font-size: 0.95rem;
+  }
+
+  .components-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
+  }
+  .comp-row {
+    background: white;
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1.5px solid #E8DDD0;
+    transition: all 0.3s;
+  }
+  .comp-row.zero {
+    border-color: var(--terra);
+    background: #FFF5F3;
+  }
+  .comp-row.shaky {
+    border-color: var(--gold);
+    background: #FFFBF0;
+  }
+  .comp-row.strong {
+    border-color: #A8C4BC;
+    background: #F4FAF8;
+  }
+  .comp-letter {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: bold;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+  }
+  .zero .comp-letter { background: var(--terra); }
+  .shaky .comp-letter { background: var(--gold); color: var(--brown); }
+  .strong .comp-letter { background: var(--green); }
+
+  .comp-info { flex: 1; }
+  .comp-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--brown);
+    margin-bottom: 0.25rem;
+  }
+  .comp-bar-bg {
+    height: 5px;
+    background: #E8DDD0;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .comp-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 1s ease 0.3s;
+  }
+  .zero .comp-bar-fill { background: var(--terra); }
+  .shaky .comp-bar-fill { background: var(--gold); }
+  .strong .comp-bar-fill { background: var(--green); }
+
+  .comp-score {
+    font-size: 0.8rem;
+    color: var(--brown-light);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .comp-tag {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 20px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .zero .comp-tag { background: rgba(184,80,66,0.12); color: var(--terra); }
+  .shaky .comp-tag { background: rgba(201,168,76,0.15); color: #8A6A00; }
+  .strong .comp-tag { background: rgba(74,124,111,0.12); color: var(--green); }
+
+  /* FOCUS CARD */
+  .focus-card {
+    background: var(--brown);
+    color: var(--cream);
+    border-radius: 12px;
+    padding: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  .focus-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+  }
+  .focus-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+  .focus-text {
+    color: rgba(245,239,230,0.8);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* CTA */
+  .cta-block {
+    background: linear-gradient(135deg, #FDF7F1, #F5EFE6);
+    border: 1.5px solid var(--gold);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .cta-block h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--brown);
+    margin-bottom: 0.7rem;
+  }
+  .cta-block p {
+    color: var(--brown-light);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* EMAIL FORM */
+  .email-form-block {
+    background: white;
+    border: 1.5px solid #E8DDD0;
+    border-radius: 12px;
+    padding: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .email-form-block h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--brown);
+    margin-bottom: 0.4rem;
+  }
+  .email-form-block p {
+    color: var(--brown-light);
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+  }
+  .email-row {
+    display: flex;
+    gap: 0.6rem;
+  }
+  .email-input {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: 1.5px solid #D8CEBF;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    color: var(--brown);
+    background: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .email-input:focus { border-color: var(--terra); }
+  .email-input::placeholder { color: #B0A090; }
+  .email-success {
+    display: none;
+    background: #F0F9F6;
+    border: 1.5px solid #A8C4BC;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    color: var(--green);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .email-fine {
+    font-size: 0.75rem;
+    color: var(--brown-light);
+    opacity: 0.6;
+    margin-top: 0.6rem;
+  }
+  @media (max-width: 480px) {
+    .email-row { flex-direction: column; }
+  }
+  .share-block {
+    text-align: center;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--cream-dark);
+  }
+  .share-block p {
+    font-size: 0.85rem;
+    color: var(--brown-light);
+    margin-bottom: 0.8rem;
+  }
+
+  /* UTILS */
+  .hidden { display: none !important; }
+  .text-center { text-align: center; }
+  .mt-1 { margin-top: 1rem; }
+
+  @media (max-width: 480px) {
+    .main { padding: 1.5rem 1rem 3rem; }
+    .block-nav { flex-direction: column-reverse; }
+    .btn { width: 100%; text-align: center; }
+    .intro-formula { font-size: 0.75rem; }
+    .cta-buttons { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">Крок за <span>горизонт</span></div>
+  <div style="font-size:0.75rem; color:rgba(245,239,230,0.5); letter-spacing:0.08em;">ДІАГНОСТИКА</div>
+</div>
+
+<div class="progress-wrap" id="progressWrap" style="display:none;">
+  <div class="progress-label">Блок <span id="progressCurrent">1</span> з 7</div>
+  <div class="progress-bar-bg">
+    <div class="progress-bar-fill" id="progressFill"></div>
+  </div>
+  <div class="progress-components" id="compDots"></div>
+</div>
+
+<div class="main">
+
+  <!-- INTRO -->
+  <div class="block visible" id="block-intro">
+    <div class="intro-block">
+      <div class="intro-eyebrow">Авторська діагностика</div>
+      <h1 class="intro-title">Перевір свою <em>Формулу результату</em> за 7 хвилин</h1>
+      <p class="intro-sub">28 питань. Чесні відповіді. І нарешті ясність - який компонент підводить саме тебе.</p>
+      <p class="intro-meta">Займе близько 7 хвилин</p>
+      <div class="intro-formula">R = Б × П × Д × О × М × Рес × β</div>
+      <br>
+      <p style="font-size:0.85rem; color:var(--brown-light); max-width:420px; margin:0 auto 2rem;">
+        Кожна літера - це компонент, що впливає на твій результат. Якщо хоч один дорівнює нулю - обнуляється все. Зараз дізнаємося, де твоє вразливе місце.
+      </p>
+      <button class="btn" onclick="startQuiz()">Почати діагностику</button>
+    </div>
+  </div>
+
+  <!-- BLOCKS 1-7 -->
+  <div id="quiz-blocks"></div>
+
+  <!-- RESULTS -->
+  <div class="results-block" id="results">
+    <div class="result-header">
+      <h2>Твоя формула результату</h2>
+      <p>Ось як виглядають твої сім компонентів прямо зараз</p>
+    </div>
+
+    <div class="components-grid" id="resultsGrid"></div>
+
+    <div class="focus-card" id="focusCard"></div>
+
+    <div class="email-form-block" id="emailFormBlock">
+      <h3>Отримай детальний розбір на пошту</h3>
+      <p>Надішлю тобі докладний аналіз твого слабкого компонента і конкретні кроки що з цим робити.</p>
+      <div class="email-row">
+        <input type="email" class="email-input" id="emailInput" placeholder="твій@email.com">
+        <button class="btn" onclick="submitEmail()">Надіслати</button>
+      </div>
+      <p class="email-fine">Без спаму. Тільки корисне. Відписатися можна в будь-який момент.</p>
+      <div class="email-success" id="emailSuccess">
+        Дякую! Лист вже летить до тебе. Перевір папку «Вхідні» і на всяк випадок «Спам» 📩
+      </div>
+    </div>
+
+    <div class="cta-block">
+      <h3>Що робити з цим результатом?</h3>
+      <p>Лекція «Формула результату» + 7 практикумів з ботом «Опора» дають покрокову роботу з кожним компонентом - особливо з тим, де в тебе зараз провал.</p>
+      <div class="cta-buttons">
+        <a href="#" class="btn btn-gold">Дізнатися про програму</a>
+        <button class="btn btn-ghost" onclick="restartQuiz()">Пройти знову</button>
+      </div>
+    </div>
+
+    <div class="share-block">
+      <p>Поділися результатом - можливо, комусь це теж потрібно</p>
+      <button class="btn" style="font-size:0.85rem; padding:0.6rem 1.5rem;" onclick="shareResult()">Поділитися</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const BLOCKS = [
+  {
+    id: 'B', letter: 'Б', name: 'Бажання', subtitle: 'Що насправді тебе рухає?',
+    zeroText: 'Бажання - це паливо. Без нього машина нікуди не поїде, як би добре вона не була зібрана. Зараз твій двигун або заглох, або ти їдеш не туди, куди хочеш насправді. Саме тут варто почати.',
+    shakyText: 'Бажання є, але хитається. Іноді хочеш, іноді "треба". Варто розібратися: це справді твоє - чи взяте напрокат у чужих очікувань?',
+    strongText: 'Твоє бажання справжнє і стійке. Це рідкість. Зберігай цей вогонь і не давай нікому його гасити.',
+    questions: [
+      {
+        q: 'Коли ти уявляєш, що вже досягла своєї цілі - що першим спадає на думку?',
+        options: [
+          { text: 'Радість і приємне передчуття', score: 4 },
+          { text: 'Полегшення, що нарешті все', score: 2 },
+          { text: 'Тривога або сумнів «а раптом не вийде»', score: 1 },
+          { text: 'Важко уявити себе там', score: 1 }
+        ]
+      },
+      {
+        q: 'Якби ніхто ніколи не дізнався про твій успіх - ти б все одно йшла до цього?',
+        options: [
+          { text: 'Так, це моє і я це відчуваю', score: 4 },
+          { text: 'Мабуть так, але було б важче', score: 3 },
+          { text: 'Не впевнена', score: 2 },
+          { text: 'Чесно - навряд чи', score: 1 }
+        ]
+      },
+      {
+        q: 'Як давно ти робила щось просто тому що тобі цього хотілося - без користі і без причини?',
+        options: [
+          { text: 'Нещодавно, роблю це регулярно', score: 4 },
+          { text: 'Кілька тижнів тому', score: 3 },
+          { text: 'Вже не пам\'ятаю коли', score: 2 },
+          { text: 'Здається ніколи - завжди є причина або користь', score: 1 }
+        ]
+      },
+      {
+        q: 'Коли ти думаєш про свою ціль ввечері перед сном - це надихає чи тисне?',
+        options: [
+          { text: 'Надихає, хочеться швидше почати', score: 4 },
+          { text: 'По-різному залежно від дня', score: 3 },
+          { text: 'Частіше тисне ніж надихає', score: 2 },
+          { text: 'Намагаюся не думати - щоб не засмучуватися', score: 1 }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'P', letter: 'П', name: 'Переконання', subtitle: 'Що відбувається у голові поки ти дієш?',
+    zeroText: 'Переконання - це фільтр на об\'єктиві. Можна бути в потрібному місці в потрібний час - і все одно нічого не побачити. Зараз твій фільтр сильно спотворює картину. Хороша новина: фільтр можна змінити.',
+    shakyText: 'Переконання хитаються. Одного дня ти віриш в себе, іншого - ні. Це нормально, але нестабільно. Варто попрацювати з ідентичністю.',
+    strongText: 'Твій внутрішній діалог - союзник, не ворог. Це дуже впливає на все інше.',
+    questions: [
+      {
+        q: 'Коли ти бачиш людину, яка досягла того, чого хочеш ти - твоя перша думка яка?',
+        options: [
+          { text: 'Класно! Значить це можливо і для мене', score: 4 },
+          { text: 'Молодець, але у неї інші можливості', score: 2 },
+          { text: 'Пощастило або мала потрібні зв\'язки', score: 1 },
+          { text: 'Заздрю і відчуваю що відстаю', score: 1 }
+        ]
+      },
+      {
+        q: 'Уяви, що тебе запрошують на важливу подію як експерта. Що відчуваєш першою секундою?',
+        options: [
+          { text: 'Цікаво! Є що розповісти', score: 4 },
+          { text: 'Радію, але трохи хвилююся', score: 3 },
+          { text: 'Одразу думаю, що є хтось кращий', score: 2 },
+          { text: 'Паніка: я ж недостатньо знаю', score: 1 }
+        ]
+      },
+      {
+        q: 'Якби твоя ціль вже здійснилася - чи є відчуття «це не моє» або «я цього не заслуговую»?',
+        options: [
+          { text: 'Ні, прийняла б це природно', score: 4 },
+          { text: 'Трохи є, але долаю', score: 3 },
+          { text: 'Так, і це мене лякає', score: 2 },
+          { text: 'Це відчуття переслідує мене постійно', score: 1 }
+        ]
+      },
+      {
+        q: 'Коли щось не виходить - де ти шукаєш причину першим ділом?',
+        options: [
+          { text: 'Аналізую і себе, і обставини', score: 4 },
+          { text: 'Спочатку в собі - що могла зробити інакше', score: 4 },
+          { text: 'Здебільшого в обставинах або в інших людях', score: 2 },
+          { text: 'Намагаюся не думати про це взагалі', score: 1 }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'D', letter: 'Д', name: 'Дії', subtitle: 'Як виглядає твій рух до цілі?',
+    zeroText: 'Дії - це машина. Без неї нікуди не доїхати. Але проблема не завжди в тому, що ти нічого не робиш. Часто людина багато робить - просто не в той бік. Давай розберемо, що саме відбувається.',
+    shakyText: 'Рухи є, але нерівномірні. Спалахи активності чергуються з паузами. Потрібна система, а не воля.',
+    strongText: 'Ти регулярно і цілеспрямовано рухаєшся. Це основа всього.',
+    questions: [
+      {
+        q: 'Якби хтось подивився на твій вчорашній день - він би здогадався, до чого ти йдеш?',
+        options: [
+          { text: 'Так, мої дії явно ведуть до цілі', score: 4 },
+          { text: 'Частково - є кроки, але не всі', score: 3 },
+          { text: 'Навряд чи, день був хаотичним', score: 2 },
+          { text: 'Точно ні - вчора було не до цілей', score: 1 }
+        ]
+      },
+      {
+        q: 'Що ти зробив(ла) для своєї цілі за останні три дні?',
+        options: [
+          { text: 'Конкретні кроки - можу назвати що саме', score: 4 },
+          { text: 'Думав(ла) і планував(ла), але руками мало', score: 3 },
+          { text: 'Нічого, але збираюся', score: 2 },
+          { text: 'Чесно - нічого і навіть не думав(ла)', score: 1 }
+        ]
+      },
+      {
+        q: 'Ти зараз більше плануєш і думаєш - чи більше робиш?',
+        options: [
+          { text: 'Роблю більше ніж планую', score: 4 },
+          { text: 'Приблизно порівну', score: 3 },
+          { text: 'Більше планую і думаю', score: 2 },
+          { text: 'Ні того ні іншого особливо', score: 1 }
+        ]
+      },
+      {
+        q: 'Коли виникає перешкода - що найчастіше відбувається?',
+        options: [
+          { text: 'Шукаю обхідний шлях і рухаюся далі', score: 4 },
+          { text: 'Роблю паузу, але повертаюся', score: 3 },
+          { text: 'Чекаю кращого моменту', score: 2 },
+          { text: 'Сприймаю як знак що «не моє»', score: 1 }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'O', letter: 'О', name: 'Обставини', subtitle: 'В якому полі ти зараз знаходишся?',
+    zeroText: 'Обставини - це поле, в якому ти граєш. Та сама людина розквітає в одному середовищі і в\'яне в іншому. Не тому що вона слабка. Тому що поле неправильне. Люди навколо, ситуація, контекст - все це або підсилює тебе, або гасить. Зараз твоє поле потребує змін.',
+    shakyText: 'Обставини неоднорідні. Щось у твоєму полі підтримує, щось гальмує. Час подивитися на своє середовище свідомо - і почати формувати його навмисно.',
+    strongText: 'Твої обставини працюють на тебе. Середовище, люди, ситуація - все це підсилює твій рух. Це велика перевага.',
+    questions: [
+      {
+        q: 'Коли ти ділишся своїми планами з близькими - що найчастіше чуєш у відповідь?',
+        options: [
+          { text: 'Підтримку і зацікавленість', score: 4 },
+          { text: 'Нейтральну реакцію', score: 3 },
+          { text: 'Сумніви і застереження', score: 2 },
+          { text: 'Відговорення або скептицизм', score: 1 }
+        ]
+      },
+      {
+        q: 'Після типового вечора з людьми зі свого кола - яким є твій внутрішній стан?',
+        options: [
+          { text: 'Відчуваю приплив енергії і натхнення', score: 4 },
+          { text: 'Спокійно, все як завжди', score: 3 },
+          { text: 'Трохи спустошена або порожня', score: 2 },
+          { text: 'Помічаю, що гальмую або стаю меншою', score: 1 }
+        ]
+      },
+      {
+        q: 'Є хтось у твоєму житті, чий приклад доводить що твоя ціль можлива?',
+        options: [
+          { text: 'Так, і це мене дуже надихає', score: 4 },
+          { text: 'Є, але ми майже не спілкуємося', score: 3 },
+          { text: 'Мабуть є, але особисто не знайома', score: 2 },
+          { text: 'Ні, таких людей поруч немає', score: 1 }
+        ]
+      },
+      {
+        q: 'Коли ти починаєш змінюватися - як реагує оточення?',
+        options: [
+          { text: 'Підтримує і радіє разом зі мною', score: 4 },
+          { text: 'Не помічає особливо', score: 3 },
+          { text: 'Дивується і трохи дистанціюється', score: 2 },
+          { text: 'Намагається повернути мене до «нормальної»', score: 1 }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'M', letter: 'М', name: 'Можливості', subtitle: 'Чи вмієш ти бачити те, що вже поруч?',
+    zeroText: 'Можливості не створюються - вони розпізнаються. Мозок бачить те, на що налаштований. Якщо він налаштований на загрозу і нестачу - ти будеш знаходити саме це. Зараз твій внутрішній фільтр пропускає шанси повз. Але його можна перенастроїти.',
+    shakyText: 'Іноді ти помічаєш можливості, іноді вони проходять повз. Фільтр працює непостійно. Варто зробити ціль більш «видимою» для мозку - і шанси почнуть з\'являтися частіше.',
+    strongText: 'Твій внутрішній фільтр добре налаштований. Ти помічаєш те, що інші пропускають - і вмієш цим скористатися.',
+    zeroText: 'Мозок бачить те, на що налаштований. Якщо він налаштований на загрозу - ти будеш знаходити загрози скрізь. Якщо на можливості - вони почнуть з\'являтися немов з повітря. Зараз твій внутрішній радар варто перенаправити.',
+    shakyText: 'Увага є, але непостійна. Іноді ти помічаєш можливості, іноді вони проходять повз. Варто зробити ціль більш "видимою" для мозку.',
+    strongText: 'Твій мозок добре налаштований на потрібне. Ти помічаєш те, що інші пропускають.',
+    questions: [
+      {
+        q: 'Як часто тобі трапляються можливості, пов\'язані з твоєю ціллю?',
+        options: [
+          { text: 'Регулярно - і я їх помічаю, і використовую', score: 4 },
+          { text: 'Трапляються, але я часто вагаюся', score: 3 },
+          { text: 'Рідко - або не помічаю вчасно', score: 2 },
+          { text: 'Здається, їх немає в моєму житті', score: 1 }
+        ]
+      },
+      {
+        q: 'На що ти витрачаєш більше розумової енергії?',
+        options: [
+          { text: 'На те чого хочу і як туди дійти', score: 4 },
+          { text: 'Приблизно порівну', score: 3 },
+          { text: 'На ризики і те що може піти не так', score: 2 },
+          { text: 'На те чого боюся і хочу уникнути', score: 1 }
+        ]
+      },
+      {
+        q: 'Ти пам\'ятаєш про свою ціль щодня?',
+        options: [
+          { text: 'Так, вона є фоном мого дня', score: 4 },
+          { text: 'Кілька разів на тиждень', score: 3 },
+          { text: 'Іноді тижнями не думаю про неї', score: 2 },
+          { text: 'Вона десь є, але я до неї рідко повертаюся', score: 1 }
+        ]
+      },
+      {
+        q: 'Коли ти читаєш або слухаєш щось - ти помічаєш зв\'язки з тим, до чого йдеш?',
+        options: [
+          { text: 'Так, постійно - скрізь знаходжу підказки', score: 4 },
+          { text: 'Іноді, коли спеціально шукаю', score: 3 },
+          { text: 'Рідко', score: 2 },
+          { text: 'Ні, інформація є інформація', score: 1 }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'R', letter: 'Р', name: 'Ресурси', subtitle: 'Чи є у тебе паливо щоб їхати?',
+    zeroText: 'Ресурс - це паливо. Можна мати чудову машину, правильний маршрут і точний GPS - але без палива нікуди. Зараз твій бак порожній або майже порожній. І це не лінь. Це фізіологія.',
+    shakyText: 'Паливо є, але рівень нестабільний. Хороші дні чергуються з "не можу нічого". Варто знайти свої джерела відновлення і зробити їх регулярними.',
+    strongText: 'Ти добре знаєш свій ресурс і дбаєш про нього. Це основа стабільного руху вперед.',
+    questions: [
+      {
+        q: 'Свій найпродуктивніший час доби ти витрачаєш на:',
+        options: [
+          { text: 'Те що найважливіше для моєї цілі', score: 4 },
+          { text: 'Намагаюся, але не завжди виходить', score: 3 },
+          { text: 'Робочі або сімейні справи переважно', score: 2 },
+          { text: 'Термінове і те що не можна відкласти', score: 1 }
+        ]
+      },
+      {
+        q: 'Якби хтось запитав тебе зараз «як ти?» - що було б чесною відповіддю?',
+        options: [
+          { text: 'Добре, є сили і бажання', score: 4 },
+          { text: 'Нормально, справляюся', score: 3 },
+          { text: 'Втомився(лась), але тримаюся', score: 2 },
+          { text: 'Чесно - на межі, ресурсів мало', score: 1 }
+        ]
+      },
+      {
+        q: 'Що ти робиш, коли відчуваєш що «сіла батарейка»?',
+        options: [
+          { text: 'Маю перевірені способи відновитися і використовую їх', score: 4 },
+          { text: 'Відпочиваю як вийде', score: 3 },
+          { text: 'Терплю і чекаю поки само пройде', score: 2 },
+          { text: 'Заганяю себе ще більше щоб «не розслаблятися»', score: 1 }
+        ]
+      },
+      {
+        q: 'Скільки разів на тиждень ти робиш щось, що тебе справді наповнює?',
+        options: [
+          { text: 'Щодня або майже щодня', score: 4 },
+          { text: 'Кілька разів на тиждень', score: 3 },
+          { text: 'Раз-два якщо пощастить', score: 2 },
+          { text: 'Рідко - немає часу на себе', score: 1 }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'Beta', letter: 'β', name: 'Конвертація', subtitle: 'Чи стаєш ти розумнішою від свого досвіду?',
+    zeroText: 'β - це твій внутрішній банк зі складними відсотками. Кожен досвід мав би приносити дохід у вигляді нових знань і навичок. Але зараз відсотки не нараховуються - досвід просто накопичується, але не конвертується в ріст.',
+    shakyText: 'Ти іноді вчишся з досвіду, але непослідовно. Варто зробити рефлексію звичкою - і результати почнуть множитися.',
+    strongText: 'Ти вмієш витягувати цінне з будь-якого досвіду. Це найвпливовіший компонент і він у тебе працює.',
+    questions: [
+      {
+        q: 'Після невдачі - що ти робиш найчастіше?',
+        options: [
+          { text: 'Аналізую що пішло не так і роблю висновки', score: 4 },
+          { text: 'Даю собі час і потім повертаюся до аналізу', score: 3 },
+          { text: 'Намагаюся не думати і рухатися далі', score: 2 },
+          { text: 'Картаю себе або намагаюся забути', score: 1 }
+        ]
+      },
+      {
+        q: 'Ти помічаєш свій прогрес?',
+        options: [
+          { text: 'Так, бачу як змінилася і це мотивує', score: 4 },
+          { text: 'Іноді помічаю, але не фіксую', score: 3 },
+          { text: 'Здебільшого бачу тільки те, скільки ще попереду', score: 2 },
+          { text: 'Ні - важко побачити зміни зсередини', score: 1 }
+        ]
+      },
+      {
+        q: 'Ти зараз дієш інакше ніж рік тому?',
+        options: [
+          { text: 'Так, значно інакше - і розумію чому', score: 4 },
+          { text: 'Є зміни, але невеликі', score: 3 },
+          { text: 'Приблизно так само', score: 2 },
+          { text: 'Можливо навіть роблю крок назад', score: 1 }
+        ]
+      },
+      {
+        q: 'Коли щось спрацювало - ти знаєш чому саме спрацювало?',
+        options: [
+          { text: 'Так, аналізую успіх так само як невдачу', score: 4 },
+          { text: 'Приблизно розумію', score: 3 },
+          { text: 'Рада що спрацювало, але чому - не думаю', score: 2 },
+          { text: 'Ні, сприймаю як везіння', score: 1 }
+        ]
+      }
+    ]
+  }
+];
+
+let scores = {};
+let answers = {};
+let currentBlock = 0;
+
+function startQuiz() {
+  document.getElementById('block-intro').classList.remove('visible');
+  document.getElementById('progressWrap').style.display = 'block';
+  renderBlocks();
+  showBlock(0);
+}
+
+function renderBlocks() {
+  const container = document.getElementById('quiz-blocks');
+  const dots = document.getElementById('compDots');
+  dots.innerHTML = '';
+
+  BLOCKS.forEach((block, bi) => {
+    // dot
+    const dot = document.createElement('div');
+    dot.className = 'comp-dot';
+    dot.id = `dot-${bi}`;
+    dot.textContent = block.letter;
+    dots.appendChild(dot);
+
+    // block
+    const div = document.createElement('div');
+    div.className = 'block';
+    div.id = `block-${bi}`;
+    div.innerHTML = `
+      <div class="block-header">
+        <div class="block-accent">${block.letter}</div>
+        <div class="block-number">Компонент ${bi+1} з 7</div>
+        <div class="block-title">${block.name}</div>
+        <div class="block-subtitle">${block.subtitle}</div>
+      </div>
+      ${block.questions.map((q, qi) => `
+        <div class="question-wrap" id="qwrap-${bi}-${qi}">
+          <div class="question-text"><span class="question-num">${qi+1}.</span>${q.q}</div>
+          <div class="options">
+            ${q.options.map((opt, oi) => `
+              <div class="option" id="opt-${bi}-${qi}-${oi}" onclick="selectOption(${bi},${qi},${oi},${opt.score})">
+                <div class="option-radio"></div>
+                <span>${opt.text}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        ${qi < block.questions.length - 1 ? '<div class="divider"></div>' : ''}
+      `).join('')}
+      <div class="block-nav">
+        ${bi > 0 ? `<button class="btn btn-ghost" onclick="prevBlock()">Назад</button>` : '<div></div>'}
+        <span class="nav-hint" id="hint-${bi}">Обери відповідь на кожне питання</span>
+        <button class="btn" id="next-${bi}" onclick="nextBlock(${bi})" disabled>
+          ${bi < BLOCKS.length - 1 ? 'Далі' : 'Показати результат'}
+        </button>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function selectOption(bi, qi, oi, score) {
+  // deselect all in question
+  BLOCKS[bi].questions[qi].options.forEach((_, i) => {
+    document.getElementById(`opt-${bi}-${qi}-${i}`).classList.remove('selected');
+  });
+  // select chosen
+  document.getElementById(`opt-${bi}-${qi}-${oi}`).classList.add('selected');
+  // store
+  if (!answers[bi]) answers[bi] = {};
+  answers[bi][qi] = score;
+
+  // check if all answered
+  const allAnswered = Object.keys(answers[bi]).length === BLOCKS[bi].questions.length;
+  const nextBtn = document.getElementById(`next-${bi}`);
+  const hint = document.getElementById(`hint-${bi}`);
+  if (allAnswered) {
+    nextBtn.disabled = false;
+    hint.textContent = '';
+  }
+}
+
+function showBlock(index) {
+  document.querySelectorAll('.block').forEach(b => b.classList.remove('visible'));
+  const el = document.getElementById(`block-${index}`);
+  if (el) el.classList.add('visible');
+  currentBlock = index;
+
+  // update progress
+  document.getElementById('progressCurrent').textContent = index + 1;
+  document.getElementById('progressFill').style.width = `${((index) / 7) * 100}%`;
+
+  // update dots
+  document.querySelectorAll('.comp-dot').forEach((dot, i) => {
+    dot.className = 'comp-dot';
+    if (i < index) dot.classList.add('done');
+    if (i === index) dot.classList.add('active');
+  });
+
+  setTimeout(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 50);
+}
+
+function nextBlock(bi) {
+  // calc score for block
+  const blockAnswers = answers[bi] || {};
+  let total = 0;
+  Object.values(blockAnswers).forEach(s => total += s);
+  scores[bi] = total;
+
+  if (bi < BLOCKS.length - 1) {
+    showBlock(bi + 1);
+  } else {
+    showResults();
+  }
+}
+
+function prevBlock() {
+  if (currentBlock > 0) showBlock(currentBlock - 1);
+}
+
+function showResults() {
+  document.querySelectorAll('.block').forEach(b => b.classList.remove('visible'));
+  document.getElementById('progressWrap').style.display = 'none';
+
+  const grid = document.getElementById('resultsGrid');
+  grid.innerHTML = '';
+
+  let lowestScore = 16;
+  let lowestIndex = 0;
+
+  BLOCKS.forEach((block, bi) => {
+    const score = scores[bi] || 0;
+    const max = 16;
+    const pct = Math.round((score / max) * 100);
+
+    let zone, tag;
+    if (score <= 7) { zone = 'zero'; tag = 'Нульова зона'; }
+    else if (score <= 12) { zone = 'shaky'; tag = 'Хитається'; }
+    else { zone = 'strong'; tag = 'Працює'; }
+
+    if (score < lowestScore) { lowestScore = score; lowestIndex = bi; }
+
+    const row = document.createElement('div');
+    row.className = `comp-row ${zone}`;
+    row.innerHTML = `
+      <div class="comp-letter">${block.letter}</div>
+      <div class="comp-info">
+        <div class="comp-name">${block.name}</div>
+        <div class="comp-bar-bg">
+          <div class="comp-bar-fill" style="width:0%" data-width="${pct}%"></div>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:0.3rem;">
+        <div class="comp-score">${score}/${max}</div>
+        <div class="comp-tag">${tag}</div>
+      </div>
+    `;
+    grid.appendChild(row);
+  });
+
+  // animate bars
+  setTimeout(() => {
+    document.querySelectorAll('.comp-bar-fill').forEach(bar => {
+      bar.style.width = bar.dataset.width;
+    });
+  }, 100);
+
+  // focus card
+  const focus = BLOCKS[lowestIndex];
+  const s = scores[lowestIndex] || 0;
+  let focusText;
+  if (s <= 7) focusText = focus.zeroText;
+  else if (s <= 12) focusText = focus.shakyText;
+  else focusText = focus.strongText;
+
+  document.getElementById('focusCard').innerHTML = `
+    <div class="focus-eyebrow">Твоя точка уваги</div>
+    <div class="focus-title">Компонент «${focus.name}» потребує роботи першим</div>
+    <div class="focus-text">${focusText}</div>
+  `;
+
+  document.getElementById('results').classList.add('visible');
+  document.getElementById('progressFill').style.width = '100%';
+  setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
+}
+
+function restartQuiz() {
+  scores = {};
+  answers = {};
+  currentBlock = 0;
+  document.getElementById('results').classList.remove('visible');
+  document.querySelectorAll('.block').forEach(b => b.classList.remove('visible'));
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  document.querySelectorAll('[id^="next-"]').forEach(btn => btn.disabled = true);
+  document.getElementById('block-intro').classList.add('visible');
+  document.getElementById('progressWrap').style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+const FORMULA_KEYS = [
+  'formula-b',    // Бажання
+  'formula-p',    // Переконання
+  'formula-d',    // Дії
+  'formula-o',    // Обставини
+  'formula-m',    // Можливості
+  'formula-res',  // Ресурси
+  'formula-beta', // β
+];
+
+function submitEmail() {
+  const input = document.getElementById('emailInput');
+  const email = input.value.trim();
+  const success = document.getElementById('emailSuccess');
+  const btn = input.nextElementSibling;
+
+  if (!email || !email.includes('@')) {
+    input.style.borderColor = 'var(--terra)';
+    input.placeholder = 'Введи коректний email';
+    setTimeout(() => {
+      input.style.borderColor = '';
+      input.placeholder = 'твій@email.com';
+    }, 2000);
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Надсилаю...';
+
+  // Знаходимо слабкий компонент
+  const lowestIndex = parseInt(Object.entries(scores).sort((a,b) => a[1]-b[1])[0]?.[0] ?? 0);
+  const type = FORMULA_KEYS[lowestIndex];
+
+  fetch('/api/subscribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, type })
+  })
+  .then(res => {
+    input.style.display = 'none';
+    btn.style.display = 'none';
+    success.style.display = 'block';
+  })
+  .catch(() => {
+    // Навіть якщо помилка - показуємо успіх щоб не лякати людину
+    input.style.display = 'none';
+    btn.style.display = 'none';
+    success.style.display = 'block';
+    console.error('MailerLite subscribe error');
+  });
+}
+
+function shareResult() {
+  const lowestIndex = Object.entries(scores).sort((a,b) => a[1]-b[1])[0]?.[0] ?? 0;
+  const focus = BLOCKS[lowestIndex];
+  const text = `Пройшла діагностику «Формула результату» на сайті «Крок за горизонт». Мій компонент для роботи: ${focus.name}. Перевір свою формулу!`;
+  if (navigator.share) {
+    navigator.share({ title: 'Моя формула результату', text });
+  } else {
+    navigator.clipboard.writeText(text).then(() => alert('Текст скопійовано!'));
+  }
+}
+</script>
+</body>
+</html>

@@ -3,7 +3,16 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
   const { email, name, type } = req.body;
   const apiKey = process.env.MAILERLITE_API_KEY;
-  const groupMap = { 'analytic': 'Аналітик', 'impulsive': 'Імпульсивний', 'integrator': 'Інтегратор', 'observer': 'Споглядач' };
+  const groupMap = {
+    'analytic': 'Аналітик', 'impulsive': 'Імпульсивний', 'integrator': 'Інтегратор', 'observer': 'Споглядач',
+    'formula-b':    'Формула - Бажання',
+    'formula-p':    'Формула - Переконання',
+    'formula-d':    'Формула - Дії',
+    'formula-o':    'Формула - Обставини',
+    'formula-m':    'Формула - Можливості',
+    'formula-res':  'Формула - Ресурси',
+    'formula-beta': 'Формула - β'
+  };
   const groupName = groupMap[type];
   if (!groupName) return res.status(400).json({ error: 'Unknown type' });
   try {
