@@ -18,17 +18,19 @@ export default async function handler(req, res) {
   };
   const groupName = groupMap[type];
   if (!groupName) return res.status(400).json({ error: 'Unknown type' });
+
+  // Сповіщення в Telegram надсилається незалежно від MailerLite —
+  // заявку не можна втратити через те, що групу ще не створили.
+  if (type.startsWith('formula-application-')) {
+    await notifyTelegram({ name, email, package: pkg });
+  }
+
   try {
     const groupsRes = await fetch('https://connect.mailerlite.com/api/groups?limit=25', { headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json', 'Accept': 'application/json' } });
     const groupsData = await groupsRes.json();
     const group = groupsData.data?.find(g => g.name === groupName);
     if (!group) return res.status(400).json({ error: 'Group not found: ' + groupName });
     await fetch('https://connect.mailerlite.com/api/subscribers', { method: 'POST', headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ email, fields: { name }, groups: [group.id] }) });
-
-    if (type.startsWith('formula-application-')) {
-      await notifyTelegram({ name, email, package: pkg });
-    }
-
     return res.status(200).json({ success: true });
   } catch (error) {
     return res.status(500).json({ error: error.message });
