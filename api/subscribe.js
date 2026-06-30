@@ -1,7 +1,14 @@
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
-  const { email, name, type, package: pkg } = req.body;
+  const { email, name, type, package: pkg, debug } = req.body;
+  if (debug) {
+    return res.status(200).json({
+      hasMailerliteKey: !!process.env.MAILERLITE_API_KEY,
+      hasTelegramToken: !!process.env.TELEGRAM_NOTIFY_BOT_TOKEN,
+      hasTelegramChatId: !!process.env.TELEGRAM_NOTIFY_CHAT_ID
+    });
+  }
   const apiKey = process.env.MAILERLITE_API_KEY;
   const groupMap = {
     'analytic': 'Аналітик', 'impulsive': 'Імпульсивний', 'integrator': 'Інтегратор', 'observer': 'Споглядач',
