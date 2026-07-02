@@ -38,19 +38,25 @@ export default async function handler(req, res) {
     const subscriberId = subData.data?.id;
 
     // Примусово запускаємо автоматизацію — joins group через API не тригерить її автоматично
+    let debugInfo = { subscriberId, automationFound: false, enrollStatus: null };
     if (subscriberId && type.startsWith('formula-') && !type.startsWith('formula-application-')) {
       const autoRes = await fetch('https://connect.mailerlite.com/api/automations?limit=50', { headers });
       const autoData = await autoRes.json();
       const automation = autoData.data?.find(a => a.name === groupName && a.status === 'active');
+      debugInfo.automationFound = !!automation;
+      debugInfo.automationId = automation?.id;
+      debugInfo.allAutomations = autoData.data?.map(a => ({ name: a.name, status: a.status, id: a.id }));
       if (automation) {
-        await fetch(`https://connect.mailerlite.com/api/automations/${automation.id}/enroll`, {
+        const enrollRes = await fetch(`https://connect.mailerlite.com/api/automations/${automation.id}/enroll`, {
           method: 'POST', headers,
           body: JSON.stringify({ subscribers: [subscriberId] })
         });
+        debugInfo.enrollStatus = enrollRes.status;
+        debugInfo.enrollBody = await enrollRes.json();
       }
     }
 
-    return res.status(200).json({ success: true });
+    return res.status(200).json({ success: true, debug: debugInfo });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
