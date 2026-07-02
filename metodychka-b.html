@@ -168,6 +168,149 @@ footer { text-align: center; padding: 2rem 1.5rem 3rem; border-top: 1px solid va
 </style>
 </head>
 <body>
+<!-- =========================================================
+     ЗАМОК ДОСТУПУ · Формула результату
+     Встав цей блок ОДРАЗУ ПІСЛЯ <body> на кожній закритій сторінці.
+     
+     Для сторінки ЛЕКЦІЇ: page-level = "lekciya"
+     Для сторінок ПРАКТИКУМІВ: page-level = "praktykum"
+     (дивись рядок data-access нижче)
+     ========================================================= -->
+
+<div id="accessGate" data-access="praktykum" style="
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #0A0F1E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  padding: 1.5rem;
+">
+  <div style="
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    color: #F5EFE6;
+  ">
+    <div style="
+      font-family: Georgia, serif;
+      font-size: 1.6rem;
+      color: #C9A84C;
+      margin-bottom: 0.8rem;
+    ">Формула результату</div>
+    <p style="
+      color: rgba(245,239,230,0.7);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    ">Цей матеріал відкривається за кодом доступу.<br>Введи код, який ти отримала після оплати.</p>
+    <input type="text" id="accessCode" placeholder="Код доступу" style="
+      width: 100%;
+      padding: 0.9rem 1rem;
+      background: rgba(255,255,255,0.07);
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      color: #F5EFE6;
+      font-size: 1rem;
+      text-align: center;
+      letter-spacing: 0.05em;
+      outline: none;
+      margin-bottom: 1rem;
+      box-sizing: border-box;
+    ">
+    <button onclick="checkAccessCode()" style="
+      width: 100%;
+      padding: 0.9rem;
+      background: #B85042;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    ">Відкрити доступ</button>
+    <p id="accessError" style="
+      color: #D4695A;
+      font-size: 0.85rem;
+      margin-top: 1rem;
+      min-height: 1.2rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+    ">Невірний код. Перевір і спробуй ще раз.</p>
+    <p style="
+      color: rgba(245,239,230,0.4);
+      font-size: 0.8rem;
+      margin-top: 1.5rem;
+      line-height: 1.5;
+    ">Немає коду? <a href="/formula-rezultatu-sales" style="color:#C9A84C; text-decoration:none;">Дізнатися про програму →</a></p>
+  </div>
+</div>
+
+<script>
+(function() {
+  // ===== КОДИ ДОСТУПУ =====
+  // Заміни на свої, якщо хочеш. Регістр не важливий.
+  var CODES = {
+    'KARTA-2026':     ['lekciya'],
+    'MARSHRUT-2026':  ['lekciya', 'praktykum'],
+    'PROVIDNYK-2026': ['lekciya', 'praktykum']
+  };
+
+  var gate = document.getElementById('accessGate');
+  var pageLevel = gate.getAttribute('data-access'); // 'lekciya' або 'praktykum'
+  var STORAGE_KEY = 'formula_access';
+
+  // Перевіряємо чи вже є збережений доступ у браузері
+  function hasStoredAccess() {
+    try {
+      var saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return false;
+      var levels = JSON.parse(saved);
+      return levels.indexOf(pageLevel) !== -1;
+    } catch(e) { return false; }
+  }
+
+  function unlock() {
+    gate.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  function checkAccessCode() {
+    var input = document.getElementById('accessCode').value.trim().toUpperCase();
+    var err = document.getElementById('accessError');
+    var levels = CODES[input];
+
+    if (levels && levels.indexOf(pageLevel) !== -1) {
+      // Код правильний і дає доступ до цієї сторінки
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(levels)); } catch(e) {}
+      unlock();
+    } else {
+      err.style.opacity = '1';
+    }
+  }
+
+  // Робимо функцію доступною для onclick
+  window.checkAccessCode = checkAccessCode;
+
+  // Enter теж спрацьовує
+  document.getElementById('accessCode').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') checkAccessCode();
+  });
+
+  // Якщо доступ вже є, одразу відкриваємо
+  if (hasStoredAccess()) {
+    unlock();
+  } else {
+    // Блокуємо прокрутку поки замок активний
+    document.body.style.overflow = 'hidden';
+  }
+})();
+</script>
+<!-- ===== КІНЕЦЬ ЗАМКА ДОСТУПУ ===== -->
+
 
 <!-- ═══════ PROGRESS ═══════ -->
 <div class="progress-wrap">
