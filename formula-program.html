@@ -112,6 +112,117 @@ body {
 }
 .gate-footer a { color: var(--gold); text-decoration: none; }
 
+/* ═══ GATE PACKAGES ═══ */
+.gate-packages {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.gate-pkg {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 10px;
+  padding: 0.75rem;
+}
+
+.gate-pkg.featured {
+  border-color: var(--gold);
+  background: var(--gold-dim);
+}
+
+.gate-pkg-name {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.gate-pkg.featured .gate-pkg-name { color: var(--gold); }
+
+.gate-pkg-price {
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+
+.gate-pkg-row {
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: var(--muted);
+  display: flex;
+  gap: 0.3rem;
+}
+
+.gate-pkg-row.yes { color: rgba(245,239,230,.8); }
+.gate-pkg-row.no { opacity: 0.4; }
+
+/* ═══ LOCK OVERLAY PACKAGES ═══ */
+.lock-packages {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 420px;
+  margin-bottom: 1.75rem;
+  text-align: left;
+}
+
+.lock-pkg {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.lock-pkg.current {
+  border-color: rgba(201,168,76,.3);
+  background: rgba(201,168,76,.06);
+}
+
+.lock-pkg.upgrade {
+  border-color: var(--terra);
+  background: rgba(184,80,66,.08);
+}
+
+.lock-pkg-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.lock-pkg.current .lock-pkg-badge { color: var(--gold); }
+.lock-pkg.upgrade .lock-pkg-badge { color: var(--terra); }
+
+.lock-pkg-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.lock-pkg-item {
+  font-size: 0.78rem;
+  line-height: 1.7;
+  display: flex;
+  gap: 0.35rem;
+}
+
+.lock-pkg-item.yes { color: rgba(245,239,230,.75); }
+.lock-pkg-item.no { color: rgba(245,239,230,.3); text-decoration: line-through; }
+
+.lock-pkg-price {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
 /* ═══ TOP BAR (mobile) ═══ */
 #topBar {
   display: none;
@@ -347,9 +458,34 @@ nav a.active .nav-glyph { background: var(--gold-dim); }
 
 <!-- ═══════ ЗАМОК ДОСТУПУ ═══════ -->
 <div id="accessGate">
-  <div class="gate-box">
+  <div class="gate-box" style="max-width:520px;">
     <div class="gate-logo">Формула результату</div>
-    <p class="gate-sub">Цей матеріал відкривається за кодом доступу.<br>Введи код, який ти отримала після оплати.</p>
+    <p class="gate-sub" style="margin-bottom:1.5rem;">Введи код доступу, який ти отримала після оплати.</p>
+
+    <div class="gate-packages">
+      <div class="gate-pkg">
+        <div class="gate-pkg-name">«Карта»</div>
+        <div class="gate-pkg-price">590 грн</div>
+        <div class="gate-pkg-row yes">✓ Лекція</div>
+        <div class="gate-pkg-row no">✗ Практикуми</div>
+        <div class="gate-pkg-row no">✗ Сесія</div>
+      </div>
+      <div class="gate-pkg featured">
+        <div class="gate-pkg-name">«Маршрут»</div>
+        <div class="gate-pkg-price">1 490 грн</div>
+        <div class="gate-pkg-row yes">✓ Лекція</div>
+        <div class="gate-pkg-row yes">✓ 7 практикумів</div>
+        <div class="gate-pkg-row no">✗ Сесія</div>
+      </div>
+      <div class="gate-pkg">
+        <div class="gate-pkg-name">«Провідник»</div>
+        <div class="gate-pkg-price">3 490 грн</div>
+        <div class="gate-pkg-row yes">✓ Лекція</div>
+        <div class="gate-pkg-row yes">✓ 7 практикумів</div>
+        <div class="gate-pkg-row yes">✓ Сесія + підтримка</div>
+      </div>
+    </div>
+
     <input class="gate-input" type="text" id="accessCode" placeholder="Код доступу" autocomplete="off" spellcheck="false">
     <button class="gate-btn" id="gateBtn">Відкрити доступ</button>
     <p id="gateError">Невірний код. Перевір і спробуй ще раз.</p>
@@ -427,9 +563,26 @@ nav a.active .nav-glyph { background: var(--gold-dim); }
     <iframe id="contentFrame" src="/formula-rezultata" title="Програма"></iframe>
     <div id="lockOverlay">
       <div class="lock-icon">🔒</div>
-      <div class="lock-title">Цей практикум закритий</div>
-      <p class="lock-text">Доступний у пакетах <strong>Маршрут</strong> або <strong>Провідник</strong>.<br>Апгрейдни свій пакет, щоб відкрити всі 7 практикумів.</p>
-      <a href="/formula-rezultatu-sales" class="lock-upgrade">Апгрейдати пакет →</a>
+      <div class="lock-title">Практикуми не входять у твій пакет</div>
+      <div class="lock-packages">
+        <div class="lock-pkg current">
+          <div class="lock-pkg-badge">Твій пакет</div>
+          <div class="lock-pkg-name">«Карта»</div>
+          <div class="lock-pkg-item yes">✓ Інтерактивна лекція</div>
+          <div class="lock-pkg-item no">✗ 7 практикумів</div>
+          <div class="lock-pkg-item no">✗ Сесія</div>
+          <div class="lock-pkg-price">590 грн</div>
+        </div>
+        <div class="lock-pkg upgrade">
+          <div class="lock-pkg-badge">Апгрейд</div>
+          <div class="lock-pkg-name">«Маршрут»</div>
+          <div class="lock-pkg-item yes">✓ Інтерактивна лекція</div>
+          <div class="lock-pkg-item yes">✓ 7 практикумів</div>
+          <div class="lock-pkg-item no">✗ Сесія</div>
+          <div class="lock-pkg-price">1 490 грн</div>
+        </div>
+      </div>
+      <a href="/formula-rezultatu-sales" class="lock-upgrade">Перейти до програми →</a>
     </div>
   </div>
 </div>
