@@ -1,5 +1,6 @@
 {
   "rewrites": [
-    { "source": "/formula-rezultatu-sales", "destination": "/formula-rezultatu-sales.html" }
+    { "source": "/formula-rezultatu-sales", "destination": "/formula-rezultatu-sales.html" },
+    { "source": "/formula-program", "destination": "/formula-program.html" }
   ]
 }
