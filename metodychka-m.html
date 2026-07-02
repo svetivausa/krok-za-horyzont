@@ -211,6 +211,9 @@ footer { text-align: center; padding: 2rem 1.5rem 3rem; border-top: 1px solid va
 
 <script>
 (function() {
+  // Пропускаємо замок якщо сторінка відкрита в iframe (formula-program.html)
+  if (window.self !== window.top) { document.getElementById('accessGate').style.display='none'; return; }
+
   // ===== КОДИ ДОСТУПУ =====
   // Заміни на свої, якщо хочеш. Регістр не важливий.
   var CODES = {

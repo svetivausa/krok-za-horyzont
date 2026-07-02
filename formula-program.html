@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Формула результату · Програма</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-dark: #0A0F1E;
+  --bg-panel: #111827;
+  --bg-card: #1A2235;
+  --gold: #C9A84C;
+  --gold-dim: rgba(201,168,76,.18);
+  --terra: #B85042;
+  --terra-dim: rgba(184,80,66,.15);
+  --text: #F5EFE6;
+  --muted: rgba(245,239,230,.55);
+  --line: rgba(245,239,230,.08);
+  --sidebar-w: 260px;
+}
+
+html, body { height: 100%; overflow: hidden; }
+
+body {
+  background: var(--bg-dark);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ═══ GATE ═══ */
+#accessGate {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: var(--bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.gate-box {
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+}
+
+.gate-logo {
+  font-family: Georgia, serif;
+  font-size: 1.6rem;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.gate-sub {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.gate-input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  background: rgba(255,255,255,.07);
+  border: 1.5px solid rgba(255,255,255,.15);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 1rem;
+  text-align: center;
+  letter-spacing: 0.06em;
+  outline: none;
+  margin-bottom: 1rem;
+  font-family: inherit;
+  transition: border-color .2s;
+}
+.gate-input:focus { border-color: var(--gold); }
+
+.gate-btn {
+  width: 100%;
+  padding: 0.9rem;
+  background: var(--terra);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .2s;
+}
+.gate-btn:hover { background: #a04038; }
+
+#gateError {
+  color: #D4695A;
+  font-size: 0.85rem;
+  margin-top: 0.8rem;
+  min-height: 1.1rem;
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+.gate-footer {
+  color: rgba(245,239,230,.35);
+  font-size: 0.8rem;
+  margin-top: 2rem;
+  line-height: 1.5;
+}
+.gate-footer a { color: var(--gold); text-decoration: none; }
+
+/* ═══ TOP BAR (mobile) ═══ */
+#topBar {
+  display: none;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--line);
+  padding: 0 1rem;
+  height: 52px;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+#menuToggle {
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+#menuToggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: .25s;
+}
+#menuToggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+#menuToggle.open span:nth-child(2) { opacity: 0; }
+#menuToggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+#topBarTitle {
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  color: var(--gold);
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ═══ LAYOUT ═══ */
+#layout {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* ═══ SIDEBAR ═══ */
+#sidebar {
+  width: var(--sidebar-w);
+  background: var(--bg-panel);
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  flex-shrink: 0;
+  transition: transform .25s;
+}
+
+.sidebar-head {
+  padding: 1.5rem 1.25rem 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.sidebar-logo {
+  font-family: Georgia, serif;
+  font-size: 1.1rem;
+  color: var(--gold);
+  line-height: 1.3;
+}
+
+.sidebar-tagline {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+.sidebar-section {
+  padding: 1rem 0.75rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 1.25rem;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.92rem;
+  border-left: 3px solid transparent;
+  transition: background .15s, color .15s, border-color .15s;
+  position: relative;
+}
+
+nav a:hover {
+  background: rgba(255,255,255,.04);
+  color: var(--text);
+}
+
+nav a.active {
+  background: var(--gold-dim);
+  color: var(--text);
+  border-left-color: var(--gold);
+}
+
+nav a.locked {
+  opacity: 0.45;
+  cursor: default;
+  pointer-events: none;
+}
+
+.nav-glyph {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255,255,255,.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Georgia, serif;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+nav a.active .nav-glyph { background: var(--gold-dim); }
+
+.nav-label { flex: 1; line-height: 1.2; }
+.nav-label small { display: block; font-size: 0.72rem; color: var(--muted); margin-top: 0.15rem; }
+
+.nav-lock {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* ═══ MAIN CONTENT ═══ */
+#main {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+#contentFrame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ═══ LOCK OVERLAY ═══ */
+#lockOverlay {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-dark);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  z-index: 10;
+}
+
+#lockOverlay.visible { display: flex; }
+
+.lock-icon { font-size: 3.5rem; margin-bottom: 1.25rem; }
+
+.lock-title {
+  font-family: Georgia, serif;
+  font-size: 1.4rem;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.lock-text {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 380px;
+  margin-bottom: 2rem;
+}
+
+.lock-upgrade {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background: var(--terra);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background .2s;
+}
+.lock-upgrade:hover { background: #a04038; }
+
+/* ═══ MOBILE OVERLAY ═══ */
+#sidebarOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 199;
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 768px) {
+  #topBar { display: flex; }
+  #sidebar {
+    position: fixed;
+    top: 52px;
+    left: 0;
+    bottom: 0;
+    z-index: 200;
+    transform: translateX(-100%);
+  }
+  #sidebar.open { transform: translateX(0); }
+  #sidebarOverlay.open { display: block; }
+  #main { overflow-y: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ ЗАМОК ДОСТУПУ ═══════ -->
+<div id="accessGate">
+  <div class="gate-box">
+    <div class="gate-logo">Формула результату</div>
+    <p class="gate-sub">Цей матеріал відкривається за кодом доступу.<br>Введи код, який ти отримала після оплати.</p>
+    <input class="gate-input" type="text" id="accessCode" placeholder="Код доступу" autocomplete="off" spellcheck="false">
+    <button class="gate-btn" id="gateBtn">Відкрити доступ</button>
+    <p id="gateError">Невірний код. Перевір і спробуй ще раз.</p>
+    <p class="gate-footer">Немає коду? <a href="/formula-rezultatu-sales">Дізнатися про програму →</a></p>
+  </div>
+</div>
+
+<!-- ═══════ МОБІЛЬНИЙ ТОПБАР ═══════ -->
+<div id="topBar">
+  <button id="menuToggle" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
+  <span id="topBarTitle">Формула результату</span>
+</div>
+
+<!-- ═══════ ОСНОВНИЙ LAYOUT ═══════ -->
+<div id="layout">
+
+  <!-- САЙДБАР -->
+  <nav id="sidebar">
+    <div class="sidebar-head">
+      <div class="sidebar-logo">Формула результату</div>
+      <div class="sidebar-tagline">Крок за горизонт</div>
+    </div>
+
+    <div class="sidebar-section">Лекція</div>
+    <a href="#" data-src="/formula-rezultata" data-level="lekciya" class="nav-item active" id="nav-lekciya">
+      <span class="nav-glyph">▶</span>
+      <span class="nav-label">Відеолекція<small>Формула результату</small></span>
+    </a>
+
+    <div class="sidebar-section">Практикуми</div>
+    <a href="#" data-src="/metodychka-beta" data-level="praktykum" class="nav-item" id="nav-beta">
+      <span class="nav-glyph">β</span>
+      <span class="nav-label">Практикум β<small>Індивідуальна формула</small></span>
+      <span class="nav-lock lock-icon-nav">🔒</span>
+    </a>
+    <a href="#" data-src="/metodychka-b" data-level="praktykum" class="nav-item" id="nav-b">
+      <span class="nav-glyph">Б</span>
+      <span class="nav-label">Практикум Б<small>Бажання</small></span>
+      <span class="nav-lock lock-icon-nav">🔒</span>
+    </a>
+    <a href="#" data-src="/metodychka-p" data-level="praktykum" class="nav-item" id="nav-p">
+      <span class="nav-glyph">П</span>
+      <span class="nav-label">Практикум П<small>Переконання</small></span>
+      <span class="nav-lock lock-icon-nav">🔒</span>
+    </a>
+    <a href="#" data-src="/metodychka-d" data-level="praktykum" class="nav-item" id="nav-d">
+      <span class="nav-glyph">Д</span>
+      <span class="nav-label">Практикум Д<small>Дії</small></span>
+      <span class="nav-lock lock-icon-nav">🔒</span>
+    </a>
+    <a href="#" data-src="/metodychka-o" data-level="praktykum" class="nav-item" id="nav-o">
+      <span class="nav-glyph">О</span>
+      <span class="nav-label">Практикум О<small>Обставини</small></span>
+      <span class="nav-lock lock-icon-nav">🔒</span>
+    </a>
+    <a href="#" data-src="/metodychka-m" data-level="praktykum" class="nav-item" id="nav-m">
+      <span class="nav-glyph">М</span>
+      <span class="nav-label">Практикум М<small>Можливості</small></span>
+      <span class="nav-lock lock-icon-nav">🔒</span>
+    </a>
+    <a href="#" data-src="/metodychka-res" data-level="praktykum" class="nav-item" id="nav-res">
+      <span class="nav-glyph">Р</span>
+      <span class="nav-label">Практикум Р<small>Ресурси</small></span>
+      <span class="nav-lock lock-icon-nav">🔒</span>
+    </a>
+  </nav>
+
+  <!-- КОНТЕНТ -->
+  <div id="main">
+    <iframe id="contentFrame" src="/formula-rezultata" title="Програма"></iframe>
+    <div id="lockOverlay">
+      <div class="lock-icon">🔒</div>
+      <div class="lock-title">Цей практикум закритий</div>
+      <p class="lock-text">Доступний у пакетах <strong>Маршрут</strong> або <strong>Провідник</strong>.<br>Апгрейдни свій пакет, щоб відкрити всі 7 практикумів.</p>
+      <a href="/formula-rezultatu-sales" class="lock-upgrade">Апгрейдати пакет →</a>
+    </div>
+  </div>
+</div>
+
+<div id="sidebarOverlay"></div>
+
+<script>
+(function() {
+  var CODES = {
+    'KARTA-2026':     ['lekciya'],
+    'MARSHRUT-2026':  ['lekciya', 'praktykum'],
+    'PROVIDNYK-2026': ['lekciya', 'praktykum']
+  };
+  var STORAGE_KEY = 'formula_access';
+  var accessLevels = [];
+
+  // ── Стан доступу ──
+  function loadAccess() {
+    try {
+      var saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        var arr = JSON.parse(saved);
+        if (Array.isArray(arr)) { accessLevels = arr; return true; }
+      }
+    } catch(e) {}
+    return false;
+  }
+
+  function saveAccess(levels) {
+    accessLevels = levels;
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(levels)); } catch(e) {}
+  }
+
+  function canAccess(level) {
+    return accessLevels.indexOf(level) !== -1;
+  }
+
+  // ── Замок ──
+  var gate = document.getElementById('accessGate');
+  var gateInput = document.getElementById('accessCode');
+  var gateError = document.getElementById('gateError');
+
+  function openGate() { gate.style.display = 'none'; applyAccess(); }
+
+  function checkCode() {
+    var input = gateInput.value.trim().toUpperCase();
+    var levels = CODES[input];
+    if (levels) {
+      saveAccess(levels);
+      openGate();
+    } else {
+      gateError.style.opacity = '1';
+      gateInput.style.borderColor = '#D4695A';
+      setTimeout(function() { gateInput.style.borderColor = ''; }, 1500);
+    }
+  }
+
+  document.getElementById('gateBtn').addEventListener('click', checkCode);
+  gateInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') checkCode(); });
+  gateInput.addEventListener('input', function() { gateError.style.opacity = '0'; });
+
+  // ── Навігація ──
+  var navItems = document.querySelectorAll('.nav-item');
+  var frame = document.getElementById('contentFrame');
+  var lockOverlay = document.getElementById('lockOverlay');
+  var topBarTitle = document.getElementById('topBarTitle');
+  var currentSrc = '/formula-rezultata';
+
+  function setActive(el) {
+    navItems.forEach(function(n) { n.classList.remove('active'); });
+    el.classList.add('active');
+    var label = el.querySelector('.nav-label');
+    if (label) topBarTitle.textContent = label.firstChild.textContent.trim();
+  }
+
+  function loadSection(src) {
+    if (currentSrc === src) return;
+    currentSrc = src;
+    frame.src = src;
+  }
+
+  navItems.forEach(function(item) {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      var src = item.getAttribute('data-src');
+      var level = item.getAttribute('data-level');
+
+      closeSidebar();
+      setActive(item);
+
+      if (!canAccess(level)) {
+        // Показуємо замок замість контенту
+        lockOverlay.classList.add('visible');
+        return;
+      }
+      lockOverlay.classList.remove('visible');
+      loadSection(src);
+    });
+  });
+
+  // ── Застосовуємо рівень доступу до UI ──
+  function applyAccess() {
+    var praktykumItems = document.querySelectorAll('.nav-item[data-level="praktykum"]');
+    if (canAccess('praktykum')) {
+      // Розблокуємо практикуми
+      praktykumItems.forEach(function(item) {
+        item.classList.remove('locked');
+        var lock = item.querySelector('.nav-lock');
+        if (lock) lock.style.display = 'none';
+      });
+    } else {
+      // Залишаємо замки видимими (клас locked не потрібен — у нас кастомний обробник)
+      praktykumItems.forEach(function(item) {
+        var lock = item.querySelector('.nav-lock');
+        if (lock) lock.style.display = 'block';
+      });
+    }
+  }
+
+  // ── Мобільне меню ──
+  var sidebar = document.getElementById('sidebar');
+  var overlay = document.getElementById('sidebarOverlay');
+  var toggle = document.getElementById('menuToggle');
+
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('open');
+    toggle.classList.remove('open');
+  }
+
+  toggle.addEventListener('click', function() {
+    var isOpen = sidebar.classList.toggle('open');
+    overlay.classList.toggle('open', isOpen);
+    toggle.classList.toggle('open', isOpen);
+  });
+
+  overlay.addEventListener('click', closeSidebar);
+
+  // ── Ініціалізація ──
+  if (loadAccess()) {
+    openGate();
+  }
+
+})();
+</script>
+
+</body>
+</html>

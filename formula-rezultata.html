@@ -1091,6 +1091,9 @@ footer {
 
 <script>
 (function() {
+  // Пропускаємо замок якщо сторінка відкрита в iframe (formula-program.html)
+  if (window.self !== window.top) { document.getElementById('accessGate').style.display='none'; return; }
+
   var CODES = {
     'KARTA-2026':     ['lekciya'],
     'MARSHRUT-2026':  ['lekciya', 'praktykum'],
