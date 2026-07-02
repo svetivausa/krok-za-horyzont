@@ -549,6 +549,30 @@
     color: var(--brown-light);
     margin-bottom: 0.8rem;
   }
+  .share-buttons {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 2rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.2s;
+  }
+  .share-btn:hover { opacity: 0.85; }
+  .share-btn-tg  { background: #229ED9; color: #fff; }
+  .share-btn-fb  { background: #1877F2; color: #fff; }
+  .share-btn-x   { background: #000; color: #fff; }
 
   /* UTILS */
   .hidden { display: none !important; }
@@ -635,7 +659,11 @@
 
     <div class="share-block">
       <p>Поділися результатом - можливо, комусь це теж потрібно</p>
-      <button class="btn" style="font-size:0.85rem; padding:0.6rem 1.5rem;" onclick="shareResult()">Поділитися</button>
+      <div class="share-buttons">
+        <a class="share-btn share-btn-tg" href="#" onclick="shareToTelegram(); return false;">✈ Telegram</a>
+        <a class="share-btn share-btn-fb" href="#" onclick="shareToFacebook(); return false;">f Facebook</a>
+        <a class="share-btn share-btn-x"  href="#" onclick="shareToX(); return false;">✕ X</a>
+      </div>
       <p style="margin-top:1.2rem;"><a href="index.html" style="font-size:0.85rem; color:var(--brown-light); text-decoration:underline;">← Повернутись на сайт</a></p>
     </div>
   </div>
@@ -1210,15 +1238,21 @@ function submitEmail() {
   });
 }
 
-function shareResult() {
+function getShareText() {
   const lowestIndex = Object.entries(scores).sort((a,b) => a[1]-b[1])[0]?.[0] ?? 0;
   const focus = BLOCKS[lowestIndex];
-  const text = `Пройшла діагностику «Формула результату» на сайті «Крок за горизонт». Мій компонент для роботи: ${focus.name}. Перевір свою формулу!`;
-  if (navigator.share) {
-    navigator.share({ title: 'Моя формула результату', text });
-  } else {
-    navigator.clipboard.writeText(text).then(() => alert('Текст скопійовано!'));
-  }
+  return `Пройшла діагностику «Формула результату» на сайті «Крок за горизонт». Мій компонент для роботи: ${focus.name}. Перевір свою формулу!`;
+}
+function shareToTelegram() {
+  const text = encodeURIComponent(getShareText() + ' https://krok-za-horyzont.vercel.app/quiz-formula-rezultatu');
+  window.open('https://t.me/share/url?url=https%3A%2F%2Fkrok-za-horyzont.vercel.app%2Fquiz-formula-rezultatu&text=' + text, '_blank');
+}
+function shareToFacebook() {
+  window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('https://krok-za-horyzont.vercel.app/quiz-formula-rezultatu'), '_blank');
+}
+function shareToX() {
+  const text = encodeURIComponent(getShareText() + ' https://krok-za-horyzont.vercel.app/quiz-formula-rezultatu');
+  window.open('https://twitter.com/intent/tweet?text=' + text, '_blank');
 }
 </script>
 </body>
