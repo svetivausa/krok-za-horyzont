@@ -1,6 +1,14 @@
 {
   "rewrites": [
     { "source": "/formula-rezultatu-sales", "destination": "/formula-rezultatu-sales.html" },
-    { "source": "/formula-program", "destination": "/formula-program.html" }
+    { "source": "/formula-program", "destination": "/formula-program.html" },
+    { "source": "/formula-rezultata", "destination": "/formula-rezultata.html" },
+    { "source": "/metodychka-beta", "destination": "/metodychka-beta.html" },
+    { "source": "/metodychka-b", "destination": "/metodychka-b.html" },
+    { "source": "/metodychka-p", "destination": "/metodychka-p.html" },
+    { "source": "/metodychka-d", "destination": "/metodychka-d.html" },
+    { "source": "/metodychka-o", "destination": "/metodychka-o.html" },
+    { "source": "/metodychka-m", "destination": "/metodychka-m.html" },
+    { "source": "/metodychka-res", "destination": "/metodychka-res.html" }
   ]
 }
