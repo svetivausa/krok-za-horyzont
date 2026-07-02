@@ -26,11 +26,30 @@ export default async function handler(req, res) {
   }
 
   try {
-    const groupsRes = await fetch('https://connect.mailerlite.com/api/groups?limit=25', { headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json', 'Accept': 'application/json' } });
+    const headers = { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json', 'Accept': 'application/json' };
+
+    const groupsRes = await fetch('https://connect.mailerlite.com/api/groups?limit=25', { headers });
     const groupsData = await groupsRes.json();
     const group = groupsData.data?.find(g => g.name === groupName);
     if (!group) return res.status(400).json({ error: 'Group not found: ' + groupName });
-    await fetch('https://connect.mailerlite.com/api/subscribers', { method: 'POST', headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ email, fields: { name }, groups: [group.id] }) });
+
+    const subRes = await fetch('https://connect.mailerlite.com/api/subscribers', { method: 'POST', headers, body: JSON.stringify({ email, fields: { name }, groups: [group.id] }) });
+    const subData = await subRes.json();
+    const subscriberId = subData.data?.id;
+
+    // Примусово запускаємо автоматизацію — joins group через API не тригерить її автоматично
+    if (subscriberId && type.startsWith('formula-') && !type.startsWith('formula-application-')) {
+      const autoRes = await fetch('https://connect.mailerlite.com/api/automations?limit=50', { headers });
+      const autoData = await autoRes.json();
+      const automation = autoData.data?.find(a => a.name === groupName && a.status === 'active');
+      if (automation) {
+        await fetch(`https://connect.mailerlite.com/api/automations/${automation.id}/enroll`, {
+          method: 'POST', headers,
+          body: JSON.stringify({ subscribers: [subscriberId] })
+        });
+      }
+    }
+
     return res.status(200).json({ success: true });
   } catch (error) {
     return res.status(500).json({ error: error.message });
