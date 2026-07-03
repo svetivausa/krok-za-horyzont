@@ -9,6 +9,7 @@
     { "source": "/metodychka-d", "destination": "/metodychka-d.html" },
     { "source": "/metodychka-o", "destination": "/metodychka-o.html" },
     { "source": "/metodychka-m", "destination": "/metodychka-m.html" },
-    { "source": "/metodychka-res", "destination": "/metodychka-res.html" }
+    { "source": "/metodychka-res", "destination": "/metodychka-res.html" },
+    { "source": "/bambuk-treker", "destination": "/bambuk-treker.html" }
   ]
 }

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Бамбук · Крок за горизонт</title>
+<style>
+:root {
+  --bg: #F5EFE6;
+  --bg2: #EDE3D0;
+  --bg3: #E3D5BC;
+  --card: #FAF5EC;
+  --terra: #B85042;
+  --terra-dark: #8E3A2F;
+  --terra-li: #D2786A;
+  --gold: #C9A84C;
+  --gold-dark: #A88A30;
+  --ink: #2C1A0E;
+  --ink2: #5A4530;
+  --muted: #8B7355;
+  --line: rgba(44,26,14,.12);
+  --line2: rgba(44,26,14,.06);
+  --bamboo: #6E8F4E;
+  --bamboo-bright: #7DA353;
+  --bamboo-dull: #979B7C;
+  --bamboo-dark: #55703C;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-size: 17px; line-height: 1.7; min-height: 100vh; overflow-x: hidden;
+}
+
+.wrap { max-width: 480px; margin-left: auto; margin-right: auto; padding-left: 1.25rem; padding-right: 1.25rem; }
+
+/* ═══════ HEADER ═══════ */
+header.top {
+  padding-top: 3rem;
+  padding-bottom: 1.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  text-align: center; position: relative; overflow: hidden;
+}
+header.top::before {
+  content: ''; position: absolute; width: 260px; height: 260px;
+  background: var(--bamboo); opacity: .07; border-radius: 50%; top: -110px; right: -60px;
+}
+header.top > * { position: relative; z-index: 1; }
+.series {
+  display: inline-block; font-size: .68rem; letter-spacing: .35em; text-transform: uppercase;
+  color: var(--terra-dark); font-weight: 700; margin-bottom: 1.3rem;
+  padding-top: 6px; padding-bottom: 6px; padding-left: 18px; padding-right: 18px;
+  border: 1px solid var(--terra); border-radius: 3px;
+}
+h1.title {
+  font-family: 'Georgia', serif; font-size: clamp(2.2rem, 8vw, 3rem); font-weight: 700;
+  letter-spacing: -.02em; line-height: 1.08; color: var(--ink); margin-bottom: .5rem;
+}
+.subtitle {
+  font-family: 'Georgia', serif; font-style: italic; font-size: 1.05rem;
+  color: var(--terra); max-width: 22em; margin-left: auto; margin-right: auto;
+}
+.divider-deco { margin-top: 1.5rem; margin-left: auto; margin-right: auto; width: 60px; height: 1px; background: var(--terra); position: relative; }
+.divider-deco::before, .divider-deco::after { content: ''; position: absolute; top: -3px; width: 7px; height: 7px; border-radius: 50%; background: var(--terra); }
+.divider-deco::before { left: -14px; } .divider-deco::after { right: -14px; }
+
+/* ═══════ NOTES ═══════ */
+.note {
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+  padding-top: 1.1rem; padding-bottom: 1.1rem; padding-left: 1.25rem; padding-right: 1.25rem;
+  margin-top: 1.25rem; margin-bottom: 0;
+  font-size: .95rem; color: var(--ink2); line-height: 1.65;
+  opacity: 1; transition: opacity 1.2s ease, transform 1.2s ease;
+}
+.note.fading { opacity: 0; transform: translateY(-6px); }
+.note-intro { border-color: var(--gold); background: #FBF6E9; }
+.note-beta { border-color: var(--bamboo); background: #F2F4E8; }
+.note-gap { border-color: var(--line); }
+.note p { margin-bottom: .5rem; }
+.note p:last-child { margin-bottom: 0; }
+.note em { font-style: italic; color: var(--terra-dark); }
+.note .q { font-family: 'Georgia', serif; font-style: italic; color: var(--bamboo-dark); }
+
+/* ═══════ BAMBOO ═══════ */
+.bamboo-stage {
+  margin-top: 1.75rem;
+  background: linear-gradient(180deg, var(--card) 0%, var(--bg2) 100%);
+  border: 1px solid var(--line); border-radius: 16px;
+  padding-top: 1.5rem; padding-bottom: 0; padding-left: 1rem; padding-right: 1rem;
+  text-align: center; overflow: hidden; position: relative;
+}
+.bamboo-holder { max-height: 400px; display: flex; justify-content: center; align-items: flex-end; }
+.bamboo-holder svg { max-height: 400px; width: auto; max-width: 100%; display: block; }
+.bamboo-empty {
+  padding-top: 3rem; padding-bottom: 3rem;
+  font-family: 'Georgia', serif; font-style: italic; color: var(--muted);
+  font-size: 1rem; line-height: 1.7; max-width: 20em; margin-left: auto; margin-right: auto;
+}
+.ground {
+  height: 10px; background: var(--bg3); border-radius: 0 0 15px 15px;
+  border-top: 1px solid var(--line);
+}
+
+/* ═══════ COUNTER ═══════ */
+.counter {
+  text-align: center; margin-top: 1rem;
+  font-family: 'Georgia', serif; font-size: 1rem; color: var(--ink2);
+}
+.counter strong { color: var(--terra-dark); font-variant-numeric: tabular-nums; }
+.counter-fine {
+  text-align: center; font-size: .78rem; color: var(--muted); font-style: italic;
+  margin-top: .2rem;
+}
+
+/* ═══════ FORM ═══════ */
+.day-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+  margin-top: 1.75rem;
+  padding-top: 1.5rem; padding-bottom: 1.5rem; padding-left: 1.25rem; padding-right: 1.25rem;
+}
+.q-label {
+  font-family: 'Georgia', serif; font-weight: 700; font-size: 1.05rem; color: var(--ink);
+  margin-bottom: .75rem; line-height: 1.4;
+}
+.scale { display: flex; justify-content: space-between; gap: .4rem; margin-bottom: .35rem; }
+.dot {
+  flex: 1; aspect-ratio: 1; max-width: 52px; border-radius: 50%;
+  border: 2px solid var(--line); background: var(--bg);
+  font-family: 'Georgia', serif; font-weight: 700; font-size: .95rem; color: var(--muted);
+  cursor: pointer; transition: all .15s ease;
+  display: flex; align-items: center; justify-content: center;
+}
+.dot:active { transform: scale(.92); }
+.dot.on { border-color: var(--terra); background: var(--terra); color: #fff; }
+.scale-fuel .dot.on { border-color: var(--bamboo-dark); background: var(--bamboo); }
+.scale-ends { display: flex; justify-content: space-between; font-size: .72rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+.principle-block {
+  border: 1.5px solid var(--gold); background: #FBF6E9; border-radius: 12px;
+  padding-top: 1rem; padding-bottom: 1rem; padding-left: 1rem; padding-right: 1rem;
+  margin-bottom: 1.5rem;
+}
+.principle-block .q-label { margin-bottom: .6rem; }
+.principle-input {
+  width: 100%; border: 1px solid var(--line); border-radius: 8px;
+  padding-top: .7rem; padding-bottom: .7rem; padding-left: .9rem; padding-right: .9rem;
+  font-family: inherit; font-size: 1rem; color: var(--ink); background: #fff;
+  outline: none; transition: border-color .2s;
+}
+.principle-input:focus { border-color: var(--gold-dark); }
+.principle-sub { font-size: .78rem; color: var(--gold-dark); font-style: italic; margin-top: .5rem; line-height: 1.5; }
+
+.save-btn {
+  width: 100%; padding-top: .95rem; padding-bottom: .95rem;
+  background: var(--terra); color: #fff; border: none; border-radius: 10px;
+  font-family: inherit; font-size: 1.05rem; font-weight: 700; cursor: pointer;
+  transition: background .2s;
+}
+.save-btn:hover { background: var(--terra-dark); }
+.save-btn:disabled { opacity: .45; cursor: default; }
+
+/* ═══════ SAVED STATE ═══════ */
+.saved-card {
+  background: var(--card); border: 1px solid var(--bamboo); border-radius: 16px;
+  margin-top: 1.75rem; text-align: center;
+  padding-top: 1.75rem; padding-bottom: 1.75rem; padding-left: 1.25rem; padding-right: 1.25rem;
+}
+.saved-title {
+  font-family: 'Georgia', serif; font-size: 1.15rem; font-weight: 700; color: var(--bamboo-dark);
+  margin-bottom: .3rem;
+}
+.saved-sub { font-size: .95rem; color: var(--ink2); }
+.edit-link {
+  display: inline-block; margin-top: 1rem; font-size: .82rem; color: var(--muted);
+  background: none; border: none; cursor: pointer; text-decoration: underline; font-family: inherit;
+}
+.edit-link:hover { color: var(--terra-dark); }
+
+/* ═══════ BOT BRIDGE ═══════ */
+.bridge { text-align: center; margin-top: 2.25rem; margin-bottom: 3rem; }
+.bridge-btn {
+  display: inline-block; text-decoration: none;
+  padding-top: .85rem; padding-bottom: .85rem; padding-left: 1.75rem; padding-right: 1.75rem;
+  background: var(--bg); color: var(--terra-dark); border: 1.5px solid var(--terra);
+  border-radius: 10px; font-weight: 700; font-size: .95rem; transition: all .2s;
+}
+.bridge-btn:hover { background: var(--terra); color: #fff; }
+.bridge-sub {
+  font-size: .82rem; color: var(--muted); margin-top: .75rem; line-height: 1.6;
+  max-width: 24em; margin-left: auto; margin-right: auto;
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="series">Крок за горизонт · Трекер</div>
+  <h1 class="title">Бамбук</h1>
+  <p class="subtitle">твоя петля результату. День за днем.</p>
+  <div class="divider-deco"></div>
+</header>
+
+<div class="wrap">
+
+  <!-- Вступна нота (перший вхід) -->
+  <div class="note note-intro" id="introNote" style="display:none;">
+    <p>Пам'ятаєш бамбук із лекції? Роками він росте під землею, а потім злітає вгору.</p>
+    <p>Тут те саме. Ти не побачиш стрибка за один день. Ти побачиш його через час.</p>
+    <p>Заходь щодня на пів хвилини. Три дотики. І дивись, як складається твоє велике.</p>
+  </div>
+
+  <!-- β в дії -->
+  <div class="note note-beta" id="betaNote" style="display:none;">
+    <p>Вчора ти помітила: <span class="q">«<span id="betaQuote"></span>»</span>.</p>
+    <p>Сьогодні це вже працює на тебе. Ось так рефлексія стає паливом.</p>
+  </div>
+
+  <!-- Нота про пропуск -->
+  <div class="note note-gap" id="gapNote" style="display:none;">
+    <p>Тебе не було кілька днів. Це не провал.</p>
+    <p>Бамбук у цей час ріс під землею, там, де не видно. Коріння теж робота.</p>
+    <p>Просто продовж звідти, де ти зараз.</p>
+  </div>
+
+  <!-- Бамбук -->
+  <div class="bamboo-stage">
+    <div class="bamboo-holder" id="bambooHolder">
+      <div class="bamboo-empty" id="emptyState">
+        Тут поки порожньо. Твій перший день стане першим коліном.<br>
+        Почни знизу. Далі рости будеш ти.
+      </div>
+    </div>
+    <div class="ground"></div>
+  </div>
+
+  <div class="counter" id="counter" style="display:none;"></div>
+  <div class="counter-fine" id="counterFine" style="display:none;">висота умовна. Важлива не цифра, а те, що вона росте.</div>
+
+  <!-- Форма дня -->
+  <div class="day-card" id="dayForm" style="display:none;">
+    <div class="q-label">Наскільки сьогодні ти рухалась до свого результату?</div>
+    <div class="scale" id="scaleMove">
+      <button class="dot" data-v="0">0</button><button class="dot" data-v="1">1</button><button class="dot" data-v="2">2</button><button class="dot" data-v="3">3</button><button class="dot" data-v="4">4</button><button class="dot" data-v="5">5</button>
+    </div>
+    <div class="scale-ends"><span>зовсім ні</span><span>повний хід</span></div>
+
+    <div class="q-label">Скільки в тебе зараз палива?</div>
+    <div class="scale scale-fuel" id="scaleFuel">
+      <button class="dot" data-v="0">0</button><button class="dot" data-v="1">1</button><button class="dot" data-v="2">2</button><button class="dot" data-v="3">3</button><button class="dot" data-v="4">4</button><button class="dot" data-v="5">5</button>
+    </div>
+    <div class="scale-ends"><span>бак порожній</span><span>повний бак</span></div>
+
+    <div class="principle-block">
+      <div class="q-label">Що сьогодні спрацювало? Один рядок.</div>
+      <input type="text" class="principle-input" id="principleInput" maxlength="200" placeholder="напиши те, що хочеш забрати з цього дня">
+      <div class="principle-sub">це і є твоя β. Маленький принцип, який завтра стане паливом.</div>
+    </div>
+
+    <button class="save-btn" id="saveBtn" disabled>записати день</button>
+  </div>
+
+  <!-- Після збереження -->
+  <div class="saved-card" id="savedCard" style="display:none;">
+    <div class="saved-title">Записано. Одне коліно бамбука додано.</div>
+    <div class="saved-sub">Завтра додаси наступне.</div>
+    <button class="edit-link" id="editLink">змінити сьогоднішній запис</button>
+  </div>
+
+  <!-- Місток до бота -->
+  <div class="bridge">
+    <a class="bridge-btn" href="https://t.me/opora_krok_bot" target="_blank" rel="noopener">розкрити свій принцип з Опорою</a>
+    <div class="bridge-sub">помітила щось важливе сьогодні? Опора допоможе докопатись, звідки це і що з цим робити далі.</div>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var KEY = 'krok_bambuk_v1';
+
+  // ── Стан ──
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (raw) { var s = JSON.parse(raw); if (s && typeof s === 'object') return s; }
+    } catch(e) {}
+    return { entries: {}, introSeen: false, betaShownDate: '' };
+  }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e) {} }
+
+  var state = load();
+  if (!state.entries) state.entries = {};
+
+  // ── Дати (локальні, не UTC) ──
+  function dateKey(d) {
+    var y = d.getFullYear(), m = ('0' + (d.getMonth()+1)).slice(-2), dd = ('0' + d.getDate()).slice(-2);
+    return y + '-' + m + '-' + dd;
+  }
+  var now = new Date();
+  var today = dateKey(now);
+  var yesterday = dateKey(new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1));
+
+  function daysBetween(a, b) {
+    var pa = a.split('-'), pb = b.split('-');
+    var da = new Date(pa[0], pa[1]-1, pa[2]), db = new Date(pb[0], pb[1]-1, pb[2]);
+    return Math.round((db - da) / 86400000);
+  }
+
+  var sortedDates = Object.keys(state.entries).sort();
+  var lastDate = sortedDates.length ? sortedDates[sortedDates.length - 1] : null;
+  var todayEntry = state.entries[today] || null;
+
+  // ── Ноти ──
+  // Вступна: тільки перший вхід
+  if (!state.introSeen) {
+    document.getElementById('introNote').style.display = 'block';
+    state.introSeen = true;
+    save();
+  }
+
+  // β в дії: якщо вчора був непорожній принцип і ноту сьогодні ще не показували
+  var yEntry = state.entries[yesterday];
+  if (yEntry && yEntry.principle && yEntry.principle.trim() && state.betaShownDate !== today) {
+    document.getElementById('betaQuote').textContent = yEntry.principle.trim();
+    var betaNote = document.getElementById('betaNote');
+    betaNote.style.display = 'block';
+    state.betaShownDate = today;
+    save();
+    setTimeout(function() {
+      betaNote.classList.add('fading');
+      setTimeout(function() { betaNote.style.display = 'none'; }, 1300);
+    }, 10000);
+  }
+
+  // Пропуск: остання прогалина >= 2 днів і сьогодні ще не записано
+  if (lastDate && !todayEntry && daysBetween(lastDate, today) >= 2) {
+    document.getElementById('gapNote').style.display = 'block';
+  }
+
+  // ── Бамбук (SVG) ──
+  function moveColor(v) {
+    // від тьмяного до яскравого зеленого
+    var colors = ['#A8AB8E', '#96A176', '#84985F', '#779350', '#6E8F4E', '#7DA353'];
+    return colors[Math.max(0, Math.min(5, v))];
+  }
+  function leafColor(fuel) {
+    // паливо = насиченість листя
+    var colors = ['#B9BCA6', '#A9B18C', '#94A46F', '#82995B', '#75924E', '#6B9247'];
+    return colors[Math.max(0, Math.min(5, fuel))];
+  }
+
+  function renderBamboo() {
+    var dates = Object.keys(state.entries).sort();
+    var holder = document.getElementById('bambooHolder');
+    var empty = document.getElementById('emptyState');
+    var counter = document.getElementById('counter');
+    var fine = document.getElementById('counterFine');
+
+    if (!dates.length) {
+      empty.style.display = 'block';
+      var old = holder.querySelector('svg'); if (old) old.remove();
+      counter.style.display = 'none'; fine.style.display = 'none';
+      return;
+    }
+    empty.style.display = 'none';
+
+    var W = 300, cx = W / 2;
+    var segs = [];
+    var totalH = 0, totalR = 0;
+    dates.forEach(function(d) {
+      var e = state.entries[d];
+      var mv = e.move || 0, fl = (typeof e.fuel === 'number') ? e.fuel : 3;
+      var h = 24 + mv * 7;          // висота коліна
+      var w = 13 + mv * 2.2;        // товщина коліна
+      segs.push({ h: h, w: w, move: mv, fuel: fl });
+      totalH += h + 3;
+      totalR += mv;
+    });
+
+    var pad = 30;
+    var H = totalH + pad;
+    var svgParts = [];
+    svgParts.push('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" role="img" aria-label="Бамбук: ' + dates.length + ' колін">');
+
+    var y = H; // будуємо знизу вгору
+    segs.forEach(function(s, i) {
+      var segTop = y - s.h;
+      var x = cx - s.w / 2;
+      // коліно
+      svgParts.push('<rect x="' + x.toFixed(1) + '" y="' + segTop.toFixed(1) + '" width="' + s.w.toFixed(1) + '" height="' + s.h.toFixed(1) + '" rx="' + (s.w/3).toFixed(1) + '" fill="' + moveColor(s.move) + '"/>');
+      // вузол між колінами
+      svgParts.push('<rect x="' + (x - 1.5).toFixed(1) + '" y="' + (segTop - 1.5).toFixed(1) + '" width="' + (s.w + 3).toFixed(1) + '" height="3" rx="1.5" fill="#55703C" opacity=".55"/>');
+      // листя через коліно, чергуємо сторони
+      if (i % 2 === 0 || s.fuel >= 4) {
+        var side = (i % 4 < 2) ? 1 : -1;
+        var lx = cx + side * (s.w / 2);
+        var ly = segTop + s.h * 0.35;
+        var lc = leafColor(s.fuel);
+        svgParts.push('<g transform="translate(' + lx.toFixed(1) + ',' + ly.toFixed(1) + ') scale(' + side + ',1)">' +
+          '<path d="M0,0 Q22,-14 46,-8 Q24,4 0,0 Z" fill="' + lc + '"/>' +
+          '<path d="M0,4 Q18,-2 38,4 Q18,12 0,4 Z" fill="' + lc + '" opacity=".75"/>' +
+          '</g>');
+      }
+      y = segTop - 3;
+    });
+
+    // паросток нагорі
+    svgParts.push('<circle cx="' + cx + '" cy="' + (y - 3).toFixed(1) + '" r="4" fill="#7DA353"/>');
+    svgParts.push('</svg>');
+
+    var old = holder.querySelector('svg'); if (old) old.remove();
+    holder.insertAdjacentHTML('beforeend', svgParts.join(''));
+
+    counter.innerHTML = '<strong>' + dates.length + '</strong> ' + dayWord(dates.length) + ' у петлі · висота твого бамбука: <strong>' + totalR + '</strong>';
+    counter.style.display = 'block';
+    fine.style.display = 'block';
+  }
+
+  function dayWord(n) {
+    var n10 = n % 10, n100 = n % 100;
+    if (n10 === 1 && n100 !== 11) return 'день';
+    if (n10 >= 2 && n10 <= 4 && (n100 < 12 || n100 > 14)) return 'дні';
+    return 'днів';
+  }
+
+  // ── Форма ──
+  var moveVal = null, fuelVal = null;
+  var saveBtn = document.getElementById('saveBtn');
+  var principleInput = document.getElementById('principleInput');
+
+  function bindScale(id, setter) {
+    var scale = document.getElementById(id);
+    scale.addEventListener('click', function(e) {
+      var btn = e.target.closest('.dot');
+      if (!btn) return;
+      var v = parseInt(btn.getAttribute('data-v'), 10);
+      setter(v);
+      scale.querySelectorAll('.dot').forEach(function(d) {
+        d.classList.toggle('on', parseInt(d.getAttribute('data-v'), 10) === v);
+      });
+      updateSaveBtn();
+    });
+  }
+  bindScale('scaleMove', function(v) { moveVal = v; });
+  bindScale('scaleFuel', function(v) { fuelVal = v; });
+
+  function updateSaveBtn() {
+    saveBtn.disabled = (moveVal === null || fuelVal === null);
+  }
+
+  function setScale(id, v) {
+    document.getElementById(id).querySelectorAll('.dot').forEach(function(d) {
+      d.classList.toggle('on', parseInt(d.getAttribute('data-v'), 10) === v);
+    });
+  }
+
+  function showForm(prefill) {
+    if (prefill) {
+      moveVal = prefill.move; fuelVal = prefill.fuel;
+      setScale('scaleMove', prefill.move);
+      setScale('scaleFuel', prefill.fuel);
+      principleInput.value = prefill.principle || '';
+    }
+    updateSaveBtn();
+    document.getElementById('dayForm').style.display = 'block';
+    document.getElementById('savedCard').style.display = 'none';
+  }
+
+  function showSaved() {
+    document.getElementById('dayForm').style.display = 'none';
+    document.getElementById('savedCard').style.display = 'block';
+  }
+
+  saveBtn.addEventListener('click', function() {
+    if (moveVal === null || fuelVal === null) return;
+    state.entries[today] = {
+      move: moveVal,
+      fuel: fuelVal,
+      principle: principleInput.value.trim()
+    };
+    save();
+    renderBamboo();
+    showSaved();
+    document.getElementById('gapNote').style.display = 'none';
+  });
+
+  document.getElementById('editLink').addEventListener('click', function() {
+    showForm(state.entries[today]);
+  });
+
+  // ── Ініціалізація ──
+  renderBamboo();
+  if (todayEntry) {
+    showSaved();
+  } else {
+    showForm(null);
+  }
+})();
+</script>
+
+</body>
+</html>
