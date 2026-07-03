@@ -181,8 +181,17 @@ h1.title {
 }
 .edit-link:hover { color: var(--terra-dark); }
 
+/* ═══════ BACK LINK ═══════ */
+.back-row { text-align: center; margin-top: 0; margin-bottom: 3rem; }
+.back-link {
+  font-family: 'Georgia', serif; font-style: italic; font-size: .92rem;
+  color: var(--terra-dark); text-decoration: none; border-bottom: 1px solid var(--terra-li);
+  padding-bottom: 2px; transition: color .2s, border-color .2s;
+}
+.back-link:hover { color: var(--terra); border-color: var(--terra); }
+
 /* ═══════ BOT BRIDGE ═══════ */
-.bridge { text-align: center; margin-top: 2.25rem; margin-bottom: 3rem; }
+.bridge { text-align: center; margin-top: 2.25rem; margin-bottom: 1.5rem; }
 .bridge-btn {
   display: inline-block; text-decoration: none;
   padding-top: .85rem; padding-bottom: .85rem; padding-left: 1.75rem; padding-right: 1.75rem;
@@ -414,6 +423,11 @@ h1.title {
   <div class="bridge">
     <a class="bridge-btn" href="https://t.me/opora_krok_bot" target="_blank" rel="noopener">поговорити про це з Опорою</a>
     <div class="bridge-sub">помітила щось важливе сьогодні? Опора допоможе докопатись, звідки це і що з цим робити далі.</div>
+  </div>
+
+  <!-- Назад до практикуму -->
+  <div class="back-row">
+    <a class="back-link" href="/metodychka-beta">← Повернутись до практикуму β</a>
   </div>
 
 </div>
