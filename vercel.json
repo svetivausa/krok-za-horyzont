@@ -10,6 +10,8 @@
     { "source": "/metodychka-o", "destination": "/metodychka-o.html" },
     { "source": "/metodychka-m", "destination": "/metodychka-m.html" },
     { "source": "/metodychka-res", "destination": "/metodychka-res.html" },
-    { "source": "/bambuk-treker", "destination": "/bambuk-treker.html" }
+    { "source": "/bambuk-treker", "destination": "/bambuk-treker.html" },
+    { "source": "/dzerkalo-filtra", "destination": "/dzerkalo-filtra.html" },
+    { "source": "/quiz-formula-rezultatu", "destination": "/quiz-formula-rezultatu.html" }
   ]
 }
