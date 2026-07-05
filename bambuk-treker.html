@@ -116,6 +116,11 @@ h1.title {
   text-align: center; font-size: .78rem; color: var(--muted); font-style: italic;
   margin-top: .2rem;
 }
+.device-note {
+  text-align: center; font-size: .8rem; line-height: 1.6; color: var(--muted);
+  max-width: 22em; margin-left: auto; margin-right: auto;
+  padding-top: 0.5rem; padding-bottom: 2.5rem;
+}
 
 /* ═══════ FORM ═══════ */
 .day-card {
@@ -430,6 +435,11 @@ h1.title {
     <a class="back-link" href="/metodychka-beta">← Повернутись до практикуму β</a>
   </div>
 
+  <!-- Тиха виноска про пристрій -->
+  <div class="device-note" id="deviceNote" style="display:none;">
+    Твій бамбук росте на цьому пристрої. Заходь звідси ж, щоб бачити весь свій ріст.
+  </div>
+
 </div>
 
 <script>
@@ -513,14 +523,17 @@ h1.title {
     var empty = document.getElementById('emptyState');
     var counter = document.getElementById('counter');
     var fine = document.getElementById('counterFine');
+    var deviceNote = document.getElementById('deviceNote');
 
     if (!dates.length) {
       empty.style.display = 'block';
       var old = holder.querySelector('svg'); if (old) old.remove();
       counter.style.display = 'none'; fine.style.display = 'none';
+      deviceNote.style.display = 'none';
       return;
     }
     empty.style.display = 'none';
+    deviceNote.style.display = 'block';
 
     var W = 300, cx = W / 2;
     var segs = [];
