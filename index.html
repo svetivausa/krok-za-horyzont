@@ -107,20 +107,23 @@ a { text-decoration: none; color: inherit; }
 .nav-item.active { background: rgba(92,53,184,0.35); color: #fff; border-color: var(--violet2); }
 .nav-item .ni { font-size: 1rem; flex-shrink: 0; }
 
-.nav-quiz-promo {
-  display: flex; align-items: center; gap: 0.7rem;
-  margin: 0.2rem 1rem; padding: 0.7rem 0.9rem;
-  border-radius: 10px;
-  border-left: 3px solid var(--gold);
-  background: linear-gradient(120deg, rgba(244,196,48,0.18), rgba(232,82,106,0.18));
-  text-decoration: none;
-  transition: background 0.2s, transform 0.2s;
+/* ─── Флагманський блок «Формула результату» ─── */
+.nav-program {
+  margin: 0.6rem 0.9rem 0.3rem;
+  padding: 0.15rem 0 0.4rem;
+  border-radius: 12px;
+  background: rgba(244,196,48,0.06);
+  border: 1px solid rgba(244,196,48,0.16);
 }
-.nav-quiz-promo:hover { background: linear-gradient(120deg, rgba(244,196,48,0.28), rgba(232,82,106,0.28)); transform: translateX(2px); }
-.nqp-icon { font-size: 1.3rem; flex-shrink: 0; }
-.nqp-text { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
-.nqp-text strong { font-size: 0.85rem; color: #fff; font-weight: 700; }
-.nqp-text span { font-size: 0.72rem; color: rgba(255,255,255,0.65); }
+.nav-program .nav-section-label { color: var(--gold); padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.nav-program .nav-item { padding-left: 1.1rem; padding-right: 1.1rem; text-decoration: none; }
+.nav-program .nav-item .ni { color: var(--gold); }
+.nav-quiz-badge {
+  margin-left: auto;
+  font-size: 0.58rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--deep); background: var(--gold);
+  padding: 2px 8px; border-radius: 100px; white-space: nowrap;
+}
 
 .sidebar-schedule {
   margin: auto 0 0;
@@ -1478,14 +1481,15 @@ button { -webkit-tap-highlight-color:transparent; }
       </div>
     </div>
 
-    <div class="nav-section">
-      <a href="quiz-formula-rezultatu.html" class="nav-quiz-promo">
-        <span class="nqp-icon">🎯</span>
-        <span class="nqp-text">
-          <strong>Безкоштовний тест</strong>
-          <span>Знайди слабку компоненту</span>
-        </span>
+    <div class="nav-section nav-program">
+      <div class="nav-section-label">Формула результату</div>
+      <a href="quiz-formula-rezultatu.html" class="nav-item">
+        <span class="ni">🎯</span> Пройти тест
+        <span class="nav-quiz-badge">безкоштовно</span>
       </a>
+      <div class="nav-item" onclick="window.location.href='/formula-program'">
+        <span class="ni">✦</span> Програма
+      </div>
     </div>
 
     <div class="nav-section">
@@ -1498,9 +1502,6 @@ button { -webkit-tap-highlight-color:transparent; }
       </div>
       <div class="nav-item" onclick="showPage('exercises', this)">
         <span class="ni">🧘</span> Вправи
-      </div>
-      <div class="nav-item" onclick="window.location.href='/formula-program'">
-        <span class="ni">✦</span> Формула результату
       </div>
     </div>
 
