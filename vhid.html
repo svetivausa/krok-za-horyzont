@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вхід · Крок за горизонт</title>
+<meta name="robots" content="noindex">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #F5EFE6;
+  --card: #FAF5EC;
+  --ink: #2C1A0E;
+  --ink2: #5A4530;
+  --muted: #8B7355;
+  --terra: #B85042;
+  --terra-dark: #8E3A2F;
+  --gold: #C9A84C;
+  --gold-dark: #A88A30;
+  --line: rgba(44,26,14,.14);
+  --green: #4A7C3A;
+}
+
+html, body { min-height: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-size: 17px; line-height: 1.6;
+  display: flex; align-items: center; justify-content: center;
+  padding-top: 1.5rem; padding-bottom: 1.5rem; padding-left: 1.25rem; padding-right: 1.25rem;
+  min-height: 100vh;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  width: 100%; max-width: 420px;
+  padding-top: 2.5rem; padding-bottom: 2.5rem; padding-left: 1.75rem; padding-right: 1.75rem;
+  text-align: center;
+  box-shadow: 0 8px 40px rgba(44,26,14,.06);
+}
+
+.logo-dot {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--terra);
+  display: flex; align-items: center; justify-content: center;
+  margin-left: auto; margin-right: auto; margin-bottom: 1.25rem;
+  font-family: 'Georgia', serif; font-size: 1.4rem; color: #fff; font-weight: 700;
+}
+
+h1 {
+  font-family: 'Georgia', serif; font-size: 1.55rem; font-weight: 700;
+  color: var(--ink); line-height: 1.2; margin-bottom: 0.6rem;
+}
+
+.subtitle {
+  color: var(--ink2); font-size: 0.98rem; line-height: 1.6;
+  max-width: 22em; margin-left: auto; margin-right: auto; margin-bottom: 1.75rem;
+}
+
+/* ── Форма ── */
+.field { text-align: left; margin-bottom: 1rem; }
+.field label {
+  display: block; font-size: 0.78rem; font-weight: 600; color: var(--muted);
+  letter-spacing: 0.02em; margin-bottom: 0.4rem;
+}
+.field input {
+  width: 100%;
+  padding-top: 0.85rem; padding-bottom: 0.85rem; padding-left: 1rem; padding-right: 1rem;
+  border: 1.5px solid var(--line); border-radius: 10px;
+  font-family: inherit; font-size: 1rem; color: var(--ink); background: #fff;
+  outline: none; transition: border-color .2s;
+}
+.field input:focus { border-color: var(--gold-dark); }
+
+.btn {
+  width: 100%;
+  padding-top: 0.95rem; padding-bottom: 0.95rem;
+  border: none; border-radius: 10px;
+  font-family: inherit; font-size: 1.02rem; font-weight: 700; cursor: pointer;
+  background: var(--terra); color: #fff;
+  transition: background .2s, opacity .2s;
+}
+.btn:hover:not(:disabled) { background: var(--terra-dark); }
+.btn:disabled { opacity: 0.5; cursor: default; }
+
+.error {
+  color: var(--terra-dark); font-size: 0.88rem; line-height: 1.5;
+  margin-top: 0.9rem; min-height: 1.1rem;
+  opacity: 0; transition: opacity .2s;
+}
+.error.show { opacity: 1; }
+
+.fineprint {
+  color: var(--muted); font-size: 0.76rem; line-height: 1.55;
+  margin-top: 1.5rem; max-width: 26em; margin-left: auto; margin-right: auto;
+}
+.fineprint a { color: var(--gold-dark); }
+
+/* ── Стан «лист надіслано» ── */
+.sent-icon { font-size: 2.4rem; margin-bottom: 1rem; }
+.sent-title {
+  font-family: 'Georgia', serif; font-size: 1.3rem; font-weight: 700;
+  color: var(--ink); margin-bottom: 0.75rem;
+}
+.sent-text { color: var(--ink2); font-size: 0.98rem; line-height: 1.65; margin-bottom: 1.5rem; }
+.sent-text strong { color: var(--ink); }
+.resend-btn {
+  background: none; border: none; cursor: pointer; font-family: inherit;
+  color: var(--terra-dark); font-size: 0.9rem; font-weight: 600;
+  text-decoration: underline; padding: 0.3rem;
+}
+.resend-btn:disabled { color: var(--muted); text-decoration: none; cursor: default; }
+
+/* ── Стан «увійшла» ── */
+.logged-icon {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: rgba(74,124,58,.15); color: var(--green);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; margin-left: auto; margin-right: auto; margin-bottom: 1.1rem;
+}
+.logged-title {
+  font-family: 'Georgia', serif; font-size: 1.35rem; font-weight: 700;
+  color: var(--ink); margin-bottom: 0.4rem;
+}
+.logged-email {
+  color: var(--terra-dark); font-weight: 600; font-size: 1rem; margin-bottom: 1.75rem;
+  word-break: break-all;
+}
+.btn-ghost {
+  width: 100%;
+  padding-top: 0.85rem; padding-bottom: 0.85rem;
+  background: var(--bg); color: var(--terra-dark);
+  border: 1.5px solid var(--terra); border-radius: 10px;
+  font-family: inherit; font-size: 0.98rem; font-weight: 700; cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.btn-ghost:hover { background: var(--terra); color: #fff; }
+
+.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- ═══ Форма входу ═══ -->
+  <div id="viewForm">
+    <div class="logo-dot">К</div>
+    <h1>Вхід у Крок за горизонт</h1>
+    <p class="subtitle">Без пароля. Введи пошту, і ми надішлемо посилання для входу.</p>
+
+    <div class="field">
+      <label for="email">Твоя пошта</label>
+      <input type="email" id="email" placeholder="you@example.com" autocomplete="email" inputmode="email" spellcheck="false">
+    </div>
+
+    <button class="btn" id="submitBtn" onclick="onSubmitEmail()">Отримати посилання для входу</button>
+    <p class="error" id="errorMsg"></p>
+
+    <p class="fineprint">
+      Натискаючи кнопку, ти погоджуєшся зі збереженням твого прогресу і пошти для роботи сервісу.
+      <!-- TODO: посилання на політику конфіденційності -->
+    </p>
+  </div>
+
+  <!-- ═══ Лист надіслано ═══ -->
+  <div id="viewSent" class="hidden">
+    <div class="sent-icon">✉️</div>
+    <div class="sent-title">Лист уже летить</div>
+    <p class="sent-text">
+      Перевір пошту <strong id="sentEmail"></strong> і натисни на посилання.<br>
+      Якщо листа нема, зазирни в Спам.
+    </p>
+    <button class="resend-btn" id="resendBtn" onclick="onResend()" disabled>Надіслати ще раз (60)</button>
+  </div>
+
+  <!-- ═══ Увійшла ═══ -->
+  <div id="viewLogged" class="hidden">
+    <div class="logged-icon">✓</div>
+    <div class="logged-title">Ти увійшла</div>
+    <p class="logged-email" id="loggedEmail"></p>
+    <button class="btn-ghost" onclick="onSignOut()">Вийти</button>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/js/supabase-client.js"></script>
+<script>
+var viewForm = document.getElementById('viewForm');
+var viewSent = document.getElementById('viewSent');
+var viewLogged = document.getElementById('viewLogged');
+var submitBtn = document.getElementById('submitBtn');
+var errorMsg = document.getElementById('errorMsg');
+var emailInput = document.getElementById('email');
+var resendBtn = document.getElementById('resendBtn');
+
+var lastEmail = '';
+var resendTimer = null;
+
+function show(view) {
+  viewForm.classList.add('hidden');
+  viewSent.classList.add('hidden');
+  viewLogged.classList.add('hidden');
+  view.classList.remove('hidden');
+}
+
+function showError(msg) {
+  errorMsg.textContent = msg;
+  errorMsg.classList.add('show');
+}
+function clearError() { errorMsg.classList.remove('show'); }
+
+function setLoading(on) {
+  submitBtn.disabled = on;
+  submitBtn.textContent = on ? 'Надсилаємо…' : 'Отримати посилання для входу';
+}
+
+function showLoggedIn(email) {
+  document.getElementById('loggedEmail').textContent = email;
+  show(viewLogged);
+}
+
+function showSent(email) {
+  document.getElementById('sentEmail').textContent = email;
+  show(viewSent);
+  startResendCountdown();
+}
+
+function startResendCountdown() {
+  var left = 60;
+  resendBtn.disabled = true;
+  resendBtn.textContent = 'Надіслати ще раз (' + left + ')';
+  clearInterval(resendTimer);
+  resendTimer = setInterval(function () {
+    left--;
+    if (left <= 0) {
+      clearInterval(resendTimer);
+      resendBtn.disabled = false;
+      resendBtn.textContent = 'Надіслати ще раз';
+    } else {
+      resendBtn.textContent = 'Надіслати ще раз (' + left + ')';
+    }
+  }, 1000);
+}
+
+async function onSubmitEmail() {
+  clearError();
+  var email = emailInput.value;
+  if (!/^\S+@\S+\.\S+$/.test(email)) {
+    return showError('Перевір адресу, здається, в ній помилка');
+  }
+  setLoading(true);
+  try {
+    var res = await sendMagicLink(email);
+    setLoading(false);
+    if (res.error) {
+      return showError('Не вдалося надіслати. Спробуй ще раз за хвилину.');
+    }
+    lastEmail = email.trim().toLowerCase();
+    showSent(lastEmail);
+  } catch (e) {
+    setLoading(false);
+    showError('Не вдалося надіслати. Спробуй ще раз за хвилину.');
+  }
+}
+
+async function onResend() {
+  if (!lastEmail) return;
+  resendBtn.disabled = true;
+  try {
+    var res = await sendMagicLink(lastEmail);
+    if (res.error) {
+      resendBtn.disabled = false;
+      return;
+    }
+    startResendCountdown();
+  } catch (e) {
+    resendBtn.disabled = false;
+  }
+}
+
+async function onSignOut() {
+  await signOut();
+  clearError();
+  emailInput.value = '';
+  show(viewForm);
+}
+
+// Enter у полі = сабміт
+emailInput.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') onSubmitEmail();
+});
+emailInput.addEventListener('input', clearError);
+
+// Ініціалізація: якщо сесія вже є — показати «увійшла».
+// Коли людина повертається за посиланням з листа, supabase-js сам зчитує
+// токен з URL і створює сесію — ловимо через onAuthStateChange.
+document.addEventListener('DOMContentLoaded', async function () {
+  try {
+    var user = await getCurrentUser();
+    if (user) showLoggedIn(user.email);
+    sb.auth.onAuthStateChange(function (_event, session) {
+      if (session) showLoggedIn(session.user.email);
+    });
+  } catch (e) {
+    // Supabase ще не налаштований (плейсхолдери) — лишаємо форму видимою.
+  }
+});
+</script>
+
+</body>
+</html>
