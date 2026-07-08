@@ -208,6 +208,39 @@ h1.title {
   font-size: .82rem; color: var(--muted); margin-top: .75rem; line-height: 1.6;
   max-width: 24em; margin-left: auto; margin-right: auto;
 }
+
+/* ═══════ CLOUD INVITE (запрошення увійти) ═══════ */
+.cloud-invite {
+  background: var(--card); border: 1.5px solid var(--bamboo); border-radius: 16px;
+  margin-top: 1.75rem; text-align: center;
+  padding-top: 1.75rem; padding-bottom: 1.75rem; padding-left: 1.4rem; padding-right: 1.4rem;
+}
+.cloud-invite-label {
+  font-size: .7rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--bamboo-dark); font-weight: 700; margin-bottom: .7rem;
+}
+.cloud-invite-title {
+  font-family: 'Georgia', serif; font-size: 1.3rem; font-weight: 700;
+  color: var(--ink); margin-bottom: .7rem;
+}
+.cloud-invite-text {
+  font-size: .95rem; line-height: 1.65; color: var(--ink2);
+  max-width: 24em; margin-left: auto; margin-right: auto; margin-bottom: 1.4rem;
+}
+.cloud-invite-btn {
+  display: inline-block; text-decoration: none;
+  background: var(--bamboo); color: #fff;
+  padding-top: .85rem; padding-bottom: .85rem; padding-left: 1.75rem; padding-right: 1.75rem;
+  border-radius: 10px; font-weight: 700; font-size: 1rem;
+  transition: background .2s;
+}
+.cloud-invite-btn:hover { background: var(--bamboo-dark); }
+.cloud-invite-dismiss {
+  display: block; margin-top: 1rem; margin-left: auto; margin-right: auto;
+  background: none; border: none; cursor: pointer; font-family: inherit;
+  font-size: .82rem; color: var(--muted); text-decoration: underline;
+}
+.cloud-invite-dismiss:hover { color: var(--bamboo-dark); }
 </style>
 </head>
 <body>
@@ -394,6 +427,15 @@ h1.title {
   <div class="counter" id="counter" style="display:none;"></div>
   <div class="counter-fine" id="counterFine" style="display:none;">висота умовна. Важлива не цифра, а те, що вона росте.</div>
 
+  <!-- Запрошення увійти (показується після 3-го дня для незалогінених, один раз) -->
+  <div class="cloud-invite" id="cloudInvite" style="display:none;">
+    <div class="cloud-invite-label">Твоя серія</div>
+    <div class="cloud-invite-title">Уже три дні поспіль</div>
+    <p class="cloud-invite-text">Твій бамбук росте, і цей прогрес варто зберегти. Увійди, і він залишиться з тобою назавжди, на будь-якому пристрої, з телефона чи ноутбука. Не тільки тут, у цьому браузері.</p>
+    <a class="cloud-invite-btn" href="/vhid.html">Зберегти мій прогрес →</a>
+    <button class="cloud-invite-dismiss" id="cloudInviteDismiss">Не зараз</button>
+  </div>
+
   <!-- Форма дня -->
   <div class="day-card" id="dayForm" style="display:none;">
     <div class="q-label">Наскільки сьогодні ти рухалась до свого результату?</div>
@@ -441,6 +483,10 @@ h1.title {
   </div>
 
 </div>
+
+<!-- Supabase (хмарне збереження для залогінених) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/js/supabase-client.js"></script>
 
 <script>
 (function() {
@@ -653,11 +699,118 @@ h1.title {
     renderBamboo();
     showSaved();
     document.getElementById('gapNote').style.display = 'none';
+    syncBambukToCloud();      // тихо у фоні, якщо залогінена
+    maybeShowCloudInvite();   // після 3-го дня, для незалогінених, один раз
   });
 
   document.getElementById('editLink').addEventListener('click', function() {
     showForm(state.entries[today]);
   });
+
+  document.getElementById('cloudInviteDismiss').addEventListener('click', function() {
+    document.getElementById('cloudInvite').style.display = 'none';
+  });
+
+  // ═══════ ХМАРА (Supabase) ═══════
+  // Усі функції безпечні, якщо supabase-client не завантажився (офлайн/CDN):
+  // Бамбук працює на localStorage як завжди.
+
+  function cloudReady() { return typeof getCurrentUser === 'function'; }
+
+  // Тиха синхронізація localStorage → хмара (тільки для залогінених)
+  async function syncBambukToCloud() {
+    if (!cloudReady()) return;
+    var user = await getCurrentUser();
+    if (!user) return;                 // незалогінений — тихо виходимо
+    var raw = localStorage.getItem(KEY);
+    if (!raw) return;
+    try {
+      await saveProgress('bambuk', JSON.parse(raw));
+    } catch (e) {
+      // помилка синхронізації не ламає трекер; дані вже в localStorage
+      console.warn('cloud sync skipped', e);
+    }
+  }
+
+  // Звірка localStorage і хмари при вході. Джерело істини — де більше днів.
+  async function loadBambukOnStart() {
+    if (!cloudReady()) return;
+    var user = await getCurrentUser();
+    if (!user) return;
+
+    var cloud = await loadProgress('bambuk');           // об'єкт або null
+    var localRaw = localStorage.getItem(KEY);
+    var local = localRaw ? JSON.parse(localRaw) : null;
+
+    var cloudDays = (cloud && cloud.entries) ? Object.keys(cloud.entries).length : 0;
+    var localDays = (local && local.entries) ? Object.keys(local.entries).length : 0;
+
+    if (cloudDays > localDays) {
+      // хмара багатша (Бамбук вели на іншому пристрої) — підтягуємо
+      state = cloud;
+      if (!state.entries) state.entries = {};
+      localStorage.setItem(KEY, JSON.stringify(state));
+      renderBamboo();                                   // наявна функція рендеру
+      if (state.entries[today]) showSaved(); else showForm(null);
+    } else if (localDays > cloudDays) {
+      // локально багатше — заливаємо в хмару
+      try { await saveProgress('bambuk', local); } catch (e) { console.warn('cloud push skipped', e); }
+    }
+    // рівні — нічого не робимо
+  }
+
+  // Запрошення увійти: після 3-го дня, тільки незалогіненим, один раз
+  async function maybeShowCloudInvite() {
+    if (!cloudReady()) { return checkInviteLocalOnly(); }
+    var user = await getCurrentUser();
+    if (user) return;                                   // вже залогінена — не турбуємо
+    checkInviteLocalOnly();
+  }
+
+  function checkInviteLocalOnly() {
+    var data = {};
+    try { data = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+    if (data.cloudInviteShown) return;                  // вже показували
+    var days = data.entries ? Object.keys(data.entries).length : 0;
+    if (days !== 3) return;                             // рано або пізно
+    document.getElementById('cloudInvite').style.display = 'block';
+    data.cloudInviteShown = true;
+    state.cloudInviteShown = true;
+    localStorage.setItem(KEY, JSON.stringify(data));
+    if (cloudReady() && typeof trackEvent === 'function') {
+      trackEvent('cloud_invite_shown', { product: 'bambuk', days: 3 });
+    }
+  }
+
+  // Ініціалізація хмари: міграція + звірка + оновлення виноски для залогінених
+  async function initCloud() {
+    if (!cloudReady()) return;
+    try {
+      var user = await getCurrentUser();
+      if (user) {
+        await migrateLocalData('bambuk', KEY);          // разова міграція локального (флаг у модулі)
+        await loadBambukOnStart();                       // крос-пристрій
+        setDeviceNoteForLoggedIn();
+      }
+      // Сесія може активуватись, поки сторінка відкрита (рідко) — теж обробляємо
+      if (typeof sb !== 'undefined' && sb.auth) {
+        sb.auth.onAuthStateChange(async function (_event, session) {
+          if (!session) return;
+          await migrateLocalData('bambuk', KEY);
+          await loadBambukOnStart();
+          setDeviceNoteForLoggedIn();
+        });
+      }
+    } catch (e) {
+      // будь-яка помилка хмари не має валити трекер
+      console.warn('cloud init skipped', e);
+    }
+  }
+
+  function setDeviceNoteForLoggedIn() {
+    var n = document.getElementById('deviceNote');
+    if (n) n.textContent = 'Твій прогрес зберігається у твоєму акаунті. Він з тобою на будь-якому пристрої.';
+  }
 
   // ── Ініціалізація ──
   renderBamboo();
@@ -666,6 +819,7 @@ h1.title {
   } else {
     showForm(null);
   }
+  initCloud();   // хмара підключається у фоні, після миттєвого localStorage-рендеру
 })();
 </script>
 
