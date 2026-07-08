@@ -8,8 +8,8 @@
 // │  2. anon public key  → SUPABASE_ANON_KEY                     │
 // └─────────────────────────────────────────────────────────────┘
 
-const SUPABASE_URL = 'https://XXXX.supabase.co';   // <- ВСТАВИТИ Project URL
-const SUPABASE_ANON_KEY = 'XXXX';                  // <- ВСТАВИТИ anon public key
+const SUPABASE_URL = 'https://qqxcxsxmoelcmyletirl.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_Ym6yiNiTjNT-pJ0Oq_axMQ_A1avpJs8';
 
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
