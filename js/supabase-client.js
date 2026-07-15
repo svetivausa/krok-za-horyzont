@@ -23,7 +23,7 @@ async function getCurrentUser() {
 async function sendMagicLink(email) {
   return sb.auth.signInWithOtp({
     email: email.trim().toLowerCase(),
-    options: { emailRedirectTo: window.location.origin + '/vhid.html' }
+    options: { emailRedirectTo: window.location.origin + '/vhid' }
   });
 }
 
