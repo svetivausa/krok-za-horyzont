@@ -784,27 +784,29 @@ h1.title {
 
   // Ініціалізація хмари: міграція + звірка + оновлення виноски для залогінених
   async function initCloud() {
-    if (!cloudReady()) return;
-    try {
-      var user = await getCurrentUser();
-      if (user) {
-        await migrateLocalData('bambuk', KEY);          // разова міграція локального (флаг у модулі)
-        await loadBambukOnStart();                       // крос-пристрій
+    if (!cloudReady() || typeof sb === 'undefined' || !sb.auth) return;
+    // ВАЖЛИВО: не викликаємо getCurrentUser()/getSession() проактивно тут.
+    // Supabase-js читає збережену сесію АСИНХРОННО одразу після createClient().
+    // Перший виклик getSession() на щойно відкритій сторінці може випередити
+    // цю ініціалізацію і повернути null навіть для залогіненої людини —
+    // без жодної помилки, просто "сесії ще нема". Єдиний надійний спосіб —
+    // підписатись на onAuthStateChange ДО будь-яких власних викликів getSession():
+    // supabase-js гарантовано один раз пришле подію INITIAL_SESSION з готовим
+    // станом (сесія або null), а далі — SIGNED_IN / SIGNED_OUT / TOKEN_REFRESHED
+    // при реальних змінах.
+    var handled = false;
+    sb.auth.onAuthStateChange(async function (_event, session) {
+      if (!session || handled) return;   // ще не залогінена, або вже обробили цю сесію
+      handled = true;
+      try {
+        await migrateLocalData('bambuk', KEY);   // разова міграція локального (флаг у модулі)
+        await loadBambukOnStart();                // крос-пристрій
         setDeviceNoteForLoggedIn();
+      } catch (e) {
+        // будь-яка помилка хмари не має валити трекер
+        console.warn('cloud init skipped', e);
       }
-      // Сесія може активуватись, поки сторінка відкрита (рідко) — теж обробляємо
-      if (typeof sb !== 'undefined' && sb.auth) {
-        sb.auth.onAuthStateChange(async function (_event, session) {
-          if (!session) return;
-          await migrateLocalData('bambuk', KEY);
-          await loadBambukOnStart();
-          setDeviceNoteForLoggedIn();
-        });
-      }
-    } catch (e) {
-      // будь-яка помилка хмари не має валити трекер
-      console.warn('cloud init skipped', e);
-    }
+    });
   }
 
   function setDeviceNoteForLoggedIn() {
