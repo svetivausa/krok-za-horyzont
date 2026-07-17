@@ -78,7 +78,7 @@ h1 {
 .field input:focus { border-color: var(--gold-dark); }
 
 .btn {
-  width: 100%;
+  display: block; width: 100%; text-align: center; text-decoration: none; box-sizing: border-box;
   padding-top: 0.95rem; padding-bottom: 0.95rem;
   border: none; border-radius: 10px;
   font-family: inherit; font-size: 1.02rem; font-weight: 700; cursor: pointer;
@@ -131,15 +131,12 @@ h1 {
   color: var(--terra-dark); font-weight: 600; font-size: 1rem; margin-bottom: 1.75rem;
   word-break: break-all;
 }
-.btn-ghost {
-  width: 100%;
-  padding-top: 0.85rem; padding-bottom: 0.85rem;
-  background: var(--bg); color: var(--terra-dark);
-  border: 1.5px solid var(--terra); border-radius: 10px;
-  font-family: inherit; font-size: 0.98rem; font-weight: 700; cursor: pointer;
-  transition: background .2s, color .2s;
+.signout-link {
+  display: block; margin: 1.25rem auto 0;
+  background: none; border: none; cursor: pointer; font-family: inherit;
+  font-size: .82rem; color: var(--muted); text-decoration: underline;
 }
-.btn-ghost:hover { background: var(--terra); color: #fff; }
+.signout-link:hover { color: var(--terra-dark); }
 
 .hidden { display: none; }
 </style>
@@ -184,7 +181,8 @@ h1 {
     <div class="logged-icon">✓</div>
     <div class="logged-title">Ти увійшла</div>
     <p class="logged-email" id="loggedEmail"></p>
-    <button class="btn-ghost" onclick="onSignOut()">Вийти</button>
+    <a class="btn" id="continueBtn" href="/">Продовжити →</a>
+    <button class="signout-link" onclick="onSignOut()">Вийти</button>
   </div>
 
 </div>
@@ -202,6 +200,16 @@ var resendBtn = document.getElementById('resendBtn');
 
 var lastEmail = '';
 var resendTimer = null;
+
+// Куди повернути людину після входу. Приймаємо тільки внутрішні шляхи —
+// має починатись рівно з одного "/" (не "//host", не "\..." тощо).
+// Все інше (порожньо, зовнішній URL, сміття) тихо підміняємо на "/".
+function getSafeNext() {
+  var raw = new URLSearchParams(window.location.search).get('next') || '';
+  var isSafe = raw.charAt(0) === '/' && raw.charAt(1) !== '/' && raw.indexOf('\\') === -1;
+  return isSafe ? raw : '/';
+}
+var nextParam = getSafeNext();
 
 function show(view) {
   viewForm.classList.add('hidden');
@@ -223,6 +231,9 @@ function setLoading(on) {
 
 function showLoggedIn(email) {
   document.getElementById('loggedEmail').textContent = email;
+  var continueBtn = document.getElementById('continueBtn');
+  continueBtn.href = nextParam;
+  continueBtn.textContent = (nextParam === '/') ? 'На головну →' : 'Продовжити →';
   show(viewLogged);
 }
 
@@ -257,7 +268,7 @@ async function onSubmitEmail() {
   }
   setLoading(true);
   try {
-    var res = await sendMagicLink(email);
+    var res = await sendMagicLink(email, nextParam);
     setLoading(false);
     if (res.error) {
       return showError('Не вдалося надіслати. Спробуй ще раз за хвилину.');
@@ -274,7 +285,7 @@ async function onResend() {
   if (!lastEmail) return;
   resendBtn.disabled = true;
   try {
-    var res = await sendMagicLink(lastEmail);
+    var res = await sendMagicLink(lastEmail, nextParam);
     if (res.error) {
       resendBtn.disabled = false;
       return;

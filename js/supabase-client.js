@@ -19,11 +19,14 @@ async function getCurrentUser() {
   return session ? session.user : null;
 }
 
-// Надіслати magic link на пошту
-async function sendMagicLink(email) {
+// Надіслати magic link на пошту. next (опційно) — куди повернути людину
+// після входу; має пережити клік з листа, тож зашитий у emailRedirectTo.
+async function sendMagicLink(email, next) {
+  var redirectTo = window.location.origin + '/vhid';
+  if (next) redirectTo += '?next=' + encodeURIComponent(next);
   return sb.auth.signInWithOtp({
     email: email.trim().toLowerCase(),
-    options: { emailRedirectTo: window.location.origin + '/vhid' }
+    options: { emailRedirectTo: redirectTo }
   });
 }
 

@@ -432,7 +432,7 @@ h1.title {
     <div class="cloud-invite-label">Твоя серія</div>
     <div class="cloud-invite-title">Уже три дні поспіль</div>
     <p class="cloud-invite-text">Твій бамбук росте, і цей прогрес варто зберегти. Увійди, і він залишиться з тобою назавжди, на будь-якому пристрої, з телефона чи ноутбука. Не тільки тут, у цьому браузері.</p>
-    <a class="cloud-invite-btn" href="/vhid.html">Зберегти мій прогрес →</a>
+    <a class="cloud-invite-btn" href="/vhid?next=/bambuk-treker">Зберегти мій прогрес →</a>
     <button class="cloud-invite-dismiss" id="cloudInviteDismiss">Не зараз</button>
   </div>
 
@@ -772,13 +772,13 @@ h1.title {
     try { data = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
     if (data.cloudInviteShown) return;                  // вже показували
     var days = data.entries ? Object.keys(data.entries).length : 0;
-    if (days !== 3) return;                             // рано або пізно
+    if (days < 3) return;                                // ще рано; прапорець нижче гарантує показ лиш раз
     document.getElementById('cloudInvite').style.display = 'block';
     data.cloudInviteShown = true;
     state.cloudInviteShown = true;
     localStorage.setItem(KEY, JSON.stringify(data));
     if (cloudReady() && typeof trackEvent === 'function') {
-      trackEvent('cloud_invite_shown', { product: 'bambuk', days: 3 });
+      trackEvent('cloud_invite_shown', { product: 'bambuk', days: days });
     }
   }
 
