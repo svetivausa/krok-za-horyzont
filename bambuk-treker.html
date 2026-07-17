@@ -429,8 +429,8 @@ h1.title {
 
   <!-- Запрошення увійти (показується після 3-го дня для незалогінених, один раз) -->
   <div class="cloud-invite" id="cloudInvite" style="display:none;">
-    <div class="cloud-invite-label">Твоя серія</div>
-    <div class="cloud-invite-title">Уже три дні поспіль</div>
+    <div class="cloud-invite-label">Твій бамбук</div>
+    <div class="cloud-invite-title" id="cloudInviteTitle">Уже три дні</div>
     <p class="cloud-invite-text">Твій бамбук росте, і цей прогрес варто зберегти. Увійди, і він залишиться з тобою назавжди, на будь-якому пристрої, з телефона чи ноутбука. Не тільки тут, у цьому браузері.</p>
     <a class="cloud-invite-btn" href="/vhid?next=/bambuk-treker">Зберегти мій прогрес →</a>
     <button class="cloud-invite-dismiss" id="cloudInviteDismiss">Не зараз</button>
@@ -759,6 +759,15 @@ h1.title {
     // рівні — нічого не робимо
   }
 
+  // Відмінювання "день/дні/днів" за числом
+  function pluralDays(n) {
+    var mod10 = n % 10, mod100 = n % 100;
+    if (mod100 >= 11 && mod100 <= 14) return 'днів';
+    if (mod10 === 1) return 'день';
+    if (mod10 >= 2 && mod10 <= 4) return 'дні';
+    return 'днів';
+  }
+
   // Запрошення увійти: після 3-го дня, тільки незалогіненим, один раз
   async function maybeShowCloudInvite() {
     if (!cloudReady()) { return checkInviteLocalOnly(); }
@@ -773,6 +782,7 @@ h1.title {
     if (data.cloudInviteShown) return;                  // вже показували
     var days = data.entries ? Object.keys(data.entries).length : 0;
     if (days < 3) return;                                // ще рано; прапорець нижче гарантує показ лиш раз
+    document.getElementById('cloudInviteTitle').textContent = 'Уже ' + days + ' ' + pluralDays(days);
     document.getElementById('cloudInvite').style.display = 'block';
     data.cloudInviteShown = true;
     state.cloudInviteShown = true;
