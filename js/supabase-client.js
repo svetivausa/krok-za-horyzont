@@ -26,16 +26,9 @@ async function getCurrentUser() {
 // (голий домен) → людину кидає на головну. Куди повернути після входу (next)
 // несемо через localStorage у vhid.html, не через query цього посилання.
 async function sendMagicLink(email) {
-  var redirectTo = window.location.origin + '/vhid';
-  console.log('[KZH] sendMagicLink →', {
-    origin: window.location.origin,
-    emailRedirectTo: redirectTo,
-    vhid_next_in_localStorage: (function(){ try { return localStorage.getItem('vhid_next'); } catch(e){ return '(err)'; } })(),
-    email: email.trim().toLowerCase()
-  });
   return sb.auth.signInWithOtp({
     email: email.trim().toLowerCase(),
-    options: { emailRedirectTo: redirectTo }
+    options: { emailRedirectTo: window.location.origin + '/vhid' }
   });
 }
 
