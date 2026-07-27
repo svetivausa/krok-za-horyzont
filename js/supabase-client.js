@@ -19,14 +19,16 @@ async function getCurrentUser() {
   return session ? session.user : null;
 }
 
-// Надіслати magic link на пошту. next (опційно) — куди повернути людину
-// після входу; має пережити клік з листа, тож зашитий у emailRedirectTo.
-async function sendMagicLink(email, next) {
-  var redirectTo = window.location.origin + '/vhid';
-  if (next) redirectTo += '?next=' + encodeURIComponent(next);
+// Надіслати magic link на пошту.
+// emailRedirectTo — ЗАВЖДИ чистий ${origin}/vhid, без query.
+// Причина: Supabase матчить redirect_to зі списком Redirect URLs цілим URL.
+// Будь-який query (?next=...) ламає збіг, і Supabase мовчки підставляє Site URL
+// (голий домен) → людину кидає на головну. Куди повернути після входу (next)
+// несемо через localStorage у vhid.html, не через query цього посилання.
+async function sendMagicLink(email) {
   return sb.auth.signInWithOtp({
     email: email.trim().toLowerCase(),
-    options: { emailRedirectTo: redirectTo }
+    options: { emailRedirectTo: window.location.origin + '/vhid' }
   });
 }
 
