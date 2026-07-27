@@ -87,3 +87,21 @@ create policy "own events select" on public.events
 
 -- Видалення рядків користувачам свідомо НЕ даємо: журнал подій і прогрес
 -- не повинні зникати випадково. Світлана має повний доступ через панель Supabase.
+
+
+-- ─────────────────────────────────────────────
+-- КРОК 3. Table-level GRANT для ролі authenticated
+-- ─────────────────────────────────────────────
+-- RLS вмикає перевірку рядків, АЛЕ не видає базового права на таблицю.
+-- Таблиці, створені через SQL Editor, не завжди успадковують дефолтні
+-- привілеї Supabase — і тоді навіть залогінений користувач (роль
+-- authenticated) отримує "42501: permission denied for table" при будь-якому
+-- читанні/записі через API, а синхронізація тихо падає (помилка ловиться і
+-- гаситься на клієнті). RLS-політики вище все одно обмежують доступ рядками
+-- (auth.uid() = user_id), тож ці GRANT безпечні. anon свідомо БЕЗ прав —
+-- застосунок звертається до цих таблиць лише коли людина увійшла.
+
+grant usage on schema public to authenticated;
+grant select, insert, update on public.progress to authenticated;
+grant select, insert          on public.events   to authenticated;
+grant select, update          on public.profiles to authenticated;
