@@ -218,14 +218,29 @@ function sanitizeNext(raw) {
 // 2) localStorage — коли людина повертається за посиланням з листа (query вже нема).
 // Порожньо → "/".
 function resolveNext() {
-  var fromUrl = sanitizeNext(new URLSearchParams(window.location.search).get('next'));
+  var rawUrl = new URLSearchParams(window.location.search).get('next');
+  var fromUrl = sanitizeNext(rawUrl);
+  var lsBefore = (function(){ try { return localStorage.getItem(NEXT_KEY); } catch(e){ return '(err)'; } })();
+  var resolved;
   if (fromUrl) {
     try { localStorage.setItem(NEXT_KEY, fromUrl); } catch (e) {}
-    return fromUrl;
+    resolved = fromUrl;
+  } else {
+    var fromStore = '';
+    try { fromStore = sanitizeNext(localStorage.getItem(NEXT_KEY)); } catch (e) {}
+    resolved = fromStore || '/';
   }
-  var fromStore = '';
-  try { fromStore = sanitizeNext(localStorage.getItem(NEXT_KEY)); } catch (e) {}
-  return fromStore || '/';
+  console.log('[KZH] resolveNext →', {
+    href: window.location.href,
+    origin: window.location.origin,
+    hash_present: !!window.location.hash,
+    hash_head: window.location.hash ? window.location.hash.slice(0, 30) + '…' : '(none)',
+    url_next_raw: rawUrl,
+    url_next_sanitized: fromUrl,
+    localStorage_next_before: lsBefore,
+    resolved: resolved
+  });
+  return resolved;
 }
 var nextParam = resolveNext();
 
@@ -334,12 +349,20 @@ emailInput.addEventListener('input', clearError);
 // токен з URL і створює сесію — ловимо через onAuthStateChange.
 document.addEventListener('DOMContentLoaded', async function () {
   try {
-    var user = await getCurrentUser();
-    if (user) showLoggedIn(user.email);
+    console.log('[KZH] vhid init: реєструю onAuthStateChange, потім getCurrentUser');
     sb.auth.onAuthStateChange(function (_event, session) {
+      console.log('[KZH] vhid onAuthStateChange →', {
+        event: _event,
+        has_session: !!session,
+        user_email: session && session.user ? session.user.email : null
+      });
       if (session) showLoggedIn(session.user.email);
     });
+    var user = await getCurrentUser();
+    console.log('[KZH] vhid getCurrentUser →', { user_email: user ? user.email : null });
+    if (user) showLoggedIn(user.email);
   } catch (e) {
+    console.log('[KZH] vhid init ПОМИЛКА:', e && e.message);
     // Supabase ще не налаштований (плейсхолдери) — лишаємо форму видимою.
   }
 });

@@ -719,23 +719,28 @@ h1.title {
 
   // Тиха синхронізація localStorage → хмара (тільки для залогінених)
   async function syncBambukToCloud() {
-    if (!cloudReady()) return;
+    if (!cloudReady()) { console.log('[KZH] syncBambukToCloud: cloudReady=false, вихід'); return; }
     var user = await getCurrentUser();
+    console.log('[KZH] syncBambukToCloud → user:', user ? user.email : null);
     if (!user) return;                 // незалогінений — тихо виходимо
     var raw = localStorage.getItem(KEY);
-    if (!raw) return;
+    if (!raw) { console.log('[KZH] syncBambukToCloud: localStorage порожній, вихід'); return; }
+    var localDays = 0;
+    try { localDays = Object.keys(JSON.parse(raw).entries || {}).length; } catch(e) {}
     try {
-      await saveProgress('bambuk', JSON.parse(raw));
+      var res = await saveProgress('bambuk', JSON.parse(raw));
+      console.log('[KZH] syncBambukToCloud: saveProgress OK, залито днів:', localDays, '| error:', res && res.error ? res.error.message : null);
     } catch (e) {
       // помилка синхронізації не ламає трекер; дані вже в localStorage
-      console.warn('cloud sync skipped', e);
+      console.warn('[KZH] syncBambukToCloud: saveProgress ПОМИЛКА', e);
     }
   }
 
   // Звірка localStorage і хмари при вході. Джерело істини — де більше днів.
   async function loadBambukOnStart() {
-    if (!cloudReady()) return;
+    if (!cloudReady()) { console.log('[KZH] loadBambukOnStart: cloudReady=false, вихід'); return; }
     var user = await getCurrentUser();
+    console.log('[KZH] loadBambukOnStart → user:', user ? user.email : null);
     if (!user) return;
 
     var cloud = await loadProgress('bambuk');           // об'єкт або null
@@ -744,9 +749,11 @@ h1.title {
 
     var cloudDays = (cloud && cloud.entries) ? Object.keys(cloud.entries).length : 0;
     var localDays = (local && local.entries) ? Object.keys(local.entries).length : 0;
+    console.log('[KZH] loadBambukOnStart → порівняння днів:', { localDays: localDays, cloudDays: cloudDays, cloud_is_null: cloud === null });
 
     if (cloudDays > localDays) {
       // хмара багатша (Бамбук вели на іншому пристрої) — підтягуємо
+      console.log('[KZH] loadBambukOnStart: хмара багатша → підтягую в localStorage');
       state = cloud;
       if (!state.entries) state.entries = {};
       localStorage.setItem(KEY, JSON.stringify(state));
@@ -754,9 +761,11 @@ h1.title {
       if (state.entries[today]) showSaved(); else showForm(null);
     } else if (localDays > cloudDays) {
       // локально багатше — заливаємо в хмару
-      try { await saveProgress('bambuk', local); } catch (e) { console.warn('cloud push skipped', e); }
+      console.log('[KZH] loadBambukOnStart: локально багатше → заливаю в хмару');
+      try { var res = await saveProgress('bambuk', local); console.log('[KZH] loadBambukOnStart: push OK, error:', res && res.error ? res.error.message : null); } catch (e) { console.warn('[KZH] loadBambukOnStart: push ПОМИЛКА', e); }
+    } else {
+      console.log('[KZH] loadBambukOnStart: днів порівну → нічого не роблю');
     }
-    // рівні — нічого не робимо
   }
 
   // Відмінювання "день/дні/днів" за числом
@@ -794,6 +803,13 @@ h1.title {
 
   // Ініціалізація хмари: міграція + звірка + оновлення виноски для залогінених
   async function initCloud() {
+    console.log('[KZH] Бамбук initCloud →', {
+      cloudReady: cloudReady(),
+      sb_defined: typeof sb !== 'undefined',
+      origin: window.location.origin,
+      href: window.location.href,
+      local_days: (function(){ try { return Object.keys((JSON.parse(localStorage.getItem(KEY)||'{}').entries)||{}).length; } catch(e){ return '(err)'; } })()
+    });
     if (!cloudReady() || typeof sb === 'undefined' || !sb.auth) return;
     // ВАЖЛИВО: не викликаємо getCurrentUser()/getSession() проактивно тут.
     // Supabase-js читає збережену сесію АСИНХРОННО одразу після createClient().
@@ -806,15 +822,22 @@ h1.title {
     // при реальних змінах.
     var handled = false;
     sb.auth.onAuthStateChange(async function (_event, session) {
+      console.log('[KZH] Бамбук onAuthStateChange →', {
+        event: _event,
+        has_session: !!session,
+        user_email: session && session.user ? session.user.email : null,
+        already_handled: handled
+      });
       if (!session || handled) return;   // ще не залогінена, або вже обробили цю сесію
       handled = true;
       try {
         await migrateLocalData('bambuk', KEY);   // разова міграція локального (флаг у модулі)
         await loadBambukOnStart();                // крос-пристрій
         setDeviceNoteForLoggedIn();
+        console.log('[KZH] Бамбук: міграція+звірка завершені');
       } catch (e) {
         // будь-яка помилка хмари не має валити трекер
-        console.warn('cloud init skipped', e);
+        console.warn('[KZH] Бамбук cloud init ПОМИЛКА', e);
       }
     });
   }
