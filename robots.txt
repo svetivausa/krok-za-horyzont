@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /api/
 
-Sitemap: https://krok-za-horyzont.vercel.app/sitemap.xml
+Sitemap: https://www.svitlana-slipchenko.pp.ua/sitemap.xml
