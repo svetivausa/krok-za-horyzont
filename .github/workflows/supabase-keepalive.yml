@@ -1,0 +1,30 @@
+name: Supabase keep-alive
+
+# Не даємо безкоштовному проєкту Supabase заснути через 7 днів без активності.
+# Легкий пінг до REST API рахується як активність і скидає таймер неактивності.
+# anon-ключ нижче публічний за дизайном (він і так у supabase-client.js на сайті),
+# доступ до даних захищає RLS, тож тримати його тут безпечно.
+
+on:
+  schedule:
+    - cron: '0 6 * * 1,3,5'   # Пн, Ср, Пт о 06:00 UTC (максимальний розрив ~3 дні, добре в межах 7)
+  workflow_dispatch:            # дозволяє запустити вручну кнопкою в GitHub
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Пінг Supabase, щоб проєкт не заснув
+        env:
+          SUPABASE_URL: https://qqxcxsxmoelcmyletirl.supabase.co
+          SUPABASE_ANON_KEY: sb_publishable_Ym6yiNiTjNT-pJ0Oq_axMQ_A1avpJs8
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 \
+            "$SUPABASE_URL/rest/v1/" \
+            -H "apikey: $SUPABASE_ANON_KEY") || code="000"
+          echo "Supabase REST відповів: HTTP $code"
+          if [ "$code" = "000" ]; then
+            echo "::error::Немає відповіді від Supabase — проєкт міг бути призупинений або недоступний. Перевір дашборд supabase.com."
+            exit 1
+          fi
+          echo "Проєкт активний. Таймер неактивності скинуто."
