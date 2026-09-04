@@ -2064,22 +2064,6 @@ button { -webkit-tap-highlight-color:transparent; }
           </div>
         </div>
       </div>
-
-      <!-- Featured (запис семінару зʼявиться пізніше) -->
-      <div class="video-featured reveal">
-        <div class="vf-thumb">
-          <div class="video-thumb-placeholder" style="position:absolute;inset:0;">
-            <div class="play-btn" style="width:72px;height:72px;"><span style="display:block;width:0;height:0;border-style:solid;border-width:14px 0 14px 24px;border-color:transparent transparent transparent #fff;margin-left:5px;"></span></div>
-            <div class="vt-title" style="font-size:.82rem;">Повна запис семінару «Крок за горизонт» · Київ 2025</div>
-          </div>
-        </div>
-        <div class="vf-info">
-          <div class="vf-badge">✦ Рекомендуємо подивитись</div>
-          <div class="vf-title">Семінар «Крок за горизонт» — повний запис. Київ, 2025</div>
-          <p class="vf-desc">Повний запис дводенного семінару. Теорія інтуїції, практичні вправи, групова робота, розбір реальних ситуацій учасників. Найкращий спосіб відчути формат, якщо ще не були на живому заході.</p>
-          <div class="vf-meta">📅 Листопад 2025 · ⏱ 3 год 42 хв · 👥 Семінар</div>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -2806,9 +2790,6 @@ function filterVideos(cat, btn) {
   document.querySelectorAll('#videoGrid .video-card').forEach(card => {
     card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
   });
-  // «Рекомендоване» — це запис семінару, показуємо лише під «Всі відео» і «Семінари»
-  const featured = document.querySelector('#page-videos .video-featured');
-  if (featured) featured.style.display = (cat === 'all' || cat === 'seminar') ? '' : 'none';
 }
 
 /* ── REVIEW TABS ── */
