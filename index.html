@@ -2806,6 +2806,9 @@ function filterVideos(cat, btn) {
   document.querySelectorAll('#videoGrid .video-card').forEach(card => {
     card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
   });
+  // «Рекомендоване» — це запис семінару, показуємо лише під «Всі відео» і «Семінари»
+  const featured = document.querySelector('#page-videos .video-featured');
+  if (featured) featured.style.display = (cat === 'all' || cat === 'seminar') ? '' : 'none';
 }
 
 /* ── REVIEW TABS ── */
