@@ -105,3 +105,33 @@ grant usage on schema public to authenticated;
 grant select, insert, update on public.progress to authenticated;
 grant select, insert          on public.events   to authenticated;
 grant select, update          on public.profiles to authenticated;
+
+
+-- ─────────────────────────────────────────────
+-- КРОК 4. Keep-alive: не даємо безкоштовному проєкту заснути
+-- ─────────────────────────────────────────────
+-- Безкоштовний Supabase призупиняє проєкт після 7 днів без активності БАЗИ.
+-- Простий HTTP-пінг на /rest/v1/ повертає 200, але віддається з кешу PostgREST
+-- і до бази не звертається, тож НЕ рахується як активність — проєкт усе одно
+-- засинав. Тому GitHub Action (.github/workflows/supabase-keepalive.yml) тричі
+-- на тиждень викликає цю RPC-функцію, яка робить справжній UPDATE у базі.
+-- security definer — щоб виклик від анонімної ролі оновив рядок попри RLS;
+-- функція вміє лише оновити один timestamp, більше нічого не робить.
+
+create table if not exists public.keepalive (
+  id smallint primary key,
+  pinged_at timestamptz not null default now()
+);
+insert into public.keepalive (id) values (1) on conflict (id) do nothing;
+
+create or replace function public.keepalive()
+returns timestamptz
+language sql
+security definer
+set search_path = public
+as $$
+  update public.keepalive set pinged_at = now() where id = 1
+  returning pinged_at;
+$$;
+
+grant execute on function public.keepalive() to anon, authenticated;
