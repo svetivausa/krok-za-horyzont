@@ -8,7 +8,7 @@ def common(name_ua, name_en, page):
         (f'<title>{name_ua} - Крок за горизонт</title>',
          f'<title>{name_en} - Beyond the Horizon</title>\n<meta name="robots" content="noindex">\n' + head(page, page)),
         ('<a href="index.html"><img src="logo.png" alt="Крок за горизонт"></a>', '<a href="/en/"><img src="/logo.png" alt="Beyond the Horizon"></a>'),
-        ('<a href="index.html" class="header-back">← На головну</a>',
+        ('<span><a href="index.html" class="header-back">← На головну</a></span>',
          '<span><a href="/' + page + '" class="header-back" hreflang="uk" lang="uk" title="Українська версія" style="margin-right:.5rem;">UA</a>'
          '<a href="/en/" class="header-back">← Home</a></span>'),
         ('<div class="result-type-label">Твій тип інтуїтивного мислення</div>', '<div class="result-type-label">Your intuitive thinking type</div>'),

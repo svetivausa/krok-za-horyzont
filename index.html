@@ -9,6 +9,11 @@
 <meta name="robots" content="index, follow">
 <meta name="language" content="Ukrainian">
 <link rel="canonical" href="https://www.svitlana-slipchenko.pp.ua/">
+<!--hreflang-->
+<link rel="alternate" hreflang="uk" href="https://www.svitlana-slipchenko.pp.ua/">
+<link rel="alternate" hreflang="en" href="https://www.svitlana-slipchenko.pp.ua/en/">
+<link rel="alternate" hreflang="x-default" href="https://www.svitlana-slipchenko.pp.ua/">
+<!--/hreflang-->
 <link rel="icon" type="image/png" href="logo.png">
 <meta name="keywords" content="нейронаука, інтуїція, прийняття рішень, когнітивні упередження, відеолекції, семінари, мозок, стрес, усвідомленість, невизначеність, Крок за горизонт, Світлана Сліпченко">
 <meta name="theme-color" content="#0b0d2b">
@@ -1451,6 +1456,8 @@ button { -webkit-tap-highlight-color:transparent; }
   .test-btn-primary { width:100%; padding:14px; text-align:center; }
   .btn-open-test { width:100%; justify-content:center; }
 }
+.lang-switch { text-decoration:none; display:inline-flex; align-items:center; letter-spacing:.06em; }
+@media (max-width: 820px) { .topbar-actions .btn-outline.lang-switch { display:inline-flex; padding:.35rem .6rem; } }
 </style>
 <!-- Web3Forms — безкоштовна відправка email без бекенду -->
 <!-- Ключ: https://web3forms.com → введи svitlana@... → отримай ключ -->
@@ -1574,6 +1581,7 @@ button { -webkit-tap-highlight-color:transparent; }
   <div class="topbar">
     <div class="topbar-title" id="topbarTitle">Головна</div>
     <div class="topbar-actions">
+      <!--en--><a class="btn-sm btn-outline lang-switch" href="/en/" hreflang="en" lang="en" title="English version">EN</a><!--/en-->
       <button class="btn-sm btn-outline" onclick="showPage('seminars')">Розклад</button>
       <button class="btn-sm btn-primary" onclick="showPage('contact')">Записатися</button>
     </div>

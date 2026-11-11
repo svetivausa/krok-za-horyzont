@@ -9,7 +9,9 @@ from en_common import build, head, ROOT
 START = '<!-- ═══════════════ STICKY MINI-FORMULA ═══════════════ -->'
 END_MARK = '<footer>\n  Крок за горизонт · Лекція «Формула результату»\n</footer>\n'
 
+import re
 src = (ROOT / 'formula-rezultata.html').read_text(encoding='utf-8')
+src = re.sub(r'<!--en-->.*?<!--/en-->', '', src, flags=re.S)
 i = src.index(START)
 j = src.index(END_MARK) + len(END_MARK)
 UA_BODY = src[i:j]

@@ -9,6 +9,9 @@ CYR = '[А-Яа-яІіЇїЄєҐґ]'
 
 def build(src_name, dst_name, pairs, post=None):
     out = (ROOT / src_name).read_text(encoding='utf-8')
+    # UA pages carry an EN switch and hreflang block wrapped in markers; drop them in the EN copy
+    out = re.sub(r'<!--en-->.*?<!--/en-->', '', out, flags=re.S)
+    out = re.sub(r'<!--hreflang-->.*?<!--/hreflang-->\n?', '', out, flags=re.S)
     missing = []
     for ua, en in pairs:
         if ua not in out:

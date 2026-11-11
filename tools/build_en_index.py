@@ -6,6 +6,8 @@ import re, sys, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 src = (ROOT / 'index.html').read_text(encoding='utf-8')
+src = re.sub(r'<!--en-->.*?<!--/en-->\n?\s*', '', src, flags=re.S)
+src = re.sub(r'<!--hreflang-->.*?<!--/hreflang-->\n?', '', src, flags=re.S)
 
 YT_NOTE = '<span class="lang-note" title="Turn on YouTube auto-translated subtitles">🇺🇦 Video in Ukrainian</span>'
 
@@ -48,8 +50,6 @@ PAIRS = [
 # ── EXTRA CSS ──
 ('\n</style>', '''
 .lang-note { font-size:.7rem; color:var(--muted); white-space:nowrap; }
-.lang-switch { text-decoration:none; display:inline-flex; align-items:center; letter-spacing:.06em; }
-@media (max-width: 820px) { .topbar-actions .btn-outline.lang-switch { display:inline-flex; padding:.35rem .6rem; } }
 </style>'''),
 
 # ── SIDEBAR ──

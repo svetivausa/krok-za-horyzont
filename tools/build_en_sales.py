@@ -43,7 +43,7 @@ PAIRS = [
 ('            <option value="Провідник">«Провідник» - 3 490 грн</option>\n', ''),
 
 # HEADER / HERO
-('<a href="/" class="site-logo">Крок за <span>горизонт</span></a>\n  <a href="#form" class="header-cta">Залишити заявку</a>',
+('<a href="/" class="site-logo">Крок за <span>горизонт</span></a>\n  <span><a href="#form" class="header-cta">Залишити заявку</a></span>',
  '<a href="/en/" class="site-logo">Beyond the <span>Horizon</span></a>\n'
  '  <span><a href="/formula-rezultatu-sales.html" class="header-cta" hreflang="uk" lang="uk" title="Українська версія" style="margin-right:.5rem;background:transparent;color:var(--brown);border:1px solid var(--cream-dark);">UA</a>'
  '<a href="#form" class="header-cta">Apply</a></span>'),
