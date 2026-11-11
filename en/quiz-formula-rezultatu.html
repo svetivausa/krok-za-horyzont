@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test: Find the weak component in your Results Formula | Beyond the Horizon</title>
+<meta name="description" content="A free 28-question test across 7 components. Find out what to work on to get the results you want. Personal recommendations by email.">
+<meta name="keywords" content="test, results formula, weak component, self-assessment, psychology, Svitlana Slipchenko">
+<meta name="author" content="Svitlana Slipchenko">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.svitlana-slipchenko.pp.ua/en/quiz-formula-rezultatu.html">
+<link rel="alternate" hreflang="uk" href="https://www.svitlana-slipchenko.pp.ua/quiz-formula-rezultatu.html">
+<link rel="alternate" hreflang="en" href="https://www.svitlana-slipchenko.pp.ua/en/quiz-formula-rezultatu.html">
+<link rel="alternate" hreflang="x-default" href="https://www.svitlana-slipchenko.pp.ua/quiz-formula-rezultatu.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Beyond the Horizon">
+<meta property="og:url" content="https://www.svitlana-slipchenko.pp.ua/en/quiz-formula-rezultatu.html">
+<meta property="og:title" content="Test: Find your weak component">
+<meta property="og:description" content="7 components · 28 questions · 5 minutes. Personal recommendations by email.">
+<meta property="og:image" content="https://www.svitlana-slipchenko.pp.ua/hero.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Test: Find your weak component">
+<meta name="twitter:description" content="7 components · 28 questions · 5 minutes. Personal recommendations by email.">
+<meta name="twitter:image" content="https://www.svitlana-slipchenko.pp.ua/hero.webp">
+<style>
+  :root {
+    --cream: #F5EFE6;
+    --cream-dark: #EDE4D6;
+    --brown: #2C1A0E;
+    --brown-light: #5C3D2E;
+    --terra: #B85042;
+    --terra-light: #D4695A;
+    --gold: #C9A84C;
+    --gold-light: #E2C070;
+    --green: #4A7C6F;
+    --font-display: Georgia, 'Times New Roman', serif;
+    --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--brown);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--brown);
+    padding: 1.2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-family: var(--font-display);
+    color: var(--gold);
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+  }
+  .logo span { color: var(--cream); }
+
+  /* PROGRESS */
+  .progress-wrap {
+    background: var(--brown);
+    padding: 0 2rem 1.2rem;
+  }
+  .progress-label {
+    color: var(--cream-dark);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .progress-bar-bg {
+    height: 6px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--terra-light));
+    border-radius: 3px;
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+  .progress-components {
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 0.7rem;
+    flex-wrap: wrap;
+  }
+  .comp-dot {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 0.2rem 0.6rem;
+    transition: all 0.3s;
+    font-family: var(--font-display);
+    letter-spacing: 0.05em;
+  }
+  .comp-dot.active {
+    color: var(--gold);
+    background: rgba(201,168,76,0.2);
+    border: 1px solid var(--gold);
+  }
+  .comp-dot.done {
+    color: var(--cream);
+    background: rgba(255,255,255,0.15);
+  }
+
+  /* MAIN */
+  .main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  /* INTRO */
+  .intro-block {
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+  .intro-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+  }
+  .intro-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    line-height: 1.2;
+    color: var(--brown);
+    margin-bottom: 1.2rem;
+  }
+  .intro-title em {
+    color: var(--terra);
+    font-style: normal;
+  }
+  .intro-sub {
+    color: var(--brown-light);
+    font-size: 1.05rem;
+    max-width: 480px;
+    margin: 0 auto 0.8rem;
+  }
+  .intro-meta {
+    font-size: 0.85rem;
+    color: var(--brown-light);
+    opacity: 0.7;
+    margin-bottom: 2rem;
+  }
+  .intro-formula {
+    background: var(--brown);
+    color: var(--gold);
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    display: inline-block;
+    margin-bottom: 2rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* BTN */
+  .btn {
+    display: inline-block;
+    background: var(--terra);
+    color: white;
+    padding: 0.9rem 2.2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    font-family: var(--font-body);
+    letter-spacing: 0.02em;
+  }
+  .btn:hover { background: var(--terra-light); transform: translateY(-1px); }
+  .btn:active { transform: translateY(0); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--terra);
+    border: 2px solid var(--terra);
+  }
+  .btn-ghost:hover { background: var(--terra); color: white; }
+  .btn-gold {
+    background: var(--gold);
+    color: var(--brown);
+  }
+  .btn-gold:hover { background: var(--gold-light); }
+
+  /* BLOCK */
+  .block {
+    display: none;
+    animation: fadeIn 0.4s ease;
+  }
+  .block.visible { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .block-header {
+    margin-bottom: 2rem;
+  }
+  .block-number {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--terra);
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .block-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--brown);
+    margin-bottom: 0.3rem;
+  }
+  .block-subtitle {
+    color: var(--brown-light);
+    font-size: 0.95rem;
+    font-style: italic;
+  }
+  .block-accent {
+    display: inline-block;
+    background: var(--terra);
+    color: white;
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: bold;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    line-height: 52px;
+    text-align: center;
+    margin-bottom: 0.8rem;
+  }
+
+  /* QUESTION */
+  .question-wrap {
+    margin-bottom: 1.8rem;
+  }
+  .question-text {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--brown);
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+  }
+  .question-num {
+    color: var(--terra);
+    margin-right: 0.3rem;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .option {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid #D8CEBF;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: white;
+    font-size: 0.95rem;
+    line-height: 1.45;
+    color: var(--brown-light);
+    text-align: left;
+  }
+  .option:hover {
+    border-color: var(--terra);
+    background: #FDF7F1;
+    color: var(--brown);
+  }
+  .option.selected {
+    border-color: var(--terra);
+    background: #FFF0ED;
+    color: var(--brown);
+  }
+  .option-radio {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #C8BAA8;
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: all 0.2s;
+    background: white;
+    position: relative;
+  }
+  .option.selected .option-radio {
+    border-color: var(--terra);
+    background: var(--terra);
+  }
+  .option.selected .option-radio::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--cream-dark);
+    margin: 1.8rem 0;
+  }
+
+  /* NAV */
+  .block-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 1rem;
+  }
+  .nav-hint {
+    font-size: 0.8rem;
+    color: var(--brown-light);
+    opacity: 0.6;
+  }
+
+  /* RESULTS */
+  .results-block { display: none; }
+  .results-block.visible { display: block; animation: fadeIn 0.5s ease; }
+
+  .result-header {
+    text-align: center;
+    padding: 2rem 0 1.5rem;
+    border-bottom: 1px solid var(--cream-dark);
+    margin-bottom: 2rem;
+  }
+  .result-header h2 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--brown);
+    margin-bottom: 0.5rem;
+  }
+  .result-header p {
+    color: var(--brown-light);
+    font-size: 0.95rem;
+  }
+
+  .components-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
+  }
+  .comp-row {
+    background: white;
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1.5px solid #E8DDD0;
+    transition: all 0.3s;
+  }
+  .comp-row.zero {
+    border-color: var(--terra);
+    background: #FFF5F3;
+  }
+  .comp-row.shaky {
+    border-color: var(--gold);
+    background: #FFFBF0;
+  }
+  .comp-row.strong {
+    border-color: #A8C4BC;
+    background: #F4FAF8;
+  }
+  .comp-letter {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: bold;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+  }
+  .zero .comp-letter { background: var(--terra); }
+  .shaky .comp-letter { background: var(--gold); color: var(--brown); }
+  .strong .comp-letter { background: var(--green); }
+
+  .comp-info { flex: 1; }
+  .comp-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--brown);
+    margin-bottom: 0.25rem;
+  }
+  .comp-bar-bg {
+    height: 5px;
+    background: #E8DDD0;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .comp-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 1s ease 0.3s;
+  }
+  .zero .comp-bar-fill { background: var(--terra); }
+  .shaky .comp-bar-fill { background: var(--gold); }
+  .strong .comp-bar-fill { background: var(--green); }
+
+  .comp-score {
+    font-size: 0.8rem;
+    color: var(--brown-light);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .comp-tag {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 20px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .zero .comp-tag { background: rgba(184,80,66,0.12); color: var(--terra); }
+  .shaky .comp-tag { background: rgba(201,168,76,0.15); color: #8A6A00; }
+  .strong .comp-tag { background: rgba(74,124,111,0.12); color: var(--green); }
+
+  /* FOCUS CARD */
+  .focus-card {
+    background: var(--brown);
+    color: var(--cream);
+    border-radius: 12px;
+    padding: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  .focus-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+  }
+  .focus-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+  .focus-text {
+    color: rgba(245,239,230,0.8);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* CTA */
+  .cta-block {
+    background: linear-gradient(135deg, #FDF7F1, #F5EFE6);
+    border: 1.5px solid var(--gold);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .cta-block h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--brown);
+    margin-bottom: 0.7rem;
+  }
+  .cta-block p {
+    color: var(--brown-light);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* EMAIL FORM */
+  .email-form-block {
+    background: white;
+    border: 1.5px solid #E8DDD0;
+    border-radius: 12px;
+    padding: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .email-form-block h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--brown);
+    margin-bottom: 0.4rem;
+  }
+  .email-form-block p {
+    color: var(--brown-light);
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+  }
+  .email-row {
+    display: flex;
+    gap: 0.6rem;
+  }
+  .email-input {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: 1.5px solid #D8CEBF;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    color: var(--brown);
+    background: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .email-input:focus { border-color: var(--terra); }
+  .email-input::placeholder { color: #B0A090; }
+  .email-success {
+    display: none;
+    background: #F0F9F6;
+    border: 1.5px solid #A8C4BC;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    color: var(--green);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .email-fine {
+    font-size: 0.75rem;
+    color: var(--brown-light);
+    opacity: 0.6;
+    margin-top: 0.6rem;
+  }
+  @media (max-width: 480px) {
+    .email-row { flex-direction: column; }
+  }
+  .share-block {
+    text-align: center;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--cream-dark);
+  }
+  .share-block p {
+    font-size: 0.85rem;
+    color: var(--brown-light);
+    margin-bottom: 0.8rem;
+  }
+  .share-buttons {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 2rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.2s;
+  }
+  .share-btn:hover { opacity: 0.85; }
+  .share-btn-tg  { background: #229ED9; color: #fff; }
+  .share-btn-fb  { background: #1877F2; color: #fff; }
+  .share-btn-x   { background: #000; color: #fff; }
+
+  /* UTILS */
+  .hidden { display: none !important; }
+  .text-center { text-align: center; }
+  .mt-1 { margin-top: 1rem; }
+
+  @media (max-width: 480px) {
+    .main { padding: 1.5rem 1rem 3rem; }
+    .block-nav { flex-direction: column-reverse; }
+    .btn { width: 100%; text-align: center; }
+    .intro-formula { font-size: 0.75rem; }
+    .cta-buttons { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="/en/" class="logo" style="text-decoration:none;">Beyond the <span>Horizon</span></a>
+  <div style="font-size:0.75rem; color:rgba(245,239,230,0.5); letter-spacing:0.08em;"><a href="/quiz-formula-rezultatu.html" hreflang="uk" lang="uk" title="Українська версія" style="color:inherit;text-decoration:none;margin-right:.8rem;">UA</a>SELF-CHECK</div>
+</div>
+
+<div class="progress-wrap" id="progressWrap" style="display:none;">
+  <div class="progress-label">Block <span id="progressCurrent">1</span> of 7</div>
+  <div class="progress-bar-bg">
+    <div class="progress-bar-fill" id="progressFill"></div>
+  </div>
+  <div class="progress-components" id="compDots"></div>
+</div>
+
+<div class="main">
+
+  <!-- INTRO -->
+  <div class="block visible" id="block-intro">
+    <div class="intro-block">
+      <div class="intro-eyebrow">An original self-assessment</div>
+      <h1 class="intro-title">Check your <em>Results Formula</em> in 7 minutes</h1>
+      <p class="intro-sub">28 questions. Honest answers. And finally some clarity about which component is letting you down.</p>
+      <p class="intro-meta">Takes about 7 minutes</p>
+      <div class="intro-formula">R = D × B × A × E × O × Res × β</div>
+      <br>
+      <p style="font-size:0.85rem; color:var(--brown-light); max-width:420px; margin:0 auto 2rem;">
+        Each letter is a component that affects your result: Desire, Beliefs, Action, Environment, Opportunities, Resources and β, your growth from experience. If even one of them is zero, everything turns to zero. Let's find your weak spot.
+      </p>
+      <button class="btn" onclick="startQuiz()">Start the test</button>
+    </div>
+  </div>
+
+  <!-- BLOCKS 1-7 -->
+  <div id="quiz-blocks"></div>
+
+  <!-- RESULTS -->
+  <div class="results-block" id="results">
+    <div class="result-header">
+      <h2>Your Results Formula</h2>
+      <p>Here's how your seven components look right now</p>
+    </div>
+
+    <div class="components-grid" id="resultsGrid"></div>
+
+    <div class="focus-card" id="focusCard"></div>
+
+    <div class="email-form-block" id="emailFormBlock">
+      <h3>Get a detailed breakdown by email</h3>
+      <p>I'll send you an in-depth look at your weak component and concrete steps for what to do about it.</p>
+      <div class="email-row">
+        <input type="email" class="email-input" id="emailInput" placeholder="you@email.com">
+        <button class="btn" onclick="submitEmail()">Send</button>
+      </div>
+      <p class="email-fine">No spam. Only useful things. You can unsubscribe at any moment.</p>
+      <div class="email-success" id="emailSuccess">
+        Thank you! The email is on its way. Check your inbox, and your spam folder just in case 📩
+      </div>
+    </div>
+
+    <div class="cta-block">
+      <h3>What to do with this result?</h3>
+      <p>The Results Formula lecture + 7 workbooks with the “Opora” bot give you step-by-step work on every component, especially the one where you're falling short right now.</p>
+      <div class="cta-buttons">
+        <a href="/en/formula-rezultatu-sales.html" class="btn btn-gold">Learn about the program</a>
+        <button class="btn btn-ghost" onclick="restartQuiz()">Take it again</button>
+      </div>
+    </div>
+
+    <div class="share-block">
+      <p>Share your result: maybe someone else needs this too</p>
+      <div class="share-buttons">
+        <a class="share-btn share-btn-tg" href="#" onclick="shareToTelegram(); return false;">✈ Telegram</a>
+        <a class="share-btn share-btn-fb" href="#" onclick="shareToFacebook(); return false;">f Facebook</a>
+        <a class="share-btn share-btn-x"  href="#" onclick="shareToX(); return false;">✕ X</a>
+      </div>
+      <p style="margin-top:1.2rem;"><a href="/en/" style="font-size:0.85rem; color:var(--brown-light); text-decoration:underline;">← Back to the site</a></p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const BLOCKS = [
+  {
+    id: 'B', letter: 'D', name: 'Desire', subtitle: 'What really drives you?',
+    zeroText: 'Desire is the fuel. Without it the car goes nowhere, however well it\'s built. Right now your engine has either stalled, or you\'re driving somewhere you don\'t really want to go. This is where to start.',
+    shakyText: 'The desire is there, but it wobbles. Sometimes you want to, sometimes you "have to". Worth figuring out: is this truly yours, or borrowed from someone else\'s expectations?',
+    strongText: 'Your desire is real and steady. That\'s rare. Keep this fire going and don\'t let anyone put it out.',
+    questions: [
+      {
+        q: 'When you imagine the goal already reached, what comes to mind first?',
+        options: [
+          { text: 'Joy and pleasant anticipation', score: 4 },
+          { text: 'Relief that it\'s finally over', score: 2 },
+          { text: 'Anxiety or doubt: "what if it doesn\'t work out"', score: 1 },
+          { text: 'It\'s hard to picture myself there', score: 1 }
+        ]
+      },
+      {
+        q: 'If no one ever found out about your success, would you still go for it?',
+        options: [
+          { text: 'Yes, it\'s mine and I feel it', score: 4 },
+          { text: 'Probably, but it would be harder', score: 3 },
+          { text: 'Hard to say', score: 2 },
+          { text: 'Honestly, probably not', score: 1 }
+        ]
+      },
+      {
+        q: 'When did you last do something just because you wanted to, with no purpose and no reason?',
+        options: [
+          { text: 'Recently, I do it regularly', score: 4 },
+          { text: 'A few weeks ago', score: 3 },
+          { text: 'I don\'t even remember when', score: 2 },
+          { text: 'It seems never, there\'s always a reason or a purpose', score: 1 }
+        ]
+      },
+      {
+        q: 'When you think about your goal at night before sleep, does it inspire you or weigh on you?',
+        options: [
+          { text: 'It inspires me, I can\'t wait to start', score: 4 },
+          { text: 'It depends on the day', score: 3 },
+          { text: 'It weighs on me more than it inspires me', score: 2 },
+          { text: 'I try not to think about it, so I don\'t get upset', score: 1 }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'P', letter: 'B', name: 'Beliefs', subtitle: 'What goes on in your head while you act?',
+    zeroText: 'Beliefs are the filter on the lens. You can be in the right place at the right time and still see nothing. Right now your filter is badly distorting the picture. The good news: a filter can be changed.',
+    shakyText: 'Your beliefs wobble. One day you believe in yourself, the next you don\'t. That\'s normal, but unstable. Worth working on your identity.',
+    strongText: 'Your inner dialogue is an ally, not an enemy. That has a huge effect on everything else.',
+    questions: [
+      {
+        q: 'When you see someone who has achieved what you want, what\'s your first thought?',
+        options: [
+          { text: 'Great! So it\'s possible for me too', score: 4 },
+          { text: 'Good for them, but they had different opportunities', score: 2 },
+          { text: 'They got lucky or had the right connections', score: 1 },
+          { text: 'I\'m envious and feel I\'m falling behind', score: 1 }
+        ]
+      },
+      {
+        q: 'Imagine you\'re invited to an important event as an expert. What do you feel in the first second?',
+        options: [
+          { text: 'Excited! I have something to share', score: 4 },
+          { text: 'Glad, but a little nervous', score: 3 },
+          { text: 'I immediately think someone else is better', score: 2 },
+          { text: 'Panic: I don\'t know enough', score: 1 }
+        ]
+      },
+      {
+        q: 'If your goal had already come true, would you feel "this isn\'t mine" or "I don\'t deserve this"?',
+        options: [
+          { text: 'No, I\'d accept it naturally', score: 4 },
+          { text: 'A little, but I get past it', score: 3 },
+          { text: 'Yes, and it scares me', score: 2 },
+          { text: 'That feeling follows me all the time', score: 1 }
+        ]
+      },
+      {
+        q: 'When something doesn\'t work out, where do you look for the cause first?',
+        options: [
+          { text: 'I look at both myself and the circumstances', score: 4 },
+          { text: 'In myself first: what I could have done differently', score: 4 },
+          { text: 'Mostly in the circumstances or in other people', score: 2 },
+          { text: 'I try not to think about it at all', score: 1 }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'D', letter: 'A', name: 'Action', subtitle: 'What does your movement toward the goal look like?',
+    zeroText: 'Action is the car. Without it you won\'t get anywhere. But the problem isn\'t always that you do nothing. Often a person does a lot, just in the wrong direction. Let\'s look at what\'s really going on.',
+    shakyText: 'There\'s movement, but it\'s uneven. Bursts of activity alternate with pauses. What you need is a system, not willpower.',
+    strongText: 'You move regularly and with purpose. That\'s the foundation of everything.',
+    questions: [
+      {
+        q: 'If someone looked at your day yesterday, would they guess what you\'re working toward?',
+        options: [
+          { text: 'Yes, my actions clearly lead to the goal', score: 4 },
+          { text: 'Partly: there are steps, but not all of them', score: 3 },
+          { text: 'Unlikely, the day was chaotic', score: 2 },
+          { text: 'Definitely not, yesterday wasn\'t about goals', score: 1 }
+        ]
+      },
+      {
+        q: 'What have you done for your goal in the last three days?',
+        options: [
+          { text: 'Concrete steps, I can name them', score: 4 },
+          { text: 'Thought and planned, but did little', score: 3 },
+          { text: 'Nothing, but I\'m about to', score: 2 },
+          { text: 'Honestly, nothing, and I didn\'t even think about it', score: 1 }
+        ]
+      },
+      {
+        q: 'Right now, do you plan and think more, or do more?',
+        options: [
+          { text: 'I do more than I plan', score: 4 },
+          { text: 'About the same', score: 3 },
+          { text: 'I plan and think more', score: 2 },
+          { text: 'Not much of either', score: 1 }
+        ]
+      },
+      {
+        q: 'When an obstacle comes up, what usually happens?',
+        options: [
+          { text: 'I find a way around it and keep going', score: 4 },
+          { text: 'I pause, but I come back', score: 3 },
+          { text: 'I wait for a better moment', score: 2 },
+          { text: 'I take it as a sign that it\'s "not for me"', score: 1 }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'O', letter: 'E', name: 'Environment', subtitle: 'What field are you in right now?',
+    zeroText: 'Your environment is the field you play on. The same person blossoms in one setting and wilts in another. Not because they\'re weak, but because it\'s the wrong field. The people around you, the situation, the context: all of it either strengthens you or dims you. Right now your field needs to change.',
+    shakyText: 'Your environment is mixed. Some things in your field support you, some hold you back. Time to look at your surroundings consciously and start shaping them on purpose.',
+    strongText: 'Your environment works for you. The setting, the people, the situation all strengthen your movement. That\'s a big advantage.',
+    questions: [
+      {
+        q: 'When you share your plans with people close to you, what do you usually hear back?',
+        options: [
+          { text: 'Support and interest', score: 4 },
+          { text: 'A neutral reaction', score: 3 },
+          { text: 'Doubts and warnings', score: 2 },
+          { text: 'Attempts to talk me out of it, or skepticism', score: 1 }
+        ]
+      },
+      {
+        q: 'After a typical evening with people from your circle, how do you feel inside?',
+        options: [
+          { text: 'A surge of energy and inspiration', score: 4 },
+          { text: 'Calm, same as always', score: 3 },
+          { text: 'A bit drained or empty', score: 2 },
+          { text: 'I notice I slow down or shrink', score: 1 }
+        ]
+      },
+      {
+        q: 'Is there someone in your life whose example proves your goal is possible?',
+        options: [
+          { text: 'Yes, and it inspires me a lot', score: 4 },
+          { text: 'Yes, but we hardly talk', score: 3 },
+          { text: 'Probably, but I don\'t know them personally', score: 2 },
+          { text: 'No, there\'s no one like that around me', score: 1 }
+        ]
+      },
+      {
+        q: 'When you start to change, how do the people around you react?',
+        options: [
+          { text: 'They support me and are happy with me', score: 4 },
+          { text: 'They don\'t really notice', score: 3 },
+          { text: 'They\'re surprised and pull back a little', score: 2 },
+          { text: 'They try to bring the "normal" me back', score: 1 }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'M', letter: 'O', name: 'Opportunities', subtitle: 'Can you see what\'s already right next to you?',
+    zeroText: 'Opportunities aren\'t created, they\'re recognized. The brain sees what it\'s tuned to. If it\'s tuned to threat and lack, that\'s exactly what you\'ll find. Right now your inner filter lets chances slip past. But it can be retuned.',
+    shakyText: 'Sometimes you notice opportunities, sometimes they pass you by. The filter works on and off. Make your goal more "visible" to your brain, and chances will start showing up more often.',
+    strongText: 'Your inner filter is well tuned. You notice what others miss, and you know how to use it.',
+    zeroText: 'The brain sees what it\'s tuned to. If it\'s tuned to threat, you\'ll find threats everywhere. If it\'s tuned to opportunity, they\'ll start appearing as if out of thin air. Right now your inner radar needs redirecting.',
+    shakyText: 'Your attention is there, but it\'s inconsistent. Sometimes you notice opportunities, sometimes they pass you by. Make your goal more "visible" to your brain.',
+    strongText: 'Your brain is well tuned to what matters. You notice what others miss.',
+    questions: [
+      {
+        q: 'How often do opportunities related to your goal come your way?',
+        options: [
+          { text: 'Regularly, and I both notice them and use them', score: 4 },
+          { text: 'They do, but I often hesitate', score: 3 },
+          { text: 'Rarely, or I don\'t notice them in time', score: 2 },
+          { text: 'There don\'t seem to be any in my life', score: 1 }
+        ]
+      },
+      {
+        q: 'What do you spend more mental energy on?',
+        options: [
+          { text: 'On what I want and how to get there', score: 4 },
+          { text: 'About the same', score: 3 },
+          { text: 'On risks and what could go wrong', score: 2 },
+          { text: 'On what I fear and want to avoid', score: 1 }
+        ]
+      },
+      {
+        q: 'Do you remember your goal every day?',
+        options: [
+          { text: 'Yes, it\'s the background of my day', score: 4 },
+          { text: 'A few times a week', score: 3 },
+          { text: 'Sometimes I don\'t think about it for weeks', score: 2 },
+          { text: 'It\'s somewhere, but I rarely come back to it', score: 1 }
+        ]
+      },
+      {
+        q: 'When you read or listen to something, do you notice links to what you\'re working toward?',
+        options: [
+          { text: 'Yes, all the time, I find hints everywhere', score: 4 },
+          { text: 'Sometimes, when I\'m looking on purpose', score: 3 },
+          { text: 'Rarely', score: 2 },
+          { text: 'No, information is just information', score: 1 }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'R', letter: 'Res', name: 'Resources', subtitle: 'Do you have the fuel to keep going?',
+    zeroText: 'Resources are the fuel. You can have a great car, the right route and a precise GPS, but without fuel you go nowhere. Right now your tank is empty or nearly empty. And it\'s not laziness. It\'s physiology.',
+    shakyText: 'There\'s fuel, but the level is unstable. Good days alternate with "I can\'t do anything". Worth finding your sources of recovery and making them regular.',
+    strongText: 'You know your resources well and take care of them. That\'s the basis for steady progress.',
+    questions: [
+      {
+        q: 'You spend your most productive time of day on:',
+        options: [
+          { text: 'What matters most for my goal', score: 4 },
+          { text: 'I try, but it doesn\'t always work', score: 3 },
+          { text: 'Mostly work or family matters', score: 2 },
+          { text: 'Urgent things that can\'t be put off', score: 1 }
+        ]
+      },
+      {
+        q: 'If someone asked you "how are you?" right now, what would the honest answer be?',
+        options: [
+          { text: 'Good, I have energy and drive', score: 4 },
+          { text: 'Okay, I\'m coping', score: 3 },
+          { text: 'Tired, but holding on', score: 2 },
+          { text: 'Honestly, at my limit, running low', score: 1 }
+        ]
+      },
+      {
+        q: 'What do you do when you feel your "battery is dead"?',
+        options: [
+          { text: 'I have proven ways to recover and I use them', score: 4 },
+          { text: 'I rest however I can', score: 3 },
+          { text: 'I put up with it and wait for it to pass', score: 2 },
+          { text: 'I push myself even harder so I "don\'t slack off"', score: 1 }
+        ]
+      },
+      {
+        q: 'How many times a week do you do something that truly fills you up?',
+        options: [
+          { text: 'Every day or almost every day', score: 4 },
+          { text: 'A few times a week', score: 3 },
+          { text: 'Once or twice if I\'m lucky', score: 2 },
+          { text: 'Rarely, there\'s no time for myself', score: 1 }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'Beta', letter: 'β', name: 'Conversion', subtitle: 'Do you get wiser from your experience?',
+    zeroText: 'β is your inner bank with compound interest. Every experience should pay a return in new knowledge and skills. But right now no interest is being added: experience just piles up without converting into growth.',
+    shakyText: 'You sometimes learn from experience, but not consistently. Make reflection a habit, and your results will start to multiply.',
+    strongText: 'You know how to pull something valuable out of any experience. This is the most influential component, and it works for you.',
+    questions: [
+      {
+        q: 'After a failure, what do you usually do?',
+        options: [
+          { text: 'I analyze what went wrong and draw conclusions', score: 4 },
+          { text: 'I give myself time and then come back to analyze', score: 3 },
+          { text: 'I try not to think about it and move on', score: 2 },
+          { text: 'I beat myself up or try to forget', score: 1 }
+        ]
+      },
+      {
+        q: 'Do you notice your progress?',
+        options: [
+          { text: 'Yes, I see how I\'ve changed and it motivates me', score: 4 },
+          { text: 'Sometimes I notice, but I don\'t keep track', score: 3 },
+          { text: 'Mostly I only see how much is still ahead', score: 2 },
+          { text: 'No, it\'s hard to see change from the inside', score: 1 }
+        ]
+      },
+      {
+        q: 'Do you act differently now than a year ago?',
+        options: [
+          { text: 'Yes, very differently, and I understand why', score: 4 },
+          { text: 'There are changes, but small ones', score: 3 },
+          { text: 'About the same', score: 2 },
+          { text: 'Maybe I\'ve even taken a step back', score: 1 }
+        ]
+      },
+      {
+        q: 'When something works, do you know exactly why it worked?',
+        options: [
+          { text: 'Yes, I analyze success just like failure', score: 4 },
+          { text: 'I roughly understand', score: 3 },
+          { text: 'Glad it worked, but I don\'t think about why', score: 2 },
+          { text: 'No, I see it as luck', score: 1 }
+        ]
+      }
+    ]
+  }
+];
+
+let scores = {};
+let answers = {};
+let currentBlock = 0;
+
+function startQuiz() {
+  document.getElementById('block-intro').classList.remove('visible');
+  document.getElementById('progressWrap').style.display = 'block';
+  renderBlocks();
+  showBlock(0);
+}
+
+function renderBlocks() {
+  const container = document.getElementById('quiz-blocks');
+  const dots = document.getElementById('compDots');
+  dots.innerHTML = '';
+
+  BLOCKS.forEach((block, bi) => {
+    // dot
+    const dot = document.createElement('div');
+    dot.className = 'comp-dot';
+    dot.id = `dot-${bi}`;
+    dot.textContent = block.letter;
+    if (block.letter.length > 2) dot.style.fontSize = '.62em';
+    dots.appendChild(dot);
+
+    // block
+    const div = document.createElement('div');
+    div.className = 'block';
+    div.id = `block-${bi}`;
+    div.innerHTML = `
+      <div class="block-header">
+        <div class="block-accent"><span style="${block.letter.length>2?'font-size:.68em;letter-spacing:-.03em':''}">${block.letter}</span></div>
+        <div class="block-number">Component ${bi+1} of 7</div>
+        <div class="block-title">${block.name}</div>
+        <div class="block-subtitle">${block.subtitle}</div>
+      </div>
+      ${block.questions.map((q, qi) => `
+        <div class="question-wrap" id="qwrap-${bi}-${qi}">
+          <div class="question-text"><span class="question-num">${qi+1}.</span>${q.q}</div>
+          <div class="options">
+            ${q.options.map((opt, oi) => `
+              <div class="option" id="opt-${bi}-${qi}-${oi}" onclick="selectOption(${bi},${qi},${oi},${opt.score})">
+                <div class="option-radio"></div>
+                <span>${opt.text}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        ${qi < block.questions.length - 1 ? '<div class="divider"></div>' : ''}
+      `).join('')}
+      <div class="block-nav">
+        ${bi > 0 ? `<button class="btn btn-ghost" onclick="prevBlock()">Back</button>` : '<div></div>'}
+        <span class="nav-hint" id="hint-${bi}">Choose an answer to every question</span>
+        <button class="btn" id="next-${bi}" onclick="nextBlock(${bi})" disabled>
+          ${bi < BLOCKS.length - 1 ? 'Next' : 'Show my result'}
+        </button>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function selectOption(bi, qi, oi, score) {
+  // deselect all in question
+  BLOCKS[bi].questions[qi].options.forEach((_, i) => {
+    document.getElementById(`opt-${bi}-${qi}-${i}`).classList.remove('selected');
+  });
+  // select chosen
+  document.getElementById(`opt-${bi}-${qi}-${oi}`).classList.add('selected');
+  // store
+  if (!answers[bi]) answers[bi] = {};
+  answers[bi][qi] = score;
+
+  // check if all answered
+  const allAnswered = Object.keys(answers[bi]).length === BLOCKS[bi].questions.length;
+  const nextBtn = document.getElementById(`next-${bi}`);
+  const hint = document.getElementById(`hint-${bi}`);
+  if (allAnswered) {
+    nextBtn.disabled = false;
+    hint.textContent = '';
+  }
+}
+
+function showBlock(index) {
+  document.querySelectorAll('.block').forEach(b => b.classList.remove('visible'));
+  const el = document.getElementById(`block-${index}`);
+  if (el) el.classList.add('visible');
+  currentBlock = index;
+
+  // update progress
+  document.getElementById('progressCurrent').textContent = index + 1;
+  document.getElementById('progressFill').style.width = `${((index) / 7) * 100}%`;
+
+  // update dots
+  document.querySelectorAll('.comp-dot').forEach((dot, i) => {
+    dot.className = 'comp-dot';
+    if (i < index) dot.classList.add('done');
+    if (i === index) dot.classList.add('active');
+  });
+
+  setTimeout(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 50);
+}
+
+function nextBlock(bi) {
+  // calc score for block
+  const blockAnswers = answers[bi] || {};
+  let total = 0;
+  Object.values(blockAnswers).forEach(s => total += s);
+  scores[bi] = total;
+
+  if (bi < BLOCKS.length - 1) {
+    showBlock(bi + 1);
+  } else {
+    showResults();
+  }
+}
+
+function prevBlock() {
+  if (currentBlock > 0) showBlock(currentBlock - 1);
+}
+
+function showResults() {
+  document.querySelectorAll('.block').forEach(b => b.classList.remove('visible'));
+  document.getElementById('progressWrap').style.display = 'none';
+
+  const grid = document.getElementById('resultsGrid');
+  grid.innerHTML = '';
+
+  let lowestScore = 16;
+  let lowestIndex = 0;
+
+  BLOCKS.forEach((block, bi) => {
+    const score = scores[bi] || 0;
+    const max = 16;
+    const pct = Math.round((score / max) * 100);
+
+    let zone, tag;
+    if (score <= 7) { zone = 'zero'; tag = 'Zero zone'; }
+    else if (score <= 12) { zone = 'shaky'; tag = 'Wobbling'; }
+    else { zone = 'strong'; tag = 'Working'; }
+
+    if (score < lowestScore) { lowestScore = score; lowestIndex = bi; }
+
+    const row = document.createElement('div');
+    row.className = `comp-row ${zone}`;
+    row.innerHTML = `
+      <div class="comp-letter"><span style="${block.letter.length>2?'font-size:.68em;letter-spacing:-.03em':''}">${block.letter}</span></div>
+      <div class="comp-info">
+        <div class="comp-name">${block.name}</div>
+        <div class="comp-bar-bg">
+          <div class="comp-bar-fill" style="width:0%" data-width="${pct}%"></div>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:0.3rem;">
+        <div class="comp-score">${score}/${max}</div>
+        <div class="comp-tag">${tag}</div>
+      </div>
+    `;
+    grid.appendChild(row);
+  });
+
+  // animate bars
+  setTimeout(() => {
+    document.querySelectorAll('.comp-bar-fill').forEach(bar => {
+      bar.style.width = bar.dataset.width;
+    });
+  }, 100);
+
+  // focus card
+  const focus = BLOCKS[lowestIndex];
+  const s = scores[lowestIndex] || 0;
+  let focusText;
+  if (s <= 7) focusText = focus.zeroText;
+  else if (s <= 12) focusText = focus.shakyText;
+  else focusText = focus.strongText;
+
+  document.getElementById('focusCard').innerHTML = `
+    <div class="focus-eyebrow">Your focus point</div>
+    <div class="focus-title">“${focus.name}” is the component to work on first</div>
+    <div class="focus-text">${focusText}</div>
+  `;
+
+  document.getElementById('results').classList.add('visible');
+  document.getElementById('progressFill').style.width = '100%';
+  setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
+}
+
+function restartQuiz() {
+  scores = {};
+  answers = {};
+  currentBlock = 0;
+  document.getElementById('results').classList.remove('visible');
+  document.querySelectorAll('.block').forEach(b => b.classList.remove('visible'));
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  document.querySelectorAll('[id^="next-"]').forEach(btn => btn.disabled = true);
+  document.getElementById('block-intro').classList.add('visible');
+  document.getElementById('progressWrap').style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+const FORMULA_KEYS = [
+  'formula-b',    
+  'formula-p',    
+  'formula-d',    
+  'formula-o',    
+  'formula-m',    
+  'formula-res',  
+  'formula-beta', // β
+];
+
+function submitEmail() {
+  const input = document.getElementById('emailInput');
+  const email = input.value.trim();
+  const success = document.getElementById('emailSuccess');
+  const btn = input.nextElementSibling;
+
+  if (!email || !email.includes('@')) {
+    input.style.borderColor = 'var(--terra)';
+    input.placeholder = 'Enter a valid email';
+    setTimeout(() => {
+      input.style.borderColor = '';
+      input.placeholder = 'you@email.com';
+    }, 2000);
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  const lowestIndex = parseInt(Object.entries(scores).sort((a,b) => a[1]-b[1])[0]?.[0] ?? 0);
+  const type = FORMULA_KEYS[lowestIndex];
+
+  fetch('/api/subscribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, type, lang: 'en' })
+  })
+  .then(res => {
+    input.style.display = 'none';
+    btn.style.display = 'none';
+    success.style.display = 'block';
+  })
+  .catch(() => {
+    input.style.display = 'none';
+    btn.style.display = 'none';
+    success.style.display = 'block';
+    console.error('MailerLite subscribe error');
+  });
+}
+
+function getShareText() {
+  const lowestIndex = Object.entries(scores).sort((a,b) => a[1]-b[1])[0]?.[0] ?? 0;
+  const focus = BLOCKS[lowestIndex];
+  return `I took the Results Formula self-assessment on Beyond the Horizon. My component to work on: ${focus.name}. Check your own formula!`;
+}
+function shareToTelegram() {
+  const text = encodeURIComponent(getShareText() + ' https://www.svitlana-slipchenko.pp.ua/en/quiz-formula-rezultatu.html');
+  window.open('https://t.me/share/url?url=https%3A%2F%2Fwww.svitlana-slipchenko.pp.ua%2Fen%2Fquiz-formula-rezultatu.html&text=' + text, '_blank');
+}
+function shareToFacebook() {
+  window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('https://www.svitlana-slipchenko.pp.ua/en/quiz-formula-rezultatu.html'), '_blank');
+}
+function shareToX() {
+  const text = encodeURIComponent(getShareText() + ' https://www.svitlana-slipchenko.pp.ua/en/quiz-formula-rezultatu.html');
+  window.open('https://twitter.com/intent/tweet?text=' + text, '_blank');
+}
+</script>
+</body>
+</html>
