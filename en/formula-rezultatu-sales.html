@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Results Formula | Beyond the Horizon</title>
+<meta name="description" content="A neuroscience-based program for people who are tired of trying hard without real progress. Find where the glitch is. Fix it. Move.">
+<link rel="canonical" href="https://www.svitlana-slipchenko.pp.ua/en/formula-rezultatu-sales.html">
+<link rel="alternate" hreflang="uk" href="https://www.svitlana-slipchenko.pp.ua/formula-rezultatu-sales.html">
+<link rel="alternate" hreflang="en" href="https://www.svitlana-slipchenko.pp.ua/en/formula-rezultatu-sales.html">
+<link rel="alternate" hreflang="x-default" href="https://www.svitlana-slipchenko.pp.ua/formula-rezultatu-sales.html">
+<style>
+  :root {
+    --cream: #F5EFE6;
+    --cream-dark: #EDE4D6;
+    --brown: #2C1A0E;
+    --brown-light: #5C3D2E;
+    --terra: #B85042;
+    --terra-light: #D4695A;
+    --gold: #C9A84C;
+    --gold-light: #E2C070;
+    --green: #4A7C6F;
+    --ink: #1A1008;
+    --font-display: Georgia, 'Times New Roman', serif;
+    --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--brown);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(245,239,230,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--cream-dark);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .site-logo {
+    font-family: var(--font-display);
+    color: var(--brown);
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .site-logo span { color: var(--terra); }
+  .header-cta {
+    background: var(--terra);
+    color: white;
+    padding: 0.5rem 1.3rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .header-cta:hover { background: var(--terra-light); }
+
+  /* HERO */
+  .hero {
+    background: var(--brown);
+    color: var(--cream);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    width: 60%;
+    height: 200%;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 50%;
+    height: 150%;
+    background: radial-gradient(ellipse, rgba(184,80,66,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+  .hero-eyebrow {
+    display: inline-block;
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    font-weight: 500;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    font-weight: normal;
+  }
+  .hero-title em {
+    color: var(--gold);
+    font-style: normal;
+  }
+  .hero-sub {
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
+    color: rgba(245,239,230,0.75);
+    max-width: 540px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+  }
+  .hero-formula {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 8px;
+    padding: 0.8rem 1.5rem;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    font-family: var(--font-body);
+    text-decoration: none;
+  }
+  .btn-primary { background: var(--terra); color: white; }
+  .btn-primary:hover { background: var(--terra-light); transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: var(--cream); border: 1.5px solid rgba(245,239,230,0.3); }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .btn-gold { background: var(--gold); color: var(--brown); }
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-ghost { background: transparent; color: var(--terra); border: 1.5px solid var(--terra); }
+  .btn-ghost:hover { background: var(--terra); color: white; }
+
+  /* SECTIONS */
+  .section { padding: 5rem 2rem; }
+  .section-inner { max-width: 760px; margin: 0 auto; }
+  .section-wide { max-width: 960px; margin: 0 auto; }
+
+  .section-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--terra);
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    line-height: 1.2;
+    color: var(--brown);
+    margin-bottom: 1.2rem;
+  }
+  .section-title em { color: var(--terra); font-style: normal; }
+  .section-lead {
+    font-size: 1.05rem;
+    color: var(--brown-light);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  /* PAIN SECTION */
+  .pain-section { background: var(--ink); color: var(--cream); }
+  .pain-section .section-eyebrow { color: var(--gold); }
+  .pain-section .section-title { color: var(--cream); }
+  .pain-section .section-lead { color: rgba(245,239,230,0.7); }
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .pain-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    font-size: 0.95rem;
+    color: rgba(245,239,230,0.8);
+    line-height: 1.5;
+  }
+  .pain-card::before {
+    content: '-';
+    color: var(--terra);
+    margin-right: 0.4rem;
+    font-family: var(--font-display);
+  }
+
+  /* WHAT IS */
+  .what-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  .what-text p { margin-bottom: 1rem; color: var(--brown-light); font-size: 1rem; }
+  .what-visual {
+    background: var(--brown);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+  }
+  .formula-display {
+    font-family: var(--font-display);
+    color: var(--gold);
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+  .formula-components {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: left;
+  }
+  .formula-comp {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.82rem;
+    color: rgba(245,239,230,0.7);
+  }
+  .formula-comp-letter {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    color: var(--gold);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  /* FOR WHOM */
+  .for-whom-section { background: var(--cream-dark); }
+  .for-whom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .for-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.3rem;
+    border-left: 3px solid var(--terra);
+  }
+  .for-card p { font-size: 0.92rem; color: var(--brown-light); line-height: 1.5; }
+
+  /* HOW IT WORKS */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 2rem;
+    position: relative;
+  }
+  .steps::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 40px;
+    bottom: 40px;
+    width: 1px;
+    background: var(--cream-dark);
+  }
+  .step {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 1.5rem 0;
+    position: relative;
+  }
+  .step-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--terra);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .step-content h4 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--brown);
+    margin-bottom: 0.3rem;
+  }
+  .step-content p { font-size: 0.92rem; color: var(--brown-light); }
+
+  /* PACKAGES */
+  .packages-section { background: var(--brown); color: var(--cream); }
+  .packages-section .section-eyebrow { color: var(--gold); }
+  .packages-section .section-title { color: var(--cream); }
+  .packages-section .section-lead { color: rgba(245,239,230,0.7); }
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2.5rem;
+  }
+  .package-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 1.8rem;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .package-card:hover { border-color: rgba(201,168,76,0.3); }
+  .package-card.featured {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.07);
+  }
+  .package-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--brown);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.8rem;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .package-name {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+  .package-tagline {
+    font-size: 0.82rem;
+    color: rgba(245,239,230,0.5);
+    margin-bottom: 1.2rem;
+    font-style: italic;
+  }
+  .package-price {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--cream);
+    margin-bottom: 0.2rem;
+    line-height: 1;
+  }
+  .package-price span {
+    font-size: 1rem;
+    color: rgba(245,239,230,0.5);
+    font-family: var(--font-body);
+  }
+  .package-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+    margin: 1.2rem 0;
+  }
+  .package-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+  }
+  .package-features li {
+    font-size: 0.88rem;
+    color: rgba(245,239,230,0.75);
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    line-height: 1.4;
+  }
+  .package-features li::before {
+    content: '✓';
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+  .package-btn {
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  /* OBJECTIONS */
+  .obj-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .obj-item {
+    border: 1px solid var(--cream-dark);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .obj-q {
+    padding: 1.1rem 1.3rem;
+    font-weight: 600;
+    color: var(--brown);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    font-size: 0.95rem;
+  }
+  .obj-q::after { content: '+'; color: var(--terra); font-size: 1.2rem; font-weight: 400; }
+  .obj-q.open::after { content: '–'; }
+  .obj-a {
+    display: none;
+    padding: 1rem 1.3rem 1.3rem;
+    color: var(--brown-light);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    background: white;
+    border-top: 1px solid var(--cream-dark);
+  }
+  .obj-a.visible { display: block; }
+
+  /* AUTHOR */
+  .author-section { background: var(--cream-dark); }
+  .author-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .author-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--brown);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--gold);
+    flex-shrink: 0;
+    border: 3px solid var(--gold);
+  }
+  .author-name {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--brown);
+    margin-bottom: 0.3rem;
+  }
+  .author-title {
+    font-size: 0.85rem;
+    color: var(--terra);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .author-bio p {
+    color: var(--brown-light);
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+  /* FORM */
+  .form-section { background: var(--brown); color: var(--cream); }
+  .form-section .section-eyebrow { color: var(--gold); }
+  .form-section .section-title { color: var(--cream); }
+  .form-section .section-lead { color: rgba(245,239,230,0.7); }
+  .form-wrap {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 2.5rem;
+    max-width: 520px;
+    margin: 2rem auto 0;
+  }
+  .form-row { margin-bottom: 1.2rem; }
+  .form-label {
+    display: block;
+    font-size: 0.82rem;
+    color: rgba(245,239,230,0.6);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+  }
+  .form-input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: rgba(255,255,255,0.07);
+    border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    color: var(--cream);
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-input:focus { border-color: var(--gold); }
+  .form-input::placeholder { color: rgba(245,239,230,0.3); }
+  .form-select {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: rgba(255,255,255,0.07);
+    border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    color: var(--cream);
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A84C' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+  }
+  .form-select option { background: var(--brown); color: var(--cream); }
+  .form-fine {
+    font-size: 0.78rem;
+    color: rgba(245,239,230,0.4);
+    text-align: center;
+    margin-top: 1rem;
+    line-height: 1.5;
+  }
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+  }
+  .form-success-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  .form-success h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  .form-success p {
+    color: rgba(245,239,230,0.7);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--ink);
+    color: rgba(245,239,230,0.4);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.82rem;
+  }
+  .footer a { color: var(--gold); text-decoration: none; }
+
+  /* DIVIDER */
+  .divider-line {
+    height: 1px;
+    background: var(--cream-dark);
+    margin: 0;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    .packages-grid { grid-template-columns: 1fr; }
+    .what-grid { grid-template-columns: 1fr; }
+    .author-grid { grid-template-columns: 1fr; }
+    .author-avatar { width: 80px; height: 80px; font-size: 1.8rem; }
+    .hero { padding: 3.5rem 1.5rem 3rem; }
+    .section { padding: 3.5rem 1.5rem; }
+    .form-wrap { padding: 1.8rem 1.3rem; }
+    .site-header { padding: 0.8rem 1.2rem; }
+    .pain-grid { grid-template-columns: 1fr; }
+    .for-whom-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="/en/" class="site-logo">Beyond the <span>Horizon</span></a>
+  <span><a href="/formula-rezultatu-sales.html" class="header-cta" hreflang="uk" lang="uk" title="Українська версія" style="margin-right:.5rem;background:transparent;color:var(--brown);border:1px solid var(--cream-dark);">UA</a><a href="#form" class="header-cta">Apply</a></span>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">An original program by Svitlana Slipchenko</div>
+    <h1 class="hero-title">
+      The Results Formula:<br>
+      you have everything, so why <em>no results</em>?
+    </h1>
+    <p class="hero-sub">
+      A neuroscience-based program for people who are tired of trying hard without real progress. Find where the glitch is. Fix it. Move.
+    </p>
+    <div class="hero-formula">
+      R = D × B × A × E × O × Res × β
+    </div>
+    <div class="hero-btns">
+      <a href="#form" class="btn btn-primary">Apply</a>
+      <a href="#packages" class="btn btn-outline">See the packages</a>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="section pain-section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Sound familiar?</div>
+    <h2 class="section-title">You do everything “right”.<br>But something's off.</h2>
+    <p class="section-lead">
+      You read books, go to trainings, set goals. And you still feel like you're spinning in place. Like the real thing, your own thing, hasn't started yet.
+    </p>
+    <div class="pain-grid">
+      <div class="pain-card">You act out of “I should”, not “I want”, and can't figure out where the exhaustion comes from</div>
+      <div class="pain-card">You know you can do more, but the years go by and “more” never arrives</div>
+      <div class="pain-card">You lean on other people's opinions, approval and expectations, not on yourself</div>
+      <div class="pain-card">Lots of effort, little result, and you can't see where exactly things go wrong</div>
+      <div class="pain-card">There's a start, there's a middle, but somehow you never reach the finish</div>
+      <div class="pain-card">You feel like you're living “next to” your life, not inside it</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-eyebrow">What it is</div>
+    <div class="what-grid">
+      <div class="what-text">
+        <h2 class="section-title">Not motivation.<br>Not <em>“believe in yourself”</em>.<br>Mechanics.</h2>
+        <p>Results aren't luck and they aren't character. They're a system of seven components. If even one of them is zero, the result is zero too. No matter how hard you try.</p>
+        <p>The Results Formula is an original neuroscience-based program that gives you a map: where exactly your glitch is, and what to do about it, concretely.</p>
+        <p>Not general advice. Your personal entry point.</p>
+      </div>
+      <div class="what-visual">
+        <div class="formula-display">R = D × B × A × E × O × Res × β</div>
+        <div class="formula-components">
+          <div class="formula-comp"><div class="formula-comp-letter">D</div>Desire - the real fuel</div>
+          <div class="formula-comp"><div class="formula-comp-letter">B</div>Beliefs - the filter on reality</div>
+          <div class="formula-comp"><div class="formula-comp-letter">A</div>Action - the quality and direction of movement</div>
+          <div class="formula-comp"><div class="formula-comp-letter">E</div>Environment - the field you play on</div>
+          <div class="formula-comp"><div class="formula-comp-letter">O</div>Opportunities - what your brain notices</div>
+          <div class="formula-comp"><div class="formula-comp-letter" style="font-size:.8em;">Res</div>Resources - energy for the journey</div>
+          <div class="formula-comp"><div class="formula-comp-letter">β</div>The growth loop - the experience multiplier</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+<!-- FOR WHOM -->
+<section class="section for-whom-section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Who it's for</div>
+    <h2 class="section-title">This program is for you if...</h2>
+    <div class="for-whom-grid">
+      <div class="for-card"><p>You feel like you're living someone else's script and lost track long ago of what you really want</p></div>
+      <div class="for-card"><p>You try hard, but the results don't match the effort you put in</p></div>
+      <div class="for-card"><p>You lack inner support: decisions get made out of fear or other people's opinions</p></div>
+      <div class="for-card"><p>You start and quit, or do everything right but don't move forward</p></div>
+      <div class="for-card"><p>You want to understand the mechanics, not just “believe in yourself”</p></div>
+      <div class="for-card"><p>You're ready to take an honest look at yourself, without self-blame</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-eyebrow">How it works</div>
+    <h2 class="section-title">Two steps to <em>clarity</em></h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>An interactive lecture with a simulator</h4>
+          <p>You learn how each of the seven components works. In the simulator you see with your own eyes how strengthening or weakening one element changes the whole result.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Seven workbooks with the “Opora” bot</h4>
+          <p>Step by step, you work through each component in your own life. The “Opora” bot guides you through the exercises, answers questions and doesn't let you stop halfway. The workbooks are being translated into English and are released one by one; until each one is ready, you get the Ukrainian version.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="section packages-section" id="packages">
+  <div class="section-wide">
+    <div class="section-eyebrow">Program packages</div>
+    <h2 class="section-title">Choose your format</h2>
+    <p class="section-lead">First cohort, limited places.</p>
+    <div class="packages-grid">
+
+      <div class="package-card">
+        <div class="package-name">The Map</div>
+        <div class="package-tagline">Understand the mechanics</div>
+        <div class="package-price"><span>$</span>19</div>
+        <div class="package-divider"></div>
+        <ul class="package-features">
+          <li>The Results Formula interactive lecture</li>
+          <li>A component simulator: see the result for yourself</li>
+          <li>Lifetime access to the materials</li>
+        </ul>
+        <a href="#form" class="btn btn-ghost package-btn" onclick="setPackage('Карта')">Choose The Map</a>
+      </div>
+
+      <div class="package-card featured">
+        <div class="package-badge">Most popular</div>
+        <div class="package-name">The Route</div>
+        <div class="package-tagline">Understand and work it through</div>
+        <div class="package-price"><span>$</span>49</div>
+        <div class="package-divider"></div>
+        <ul class="package-features">
+          <li>The interactive lecture with the simulator</li>
+          <li>7 workbooks with step-by-step exercises (English versions released one by one)</li>
+          <li>The “Opora” bot: support along the whole way</li>
+          <li>Lifetime access to the materials</li>
+        </ul>
+        <a href="#form" class="btn btn-gold package-btn" onclick="setPackage('Маршрут')">Choose The Route</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OBJECTIONS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Questions</div>
+    <h2 class="section-title">What might be holding you back</h2>
+    <div class="obj-list">
+      <div class="obj-item">
+        <div class="obj-q" onclick="toggleObj(this)">I've already taken lots of courses and nothing changed</div>
+        <div class="obj-a">That's one of the signs that one of your components is at zero. Courses give knowledge, but if B (beliefs) or D (desire) is off, no amount of knowledge turns into results. Here we find the glitch first, and only then get to work.</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-q" onclick="toggleObj(this)">Isn't this just another “motivational” program?</div>
+        <div class="obj-a">No. Motivation can't be cured with motivation. This is neuroscience and concrete mechanics: why the brain sabotages, how the β loop works, why your environment affects you more than you think. No “believe in yourself”.</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-q" onclick="toggleObj(this)">How much time does it take?</div>
+        <div class="obj-a">The lecture takes about 40 minutes. Each workbook, 20-30 minutes. 3-4 hours in total, spread out at whatever pace suits you. Access never expires, so come back whenever you like.</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-q" onclick="toggleObj(this)">What if it doesn't work for me?</div>
+        <div class="obj-a">Write to me. We'll figure it out together. If the material truly gave you nothing new, we'll talk about it honestly.</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-q" onclick="toggleObj(this)">When do I start?</div>
+        <div class="obj-a">Right after your application is confirmed. I'll send you a payment link (card or PayPal), and access opens within 24 hours of payment.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHOR -->
+<section class="section author-section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Who's behind it</div>
+    <div class="author-grid">
+      <div class="author-avatar">S</div>
+      <div>
+        <div class="author-name">Svitlana Slipchenko</div>
+        <div class="author-title">Psychologist · 40 years of practice</div>
+        <div class="author-bio">
+          <p>A psychologist with 40 years of practice. Leader of the original “Beyond the Horizon” training. Honored Coach of Ukraine in kickboxing. Co-author of the book “Thai Boxing for You”.</p>
+          <p>I coached 8 world kickboxing champions. So when I talk about the Results Formula, it isn't theory. It's something I've seen in action hundreds of times: in the ring, in the gym, in life.</p>
+          <p>Results are a system. And a system can be built. I know how.</p>
+          <p>The Results Formula isn't book theory. It's years of watching myself and other people, backed by neuroscience. I worked it out because I needed a clear map myself, not inspiring words.</p>
+          <p>Now I help people find their glitch and start moving. Not fast. But for real.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="section form-section" id="form">
+  <div class="section-inner" style="text-align:center;">
+    <div class="section-eyebrow">First cohort</div>
+    <h2 class="section-title" style="color:var(--cream);">Apply.<br>I'll write to you personally.</h2>
+    <p class="section-lead">Places are limited. After you apply, I'll get in touch within 24 hours with the details and a payment link.</p>
+    <div class="form-wrap">
+      <div id="formContent">
+        <div class="form-row">
+          <label class="form-label" for="nameInput">What should I call you</label>
+          <input type="text" class="form-input" id="nameInput" placeholder="Your name">
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="emailInput">Email</label>
+          <input type="email" class="form-input" id="emailInput" placeholder="you@email.com">
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="packageSelect">Package</label>
+          <select class="form-select" id="packageSelect">
+            <option value="">Choose a package</option>
+            <option value="Карта">The Map - $19</option>
+            <option value="Маршрут">The Route - $49</option>
+          </select>
+        </div>
+        <button class="btn btn-gold" style="width:100%; margin-top:0.5rem; font-size:1rem;" onclick="submitForm()">
+          Apply
+        </button>
+        <p class="form-fine">By clicking the button, you agree that I'll contact you about the program. No spam.</p>
+      </div>
+      <div class="form-success" id="formSuccess">
+        <div class="form-success-icon">✉️</div>
+        <h3>Application received!</h3>
+        <p>I'll write to you personally within 24 hours. Check your email, and if you like, message me on Telegram right away, it's faster.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2026 Svitlana Slipchenko · <a href="/en/">Beyond the Horizon</a></p>
+</footer>
+
+<script>
+function toggleObj(el) {
+  const answer = el.nextElementSibling;
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.obj-q').forEach(q => {
+    q.classList.remove('open');
+    q.nextElementSibling.classList.remove('visible');
+  });
+  if (!isOpen) {
+    el.classList.add('open');
+    answer.classList.add('visible');
+  }
+}
+
+function setPackage(name) {
+  document.getElementById('packageSelect').value = name;
+}
+
+function submitForm() {
+  const name = document.getElementById('nameInput').value.trim();
+  const email = document.getElementById('emailInput').value.trim();
+  const pkg = document.getElementById('packageSelect').value;
+
+  if (!name) {
+    document.getElementById('nameInput').focus();
+    document.getElementById('nameInput').style.borderColor = 'var(--terra)';
+    setTimeout(() => document.getElementById('nameInput').style.borderColor = '', 2000);
+    return;
+  }
+  if (!email || !email.includes('@')) {
+    document.getElementById('emailInput').focus();
+    document.getElementById('emailInput').style.borderColor = 'var(--terra)';
+    setTimeout(() => document.getElementById('emailInput').style.borderColor = '', 2000);
+    return;
+  }
+  if (!pkg) {
+    document.getElementById('packageSelect').focus();
+    document.getElementById('packageSelect').style.borderColor = 'var(--terra)';
+    setTimeout(() => document.getElementById('packageSelect').style.borderColor = '', 2000);
+    return;
+  }
+  const type = 'formula-application-' + pkg.toLowerCase();
+  fetch('/api/subscribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, name, type, lang: 'en', package: pkg + ' (EN, ' + ({'Карта':'$19','Маршрут':'$49'})[pkg] + ')' })
+  }).catch(() => {});
+
+  document.getElementById('formContent').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+</script>
+
+</body>
+</html>
