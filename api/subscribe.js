@@ -1,7 +1,7 @@
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
-  const { email, name, type, package: pkg } = req.body;
+  const { email, name, type, lang, package: pkg } = req.body;
   const apiKey = process.env.MAILERLITE_API_KEY;
   const groupMap = {
     'analytic': 'Аналітик', 'impulsive': 'Імпульсивний', 'integrator': 'Інтегратор', 'observer': 'Споглядач',
@@ -16,7 +16,18 @@ export default async function handler(req, res) {
     'formula-application-маршрут':   'Формула - Заявка - Маршрут',
     'formula-application-провідник': 'Формула - Заявка - Провідник'
   };
-  const groupName = groupMap[type];
+  // Англомовні з квізу «Формула результату» йдуть в окремі EN-групи (листи англійською).
+  // Заявки на пакети лишаються в спільних групах: мова видна в полі package («Карта (EN, $19)»).
+  const enGroupMap = {
+    'formula-b':    'Formula EN - Desire',
+    'formula-p':    'Formula EN - Beliefs',
+    'formula-d':    'Formula EN - Action',
+    'formula-o':    'Formula EN - Environment',
+    'formula-m':    'Formula EN - Opportunities',
+    'formula-res':  'Formula EN - Resources',
+    'formula-beta': 'Formula EN - β'
+  };
+  const groupName = (lang === 'en' && enGroupMap[type]) || groupMap[type];
   if (!groupName) return res.status(400).json({ error: 'Unknown type' });
 
   // Сповіщення в Telegram надсилається незалежно від MailerLite —
@@ -28,7 +39,7 @@ export default async function handler(req, res) {
   try {
     const headers = { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json', 'Accept': 'application/json' };
 
-    const groupsRes = await fetch('https://connect.mailerlite.com/api/groups?limit=25', { headers });
+    const groupsRes = await fetch('https://connect.mailerlite.com/api/groups?limit=100', { headers });
     const groupsData = await groupsRes.json();
     const group = groupsData.data?.find(g => g.name === groupName);
     if (!group) return res.status(400).json({ error: 'Group not found: ' + groupName });
