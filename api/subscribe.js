@@ -18,7 +18,13 @@ export default async function handler(req, res) {
   };
   // Англомовні з квізу «Формула результату» йдуть в окремі EN-групи (листи англійською).
   // Заявки на пакети лишаються в спільних групах: мова видна в полі package («Карта (EN, $19)»).
+  // Тест інтуїції англійською: окремі групи без автоматизацій (листів поки немає),
+  // щоб англомовні не отримували українські серії.
   const enGroupMap = {
+    'analytic':   'Intuition EN - Analyst',
+    'impulsive':  'Intuition EN - Impulsive',
+    'integrator': 'Intuition EN - Integrator',
+    'observer':   'Intuition EN - Observer',
     'formula-b':    'Formula EN - Desire',
     'formula-p':    'Formula EN - Beliefs',
     'formula-d':    'Formula EN - Action',
