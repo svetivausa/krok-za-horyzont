@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workbook A: Action · Beyond the Horizon</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://www.svitlana-slipchenko.pp.ua/en/metodychka-d.html">
+<link rel="alternate" hreflang="uk" href="https://www.svitlana-slipchenko.pp.ua/metodychka-d.html">
+<link rel="alternate" hreflang="en" href="https://www.svitlana-slipchenko.pp.ua/en/metodychka-d.html">
+<link rel="alternate" hreflang="x-default" href="https://www.svitlana-slipchenko.pp.ua/metodychka-d.html">
+<style>
+:root {
+  --bg: #F5EFE6;
+  --bg2: #EDE3D0;
+  --bg3: #E3D5BC;
+  --card: #FAF5EC;
+  --terra: #B85042;
+  --terra-dark: #8E3A2F;
+  --gold: #C9A84C;
+  --gold-dark: #A88A30;
+  --blue: #3A5878;
+  --blue-dk: #2A4060;
+  --blue-li: #5A7898;
+  --ink: #2C1A0E;
+  --ink2: #5A4530;
+  --muted: #8B7355;
+  --line: rgba(44,26,14,.12);
+  --green: #4A7C3A;
+  --violet: #6B4A8C;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; font-size: 17px; line-height: 1.7; min-height: 100vh; overflow-x: hidden; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ═══════ HEADER ═══════ */
+header.top { padding: 4rem 1.5rem 2.5rem; text-align: center; position: relative; overflow: hidden; }
+header.top::before { content: ''; position: absolute; width: 300px; height: 300px; background: var(--blue); opacity: .07; border-radius: 50%; top: -120px; right: -60px; }
+header.top > * { position: relative; z-index: 1; }
+.series { display: inline-block; font-size: .72rem; letter-spacing: .35em; text-transform: uppercase; color: var(--blue-dk); font-weight: 700; margin-bottom: 1.5rem; padding: 6px 18px; border: 1px solid var(--blue); border-radius: 3px; }
+.glyph { font-family: 'Georgia', serif; font-weight: 700; font-size: clamp(4rem, 12vw, 7rem); color: var(--blue); line-height: 1; display: block; margin-bottom: .3rem; }
+.glyph-sub { font-family: 'Georgia', serif; font-style: italic; font-size: .9rem; color: var(--muted); margin-bottom: 1rem; }
+h1.title { font-family: 'Georgia', serif; font-size: clamp(1.9rem, 5vw, 3rem); font-weight: 700; letter-spacing: -.02em; line-height: 1.08; color: var(--ink); margin-bottom: 1rem; max-width: 14em; margin-left: auto; margin-right: auto; }
+.subtitle { font-family: 'Georgia', serif; font-style: italic; font-size: clamp(1.05rem, 2.2vw, 1.3rem); color: var(--blue); max-width: 28em; margin: 0 auto; }
+.divider-deco { margin: 2rem auto 0; width: 60px; height: 1px; background: var(--blue); position: relative; }
+.divider-deco::before, .divider-deco::after { content: ''; position: absolute; top: -3px; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
+.divider-deco::before { left: -14px; } .divider-deco::after { right: -14px; }
+
+/* ═══════ TYPOGRAPHY ═══════ */
+section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+p { margin-bottom: 1.1rem; color: var(--ink); }
+p.lead { font-family: 'Georgia', serif; font-size: 1.28rem; line-height: 1.55; margin-bottom: 1.5rem; }
+p strong { font-weight: 700; color: var(--ink); }
+p em { font-style: italic; color: var(--blue-dk); }
+h2.section-title { font-family: 'Georgia', serif; font-size: clamp(1.6rem, 4vw, 2.3rem); font-weight: 700; letter-spacing: -.015em; line-height: 1.15; color: var(--ink); margin: 0 0 1.2rem; }
+.kicker { display: inline-block; font-family: 'Georgia', serif; font-style: italic; font-size: .78rem; letter-spacing: .25em; text-transform: uppercase; color: var(--blue-dk); font-weight: 700; margin-bottom: .7rem; }
+
+.wow { font-family: 'Georgia', serif; font-style: italic; font-size: clamp(1.25rem, 2.8vw, 1.55rem); line-height: 1.4; color: var(--blue); text-align: center; margin: 2rem auto; padding: 1.3rem 1rem; max-width: 24em; position: relative; font-weight: 600; }
+.wow::before, .wow::after { content: ''; position: absolute; left: 50%; transform: translateX(-50%); width: 40px; height: 1px; background: var(--blue); }
+.wow::before { top: 0; } .wow::after { bottom: 0; }
+
+/* ═══════ HOW TO USE ═══════ */
+.howto { background: var(--bg2); margin: 2rem -1.5rem; padding: 2.5rem 1.5rem; }
+.howto-inner { max-width: 760px; margin: 0 auto; }
+.howto-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.2rem; }
+.howto-item { display: flex; gap: 1rem; align-items: flex-start; }
+.howto-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--blue); color: #fff; font-family: 'Georgia', serif; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: .95rem; }
+.howto-text { color: var(--ink); font-size: .98rem; line-height: 1.55; }
+.howto-text strong { font-weight: 700; }
+
+/* ═══════ PROGRESS ═══════ */
+.progress-wrap { position: sticky; top: 0; z-index: 40; background: rgba(245,239,230,.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: .8rem 1.5rem; border-bottom: 1px solid var(--line); }
+.progress-inner { max-width: 760px; margin: 0 auto; display: flex; align-items: center; gap: 1rem; }
+.progress-label { font-family: 'Georgia', serif; font-size: .82rem; color: var(--ink2); white-space: nowrap; font-weight: 600; }
+.progress-track { flex: 1; height: 8px; background: var(--bg3); border-radius: 4px; overflow: hidden; }
+.progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--blue-li), var(--blue)); border-radius: 4px; transition: width .4s ease; }
+.progress-count { font-family: 'Georgia', serif; font-weight: 700; color: var(--blue-dk); font-variant-numeric: tabular-nums; font-size: .9rem; white-space: nowrap; }
+
+/* ═══════ LEVEL ═══════ */
+.level-head { margin: 3.5rem 0 1.5rem; text-align: center; }
+.level-tag { display: inline-block; font-family: 'Georgia', serif; font-style: italic; font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; color: #fff; background: var(--blue); font-weight: 700; padding: 5px 16px; border-radius: 4px; margin-bottom: .8rem; }
+.level-title { font-family: 'Georgia', serif; font-size: 1.7rem; font-weight: 700; color: var(--ink); margin-bottom: .4rem; }
+.level-desc { font-size: .95rem; color: var(--muted); font-style: italic; max-width: 28em; margin: 0 auto; }
+
+/* ═══════ EXERCISE ═══════ */
+.ex { background: var(--card); border: 1px solid var(--line); border-radius: 12px; margin: 1.5rem 0; overflow: hidden; transition: box-shadow .3s, border-color .3s; }
+.ex.done { border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue); }
+.ex-head { display: flex; align-items: flex-start; gap: 1rem; padding: 1.4rem 1.5rem 1rem; }
+.ex-check { flex-shrink: 0; width: 28px; height: 28px; border-radius: 8px; border: 2px solid var(--muted); background: var(--bg); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; margin-top: 2px; }
+.ex-check:hover { border-color: var(--blue); }
+.ex.done .ex-check { background: var(--blue); border-color: var(--blue-dk); }
+.ex-check svg { width: 16px; height: 16px; opacity: 0; transition: opacity .2s; }
+.ex.done .ex-check svg { opacity: 1; }
+.ex-num { font-family: 'Georgia', serif; font-style: italic; font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: var(--blue-dk); font-weight: 700; margin-bottom: .2rem; }
+.ex-title { font-family: 'Georgia', serif; font-size: 1.3rem; font-weight: 700; color: var(--ink); line-height: 1.2; }
+.ex-body { padding: 0 1.5rem 1.5rem; }
+.ex-mech { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.1rem; }
+.tag { font-family: 'Georgia', serif; font-size: .74rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; letter-spacing: .02em; }
+.tag-mech { background: var(--bg3); color: var(--blue-dk); }
+.tag-pain { background: rgba(184,80,66,.1); color: var(--terra-dark); }
+.ex-section-label { font-family: 'Georgia', serif; font-style: italic; font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin: 1.1rem 0 .5rem; }
+.ex-steps { list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: .6rem; }
+.ex-steps li { counter-increment: step; position: relative; padding-left: 2rem; font-size: .95rem; line-height: 1.55; color: var(--ink); }
+.ex-steps li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--blue); color: #fff; font-family: 'Georgia', serif; font-size: .78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+.ex-example { background: var(--bg2); border-radius: 8px; padding: .9rem 1.1rem; margin-top: .5rem; font-size: .9rem; color: var(--ink2); line-height: 1.6; }
+.ex-example strong { color: var(--ink); }
+.ex-control { display: flex; gap: .6rem; align-items: flex-start; margin-top: 1.1rem; padding-top: 1rem; border-top: 1px dashed var(--line); font-size: .9rem; color: var(--ink2); line-height: 1.55; }
+.ex-control::before { content: '✓'; color: var(--blue-dk); font-weight: 700; flex-shrink: 0; }
+.ex-control strong { color: var(--ink); }
+
+/* ═══════ BOT ═══════ */
+.bot { margin-top: 1.2rem; background: linear-gradient(135deg, var(--blue-dk), var(--blue)); border-radius: 10px; padding: 1.1rem 1.3rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.bot-text { flex: 1; min-width: 200px; color: #fff; font-size: .92rem; line-height: 1.5; }
+.bot-text strong { font-weight: 700; }
+.bot-btn { display: inline-block; background: #fff; color: var(--blue-dk); font-family: 'Georgia', serif; font-weight: 700; font-size: .95rem; text-decoration: none; padding: 10px 20px; border-radius: 7px; transition: transform .2s, box-shadow .2s; white-space: nowrap; }
+.bot-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px -6px rgba(0,0,0,.4); }
+
+/* ═══════ FINAL ═══════ */
+.checkpoints, .mistakes { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1.8rem 1.8rem 2rem; margin: 2rem 0; }
+.cp-list, .mk-list { display: flex; flex-direction: column; gap: .8rem; margin-top: 1rem; }
+.cp-item, .mk-item { display: flex; gap: .7rem; align-items: flex-start; font-size: .95rem; line-height: 1.55; color: var(--ink); }
+.cp-item::before { content: '▲'; color: var(--green); flex-shrink: 0; font-size: .8rem; margin-top: 3px; }
+.mk-item::before { content: '✕'; color: var(--terra); flex-shrink: 0; font-weight: 700; }
+.cp-item strong, .mk-item strong { font-weight: 700; }
+.reflect { background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%); margin: 3rem -1.5rem 0; padding: 3rem 1.5rem; }
+.reflect-inner { max-width: 760px; margin: 0 auto; }
+.reflect-q { font-family: 'Georgia', serif; font-size: 1.1rem; color: var(--ink); padding: 1rem 0; border-bottom: 1px solid var(--line); display: flex; gap: .8rem; }
+.reflect-q:last-child { border-bottom: none; }
+.reflect-q span { color: var(--blue-dk); font-weight: 700; flex-shrink: 0; }
+.ending { text-align: center; padding-top: 3.5rem; padding-bottom: 4rem; }
+.ending-q { font-family: 'Georgia', serif; font-style: italic; font-size: clamp(1.4rem, 3.5vw, 2rem); color: var(--blue); max-width: 20em; margin: 0 auto 1.5rem; line-height: 1.3; }
+.signature { font-family: 'Georgia', serif; font-style: italic; color: var(--muted); font-size: 1rem; margin-top: 1.5rem; }
+.back-link { display: inline-block; margin-top: 2rem; font-family: 'Georgia', serif; font-size: .95rem; color: var(--blue-dk); text-decoration: none; border-bottom: 1px solid var(--blue); padding-bottom: 2px; }
+footer { text-align: center; padding: 2rem 1.5rem 3rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .8rem; font-style: italic; font-family: 'Georgia', serif; }
+.reset-btn { background: none; border: 1px solid var(--line); color: var(--muted); font-family: inherit; font-size: .8rem; padding: 5px 12px; border-radius: 4px; cursor: pointer; transition: all .2s; }
+.reset-btn:hover { border-color: var(--blue); color: var(--blue); }
+@media (max-width: 600px) { .ex-head { padding: 1.2rem 1.1rem .8rem; } .ex-body { padding: 0 1.1rem 1.2rem; } .progress-label { display: none; } .howto { margin-left: 0; margin-right: 0; } .reflect { margin-left: 0; margin-right: 0; } }
+</style>
+</head>
+<body>
+
+<div id="accessGate" data-access="praktykum" style="
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #0A0F1E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  padding: 1.5rem;
+">
+  <div style="
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    color: #F5EFE6;
+  ">
+    <div style="
+      font-family: Georgia, serif;
+      font-size: 1.6rem;
+      color: #C9A84C;
+      margin-bottom: 0.8rem;
+    ">The Results Formula</div>
+    <p style="
+      color: rgba(245,239,230,0.7);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    ">This material opens with an access code.<br>Enter the code you received after payment.</p>
+    <input type="text" id="accessCode" placeholder="Access code" style="
+      width: 100%;
+      padding: 0.9rem 1rem;
+      background: rgba(255,255,255,0.07);
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      color: #F5EFE6;
+      font-size: 1rem;
+      text-align: center;
+      letter-spacing: 0.05em;
+      outline: none;
+      margin-bottom: 1rem;
+      box-sizing: border-box;
+    ">
+    <button onclick="checkAccessCode()" style="
+      width: 100%;
+      padding: 0.9rem;
+      background: #B85042;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    ">Unlock</button>
+    <p id="accessError" style="
+      color: #D4695A;
+      font-size: 0.85rem;
+      margin-top: 1rem;
+      min-height: 1.2rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+    ">Wrong code. Check it and try again.</p>
+    <p style="
+      color: rgba(245,239,230,0.4);
+      font-size: 0.8rem;
+      margin-top: 1.5rem;
+      line-height: 1.5;
+    ">No code? <a href="/en/formula-rezultatu-sales.html" style="color:#C9A84C; text-decoration:none;">Learn about the program →</a></p>
+  </div>
+</div>
+
+<script>
+(function() {
+  if (window.self !== window.top) { document.getElementById('accessGate').style.display='none'; return; }
+  var CODES = {
+    'KARTA-2026':     ['lekciya'],
+    'MARSHRUT-2026':  ['lekciya', 'praktykum'],
+    'PROVIDNYK-2026': ['lekciya', 'praktykum']
+  };
+
+  var gate = document.getElementById('accessGate');
+  var pageLevel = gate.getAttribute('data-access'); 
+  var STORAGE_KEY = 'formula_access';
+  function hasStoredAccess() {
+    try {
+      var saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return false;
+      var levels = JSON.parse(saved);
+      return levels.indexOf(pageLevel) !== -1;
+    } catch(e) { return false; }
+  }
+
+  function unlock() {
+    gate.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  function checkAccessCode() {
+    var input = document.getElementById('accessCode').value.trim().toUpperCase();
+    var err = document.getElementById('accessError');
+    var levels = CODES[input];
+
+    if (levels && levels.indexOf(pageLevel) !== -1) {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(levels)); } catch(e) {}
+      unlock();
+    } else {
+      err.style.opacity = '1';
+    }
+  }
+  window.checkAccessCode = checkAccessCode;
+  document.getElementById('accessCode').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') checkAccessCode();
+  });
+  if (hasStoredAccess()) {
+    unlock();
+  } else {
+    document.body.style.overflow = 'hidden';
+  }
+})();
+</script>
+
+
+<!-- PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <span class="progress-label">Your path:</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-count" id="progressCount">0 / 10</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="top">
+  <div class="series">Beyond the Horizon · Workbook</div>
+  <span class="glyph">A</span>
+  <div class="glyph-sub">action · quality × direction × frequency</div>
+  <h1 class="title">How to move instead of just keeping busy</h1>
+  <p class="subtitle">Ten exercises on the only component that is fully in your hands right now</p>
+  <div class="divider-deco"></div>
+</header>
+
+<!-- INTRO -->
+<section class="wrap">
+  <p class="lead">
+    In the results formula, A, Action, is the only component you can change in the next five minutes. Not tomorrow. Not "when I'm in the mood". Now.
+  </p>
+  <p>
+    But not all action is equal. Inside A there are three multipliers: <strong>quality</strong> (does this car actually run), <strong>direction</strong> (where you turn the wheel) and <strong>frequency</strong> (how often you start the engine). And if even one of them drops to zero, there's no result, even if the rest are perfect.
+  </p>
+  <p>
+    The most common reason for "I'm stuck in place" isn't laziness or a lack of willpower. It's either action in the <em>wrong direction</em> (the car is speeding, but the wrong way), or action that's <em>not frequent enough</em> (we drive out once a month), or action <em>with zero resources behind it</em> (a wreck that falls apart before it leaves the drive). This workbook will help you see which one it is, and what to do about it.
+  </p>
+
+  <div class="wow">Not "more effort". A better direction, and at least a little more often.</div>
+
+  <p>
+    The main caveat: this workbook is <strong>not about productivity and timers</strong>. There'll be no "get up at five in the morning" or "split your day into blocks". It's about how to start moving when you have no inspiration, no clarity and no spare energy. With steps you can definitely lift.
+  </p>
+</section>
+
+<!-- HOW TO USE -->
+<div class="howto">
+  <div class="howto-inner">
+    <span class="kicker">How it works</span>
+    <h2 class="section-title">How to use this workbook</h2>
+    <div class="howto-list">
+      <div class="howto-item"><div class="howto-num">1</div><div class="howto-text"><strong>This is observation, not planning.</strong> First, honestly see what's there. Most mistakes in action come from not looking at it soberly.</div></div>
+      <div class="howto-item"><div class="howto-num">2</div><div class="howto-text"><strong>Step by step, without rushing.</strong> First the audit (what I do), then the direction (where to), then the frequency (how often). Not the other way round.</div></div>
+      <div class="howto-item"><div class="howto-num">3</div><div class="howto-text"><strong>Less, but better aimed.</strong> One action in the right direction every day will give you more than ten heroic sprints once a quarter.</div></div>
+      <div class="howto-item"><div class="howto-num">4</div><div class="howto-text"><strong>Tick an exercise when it has become yours.</strong> Not when you've read it, but when you've actually done it. The progress bar at the top shows the path you've walked.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- LEVEL 1 -->
+<div class="wrap">
+  <div class="level-head">
+    <span class="level-tag">Level 1 · Foundation</span>
+    <div class="level-title">See your car</div>
+    <p class="level-desc">Before changing anything about your actions, you need to look honestly at what's really happening. Not what you plan, but what's real. This is often where the first discovery is.</p>
+  </div>
+
+  <!-- Exercise 1 -->
+  <div class="ex" data-ex="1">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Exercise 1</div><div class="ex-title">An audit of real actions</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: awareness of current behaviour · self-observation</span>
+        <span class="tag tag-pain">pain: "I could do more, but I'm stuck in place"</span>
+      </div>
+      <p>We rarely see our actions as they really are. In your head it's "I'm busy all the time". In reality, a large part of that busyness may not lead to any result at all. So first, a sober look without judgement.</p>
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Take one ordinary day from last week. Not a perfect one, an ordinary one.</li>
+        <li>Try to reconstruct from memory what you actually did from waking up to going to sleep. What took up your time: not what you planned, but what really happened.</li>
+        <li>Sort the actions into three columns: <em>moves me towards my goal</em>, <em>necessary, but doesn't move me</em>, <em>neither</em>. Look at the proportions honestly.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Example.</strong> "I think I work all day. But when I break it down: three hours of meetings with no decisions, two hours of email, an hour reading things that weren't urgent. What moved me towards the goal: maybe two hours. And I'm not even sure of that." This isn't a verdict, it's a starting point.
+      </div>
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you have an honest picture of one day, and you can say what share of your actions really moves you forward. Even if it's small, it's knowledge you can work with.</span></div>
+    </div>
+  </div>
+
+  <!-- Exercise 2 -->
+  <div class="ex" data-ex="2">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Exercise 2</div><div class="ex-title">Where is the car going</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: checking the vector of action · alignment with the goal</span>
+        <span class="tag tag-pain">pain: "I try hard, but nothing works out"</span>
+      </div>
+      <p>You can drive fast and in the wrong direction. That's one of the biggest traps with action: a person genuinely tries, but what they do simply doesn't lead to the result they want. Direction matters more than speed.</p>
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Name one important goal you're moving towards (or want to).</li>
+        <li>Now ask honestly: "what do I do every week that really brings me closer to it?" Not in theory, but specific actions that are already happening.</li>
+        <li>If there are no such actions, or they're tiny, that's your answer: the car is either standing still or going the wrong way. And that can be fixed.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Example.</strong> The goal: "launch my own project". What do I do every week? "Read about entrepreneurship, watch videos of successful people, think." But there isn't a single action that brings the launch closer. The car is standing still with the radio on.
+      </div>
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you can name at least one specific action you do every week that really brings you closer to your goal. If you can't, that's exactly where the work is.</span></div>
+    </div>
+  </div>
+
+  <!-- Exercise 3 -->
+  <div class="ex" data-ex="3">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Exercise 3</div><div class="ex-title">Busyness or movement</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: telling activity apart from effectiveness</span>
+        <span class="tag tag-pain">pain: "I'm always doing something, but there's no result"</span>
+      </div>
+      <p>Being busy and being productive aren't the same thing. Busyness is a lot of motion but little displacement. Movement is when every action, however small, actually changes the state of things. This exercise teaches you to tell them apart, in yourself, not in theory.</p>
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Think back over the last week. Which actions gave a real result: something changed, something got done, something moved forward?</li>
+        <li>And what was "activity without result": talks about nothing, preparing to prepare, reading without applying?</li>
+        <li>Identify your main "busyness pattern": what exactly do you do instead of the main thing when you want to feel busy?</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Example.</strong> "My busyness pattern is rewriting my to-do list. I spend a good hour on it and feel I've 'done something'. In reality I've just moved words from one place to another." Knowing the pattern is already half of being free of it.
+      </div>
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you know your main "busyness pattern" and can recognise it the moment it starts. Now you have a pause between "I'm starting to keep busy" and "I'm actually doing it".</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- LEVEL 2 -->
+<div class="wrap">
+  <div class="level-head">
+    <span class="level-tag">Level 2 · Core</span>
+    <div class="level-title">Fix it and aim it</div>
+    <p class="level-desc">Now remove what's holding you back and straighten the vector. Not more actions, but better-aimed ones, in the direction you really need.</p>
+  </div>
+
+  <!-- Exercise 4 -->
+  <div class="ex" data-ex="4">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Exercise 4</div><div class="ex-title">Drop "action for action's sake"</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: freeing up resources by dropping what's unnecessary</span>
+        <span class="tag tag-pain">pain: "no energy for what matters"</span>
+      </div>
+      <p>Often the problem isn't a lack of action. It's that all your time and energy go into actions that give you nothing. Stopping something is an action too. Sometimes the most important one.</p>
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Look at your to-do list or your weekly rhythm. What's in there that you do regularly, but if you stopped, nothing important would change?</li>
+        <li>For each such task, ask: "what will happen if I don't do this this week?" If the answer is "nothing serious", it's a candidate for stopping.</li>
+        <li>Choose one task to stop for a month as an experiment. Just one, but for real.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Example.</strong> "Every week I wrote a detailed report for myself that nobody read, not even me. Three hours. I stopped, and nothing changed. Those three hours now go into things that move me forward."
+      </div>
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you've stopped at least one regular action, and the time or energy you freed up went into something that really matters. Dropping the unnecessary isn't laziness, it's strategy.</span></div>
+    </div>
+  </div>
+
+  <!-- Exercise 5 -->
+  <div class="ex" data-ex="5">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Exercise 5</div><div class="ex-title">The one step with the biggest leverage</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: finding the action with the greatest effect · the leverage principle</span>
+        <span class="tag tag-pain">pain: "I do a lot, but get little result"</span>
+      </div>
+      <p>Not all actions are equally valuable. There are one or two that give more result than all the rest put together. That's leverage: find them and give them priority, even if they aren't the easiest. The hardest part of this exercise is being honest with yourself about what really matters.</p>
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Take your main goal (as in exercise 2). Imagine you only have one hour a week for this goal. Which action would you choose, the one that gives the biggest shift?</li>
+        <li>Write that action down. Not a list, just one.</li>
+        <li>Now look at how much time this action takes in your real week. If it's zero or close to zero, that's where there's something to change.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Example.</strong> The goal is to find new clients. The action with the biggest leverage is personal contact with a potential client. How many such contacts in a week? Zero. Meanwhile dozens of hours go into "preparation" and social media. Leverage found.
+      </div>
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you know your "leverage step", and it has appeared in your week, at least once. That's a shift.</span></div>
+    </div>
+  </div>
+
+  <!-- Exercise 6 -->
+  <div class="ex" data-ex="6">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Exercise 6</div><div class="ex-title">Implementation intention</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: implementation intention · the psychology of acting on intentions</span>
+        <span class="tag tag-pain">pain: "I know what I should do, but I don't do it"</span>
+      </div>
+      <p>There's a well-researched phenomenon: people who plan not only <em>what</em> they'll do but also <em>when, where and how</em> follow through on their intentions much more often. "I'll start exercising" stays a dream. "Tuesday, 7 pm, the park near home, 20 minutes" is almost an action already.</p>
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Take your "leverage step" from exercise 5 (or any important action you keep putting off).</li>
+        <li>Plan it with this formula: <em>"I will [action] on [specific day] at [specific time] in [specific place]."</em></li>
+        <li>Set a reminder or put it in your calendar. Not "I'll remember", but write it down. The brain takes what's written down more seriously.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Example.</strong> Instead of "I need to write to that client" → "Wednesday, 10 am, at my desk at home, I'll write one email to Alex about the meeting." Specifics remove the excuses: there's no question of "when?", only "did I do it or not".
+      </div>
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you've done the planned action at the planned time at least twice in a row. The implementation intention has started turning into a habit.</span></div>
+    </div>
+  </div>
+
+  <!-- Exercise 7 -->
+  <div class="ex" data-ex="7">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Exercise 7</div><div class="ex-title">The smallest possible action</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: lowering the entry threshold · overcoming initial resistance</span>
+        <span class="tag tag-pain">pain: "I start and give up, I can't get going"</span>
+      </div>
+      <p>The biggest resistance isn't in the process, it's at the start. The brain overestimates how hard it will be and hits the brakes before you even begin. The remedy is to make the start so small that refusing it would be ridiculous. Not "write an article", but "open the document and write the first sentence".</p>
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Take an action you keep putting off. The one that feels heavy before you've even started.</li>
+        <li>Cut it down to the smallest possible first step. One that takes 2–5 minutes and doesn't need "the right mood".</li>
+        <li>Do only that step. No obligation to continue, just this one. And see what happens next.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Example.</strong> "I can't start sorting out my finances, it feels awful." Smallest action: open the spreadsheet and enter one number. One. Almost always you carry on after that, because the start is done and the resistance has dropped.
+      </div>
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you start using this principle automatically: when something gets put off, you ask "what's the smallest possible action here?" and do it without waiting for inspiration.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- LEVEL 3 -->
+<div class="wrap">
+  <div class="level-head">
+    <span class="level-tag">Level 3 · Consolidation</span>
+    <div class="level-title">Keep it regular</div>
+    <p class="level-desc">One right action is good. The same action, regularly: that's where results are born. This level is about how not to stop after a week.</p>
+  </div>
+
+  <!-- Exercise 8 -->
+  <div class="ex" data-ex="8">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Exercise 8</div><div class="ex-title">Tie it to an anchor</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: habit stacking · tying a new action to an existing habit</span>
+        <span class="tag tag-pain">pain: "I start and give up"</span>
+      </div>
+      <p>A new action holds much better if it's tied to an existing habit, an "anchor". The brain already knows that rhythm, and the new action slides into it with almost no resistance. No need to remember, no need to decide: just "after X, I do Y".</p>
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Choose an action you want to make regular (ideally from exercise 5 or 6).</li>
+        <li>Find a stable anchor in your day, something you definitely already do every day: morning coffee, leaving the house, lunch, the evening shower.</li>
+        <li>Phrase the link: "After [anchor], I [new action]." And stick to this formula without exceptions for the first two weeks.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Example.</strong> "After my morning coffee: five minutes on the most important task of the day." The coffee is already there every morning. The new action has hooked onto the anchor, and stopped depending on mood or memory.
+      </div>
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you keep the "anchor + new action" link for ten days in a row without reminders. That's a sign the pair is starting to grow into a habit.</span></div>
+    </div>
+  </div>
+
+  <!-- Exercise 9 -->
+  <div class="ex" data-ex="9">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Exercise 9</div><div class="ex-title">Bounce back after a pause</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: recovering after a slip without self-blame</span>
+        <span class="tag tag-pain">pain: "I start, and give up after the first slip"</span>
+      </div>
+      <p>Missing a day is inevitable. Illness, an emergency, just a bad day. The miss isn't the problem. The problem is that afterwards people often give up completely: "well, I've already ruined it, what's the difference". This exercise is about coming back without drama.</p>
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Accept a rule: one miss is a miss. Two in a row is the start of a new (bad) habit. So after any miss, next time you always come back.</li>
+        <li>When you come back after a pause, do the smallest version of the action, not the full one. Going to the gym and walking for 10 minutes is better than not going because you "don't have the energy for a full workout".</li>
+        <li>Don't beat yourself up for the miss, just note the return: "I came back." That's the result.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Example.</strong> "I didn't write for three days, I was ill. Instead of 'that's it, I've failed', the next day I wrote one paragraph. One. But I came back. The flow didn't break, it just slowed down."
+      </div>
+      <div class="ex-control"><span><strong>Checkpoint:</strong> at least once you've come back after a pause without self-blame, simply picking the action up again in its smallest version. That's the spring: it compressed, and bounced back.</span></div>
+    </div>
+  </div>
+
+  <!-- Exercise 10 -->
+  <div class="ex" data-ex="10">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Exercise 10</div><div class="ex-title">A review of quality and direction</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: a feedback loop · regularly checking the vector</span>
+        <span class="tag tag-pain">pain: "I keep doing it, but I can't tell if it's working"</span>
+      </div>
+      <p>Regularity without checking means driving at the right frequency, but perhaps long since in the wrong direction. Once a month it's worth stopping to ask: "are my actions still taking me where I want to go? Or has something changed?" Not to doubt yourself, but to correct the vector before you drift too far.</p>
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Once a month, on a fixed day (for example, the last week of the month), ask yourself two questions.</li>
+        <li><em>Is there any result from my regular actions, even a small one?</em> If there's none after a month, something needs to change.</li>
+        <li><em>Have my circumstances or my goal changed</em> so that my actions are no longer relevant? If so, update the actions, not your willpower.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Example.</strong> "For a month I sent cold emails: zero replies. The review showed the market had changed and this channel doesn't work like that any more. Instead of 'I need to try harder', I switched to referrals. Vector updated."
+      </div>
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you've done a monthly review and as a result either confirmed your direction or adjusted your action. Either result is the right one. The main thing is not to drive on autopilot for months without checking.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKPOINTS -->
+<div class="wrap">
+  <div class="checkpoints">
+    <span class="kicker">How to tell A is working</span>
+    <h2 class="section-title" style="font-size:1.5rem;">Signs, not scores</h2>
+    <p style="font-size:.95rem; color:var(--ink2); margin-bottom:.5rem;">Not "I did more", but "I'm moving in a better direction and more regularly". Check in once a month.</p>
+    <div class="cp-list">
+      <div class="cp-item"><span>You can name <strong>one specific action</strong> you do every week that really brings you closer to your goal.</span></div>
+      <div class="cp-item"><span>You know your <strong>"busyness pattern"</strong> and notice it before it eats up several hours.</span></div>
+      <div class="cp-item"><span>After a miss you <strong>come back</strong>, in the smallest version, without self-blame.</span></div>
+      <div class="cp-item"><span>At least one important action is <strong>tied to an anchor</strong> and happens without a daily decision about whether to do it.</span></div>
+      <div class="cp-item"><span>Once a month you <strong>check the vector</strong>, and you're not afraid to adjust it if something has changed.</span></div>
+    </div>
+  </div>
+
+  <div class="mistakes">
+    <span class="kicker">Careful</span>
+    <h2 class="section-title" style="font-size:1.5rem;">What doesn't work with A</h2>
+    <p style="font-size:.95rem; color:var(--ink2); margin-bottom:.5rem;">Three traps that turn movement into busyness, or bring it to a halt.</p>
+    <div class="mk-list">
+      <div class="mk-item"><span><strong>More actions instead of better-aimed ones.</strong> When things don't work, the natural impulse is "I need to try harder". But if the vector is wrong, more speed only takes you the wrong way faster.</span></div>
+      <div class="mk-item"><span><strong>Giving up after the first miss.</strong> One miss is a miss. Two in a row is already a new (bad) habit. Coming back after a slip matters more than a flawless streak.</span></div>
+      <div class="mk-item"><span><strong>Planning instead of doing.</strong> A detailed plan gives a feeling of progress without real movement. One real step in the right direction is worth more than an hour of planning.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- REFLECTION -->
+<div class="reflect">
+  <div class="reflect-inner">
+    <span class="kicker">To finish</span>
+    <h2 class="section-title">Questions worth sitting with</h2>
+    <div class="reflect-q"><span>1.</span> What one action, if I did it regularly, would change my situation the most?</div>
+    <div class="reflect-q"><span>2.</span> Where do I confuse being busy with moving forward, and what really takes up my time?</div>
+    <div class="reflect-q"><span>3.</span> What do I do regularly that I should have stopped long ago, because it no longer leads anywhere?</div>
+    <div class="reflect-q"><span>4.</span> After which of my "anchors" would it be easiest to slot in a new important action?</div>
+    <div class="reflect-q"><span>5.</span> If I could do only one thing every day, which would I choose?</div>
+  </div>
+</div>
+
+<!-- ENDING -->
+<section class="ending wrap">
+  <span class="kicker">And finally</span>
+  <p style="max-width:34em; margin:0 auto 1.5rem;">
+    A is the only component of the formula that's fully in your hands right now. Not from Monday. Not "when I have time". Right after you close this page.
+  </p>
+  <p style="max-width:34em; margin:0 auto 2rem;">
+    One action in the right direction. Regularly. No heroics, but no stopping either. That's what a big R is made of.
+  </p>
+
+  <div class="ending-q">What one action, today?</div>
+
+  <p class="signature">Svitlana Slipchenko, psychologist, author of Beyond the Horizon</p>
+  <a href="formula-rezultata.html" class="back-link" target="_blank" rel="noopener">← Back to the lecture "The Results Formula"</a>
+  <div style="margin-top:2.5rem;"><button class="reset-btn" id="resetBtn">Reset my progress</button></div>
+</section>
+
+<footer>Beyond the Horizon · Workbook A · a workbook for the lecture "The Results Formula"</footer>
+
+<script>
+(function() {
+  const STORAGE_KEY = 'metodychka-d-progress';
+  const cards = Array.from(document.querySelectorAll('.ex[data-ex]'));
+  const total = cards.length;
+  const fill = document.getElementById('progressFill');
+  const count = document.getElementById('progressCount');
+  let done = {};
+  try { const saved = localStorage.getItem(STORAGE_KEY); if (saved) done = JSON.parse(saved) || {}; } catch(e){ done = {}; }
+  function save(){ try { localStorage.setItem(STORAGE_KEY, JSON.stringify(done)); } catch(e){} }
+  function updateProgress(){
+    const n = Object.values(done).filter(Boolean).length;
+    const pct = total ? Math.round((n/total)*100) : 0;
+    if (fill) fill.style.width = pct + '%';
+    if (count) count.textContent = n + ' / ' + total;
+  }
+  function applyState(card){
+    const id = card.dataset.ex;
+    const check = card.querySelector('.ex-check');
+    const isDone = !!done[id];
+    card.classList.toggle('done', isDone);
+    if (check) check.setAttribute('aria-checked', isDone ? 'true':'false');
+  }
+  function toggle(card){
+    const id = card.dataset.ex;
+    done[id] = !done[id];
+    applyState(card); save(); updateProgress();
+  }
+  cards.forEach(card => {
+    const check = card.querySelector('.ex-check');
+    applyState(card);
+    if (check){
+      check.addEventListener('click', () => toggle(card));
+      check.addEventListener('keydown', (e) => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(card); } });
+    }
+  });
+  updateProgress();
+  const resetBtn = document.getElementById('resetBtn');
+  if (resetBtn) resetBtn.addEventListener('click', () => { done={}; save(); cards.forEach(applyState); updateProgress(); });
+})();
+</script>
+</body>
+</html>

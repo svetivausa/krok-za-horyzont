@@ -25,7 +25,7 @@ TITLES = {
     'beta': ('Практикум β', 'Workbook β: Conversion'),
 }
 
-START = '<!-- ═══════ PROGRESS ═══════ -->'
+GATE_END = '<!-- ===== КІНЕЦЬ ЗАМКА ДОСТУПУ ===== -->\n'
 
 
 def build_one(x):
@@ -33,8 +33,12 @@ def build_one(x):
     body_file = ROOT / 'tools' / 'en_src' / f'metodychka-{x}.body.html'
     src = (ROOT / name).read_text(encoding='utf-8')
     src = re.sub(r'<!--en-->.*?<!--/en-->', '', src, flags=re.S)
-    i = src.index(START)
-    j = src.index('</footer>\n', i) + len('</footer>\n')
+    # the body starts right after the access gate (every workbook has this marker;
+    # not all of them have the PROGRESS comment) and ends with the footer
+    i = src.index(GATE_END) + len(GATE_END)
+    j = src.index('</footer>', i) + len('</footer>')
+    if src[j:j + 1] == '\n':
+        j += 1
     ua_body = src[i:j]
     en_body = body_file.read_text(encoding='utf-8')
     if not en_body.endswith('\n'):
