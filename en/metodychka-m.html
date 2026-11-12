@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workbook O: Opportunities · Beyond the Horizon</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://www.svitlana-slipchenko.pp.ua/en/metodychka-m.html">
+<link rel="alternate" hreflang="uk" href="https://www.svitlana-slipchenko.pp.ua/metodychka-m.html">
+<link rel="alternate" hreflang="en" href="https://www.svitlana-slipchenko.pp.ua/en/metodychka-m.html">
+<link rel="alternate" hreflang="x-default" href="https://www.svitlana-slipchenko.pp.ua/metodychka-m.html">
+<style>
+:root {
+  --bg: #F5EFE6;
+  --bg2: #EDE3D0;
+  --bg3: #E3D5BC;
+  --card: #FAF5EC;
+  --terra: #B85042;
+  --terra-dark: #8E3A2F;
+  --gold: #C9A84C;
+  --gold-dark: #A88A30;
+  --teal: #2A7A7A;
+  --teal-dk: #1A5858;
+  --teal-li: #4A9A9A;
+  --ink: #2C1A0E;
+  --ink2: #5A4530;
+  --muted: #8B7355;
+  --line: rgba(44,26,14,.12);
+  --green: #4A7C3A;
+  --blue: #3A5878;
+  --violet: #6B4A8C;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; font-size: 17px; line-height: 1.7; min-height: 100vh; overflow-x: hidden; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+header.top { padding: 4rem 1.5rem 2.5rem; text-align: center; position: relative; overflow: hidden; }
+header.top::before { content: ''; position: absolute; width: 300px; height: 300px; background: var(--teal); opacity: .07; border-radius: 50%; top: -120px; right: -60px; }
+header.top > * { position: relative; z-index: 1; }
+.series { display: inline-block; font-size: .72rem; letter-spacing: .35em; text-transform: uppercase; color: var(--teal-dk); font-weight: 700; margin-bottom: 1.5rem; padding: 6px 18px; border: 1px solid var(--teal); border-radius: 3px; }
+.glyph { font-family: 'Georgia', serif; font-weight: 700; font-size: clamp(4rem, 12vw, 7rem); color: var(--teal); line-height: 1; display: block; margin-bottom: .3rem; }
+.glyph-sub { font-family: 'Georgia', serif; font-style: italic; font-size: .9rem; color: var(--muted); margin-bottom: 1rem; }
+h1.title { font-family: 'Georgia', serif; font-size: clamp(1.9rem, 5vw, 3rem); font-weight: 700; letter-spacing: -.02em; line-height: 1.08; color: var(--ink); margin-bottom: 1rem; max-width: 14em; margin-left: auto; margin-right: auto; }
+.subtitle { font-family: 'Georgia', serif; font-style: italic; font-size: clamp(1.05rem, 2.2vw, 1.3rem); color: var(--teal); max-width: 28em; margin: 0 auto; }
+.divider-deco { margin: 2rem auto 0; width: 60px; height: 1px; background: var(--teal); position: relative; }
+.divider-deco::before, .divider-deco::after { content: ''; position: absolute; top: -3px; width: 7px; height: 7px; border-radius: 50%; background: var(--teal); }
+.divider-deco::before { left: -14px; } .divider-deco::after { right: -14px; }
+
+section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+p { margin-bottom: 1.1rem; color: var(--ink); }
+p.lead { font-family: 'Georgia', serif; font-size: 1.28rem; line-height: 1.55; margin-bottom: 1.5rem; }
+p strong { font-weight: 700; color: var(--ink); }
+p em { font-style: italic; color: var(--teal-dk); }
+h2.section-title { font-family: 'Georgia', serif; font-size: clamp(1.6rem, 4vw, 2.3rem); font-weight: 700; letter-spacing: -.015em; line-height: 1.15; color: var(--ink); margin: 0 0 1.2rem; }
+.kicker { display: inline-block; font-family: 'Georgia', serif; font-style: italic; font-size: .78rem; letter-spacing: .25em; text-transform: uppercase; color: var(--teal-dk); font-weight: 700; margin-bottom: .7rem; }
+
+.wow { font-family: 'Georgia', serif; font-style: italic; font-size: clamp(1.25rem, 2.8vw, 1.55rem); line-height: 1.4; color: var(--teal); text-align: center; margin: 2rem auto; padding: 1.3rem 1rem; max-width: 24em; position: relative; font-weight: 600; }
+.wow::before, .wow::after { content: ''; position: absolute; left: 50%; transform: translateX(-50%); width: 40px; height: 1px; background: var(--teal); }
+.wow::before { top: 0; } .wow::after { bottom: 0; }
+
+.howto { background: var(--bg2); margin: 2rem -1.5rem; padding: 2.5rem 1.5rem; }
+.howto-inner { max-width: 760px; margin: 0 auto; }
+.howto-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.2rem; }
+.howto-item { display: flex; gap: 1rem; align-items: flex-start; }
+.howto-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--teal); color: #fff; font-family: 'Georgia', serif; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: .95rem; }
+.howto-text { color: var(--ink); font-size: .98rem; line-height: 1.55; }
+.howto-text strong { font-weight: 700; }
+
+.progress-wrap { position: sticky; top: 0; z-index: 40; background: rgba(245,239,230,.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: .8rem 1.5rem; border-bottom: 1px solid var(--line); }
+.progress-inner { max-width: 760px; margin: 0 auto; display: flex; align-items: center; gap: 1rem; }
+.progress-label { font-family: 'Georgia', serif; font-size: .82rem; color: var(--ink2); white-space: nowrap; font-weight: 600; }
+.progress-track { flex: 1; height: 8px; background: var(--bg3); border-radius: 4px; overflow: hidden; }
+.progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--teal-li), var(--teal)); border-radius: 4px; transition: width .4s ease; }
+.progress-count { font-family: 'Georgia', serif; font-weight: 700; color: var(--teal-dk); font-variant-numeric: tabular-nums; font-size: .9rem; white-space: nowrap; }
+
+.level-head { margin: 3.5rem 0 1.5rem; text-align: center; }
+.level-tag { display: inline-block; font-family: 'Georgia', serif; font-style: italic; font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; color: #fff; background: var(--teal); font-weight: 700; padding: 5px 16px; border-radius: 4px; margin-bottom: .8rem; }
+.level-title { font-family: 'Georgia', serif; font-size: 1.7rem; font-weight: 700; color: var(--ink); margin-bottom: .4rem; }
+.level-desc { font-size: .95rem; color: var(--muted); font-style: italic; max-width: 28em; margin: 0 auto; }
+
+.ex { background: var(--card); border: 1px solid var(--line); border-radius: 12px; margin: 1.5rem 0; overflow: hidden; transition: box-shadow .3s, border-color .3s; }
+.ex.done { border-color: var(--teal); box-shadow: 0 0 0 1px var(--teal); }
+.ex-head { display: flex; align-items: flex-start; gap: 1rem; padding: 1.4rem 1.5rem 1rem; }
+.ex-check { flex-shrink: 0; width: 28px; height: 28px; border-radius: 8px; border: 2px solid var(--muted); background: var(--bg); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; margin-top: 2px; }
+.ex-check:hover { border-color: var(--teal); }
+.ex.done .ex-check { background: var(--teal); border-color: var(--teal-dk); }
+.ex-check svg { width: 16px; height: 16px; opacity: 0; transition: opacity .2s; }
+.ex.done .ex-check svg { opacity: 1; }
+.ex-num { font-family: 'Georgia', serif; font-style: italic; font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: var(--teal-dk); font-weight: 700; margin-bottom: .2rem; }
+.ex-title { font-family: 'Georgia', serif; font-size: 1.3rem; font-weight: 700; color: var(--ink); line-height: 1.2; }
+.ex-body { padding: 0 1.5rem 1.5rem; }
+.ex-mech { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.1rem; }
+.tag { font-family: 'Georgia', serif; font-size: .74rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; letter-spacing: .02em; }
+.tag-mech { background: var(--bg3); color: var(--teal-dk); }
+.tag-pain { background: rgba(184,80,66,.1); color: var(--terra-dark); }
+.ex-section-label { font-family: 'Georgia', serif; font-style: italic; font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin: 1.1rem 0 .5rem; }
+.ex-steps { list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: .6rem; }
+.ex-steps li { counter-increment: step; position: relative; padding-left: 2rem; font-size: .95rem; line-height: 1.55; color: var(--ink); }
+.ex-steps li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--teal); color: #fff; font-family: 'Georgia', serif; font-size: .78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+.ex-example { background: var(--bg2); border-radius: 8px; padding: .9rem 1.1rem; margin-top: .5rem; font-size: .9rem; color: var(--ink2); line-height: 1.6; }
+.ex-example strong { color: var(--ink); }
+.ex-control { display: flex; gap: .6rem; align-items: flex-start; margin-top: 1.1rem; padding-top: 1rem; border-top: 1px dashed var(--line); font-size: .9rem; color: var(--ink2); line-height: 1.55; }
+.ex-control::before { content: '✓'; color: var(--teal-dk); font-weight: 700; flex-shrink: 0; }
+.ex-control strong { color: var(--ink); }
+
+.bot { margin-top: 1.2rem; background: linear-gradient(135deg, var(--teal-dk), var(--teal)); border-radius: 10px; padding: 1.1rem 1.3rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.bot-text { flex: 1; min-width: 200px; color: #fff; font-size: .92rem; line-height: 1.5; }
+.bot-text strong { font-weight: 700; }
+.bot-btn { display: inline-block; background: #fff; color: var(--teal-dk); font-family: 'Georgia', serif; font-weight: 700; font-size: .95rem; text-decoration: none; padding: 10px 20px; border-radius: 7px; transition: transform .2s, box-shadow .2s; white-space: nowrap; }
+.bot-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px -6px rgba(0,0,0,.4); }
+
+.checkpoints, .mistakes { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1.8rem 1.8rem 2rem; margin: 2rem 0; }
+.cp-list, .mk-list { display: flex; flex-direction: column; gap: .8rem; margin-top: 1rem; }
+.cp-item, .mk-item { display: flex; gap: .7rem; align-items: flex-start; font-size: .95rem; line-height: 1.55; color: var(--ink); }
+.cp-item::before { content: '▲'; color: var(--green); flex-shrink: 0; font-size: .8rem; margin-top: 3px; }
+.mk-item::before { content: '✕'; color: var(--terra); flex-shrink: 0; font-weight: 700; }
+.cp-item strong, .mk-item strong { font-weight: 700; }
+.reflect { background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%); margin: 3rem -1.5rem 0; padding: 3rem 1.5rem; }
+.reflect-inner { max-width: 760px; margin: 0 auto; }
+.reflect-q { font-family: 'Georgia', serif; font-size: 1.1rem; color: var(--ink); padding: 1rem 0; border-bottom: 1px solid var(--line); display: flex; gap: .8rem; }
+.reflect-q:last-child { border-bottom: none; }
+.reflect-q span { color: var(--teal-dk); font-weight: 700; flex-shrink: 0; }
+.ending { text-align: center; padding-top: 3.5rem; padding-bottom: 4rem; }
+.ending-q { font-family: 'Georgia', serif; font-style: italic; font-size: clamp(1.4rem, 3.5vw, 2rem); color: var(--teal); max-width: 20em; margin: 0 auto 1.5rem; line-height: 1.3; }
+.signature { font-family: 'Georgia', serif; font-style: italic; color: var(--muted); font-size: 1rem; margin-top: 1.5rem; }
+.back-link { display: inline-block; margin-top: 2rem; font-family: 'Georgia', serif; font-size: .95rem; color: var(--teal-dk); text-decoration: none; border-bottom: 1px solid var(--teal); padding-bottom: 2px; }
+footer { text-align: center; padding: 2rem 1.5rem 3rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .8rem; font-style: italic; font-family: 'Georgia', serif; }
+.reset-btn { background: none; border: 1px solid var(--line); color: var(--muted); font-family: inherit; font-size: .8rem; padding: 5px 12px; border-radius: 4px; cursor: pointer; transition: all .2s; }
+.reset-btn:hover { border-color: var(--teal); color: var(--teal); }
+@media (max-width: 600px) { .ex-head { padding: 1.2rem 1.1rem .8rem; } .ex-body { padding: 0 1.1rem 1.2rem; } .progress-label { display: none; } .howto { margin-left: 0; margin-right: 0; } .reflect { margin-left: 0; margin-right: 0; } }
+</style>
+</head>
+<body>
+
+<div id="accessGate" data-access="praktykum" style="
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #0A0F1E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  padding: 1.5rem;
+">
+  <div style="
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    color: #F5EFE6;
+  ">
+    <div style="
+      font-family: Georgia, serif;
+      font-size: 1.6rem;
+      color: #C9A84C;
+      margin-bottom: 0.8rem;
+    ">The Results Formula</div>
+    <p style="
+      color: rgba(245,239,230,0.7);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    ">This material opens with an access code.<br>Enter the code you received after payment.</p>
+    <input type="text" id="accessCode" placeholder="Access code" style="
+      width: 100%;
+      padding: 0.9rem 1rem;
+      background: rgba(255,255,255,0.07);
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      color: #F5EFE6;
+      font-size: 1rem;
+      text-align: center;
+      letter-spacing: 0.05em;
+      outline: none;
+      margin-bottom: 1rem;
+      box-sizing: border-box;
+    ">
+    <button onclick="checkAccessCode()" style="
+      width: 100%;
+      padding: 0.9rem;
+      background: #B85042;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    ">Unlock</button>
+    <p id="accessError" style="
+      color: #D4695A;
+      font-size: 0.85rem;
+      margin-top: 1rem;
+      min-height: 1.2rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+    ">Wrong code. Check it and try again.</p>
+    <p style="
+      color: rgba(245,239,230,0.4);
+      font-size: 0.8rem;
+      margin-top: 1.5rem;
+      line-height: 1.5;
+    ">No code? <a href="/en/formula-rezultatu-sales.html" style="color:#C9A84C; text-decoration:none;">Learn about the program →</a></p>
+  </div>
+</div>
+
+<script>
+(function() {
+  if (window.self !== window.top) { document.getElementById('accessGate').style.display='none'; return; }
+  var CODES = {
+    'KARTA-2026':     ['lekciya'],
+    'MARSHRUT-2026':  ['lekciya', 'praktykum'],
+    'PROVIDNYK-2026': ['lekciya', 'praktykum']
+  };
+
+  var gate = document.getElementById('accessGate');
+  var pageLevel = gate.getAttribute('data-access'); 
+  var STORAGE_KEY = 'formula_access';
+  function hasStoredAccess() {
+    try {
+      var saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return false;
+      var levels = JSON.parse(saved);
+      return levels.indexOf(pageLevel) !== -1;
+    } catch(e) { return false; }
+  }
+
+  function unlock() {
+    gate.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  function checkAccessCode() {
+    var input = document.getElementById('accessCode').value.trim().toUpperCase();
+    var err = document.getElementById('accessError');
+    var levels = CODES[input];
+
+    if (levels && levels.indexOf(pageLevel) !== -1) {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(levels)); } catch(e) {}
+      unlock();
+    } else {
+      err.style.opacity = '1';
+    }
+  }
+  window.checkAccessCode = checkAccessCode;
+  document.getElementById('accessCode').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') checkAccessCode();
+  });
+  if (hasStoredAccess()) {
+    unlock();
+  } else {
+    document.body.style.overflow = 'hidden';
+  }
+})();
+</script>
+
+
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <span class="progress-label">Your path:</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-count" id="progressCount">0 / 10</span>
+  </div>
+</div>
+
+<header class="top">
+  <div class="series">Beyond the Horizon · Workbook</div>
+  <span class="glyph">O</span>
+  <div class="glyph-sub">opportunities · notice × use</div>
+  <h1 class="title">How to learn to see what's already right next to you</h1>
+  <p class="subtitle">Ten exercises on the component responsible for noticing chances and taking them</p>
+  <div class="divider-deco"></div>
+</header>
+
+<section class="wrap">
+  <p class="lead">
+    Two people walk into the same café. One walks out with a new job. The other, with a coffee. The opportunity was on the table for both. Only one of them saw it.
+  </p>
+  <p>
+    It's not luck and not "the right connections". It's how your filter is tuned. Your brain has selective attention: a system that decides which of the millions of signals around you reach your awareness and which get sifted out as noise. And it <em>learns</em>. It lets through what you've tuned it to.
+  </p>
+  <p>
+    Remember: you buy a new car, and suddenly you see the same model everywhere. They didn't appear. You just started noticing them. Psychologists call this the frequency illusion. It's the same with opportunities: they were always nearby. Your filter was simply tuned to something else.
+  </p>
+  <p>
+    But seeing isn't enough. O in the formula is <strong>notice × use</strong>. You can spot a mushroom and walk past it. The one who comes home with a full basket knows what they're looking for, and bends down to cut it. Both steps are needed.
+  </p>
+
+  <div class="wow">Opportunities don't fall from the sky. Whoever wants to see will see. Whoever, having seen, bends down to cut it will take it.</div>
+</section>
+
+<div class="howto">
+  <div class="howto-inner">
+    <span class="kicker">How it works</span>
+    <h2 class="section-title">How to use this workbook</h2>
+    <div class="howto-list">
+      <div class="howto-item"><div class="howto-num">1</div><div class="howto-text"><strong>First the filter, then the action.</strong> Not "where do I find opportunities", but "what is my filter tuned to". Change the filter, and you start seeing what was next to you all along.</div></div>
+      <div class="howto-item"><div class="howto-num">2</div><div class="howto-text"><strong>Step by step, without rushing.</strong> Retuning the filter isn't instant. The first level brings awareness, the second a new tuning, the third the skill of taking.</div></div>
+      <div class="howto-item"><div class="howto-num">3</div><div class="howto-text"><strong>Start small.</strong> Not "find an opportunity to change everything", but notice one small opportunity this week. The filter trains on specific examples.</div></div>
+      <div class="howto-item"><div class="howto-num">4</div><div class="howto-text"><strong>Tick an exercise when it has become yours.</strong> Not when you've read it, but when you've actually done it. The progress bar at the top shows the path you've walked.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- LEVEL 1 -->
+<div class="wrap">
+  <div class="level-head">
+    <span class="level-tag">Level 1 · Foundation</span>
+    <div class="level-title">Tune the filter</div>
+    <p class="level-desc">Before looking for new opportunities, look at what your filter is tuned to right now. Because it's already letting some things through and blocking others, you just don't notice it.</p>
+  </div>
+
+  <!-- Exercise 1 -->
+  <div class="ex" data-ex="1">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Exercise 1</div><div class="ex-title">What's in focus right now</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: selective attention · awareness of how your attention is tuned now</span>
+        <span class="tag tag-pain">pain: "I'm stuck, nothing changes"</span>
+      </div>
+      <p>Your attention filter is already tuned, to something. To threats, to other people's success, to your own failures, to lack. Or to opportunities, to movement, to what's yours. The first step is simply to see what exactly.</p>
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Look back at the past week. What caught your attention most often: what did you notice, what did you think about without meaning to, what kept coming up in conversations?</li>
+        <li>Write down 5–7 topics or things that were constantly in focus. No judgement, just note them.</li>
+        <li>Now ask: "if my brain is tuned to notice exactly this, which opportunities is it most likely letting slip past?"</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Example.</strong> "In focus: deadlines, other people's successes on social media, tiredness, lack of time. What does it let slip? Probably everything to do with new people, unconventional solutions, small chances that don't shout. My filter is tuned to 'what's missing', and that's exactly what it sees."
+      </div>
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you can name what your attention filter is tuned to right now, and which category of opportunities it most likely sifts out. This is the first and most important discovery of this workbook.</span></div>
+    </div>
+  </div>
+
+  <!-- Exercise 2 -->
+  <div class="ex" data-ex="2">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Exercise 2</div><div class="ex-title">Opportunities that passed you by</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: a retrospective of missed chances · learning from your own experience</span>
+        <span class="tag tag-pain">pain: "I could do more, but I'm stuck in place"</span>
+      </div>
+      <p>The most useful retrospective isn't "what did I do wrong" but "what did I not notice". Almost always, over a year or two, you can find a few chances that passed you by, and understand why exactly your filter didn't catch them.</p>
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Think back over the last year or two. Was there a situation where it later turned out: "oh, that was an opportunity, and I didn't take it"?</li>
+        <li>For each such situation, ask: "why didn't I notice it or use it? What was taking up my attention instead?"</li>
+        <li>Find the pattern: what do the missed chances have in common? That's your filter's "blind spot".</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Example.</strong> "Three times in two years someone offered to introduce me to the right person, and I put it off: 'later, I'm not ready yet'. The pattern: I miss opportunities that involve people when I feel 'not prepared enough'. My blind spot is the fear of being unprepared."
+      </div>
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you know your main "blind spot", the category of opportunities your filter consistently lets slip. Once named out loud, it's already less invisible.</span></div>
+    </div>
+  </div>
+
+  <!-- Exercise 3 -->
+  <div class="ex" data-ex="3">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Exercise 3</div><div class="ex-title">The same situation, a different view</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: changing the angle · de-automating perception</span>
+        <span class="tag tag-pain">pain: "nothing changes, everything goes in circles"</span>
+      </div>
+      <p>The same fact can be an obstacle or an opportunity, depending on how you look at it. This exercise trains the ability to see the same thing differently: not as optimism, but as the skill of retuning the filter.</p>
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Take a situation from your life that you currently see as a problem or a limitation.</li>
+        <li>Ask: "if a person with different experience or a different goal looked at the same situation, what might they see as an opportunity?"</li>
+        <li>Write down at least two alternative views. You don't have to agree with them, just see that they exist.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Example.</strong> "Situation: redundancy at work, a problem. Alternative view 1: now there's time for what I kept putting off. View 2: my experience is needed somewhere else. You don't have to believe it right away, but seeing these views already changes what you notice next."
+      </div>
+      <div class="ex-control"><span><strong>Checkpoint:</strong> for any "problem" in your life you can find at least one alternative view in which the same situation contains an opportunity. The filter is starting to become more flexible.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- LEVEL 2 -->
+<div class="wrap">
+  <div class="level-head">
+    <span class="level-tag">Level 2 · Core</span>
+    <div class="level-title">Retune the filter</div>
+    <p class="level-desc">Seeing what the filter is tuned to isn't enough. You need to change the settings consciously: phrase your request, widen the search area, learn to notice what used to pass you by.</p>
+  </div>
+
+  <!-- Exercise 4 -->
+  <div class="ex" data-ex="4">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Exercise 4</div><div class="ex-title">Phrase your request</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: deliberately tuning selective attention</span>
+        <span class="tag tag-pain">pain: "I don't know what I want or where to go"</span>
+      </div>
+      <p>Attention works like a search query: the more precisely you phrase what you're looking for, the more precisely your brain notices it. "I want to change something" is too broad. "I'm looking for a way to apply my experience in a new context" is a specific request. With it, the filter tunes itself differently.</p>
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Think: what opportunity are you looking for right now? Not "I want more money", but more specifically: what job, what acquaintance, what project, what change?</li>
+        <li>Phrase the request in one sentence, as specifically as possible. "I'm looking for a person / project / opportunity that will give me [what exactly]."</li>
+        <li>Write the request down and keep it in sight: on your phone, on your desk. Your brain will start noticing what fits.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Example.</strong> Instead of "I want a new job" → "I'm looking for a project or role where I can combine my marketing experience with education, ideally with flexible hours." Now the filter knows what to look for. And it starts finding it.
+      </div>
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you have a specific request, one sentence about the opportunity you're looking for. It's written down and in sight. The filter has received new instructions.</span></div>
+    </div>
+  </div>
+
+  <!-- Exercise 5 -->
+  <div class="ex" data-ex="5">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Exercise 5</div><div class="ex-title">Active scanning</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: a targeted search for opportunities in what you already have</span>
+        <span class="tag tag-pain">pain: "nothing happens, I just have to wait"</span>
+      </div>
+      <p>Passively waiting for opportunities is the least effective strategy. Active scanning means consciously looking over the field you already have with a new request in your head. What of what's already around you fits the request? Often the answer is closer than it seems.</p>
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Take your request from exercise 4. Now go through three circles: <em>people you already know</em>, who might be connected to the request? <em>Places and events</em>, where in the next month could you come across something relevant? <em>Information</em>, what do you already read, watch, listen to that might hold a hint?</li>
+        <li>Write down 2–3 specific points in each circle.</li>
+        <li>Choose one and take a small action towards it this week.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Example.</strong> Request: "combine marketing and education". People: I know someone who makes online courses, and I've never asked her about her experience. Places: next week there's an EdTech conference, register? Information: a podcast about the education business, subscribe. I'm starting with an email to my acquaintance.
+      </div>
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you've taken at least one small action towards your request, and discovered that the opportunities were closer than they seemed. Scanning has started to work.</span></div>
+    </div>
+  </div>
+
+  <!-- Exercise 6 -->
+  <div class="ex" data-ex="6">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Exercise 6</div><div class="ex-title">Widen the search area</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: stepping outside your usual circle · crossing disciplines</span>
+        <span class="tag tag-pain">pain: "everything goes in circles, nothing new"</span>
+      </div>
+      <p>A filter tuned only to the familiar sees only the familiar. The most interesting opportunities often appear at intersections, where you meet something from a field that's unusual for you. A new industry, a new audience, an unfamiliar format, and suddenly something opens up that couldn't be seen from your usual spot.</p>
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Identify your "usual circle", where you normally look for opportunities: the same industry, the same people, the same platforms.</li>
+        <li>Choose one "unusual" place where you could come across something useful: an event in another industry, a conversation with someone from a different field, a book or podcast outside your topic.</li>
+        <li>Do it once, and notice what new ideas or connections came up.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Example.</strong> "I work in IT. I went to a designers' meetup, just out of curiosity. There I heard about a problem I know how to solve with my tools. Two months later, a joint project. The opportunity came from where I'd never looked."
+      </div>
+      <div class="ex-control"><span><strong>Checkpoint:</strong> at least once you've stepped outside your usual circle and found something there you didn't expect. The field has widened.</span></div>
+    </div>
+  </div>
+
+  <!-- Exercise 7 -->
+  <div class="ex" data-ex="7">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Exercise 7</div><div class="ex-title">Weak ties</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: the strength of weak ties · distant acquaintances open new fields</span>
+        <span class="tag tag-pain">pain: "I don't have the right contacts, it's all about connections"</span>
+      </div>
+      <p>A paradox confirmed by research: new opportunities more often come from distant acquaintances than from close friends. Why? Because the people close to you know the same things you do. Distant ones live in other circles and have access to information you don't.</p>
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Think of 5–7 people you haven't talked to in a long time but once had a good connection with. A former colleague, a classmate, someone you met at a conference.</li>
+        <li>Choose one, the person most likely to overlap with your request from exercise 4, and write briefly: "hi, it's been a while. I'm curious what you're up to these days."</li>
+        <li>Don't ask for anything straight away. Just renew the contact. Opportunities will appear by themselves, if the connection is alive.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Example.</strong> "I wrote to a colleague I hadn't spoken to in three years. It turned out she's now at a company with a vacancy that fits my profile exactly. I didn't ask, I just renewed the contact. She offered it herself."
+      </div>
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you've written to at least one "distant" person, just to renew the contact. It's the simplest and one of the most effective actions for widening your field of opportunities.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- LEVEL 3 -->
+<div class="wrap">
+  <div class="level-head">
+    <span class="level-tag">Level 3 · Consolidation</span>
+    <div class="level-title">Take it</div>
+    <p class="level-desc">Seeing an opportunity is the first step. But this is where people get stuck the most: between "I noticed" and "I took it". This level is about getting past the brake and bending down to cut the mushroom.</p>
+  </div>
+
+  <!-- Exercise 8 -->
+  <div class="ex" data-ex="8">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Exercise 8</div><div class="ex-title">Getting past "what if it doesn't work"</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: working with the fear of failure · lowering the stakes</span>
+        <span class="tag tag-pain">pain: "I'm afraid of making a mistake, better not to start"</span>
+      </div>
+      <p>The main brake between "I see an opportunity" and "I take it" is the fear that it won't work. And then it seems better not to try than to try and fail. This exercise teaches you to lower the stakes, so that trying costs less than not trying.</p>
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Take an opportunity you noticed but didn't take, out of fear or uncertainty.</li>
+        <li>Ask honestly: "what's the worst realistic outcome if I try and it doesn't work?" A realistic one, not an imagined catastrophe.</li>
+        <li>Now: "and what's the worst outcome if I don't try at all?" Compare the two costs, and make a decision.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Example.</strong> "The opportunity: pitch my project to a client. The worst if I try: they say no, and it's awkward. The worst if I don't: nothing changes, and I spend another year thinking 'what if'. The cost of doing nothing is higher than the cost of a no."
+      </div>
+      <div class="ex-control"><span><strong>Checkpoint:</strong> at least once you've consciously compared the cost of action with the cost of inaction, and chosen to act. The fear hasn't gone, but it's no longer the only argument.</span></div>
+    </div>
+  </div>
+
+  <!-- Exercise 9 -->
+  <div class="ex" data-ex="9">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Exercise 9</div><div class="ex-title">The minimum action on an opportunity</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: testing an opportunity at the lowest cost · the MVP approach</span>
+        <span class="tag tag-pain">pain: "all or nothing, I don't know where to start"</span>
+      </div>
+      <p>You don't have to "go all in" on an opportunity right away. Any opportunity can be tested with a minimum action: one that costs little time and few resources, but gives you real information about whether it's worth going further. Not "start a business", but "talk to three potential clients".</p>
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Take an opportunity you want to test. What's the smallest action that would give you a real answer: "is there something here or not"?</li>
+        <li>Phrase this action specifically: what, when, how. It should take no more than a few hours and not require a big investment.</li>
+        <li>Do it, and decide based on the result: go further, adjust, or let go. Any result is valuable information.</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Example.</strong> "I want to find out whether there's demand for my consultations. Minimum action: have three free 30-minute conversations with potential clients. Not launch a website, not make a presentation, just talk. And listen for whether they have this pain."
+      </div>
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you've tested an opportunity with a minimum action and got real information instead of imagined scenarios. Now your decision rests on facts, not on fears.</span></div>
+    </div>
+  </div>
+
+  <!-- Exercise 10 -->
+  <div class="ex" data-ex="10">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <div><div class="ex-num">Exercise 10</div><div class="ex-title">Track the signals</div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: keeping the filter tuned · regular attention to opportunities</span>
+        <span class="tag tag-pain">pain: "everything goes in circles, nothing changes"</span>
+      </div>
+      <p>The filter, like a muscle, needs regular training. If you don't maintain the setting, it goes back to the old default. The final exercise is about creating a simple regular practice that keeps the filter tuned to opportunities.</p>
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Once a week, at a fixed time, ask yourself one question: "what opportunity flashed by this week? Did I notice it or not, and what did I do with it?"</li>
+        <li>Write the answer down briefly, even if it's "I didn't notice anything". That's information about the filter too.</li>
+        <li>Once a month, look back over your notes. Which opportunities came up? Which did you take and which did you let slip, and why?</li>
+      </ol>
+      <div class="ex-example">
+        <strong>Example.</strong> "Every Sunday I ask myself: 'what opportunity flashed by this week?' Over a month it added up: three times someone offered to introduce me, and all three times I put it off. I saw the pattern. The next week I said yes to one introduction."
+      </div>
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you keep up a weekly practice of tracking signals and can name at least one opportunity you took consciously this month, rather than letting it slip out of habit.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKPOINTS -->
+<div class="wrap">
+  <div class="checkpoints">
+    <span class="kicker">How to tell the filter has been retuned</span>
+    <h2 class="section-title" style="font-size:1.5rem;">Signs, not numbers</h2>
+    <p style="font-size:.95rem; color:var(--ink2); margin-bottom:.5rem;">Changing the filter is gradual. But there are signs that it really is being retuned. Check in once a month.</p>
+    <div class="cp-list">
+      <div class="cp-item"><span>You know your <strong>"blind spot"</strong>, the category of opportunities your filter used to let slip.</span></div>
+      <div class="cp-item"><span>You have a <strong>specific request</strong>, one sentence about the opportunity you're looking for now.</span></div>
+      <div class="cp-item"><span>You notice opportunities <strong>within the circle you already have</strong>, where you used to see nothing.</span></div>
+      <div class="cp-item"><span>At least once you've <strong>tested an opportunity with a minimum action</strong> instead of putting it off "for later".</span></div>
+      <div class="cp-item"><span>You have a <strong>weekly practice of tracking signals</strong>, and you can see yourself becoming more attentive to opportunities over time.</span></div>
+    </div>
+  </div>
+
+  <div class="mistakes">
+    <span class="kicker">Careful</span>
+    <h2 class="section-title" style="font-size:1.5rem;">What doesn't work with O</h2>
+    <div class="mk-list">
+      <div class="mk-item"><span><strong>Waiting for a "big" opportunity.</strong> Big opportunities almost always grow out of small ones: meeting someone, trying something, saying "yes" to something modest. Whoever doesn't take the small doesn't see the big.</span></div>
+      <div class="mk-item"><span><strong>Looking only in your usual circle.</strong> If the filter is tuned to the same field, it sees the same opportunities (or the lack of them). Stepping outside the circle isn't a luxury, it's a necessity.</span></div>
+      <div class="mk-item"><span><strong>Seeing and not taking.</strong> "I'll see and think about it" often means "I'll miss it". Between noticing and taking you need a small, specific action, as soon as possible after you notice.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- REFLECTION -->
+<div class="reflect">
+  <div class="reflect-inner">
+    <span class="kicker">To finish</span>
+    <h2 class="section-title">Questions worth sitting with</h2>
+    <div class="reflect-q"><span>1.</span> What is my attention filter tuned to right now, and do I want it to be tuned this way?</div>
+    <div class="reflect-q"><span>2.</span> Which opportunity passed me by in the last year, and what stopped me from taking it?</div>
+    <div class="reflect-q"><span>3.</span> Which of my "distant" acquaintances lives in a circle that has what I need?</div>
+    <div class="reflect-q"><span>4.</span> What's the smallest action to test an opportunity I've been thinking about for a long time?</div>
+    <div class="reflect-q"><span>5.</span> Which mushroom is waiting for me today, and am I ready to bend down and cut it?</div>
+  </div>
+</div>
+
+<!-- ENDING -->
+<section class="ending wrap">
+  <span class="kicker">And finally</span>
+  <p style="max-width:34em; margin:0 auto 1.5rem;">
+    Opportunities don't fall from the sky onto the lucky ones. They're there, almost always nearby. But they're seen by whoever has tuned the filter to look. And taken by whoever doesn't wait for the perfect moment, but bends down and cuts.
+  </p>
+  <p style="max-width:34em; margin:0 auto 2rem;">
+    One specific request. One small action towards it. One renewed contact. The filter retunes gradually, but it does retune.
+  </p>
+
+  <div class="ending-q">Which mushroom is waiting for you today?</div>
+
+  <p class="signature">Svitlana Slipchenko, psychologist, author of Beyond the Horizon</p>
+  <a href="formula-rezultata.html" class="back-link" target="_blank" rel="noopener">← Back to the lecture "The Results Formula"</a>
+  <div style="margin-top:2.5rem;"><button class="reset-btn" id="resetBtn">Reset my progress</button></div>
+</section>
+
+<footer>Beyond the Horizon · Workbook O · a workbook for the lecture "The Results Formula"</footer>
+
+<script>
+(function() {
+  const STORAGE_KEY = 'metodychka-m-progress';
+  const cards = Array.from(document.querySelectorAll('.ex[data-ex]'));
+  const total = cards.length;
+  const fill = document.getElementById('progressFill');
+  const count = document.getElementById('progressCount');
+  let done = {};
+  try { const saved = localStorage.getItem(STORAGE_KEY); if (saved) done = JSON.parse(saved) || {}; } catch(e){ done = {}; }
+  function save(){ try { localStorage.setItem(STORAGE_KEY, JSON.stringify(done)); } catch(e){} }
+  function updateProgress(){
+    const n = Object.values(done).filter(Boolean).length;
+    const pct = total ? Math.round((n/total)*100) : 0;
+    if (fill) fill.style.width = pct + '%';
+    if (count) count.textContent = n + ' / ' + total;
+  }
+  function applyState(card){
+    const id = card.dataset.ex;
+    const check = card.querySelector('.ex-check');
+    const isDone = !!done[id];
+    card.classList.toggle('done', isDone);
+    if (check) check.setAttribute('aria-checked', isDone ? 'true':'false');
+  }
+  function toggle(card){
+    const id = card.dataset.ex;
+    done[id] = !done[id];
+    applyState(card); save(); updateProgress();
+  }
+  cards.forEach(card => {
+    const check = card.querySelector('.ex-check');
+    applyState(card);
+    if (check){
+      check.addEventListener('click', () => toggle(card));
+      check.addEventListener('keydown', (e) => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(card); } });
+    }
+  });
+  updateProgress();
+  const resetBtn = document.getElementById('resetBtn');
+  if (resetBtn) resetBtn.addEventListener('click', () => { done={}; save(); cards.forEach(applyState); updateProgress(); });
+})();
+</script>
+</body>
+</html>
