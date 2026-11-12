@@ -18,8 +18,8 @@ export default async function handler(req, res) {
   };
   // Англомовні з квізу «Формула результату» йдуть в окремі EN-групи (листи англійською).
   // Заявки на пакети лишаються в спільних групах: мова видна в полі package («Карта (EN, $19)»).
-  // Тест інтуїції англійською: окремі групи без автоматизацій (листів поки немає),
-  // щоб англомовні не отримували українські серії.
+  // Тест інтуїції англійською: окремі групи з англійськими серіями
+  // (автоматизації «Intuition EN - …», назва = назва групи).
   const enGroupMap = {
     'analytic':   'Intuition EN - Analyst',
     'impulsive':  'Intuition EN - Impulsive',
@@ -55,7 +55,9 @@ export default async function handler(req, res) {
     const subscriberId = subData.data?.id;
 
     // Примусово запускаємо автоматизацію — joins group через API не тригерить її автоматично
-    if (subscriberId && type.startsWith('formula-') && !type.startsWith('formula-application-')) {
+    const isFormula = type.startsWith('formula-') && !type.startsWith('formula-application-');
+    const isIntuitionEn = lang === 'en' && groupName.startsWith('Intuition EN');
+    if (subscriberId && (isFormula || isIntuitionEn)) {
       const autoRes = await fetch('https://connect.mailerlite.com/api/automations?limit=50', { headers });
       const autoData = await autoRes.json();
       const automation = autoData.data?.find(a => a.name === groupName && a.status === 'active');
