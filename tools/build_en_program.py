@@ -2,7 +2,11 @@
 """formula-program.html -> en/formula-program.html
 Same access codes and localStorage key as the Ukrainian page. Lecture -> /en/formula-rezultata.html,
 workbooks -> Ukrainian originals until they are translated (phase 2)."""
-from en_common import build, head
+from en_common import build, head, ROOT
+
+# workbooks that already have an English page (built by build_en_metodychka.py)
+GLYPH_FILE = {'β': 'beta', 'Б': 'b', 'П': 'p', 'Д': 'd', 'О': 'o', 'М': 'm', 'Р': 'res'}
+TRANSLATED = {x for x in GLYPH_FILE.values() if (ROOT / 'en' / f'metodychka-{x}.html').exists()}
 
 PROV = '''      <div class="gate-pkg">
         <div class="gate-pkg-name">«Провідник»</div>
@@ -14,8 +18,9 @@ PROV = '''      <div class="gate-pkg">
 '''
 
 def nav(src, glyph_ua, glyph_en, title_ua, title_en, sub_ua, sub_en):
+    note = '' if GLYPH_FILE.get(glyph_ua) in TRANSLATED else ' · in Ukrainian'
     return (f'<span class="nav-glyph">{glyph_ua}</span>\n      <span class="nav-label">{title_ua}<small>{sub_ua}</small></span>',
-            f'<span class="nav-glyph"{" style=\"font-size:.7em\"" if len(glyph_en) > 2 else ""}>{glyph_en}</span>\n      <span class="nav-label">{title_en}<small>{sub_en} · in Ukrainian</small></span>')
+            f'<span class="nav-glyph"{" style=\"font-size:.7em\"" if len(glyph_en) > 2 else ""}>{glyph_en}</span>\n      <span class="nav-label">{title_en}<small>{sub_en}{note}</small></span>')
 
 PAIRS = [
 ('<html lang="uk">', '<html lang="en">'),
@@ -70,5 +75,7 @@ nav('', 'Р', 'Res', 'Практикум Р', 'Workbook Res', 'Ресурси', 
 ('<div class="lock-pkg-price">1 490 грн</div>', '<div class="lock-pkg-price">$49</div>'),
 ('<a href="/formula-rezultatu-sales" class="lock-upgrade">Перейти до програми →</a>', '<a href="/en/formula-rezultatu-sales.html" class="lock-upgrade">Go to the program →</a>'),
 ]
+
+PAIRS += [(f'data-src="/metodychka-{x}"', f'data-src="/en/metodychka-{x}.html"') for x in sorted(TRANSLATED)]
 
 build('formula-program.html', 'formula-program.html', PAIRS)
