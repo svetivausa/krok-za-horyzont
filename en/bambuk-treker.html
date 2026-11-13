@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bamboo · Beyond the Horizon</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://www.svitlana-slipchenko.pp.ua/en/bambuk-treker.html">
+<link rel="alternate" hreflang="uk" href="https://www.svitlana-slipchenko.pp.ua/bambuk-treker.html">
+<link rel="alternate" hreflang="en" href="https://www.svitlana-slipchenko.pp.ua/en/bambuk-treker.html">
+<link rel="alternate" hreflang="x-default" href="https://www.svitlana-slipchenko.pp.ua/bambuk-treker.html">
+<style>
+:root {
+  --bg: #F5EFE6;
+  --bg2: #EDE3D0;
+  --bg3: #E3D5BC;
+  --card: #FAF5EC;
+  --terra: #B85042;
+  --terra-dark: #8E3A2F;
+  --terra-li: #D2786A;
+  --gold: #C9A84C;
+  --gold-dark: #A88A30;
+  --ink: #2C1A0E;
+  --ink2: #5A4530;
+  --muted: #8B7355;
+  --line: rgba(44,26,14,.12);
+  --line2: rgba(44,26,14,.06);
+  --bamboo: #6E8F4E;
+  --bamboo-bright: #7DA353;
+  --bamboo-dull: #979B7C;
+  --bamboo-dark: #55703C;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-size: 17px; line-height: 1.7; min-height: 100vh; overflow-x: hidden;
+}
+
+.wrap { max-width: 480px; margin-left: auto; margin-right: auto; padding-left: 1.25rem; padding-right: 1.25rem; }
+
+/* ═══════ HEADER ═══════ */
+header.top {
+  padding-top: 3rem;
+  padding-bottom: 1.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  text-align: center; position: relative; overflow: hidden;
+}
+header.top::before {
+  content: ''; position: absolute; width: 260px; height: 260px;
+  background: var(--bamboo); opacity: .07; border-radius: 50%; top: -110px; right: -60px;
+}
+header.top > * { position: relative; z-index: 1; }
+.series {
+  display: inline-block; font-size: .68rem; letter-spacing: .35em; text-transform: uppercase;
+  color: var(--terra-dark); font-weight: 700; margin-bottom: 1.3rem;
+  padding-top: 6px; padding-bottom: 6px; padding-left: 18px; padding-right: 18px;
+  border: 1px solid var(--terra); border-radius: 3px;
+}
+h1.title {
+  font-family: 'Georgia', serif; font-size: clamp(2.2rem, 8vw, 3rem); font-weight: 700;
+  letter-spacing: -.02em; line-height: 1.08; color: var(--ink); margin-bottom: .5rem;
+}
+.subtitle {
+  font-family: 'Georgia', serif; font-style: italic; font-size: 1.05rem;
+  color: var(--terra); max-width: 22em; margin-left: auto; margin-right: auto;
+}
+.divider-deco { margin-top: 1.5rem; margin-left: auto; margin-right: auto; width: 60px; height: 1px; background: var(--terra); position: relative; }
+.divider-deco::before, .divider-deco::after { content: ''; position: absolute; top: -3px; width: 7px; height: 7px; border-radius: 50%; background: var(--terra); }
+.divider-deco::before { left: -14px; } .divider-deco::after { right: -14px; }
+
+/* ═══════ NOTES ═══════ */
+.note {
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+  padding-top: 1.1rem; padding-bottom: 1.1rem; padding-left: 1.25rem; padding-right: 1.25rem;
+  margin-top: 1.25rem; margin-bottom: 0;
+  font-size: .95rem; color: var(--ink2); line-height: 1.65;
+  opacity: 1; transition: opacity 1.2s ease, transform 1.2s ease;
+}
+.note.fading { opacity: 0; transform: translateY(-6px); }
+.note-intro { border-color: var(--gold); background: #FBF6E9; }
+.note-beta { border-color: var(--bamboo); background: #F2F4E8; }
+.note-gap { border-color: var(--line); }
+.note p { margin-bottom: .5rem; }
+.note p:last-child { margin-bottom: 0; }
+.note em { font-style: italic; color: var(--terra-dark); }
+.note .q { font-family: 'Georgia', serif; font-style: italic; color: var(--bamboo-dark); }
+
+/* ═══════ BAMBOO ═══════ */
+.bamboo-stage {
+  margin-top: 1.75rem;
+  background: linear-gradient(180deg, var(--card) 0%, var(--bg2) 100%);
+  border: 1px solid var(--line); border-radius: 16px;
+  padding-top: 1.5rem; padding-bottom: 0; padding-left: 1rem; padding-right: 1rem;
+  text-align: center; overflow: hidden; position: relative;
+}
+.bamboo-holder { max-height: 400px; display: flex; justify-content: center; align-items: flex-end; }
+.bamboo-holder svg { max-height: 400px; width: auto; max-width: 100%; display: block; }
+.bamboo-empty {
+  padding-top: 3rem; padding-bottom: 3rem;
+  font-family: 'Georgia', serif; font-style: italic; color: var(--muted);
+  font-size: 1rem; line-height: 1.7; max-width: 20em; margin-left: auto; margin-right: auto;
+}
+.ground {
+  height: 10px; background: var(--bg3); border-radius: 0 0 15px 15px;
+  border-top: 1px solid var(--line);
+}
+
+/* ═══════ COUNTER ═══════ */
+.counter {
+  text-align: center; margin-top: 1rem;
+  font-family: 'Georgia', serif; font-size: 1rem; color: var(--ink2);
+}
+.counter strong { color: var(--terra-dark); font-variant-numeric: tabular-nums; }
+.counter-fine {
+  text-align: center; font-size: .78rem; color: var(--muted); font-style: italic;
+  margin-top: .2rem;
+}
+.device-note {
+  text-align: center; font-size: .8rem; line-height: 1.6; color: var(--muted);
+  max-width: 22em; margin-left: auto; margin-right: auto;
+  padding-top: 0.5rem; padding-bottom: 2.5rem;
+}
+
+/* ═══════ FORM ═══════ */
+.day-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+  margin-top: 1.75rem;
+  padding-top: 1.5rem; padding-bottom: 1.5rem; padding-left: 1.25rem; padding-right: 1.25rem;
+}
+.q-label {
+  font-family: 'Georgia', serif; font-weight: 700; font-size: 1.05rem; color: var(--ink);
+  margin-bottom: .75rem; line-height: 1.4;
+}
+.scale { display: flex; justify-content: space-between; gap: .4rem; margin-bottom: .35rem; }
+.dot {
+  flex: 1; aspect-ratio: 1; max-width: 52px; border-radius: 50%;
+  border: 2px solid var(--line); background: var(--bg);
+  font-family: 'Georgia', serif; font-weight: 700; font-size: .95rem; color: var(--muted);
+  cursor: pointer; transition: all .15s ease;
+  display: flex; align-items: center; justify-content: center;
+}
+.dot:active { transform: scale(.92); }
+.dot.on { border-color: var(--terra); background: var(--terra); color: #fff; }
+.scale-fuel .dot.on { border-color: var(--bamboo-dark); background: var(--bamboo); }
+.scale-ends { display: flex; justify-content: space-between; font-size: .72rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+.principle-block {
+  border: 1.5px solid var(--gold); background: #FBF6E9; border-radius: 12px;
+  padding-top: 1rem; padding-bottom: 1rem; padding-left: 1rem; padding-right: 1rem;
+  margin-bottom: 1.5rem;
+}
+.principle-block .q-label { margin-bottom: .6rem; }
+.principle-input {
+  width: 100%; border: 1px solid var(--line); border-radius: 8px;
+  padding-top: .7rem; padding-bottom: .7rem; padding-left: .9rem; padding-right: .9rem;
+  font-family: inherit; font-size: 1rem; color: var(--ink); background: #fff;
+  outline: none; transition: border-color .2s;
+}
+.principle-input:focus { border-color: var(--gold-dark); }
+.principle-sub { font-size: .78rem; color: var(--gold-dark); font-style: italic; margin-top: .5rem; line-height: 1.5; }
+
+.save-btn {
+  width: 100%; padding-top: .95rem; padding-bottom: .95rem;
+  background: var(--terra); color: #fff; border: none; border-radius: 10px;
+  font-family: inherit; font-size: 1.05rem; font-weight: 700; cursor: pointer;
+  transition: background .2s;
+}
+.save-btn:hover { background: var(--terra-dark); }
+.save-btn:disabled { opacity: .45; cursor: default; }
+
+/* ═══════ SAVED STATE ═══════ */
+.saved-card {
+  background: var(--card); border: 1px solid var(--bamboo); border-radius: 16px;
+  margin-top: 1.75rem; text-align: center;
+  padding-top: 1.75rem; padding-bottom: 1.75rem; padding-left: 1.25rem; padding-right: 1.25rem;
+}
+.saved-title {
+  font-family: 'Georgia', serif; font-size: 1.15rem; font-weight: 700; color: var(--bamboo-dark);
+  margin-bottom: .3rem;
+}
+.saved-sub { font-size: .95rem; color: var(--ink2); }
+.edit-link {
+  display: inline-block; margin-top: 1rem; font-size: .82rem; color: var(--muted);
+  background: none; border: none; cursor: pointer; text-decoration: underline; font-family: inherit;
+}
+.edit-link:hover { color: var(--terra-dark); }
+
+/* ═══════ BACK LINK ═══════ */
+.back-row { text-align: center; margin-top: 0; margin-bottom: 3rem; }
+.back-link {
+  font-family: 'Georgia', serif; font-style: italic; font-size: .92rem;
+  color: var(--terra-dark); text-decoration: none; border-bottom: 1px solid var(--terra-li);
+  padding-bottom: 2px; transition: color .2s, border-color .2s;
+}
+.back-link:hover { color: var(--terra); border-color: var(--terra); }
+
+/* ═══════ BOT BRIDGE ═══════ */
+.bridge { text-align: center; margin-top: 2.25rem; margin-bottom: 1.5rem; }
+.bridge-btn {
+  display: inline-block; text-decoration: none;
+  padding-top: .85rem; padding-bottom: .85rem; padding-left: 1.75rem; padding-right: 1.75rem;
+  background: var(--bg); color: var(--terra-dark); border: 1.5px solid var(--terra);
+  border-radius: 10px; font-weight: 700; font-size: .95rem; transition: all .2s;
+}
+.bridge-btn:hover { background: var(--terra); color: #fff; }
+.bridge-sub {
+  font-size: .82rem; color: var(--muted); margin-top: .75rem; line-height: 1.6;
+  max-width: 24em; margin-left: auto; margin-right: auto;
+}
+
+/* */
+.cloud-invite {
+  background: var(--card); border: 1.5px solid var(--bamboo); border-radius: 16px;
+  margin-top: 1.75rem; text-align: center;
+  padding-top: 1.75rem; padding-bottom: 1.75rem; padding-left: 1.4rem; padding-right: 1.4rem;
+}
+.cloud-invite-label {
+  font-size: .7rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--bamboo-dark); font-weight: 700; margin-bottom: .7rem;
+}
+.cloud-invite-title {
+  font-family: 'Georgia', serif; font-size: 1.3rem; font-weight: 700;
+  color: var(--ink); margin-bottom: .7rem;
+}
+.cloud-invite-text {
+  font-size: .95rem; line-height: 1.65; color: var(--ink2);
+  max-width: 24em; margin-left: auto; margin-right: auto; margin-bottom: 1.4rem;
+}
+.cloud-invite-btn {
+  display: inline-block; text-decoration: none;
+  background: var(--bamboo); color: #fff;
+  padding-top: .85rem; padding-bottom: .85rem; padding-left: 1.75rem; padding-right: 1.75rem;
+  border-radius: 10px; font-weight: 700; font-size: 1rem;
+  transition: background .2s;
+}
+.cloud-invite-btn:hover { background: var(--bamboo-dark); }
+.cloud-invite-dismiss {
+  display: block; margin-top: 1rem; margin-left: auto; margin-right: auto;
+  background: none; border: none; cursor: pointer; font-family: inherit;
+  font-size: .82rem; color: var(--muted); text-decoration: underline;
+}
+.cloud-invite-dismiss:hover { color: var(--bamboo-dark); }
+</style>
+</head>
+<body>
+
+
+<div id="accessGate" data-access="praktykum" style="
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #0A0F1E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  padding: 1.5rem;
+">
+  <div style="
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    color: #F5EFE6;
+  ">
+    <div style="
+      font-family: Georgia, serif;
+      font-size: 1.6rem;
+      color: #C9A84C;
+      margin-bottom: 0.8rem;
+    ">The Results Formula</div>
+    <p style="
+      color: rgba(245,239,230,0.7);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    ">This material opens with an access code.<br>Enter the code you received after payment.</p>
+    <input type="text" id="accessCode" placeholder="Access code" style="
+      width: 100%;
+      padding: 0.9rem 1rem;
+      background: rgba(255,255,255,0.07);
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      color: #F5EFE6;
+      font-size: 1rem;
+      text-align: center;
+      letter-spacing: 0.05em;
+      outline: none;
+      margin-bottom: 1rem;
+      box-sizing: border-box;
+    ">
+    <button onclick="checkAccessCode()" style="
+      width: 100%;
+      padding: 0.9rem;
+      background: #B85042;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    ">Unlock</button>
+    <p id="accessError" style="
+      color: #D4695A;
+      font-size: 0.85rem;
+      margin-top: 1rem;
+      min-height: 1.2rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+    ">Wrong code. Check it and try again.</p>
+    <p style="
+      color: rgba(245,239,230,0.4);
+      font-size: 0.8rem;
+      margin-top: 1.5rem;
+      line-height: 1.5;
+    ">No code? <a href="/en/formula-rezultatu-sales.html" style="color:#C9A84C; text-decoration:none;">Learn about the program →</a></p>
+  </div>
+</div>
+
+<script>
+(function() {
+  if (window.self !== window.top) { document.getElementById('accessGate').style.display='none'; return; }
+  var CODES = {
+    'KARTA-2026':     ['lekciya'],
+    'MARSHRUT-2026':  ['lekciya', 'praktykum'],
+    'PROVIDNYK-2026': ['lekciya', 'praktykum']
+  };
+
+  var gate = document.getElementById('accessGate');
+  var pageLevel = gate.getAttribute('data-access'); 
+  var STORAGE_KEY = 'formula_access';
+  function hasStoredAccess() {
+    try {
+      var saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return false;
+      var levels = JSON.parse(saved);
+      return levels.indexOf(pageLevel) !== -1;
+    } catch(e) { return false; }
+  }
+
+  function unlock() {
+    gate.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  function checkAccessCode() {
+    var input = document.getElementById('accessCode').value.trim().toUpperCase();
+    var err = document.getElementById('accessError');
+    var levels = CODES[input];
+
+    if (levels && levels.indexOf(pageLevel) !== -1) {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(levels)); } catch(e) {}
+      unlock();
+    } else {
+      err.style.opacity = '1';
+    }
+  }
+  window.checkAccessCode = checkAccessCode;
+  document.getElementById('accessCode').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') checkAccessCode();
+  });
+  if (hasStoredAccess()) {
+    unlock();
+  } else {
+    document.body.style.overflow = 'hidden';
+  }
+})();
+</script>
+
+
+<header class="top">
+  <div class="series">Beyond the Horizon · Tracker</div>
+  <h1 class="title">Bamboo</h1>
+  <p class="subtitle">your results loop. Day by day.</p>
+  <div class="divider-deco"></div>
+</header>
+
+<div class="wrap">
+
+  
+  <div class="note note-intro" id="introNote" style="display:none;">
+    <p>Remember the bamboo from the lecture? For years it grows underground, and then it shoots up.</p>
+    <p>It's the same here. You won't see a leap in a single day. You'll see it after a while.</p>
+    <p>Drop in every day for half a minute. Three touches. And watch your BIG thing build up from small ones.</p>
+  </div>
+
+  
+  <div class="note note-beta" id="betaNote" style="display:none;">
+    <p>Your note from yesterday: <span class="q">“<span id="betaQuote"></span>”</span>.</p>
+    <p>Today it's already working for you. That's how reflection becomes fuel.</p>
+  </div>
+
+  
+  <div class="note note-gap" id="gapNote" style="display:none;">
+    <p>You've been away for a few days. That's not a failure.</p>
+    <p>Meanwhile the bamboo was growing underground, where no one can see. Roots are work too.</p>
+    <p>Just carry on from where you are now.</p>
+  </div>
+
+  
+  <div class="bamboo-stage">
+    <div class="bamboo-holder" id="bambooHolder">
+      <div class="bamboo-empty" id="emptyState">
+        It's empty here for now. Your first day will become the first segment.<br>
+        Start at the bottom. From there, your bamboo will grow, and you with it.
+      </div>
+    </div>
+    <div class="ground"></div>
+  </div>
+
+  <div class="counter" id="counter" style="display:none;"></div>
+  <div class="counter-fine" id="counterFine" style="display:none;">the height is symbolic. What matters isn't the number, but that it grows.</div>
+
+  
+  <div class="cloud-invite" id="cloudInvite" style="display:none;">
+    <div class="cloud-invite-label">Your bamboo</div>
+    <div class="cloud-invite-title" id="cloudInviteTitle">Three days already</div>
+    <p class="cloud-invite-text">Your bamboo is growing, and this progress is worth keeping. Sign in, and it'll stay with you for good, on any device, phone or laptop. Not just here, in this browser.</p>
+    <a class="cloud-invite-btn" href="/en/vhid.html?next=/en/bambuk-treker.html">Save my progress →</a>
+    <button class="cloud-invite-dismiss" id="cloudInviteDismiss">Not now</button>
+  </div>
+
+  
+  <div class="day-card" id="dayForm" style="display:none;">
+    <div class="q-label">How much are you moving towards your result today?</div>
+    <div class="scale" id="scaleMove">
+      <button class="dot" data-v="0">0</button><button class="dot" data-v="1">1</button><button class="dot" data-v="2">2</button><button class="dot" data-v="3">3</button><button class="dot" data-v="4">4</button><button class="dot" data-v="5">5</button>
+    </div>
+    <div class="scale-ends"><span>not at all</span><span>full speed</span></div>
+
+    <div class="q-label">How much fuel do you have right now?</div>
+    <div class="scale scale-fuel" id="scaleFuel">
+      <button class="dot" data-v="0">0</button><button class="dot" data-v="1">1</button><button class="dot" data-v="2">2</button><button class="dot" data-v="3">3</button><button class="dot" data-v="4">4</button><button class="dot" data-v="5">5</button>
+    </div>
+    <div class="scale-ends"><span>empty tank</span><span>full tank</span></div>
+
+    <div class="principle-block">
+      <div class="q-label">What worked today? One line.</div>
+      <input type="text" class="principle-input" id="principleInput" maxlength="200" placeholder="write what you want to take from this day">
+      <div class="principle-sub">this is your β. A small principle that will become fuel tomorrow.</div>
+    </div>
+
+    <button class="save-btn" id="saveBtn" disabled>save the day</button>
+  </div>
+
+  
+  <div class="saved-card" id="savedCard" style="display:none;">
+    <div class="saved-title">Saved. One more bamboo segment added.</div>
+    <div class="saved-sub">Tomorrow you'll add the next one.</div>
+    <button class="edit-link" id="editLink">edit today's entry</button>
+  </div>
+
+  
+  <div class="bridge">
+    <a class="bridge-btn" href="https://t.me/opora_krok_bot?start=en" target="_blank" rel="noopener">talk it over with Opora</a>
+    <div class="bridge-sub">did something important happen today? Opora will help you dig into where it comes from and what to do with it next.</div>
+  </div>
+
+  
+  <div class="back-row">
+    <a class="back-link" href="/en/metodychka-beta.html">← Back to Workbook β</a>
+  </div>
+
+  
+  <div class="device-note" id="deviceNote" style="display:none;">
+    Your bamboo grows on this device. Come back from here to see all of your growth.
+  </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/js/supabase-client.js"></script>
+
+<script>
+(function() {
+  var KEY = 'krok_bambuk_v1';
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (raw) { var s = JSON.parse(raw); if (s && typeof s === 'object') return s; }
+    } catch(e) {}
+    return { entries: {}, introSeen: false, betaShownDate: '' };
+  }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e) {} }
+
+  var state = load();
+  if (!state.entries) state.entries = {};
+  function dateKey(d) {
+    var y = d.getFullYear(), m = ('0' + (d.getMonth()+1)).slice(-2), dd = ('0' + d.getDate()).slice(-2);
+    return y + '-' + m + '-' + dd;
+  }
+  var now = new Date();
+  var today = dateKey(now);
+  var yesterday = dateKey(new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1));
+
+  function daysBetween(a, b) {
+    var pa = a.split('-'), pb = b.split('-');
+    var da = new Date(pa[0], pa[1]-1, pa[2]), db = new Date(pb[0], pb[1]-1, pb[2]);
+    return Math.round((db - da) / 86400000);
+  }
+
+  var sortedDates = Object.keys(state.entries).sort();
+  var lastDate = sortedDates.length ? sortedDates[sortedDates.length - 1] : null;
+  var todayEntry = state.entries[today] || null;
+  if (!state.introSeen) {
+    document.getElementById('introNote').style.display = 'block';
+    state.introSeen = true;
+    save();
+  }
+  var yEntry = state.entries[yesterday];
+  if (yEntry && yEntry.principle && yEntry.principle.trim() && state.betaShownDate !== today) {
+    document.getElementById('betaQuote').textContent = yEntry.principle.trim();
+    var betaNote = document.getElementById('betaNote');
+    betaNote.style.display = 'block';
+    state.betaShownDate = today;
+    save();
+    setTimeout(function() {
+      betaNote.classList.add('fading');
+      setTimeout(function() { betaNote.style.display = 'none'; }, 1300);
+    }, 10000);
+  }
+  if (lastDate && !todayEntry && daysBetween(lastDate, today) >= 2) {
+    document.getElementById('gapNote').style.display = 'block';
+  }
+  function moveColor(v) {
+    var colors = ['#A8AB8E', '#96A176', '#84985F', '#779350', '#6E8F4E', '#7DA353'];
+    return colors[Math.max(0, Math.min(5, v))];
+  }
+  function leafColor(fuel) {
+    var colors = ['#B9BCA6', '#A9B18C', '#94A46F', '#82995B', '#75924E', '#6B9247'];
+    return colors[Math.max(0, Math.min(5, fuel))];
+  }
+
+  function renderBamboo() {
+    var dates = Object.keys(state.entries).sort();
+    var holder = document.getElementById('bambooHolder');
+    var empty = document.getElementById('emptyState');
+    var counter = document.getElementById('counter');
+    var fine = document.getElementById('counterFine');
+    var deviceNote = document.getElementById('deviceNote');
+
+    if (!dates.length) {
+      empty.style.display = 'block';
+      var old = holder.querySelector('svg'); if (old) old.remove();
+      counter.style.display = 'none'; fine.style.display = 'none';
+      deviceNote.style.display = 'none';
+      return;
+    }
+    empty.style.display = 'none';
+    deviceNote.style.display = 'block';
+
+    var W = 300, cx = W / 2;
+    var segs = [];
+    var totalH = 0, totalR = 0;
+    dates.forEach(function(d) {
+      var e = state.entries[d];
+      var mv = e.move || 0, fl = (typeof e.fuel === 'number') ? e.fuel : 3;
+      var h = 24 + mv * 7;          
+      var w = 13 + mv * 2.2;        
+      segs.push({ h: h, w: w, move: mv, fuel: fl });
+      totalH += h + 3;
+      totalR += mv;
+    });
+
+    var pad = 30;
+    var H = totalH + pad;
+    var svgParts = [];
+    svgParts.push('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" role="img" aria-label="Bamboo: ' + dates.length + ' segments">');
+
+    var y = H; 
+    segs.forEach(function(s, i) {
+      var segTop = y - s.h;
+      var x = cx - s.w / 2;
+      svgParts.push('<rect x="' + x.toFixed(1) + '" y="' + segTop.toFixed(1) + '" width="' + s.w.toFixed(1) + '" height="' + s.h.toFixed(1) + '" rx="' + (s.w/3).toFixed(1) + '" fill="' + moveColor(s.move) + '"/>');
+      svgParts.push('<rect x="' + (x - 1.5).toFixed(1) + '" y="' + (segTop - 1.5).toFixed(1) + '" width="' + (s.w + 3).toFixed(1) + '" height="3" rx="1.5" fill="#55703C" opacity=".55"/>');
+      if (i % 2 === 0 || s.fuel >= 4) {
+        var side = (i % 4 < 2) ? 1 : -1;
+        var lx = cx + side * (s.w / 2);
+        var ly = segTop + s.h * 0.35;
+        var lc = leafColor(s.fuel);
+        svgParts.push('<g transform="translate(' + lx.toFixed(1) + ',' + ly.toFixed(1) + ') scale(' + side + ',1)">' +
+          '<path d="M0,0 Q22,-14 46,-8 Q24,4 0,0 Z" fill="' + lc + '"/>' +
+          '<path d="M0,4 Q18,-2 38,4 Q18,12 0,4 Z" fill="' + lc + '" opacity=".75"/>' +
+          '</g>');
+      }
+      y = segTop - 3;
+    });
+    svgParts.push('<circle cx="' + cx + '" cy="' + (y - 3).toFixed(1) + '" r="4" fill="#7DA353"/>');
+    svgParts.push('</svg>');
+
+    var old = holder.querySelector('svg'); if (old) old.remove();
+    holder.insertAdjacentHTML('beforeend', svgParts.join(''));
+
+    counter.innerHTML = '<strong>' + dates.length + '</strong> ' + dayWord(dates.length) + ' in the loop · your bamboo\'s height: <strong>' + totalR + '</strong>';
+    counter.style.display = 'block';
+    fine.style.display = 'block';
+  }
+
+  function dayWord(n) { return n === 1 ? 'day' : 'days'; }
+  var moveVal = null, fuelVal = null;
+  var saveBtn = document.getElementById('saveBtn');
+  var principleInput = document.getElementById('principleInput');
+
+  function bindScale(id, setter) {
+    var scale = document.getElementById(id);
+    scale.addEventListener('click', function(e) {
+      var btn = e.target.closest('.dot');
+      if (!btn) return;
+      var v = parseInt(btn.getAttribute('data-v'), 10);
+      setter(v);
+      scale.querySelectorAll('.dot').forEach(function(d) {
+        d.classList.toggle('on', parseInt(d.getAttribute('data-v'), 10) === v);
+      });
+      updateSaveBtn();
+    });
+  }
+  bindScale('scaleMove', function(v) { moveVal = v; });
+  bindScale('scaleFuel', function(v) { fuelVal = v; });
+
+  function updateSaveBtn() {
+    saveBtn.disabled = (moveVal === null || fuelVal === null);
+  }
+
+  function setScale(id, v) {
+    document.getElementById(id).querySelectorAll('.dot').forEach(function(d) {
+      d.classList.toggle('on', parseInt(d.getAttribute('data-v'), 10) === v);
+    });
+  }
+
+  function showForm(prefill) {
+    if (prefill) {
+      moveVal = prefill.move; fuelVal = prefill.fuel;
+      setScale('scaleMove', prefill.move);
+      setScale('scaleFuel', prefill.fuel);
+      principleInput.value = prefill.principle || '';
+    }
+    updateSaveBtn();
+    document.getElementById('dayForm').style.display = 'block';
+    document.getElementById('savedCard').style.display = 'none';
+  }
+
+  function showSaved() {
+    document.getElementById('dayForm').style.display = 'none';
+    document.getElementById('savedCard').style.display = 'block';
+  }
+
+  saveBtn.addEventListener('click', function() {
+    if (moveVal === null || fuelVal === null) return;
+    state.entries[today] = {
+      move: moveVal,
+      fuel: fuelVal,
+      principle: principleInput.value.trim()
+    };
+    save();
+    renderBamboo();
+    showSaved();
+    document.getElementById('gapNote').style.display = 'none';
+    syncBambukToCloud();      
+    maybeShowCloudInvite();   
+  });
+
+  document.getElementById('editLink').addEventListener('click', function() {
+    showForm(state.entries[today]);
+  });
+
+  document.getElementById('cloudInviteDismiss').addEventListener('click', function() {
+    document.getElementById('cloudInvite').style.display = 'none';
+  });
+
+  function cloudReady() { return typeof getCurrentUser === 'function'; }
+  async function syncBambukToCloud() {
+    if (!cloudReady()) return;
+    var user = await getCurrentUser();
+    if (!user) return;                 
+    var raw = localStorage.getItem(KEY);
+    if (!raw) return;
+    try {
+      await saveProgress('bambuk', JSON.parse(raw));
+    } catch (e) {
+      console.warn('cloud sync skipped', e);
+    }
+  }
+  async function loadBambukOnStart() {
+    if (!cloudReady()) return;
+    var user = await getCurrentUser();
+    if (!user) return;
+
+    var cloud = await loadProgress('bambuk');           
+    var localRaw = localStorage.getItem(KEY);
+    var local = localRaw ? JSON.parse(localRaw) : null;
+
+    var cloudDays = (cloud && cloud.entries) ? Object.keys(cloud.entries).length : 0;
+    var localDays = (local && local.entries) ? Object.keys(local.entries).length : 0;
+
+    if (cloudDays > localDays) {
+      state = cloud;
+      if (!state.entries) state.entries = {};
+      localStorage.setItem(KEY, JSON.stringify(state));
+      renderBamboo();                                   
+      if (state.entries[today]) showSaved(); else showForm(null);
+    } else if (localDays > cloudDays) {
+      try { await saveProgress('bambuk', local); } catch (e) { console.warn('cloud push skipped', e); }
+    }
+  }
+  function pluralDays(n) { return n === 1 ? 'day' : 'days'; }
+  async function maybeShowCloudInvite() {
+    if (!cloudReady()) { return checkInviteLocalOnly(); }
+    var user = await getCurrentUser();
+    if (user) return;                                   
+    checkInviteLocalOnly();
+  }
+
+  function checkInviteLocalOnly() {
+    var data = {};
+    try { data = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+    if (data.cloudInviteShown) return;                  
+    var days = data.entries ? Object.keys(data.entries).length : 0;
+    if (days < 3) return;                                
+    document.getElementById('cloudInviteTitle').textContent = days + ' ' + pluralDays(days) + ' already';
+    document.getElementById('cloudInvite').style.display = 'block';
+    data.cloudInviteShown = true;
+    state.cloudInviteShown = true;
+    localStorage.setItem(KEY, JSON.stringify(data));
+    if (cloudReady() && typeof trackEvent === 'function') {
+      trackEvent('cloud_invite_shown', { product: 'bambuk', days: days });
+    }
+  }
+  async function initCloud() {
+    if (!cloudReady() || typeof sb === 'undefined' || !sb.auth) return;
+    var handled = false;
+    sb.auth.onAuthStateChange(async function (_event, session) {
+      if (!session || handled) return;   
+      handled = true;
+      try {
+        await migrateLocalData('bambuk', KEY);   
+        await loadBambukOnStart();                
+        setDeviceNoteForLoggedIn();
+      } catch (e) {
+        console.warn('cloud init skipped', e);
+      }
+    });
+  }
+
+  function setDeviceNoteForLoggedIn() {
+    var n = document.getElementById('deviceNote');
+    if (n) n.textContent = 'Your progress is saved in your account. It stays with you on any device.';
+  }
+  renderBamboo();
+  if (todayEntry) {
+    showSaved();
+  } else {
+    showForm(null);
+  }
+  initCloud();   
+})();
+</script>
+
+</body>
+</html>

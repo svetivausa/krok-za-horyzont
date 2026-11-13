@@ -248,6 +248,12 @@ function setLoading(on) {
 }
 
 function showLoggedIn(email) {
+  // the magic link always lands here (/vhid); English pages go straight back to the English page
+  if (nextParam.indexOf('/en/') === 0) {
+    try { localStorage.removeItem(NEXT_KEY); } catch (e) {}
+    window.location.replace(nextParam);
+    return;
+  }
   document.getElementById('loggedEmail').textContent = email;
   var continueBtn = document.getElementById('continueBtn');
   continueBtn.href = nextParam;
