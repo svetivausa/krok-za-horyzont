@@ -110,7 +110,7 @@ VHID = [
      '      By pressing the button, you agree that your progress and email will be stored for the service to work.'),
     ('<div class="sent-title">Лист уже летить</div>', '<div class="sent-title">The email is on its way</div>'),
     ('      Перевір пошту <strong id="sentEmail"></strong> і натисни на посилання.<br>\n      Якщо листа нема, зазирни в Спам.',
-     "      Check <strong id=\"sentEmail\"></strong> and click the link.<br>\n      The email is in Ukrainian; just press the button in it. If it isn't there, check your Spam folder."),
+     "      Check <strong id=\"sentEmail\"></strong> and click the link.<br>\n      If it isn't there, check your Spam folder."),
     ('onclick="onResend()" disabled>Надіслати ще раз (60)</button>', 'onclick="onResend()" disabled>Send again (60)</button>'),
     ('<div class="logged-title">Ти всередині</div>', "<div class=\"logged-title\">You're in</div>"),
     ('<a class="btn" id="continueBtn" href="/">Продовжити →</a>', '<a class="btn" id="continueBtn" href="/en/">Continue →</a>'),
