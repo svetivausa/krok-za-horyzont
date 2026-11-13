@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workbook β: Conversion · Beyond the Horizon</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://www.svitlana-slipchenko.pp.ua/en/metodychka-beta.html">
+<link rel="alternate" hreflang="uk" href="https://www.svitlana-slipchenko.pp.ua/metodychka-beta.html">
+<link rel="alternate" hreflang="en" href="https://www.svitlana-slipchenko.pp.ua/en/metodychka-beta.html">
+<link rel="alternate" hreflang="x-default" href="https://www.svitlana-slipchenko.pp.ua/metodychka-beta.html">
+<style>
+:root {
+  --bg: #F5EFE6;
+  --bg2: #EDE3D0;
+  --bg3: #E3D5BC;
+  --card: #FAF5EC;
+  --terra: #B85042;
+  --terra-dark: #8E3A2F;
+  --terra-light: #D67868;
+  --gold: #C9A84C;
+  --gold-dark: #A88A30;
+  --gold-light: #E0C677;
+  --ink: #2C1A0E;
+  --ink2: #5A4530;
+  --muted: #8B7355;
+  --line: rgba(44,26,14,.12);
+  --line2: rgba(44,26,14,.06);
+  --green: #4A7C3A;
+  --blue: #3A5878;
+  --violet: #6B4A8C;
+  --burgundy: #7A2820;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ═══════ HEADER ═══════ */
+header.top {
+  padding: 4rem 1.5rem 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+header.top::before {
+  content: '';
+  position: absolute;
+  width: 300px; height: 300px;
+  background: var(--gold);
+  opacity: .08;
+  border-radius: 50%;
+  top: -120px; right: -60px;
+}
+header.top > * { position: relative; z-index: 1; }
+
+.series {
+  display: inline-block;
+  font-size: .72rem;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding: 6px 18px;
+  border: 1px solid var(--gold);
+  border-radius: 3px;
+}
+
+.beta-glyph {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: clamp(4rem, 12vw, 7rem);
+  font-weight: 700;
+  color: var(--gold-dark);
+  line-height: 1;
+  display: block;
+  margin-bottom: .5rem;
+}
+
+h1.title {
+  font-family: 'Georgia', serif;
+  font-size: clamp(1.9rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -.02em;
+  line-height: 1.08;
+  color: var(--ink);
+  margin-bottom: 1rem;
+  max-width: 14em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.subtitle {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  color: var(--terra);
+  max-width: 28em;
+  margin: 0 auto;
+}
+
+.divider-deco {
+  margin: 2rem auto 0;
+  width: 60px; height: 1px;
+  background: var(--terra);
+  position: relative;
+}
+.divider-deco::before, .divider-deco::after {
+  content: '';
+  position: absolute; top: -3px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--terra);
+}
+.divider-deco::before { left: -14px; }
+.divider-deco::after { right: -14px; }
+
+/* ═══════ TYPOGRAPHY ═══════ */
+section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+p { margin-bottom: 1.1rem; color: var(--ink); }
+p.lead {
+  font-family: 'Georgia', serif;
+  font-size: 1.28rem;
+  line-height: 1.55;
+  margin-bottom: 1.5rem;
+}
+p strong { font-weight: 700; color: var(--ink); }
+p em { font-style: italic; color: var(--terra-dark); }
+
+h2.section-title {
+  font-family: 'Georgia', serif;
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  font-weight: 700;
+  letter-spacing: -.015em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0 0 1.2rem;
+}
+
+.kicker {
+  display: inline-block;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: .78rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  font-weight: 700;
+  margin-bottom: .7rem;
+}
+
+/* ═══════ CALLOUT ═══════ */
+.callout {
+  background: var(--card);
+  border-left: 3px solid var(--gold);
+  padding: 1.2rem 1.5rem;
+  margin: 1.6rem 0;
+  border-radius: 0 6px 6px 0;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--ink2);
+}
+.callout strong { color: var(--ink); font-style: normal; }
+
+.wow {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: clamp(1.25rem, 2.8vw, 1.55rem);
+  line-height: 1.4;
+  color: var(--terra);
+  text-align: center;
+  margin: 2rem auto;
+  padding: 1.3rem 1rem;
+  max-width: 24em;
+  position: relative;
+  font-weight: 600;
+}
+.wow::before, .wow::after {
+  content: '';
+  position: absolute; left: 50%;
+  transform: translateX(-50%);
+  width: 40px; height: 1px;
+  background: var(--terra);
+}
+.wow::before { top: 0; }
+.wow::after { bottom: 0; }
+
+/* ═══════ HOW TO USE ═══════ */
+.howto {
+  background: var(--bg2);
+  margin: 2rem -1.5rem;
+  padding: 2.5rem 1.5rem;
+}
+.howto-inner { max-width: 760px; margin: 0 auto; }
+.howto-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.2rem; }
+.howto-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.howto-num {
+  flex-shrink: 0;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--terra);
+  color: #fff;
+  font-family: 'Georgia', serif;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .95rem;
+}
+.howto-text { color: var(--ink); font-size: .98rem; line-height: 1.55; }
+.howto-text strong { font-weight: 700; }
+
+/* ═══════ PROGRESS BAR ═══════ */
+.progress-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(245,239,230,.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: .8rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+.progress-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.progress-label {
+  font-family: 'Georgia', serif;
+  font-size: .82rem;
+  color: var(--ink2);
+  white-space: nowrap;
+  font-weight: 600;
+}
+.progress-track {
+  flex: 1;
+  height: 8px;
+  background: var(--bg3);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--terra));
+  border-radius: 4px;
+  transition: width .4s ease;
+}
+.progress-count {
+  font-family: 'Georgia', serif;
+  font-weight: 700;
+  color: var(--terra-dark);
+  font-variant-numeric: tabular-nums;
+  font-size: .9rem;
+  white-space: nowrap;
+}
+
+/* ═══════ LEVEL HEADER ═══════ */
+.level-head {
+  margin: 3.5rem 0 1.5rem;
+  text-align: center;
+}
+.level-tag {
+  display: inline-block;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: .75rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--terra);
+  font-weight: 700;
+  padding: 5px 16px;
+  border-radius: 4px;
+  margin-bottom: .8rem;
+}
+.level-title {
+  font-family: 'Georgia', serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: .4rem;
+}
+.level-desc {
+  font-size: .95rem;
+  color: var(--muted);
+  font-style: italic;
+  max-width: 26em;
+  margin: 0 auto;
+}
+
+/* ═══════ EXERCISE CARD ═══════ */
+.ex {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  overflow: hidden;
+  transition: box-shadow .3s, border-color .3s;
+}
+.ex.done {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold);
+}
+
+.ex-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.4rem 1.5rem 1rem;
+}
+.ex-check {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  border: 2px solid var(--muted);
+  background: var(--bg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .2s;
+  margin-top: 2px;
+}
+.ex-check:hover { border-color: var(--terra); }
+.ex.done .ex-check {
+  background: var(--gold);
+  border-color: var(--gold-dark);
+}
+.ex-check svg { width: 16px; height: 16px; opacity: 0; transition: opacity .2s; }
+.ex.done .ex-check svg { opacity: 1; }
+
+.ex-num {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: .72rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  font-weight: 700;
+  margin-bottom: .2rem;
+}
+.ex-title {
+  font-family: 'Georgia', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.ex-body { padding: 0 1.5rem 1.5rem; }
+
+.ex-mech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 1.1rem;
+}
+.tag {
+  font-family: 'Georgia', serif;
+  font-size: .74rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 4px;
+  letter-spacing: .02em;
+}
+.tag-mech { background: var(--bg3); color: var(--burgundy); }
+.tag-pain { background: rgba(107,74,140,.12); color: var(--violet); }
+
+.ex-section-label {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: .76rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  margin: 1.1rem 0 .5rem;
+}
+
+.ex-steps { list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: .6rem; }
+.ex-steps li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 2rem;
+  font-size: .95rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.ex-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--terra);
+  color: #fff;
+  font-family: 'Georgia', serif;
+  font-size: .78rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.ex-example {
+  background: var(--bg2);
+  border-radius: 8px;
+  padding: .9rem 1.1rem;
+  margin-top: .5rem;
+  font-size: .9rem;
+  color: var(--ink2);
+  line-height: 1.6;
+}
+.ex-example strong { color: var(--ink); }
+
+.ex-control {
+  display: flex;
+  gap: .6rem;
+  align-items: flex-start;
+  margin-top: 1.1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--line);
+  font-size: .9rem;
+  color: var(--ink2);
+  line-height: 1.55;
+}
+.ex-control::before {
+  content: '✓';
+  color: var(--gold-dark);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.ex-control strong { color: var(--ink); }
+
+/* ═══════ FINAL SECTIONS ═══════ */
+.checkpoints, .mistakes {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.8rem 1.8rem 2rem;
+  margin: 2rem 0;
+}
+.cp-list, .mk-list { display: flex; flex-direction: column; gap: .8rem; margin-top: 1rem; }
+.cp-item, .mk-item {
+  display: flex;
+  gap: .7rem;
+  align-items: flex-start;
+  font-size: .95rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.cp-item::before { content: '▲'; color: var(--green); flex-shrink: 0; font-size: .8rem; margin-top: 3px; }
+.mk-item::before { content: '✕'; color: var(--terra); flex-shrink: 0; font-weight: 700; }
+.cp-item strong, .mk-item strong { font-weight: 700; }
+
+/* ═══════ REFLECTION ═══════ */
+.reflect {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+  margin: 3rem -1.5rem 0;
+  padding: 3rem 1.5rem;
+}
+.reflect-inner { max-width: 760px; margin: 0 auto; }
+.reflect-q {
+  font-family: 'Georgia', serif;
+  font-size: 1.1rem;
+  color: var(--ink);
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: .8rem;
+}
+.reflect-q:last-child { border-bottom: none; }
+.reflect-q span {
+  color: var(--gold-dark);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ═══════ ENDING ═══════ */
+.ending { text-align: center; padding-top: 3.5rem; padding-bottom: 4rem; }
+.ending-q {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  color: var(--terra);
+  max-width: 20em;
+  margin: 0 auto 1.5rem;
+  line-height: 1.3;
+}
+.signature {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  color: var(--muted);
+  font-size: 1rem;
+  margin-top: 1.5rem;
+}
+.back-link {
+  display: inline-block;
+  margin-top: 2rem;
+  font-family: 'Georgia', serif;
+  font-size: .95rem;
+  color: var(--terra-dark);
+  text-decoration: none;
+  border-bottom: 1px solid var(--terra);
+  padding-bottom: 2px;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 1.5rem 3rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: .8rem;
+  font-style: italic;
+  font-family: 'Georgia', serif;
+}
+
+.reset-btn {
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: inherit;
+  font-size: .8rem;
+  padding: 5px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all .2s;
+}
+.reset-btn:hover { border-color: var(--terra); color: var(--terra); }
+
+@media (max-width: 600px) {
+  .ex-head { padding: 1.2rem 1.1rem .8rem; }
+  .ex-body { padding: 0 1.1rem 1.2rem; }
+  .progress-label { display: none; }
+  .howto { margin-left: 0; margin-right: 0; }
+  .reflect { margin-left: 0; margin-right: 0; }
+}
+/* ═══════ BAMBUK BRIDGE ═══════ */
+.bambuk-bridge {
+  background: #FBF7F0;
+  border: 1px solid #C9A84C;
+  border-radius: 14px;
+  padding-top: 2.4rem;
+  padding-bottom: 2.4rem;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+  text-align: center;
+  max-width: 620px;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.bambuk-bridge-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+  margin-bottom: 0.8rem;
+}
+.bambuk-bridge-label {
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  color: #C9A84C;
+  font-weight: 600;
+  margin-bottom: 0.9rem;
+}
+.bambuk-bridge-title {
+  font-family: Georgia, serif;
+  font-size: 1.7rem;
+  color: #2C1A0E;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+.bambuk-bridge-text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #4A3728;
+  max-width: 480px;
+  margin-top: 0;
+  margin-bottom: 1.6rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.bambuk-bridge-btn {
+  display: inline-block;
+  background: #B85042;
+  color: #FBF7F0;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+  padding-left: 1.8rem;
+  padding-right: 1.8rem;
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
+.bambuk-bridge-btn:hover {
+  background: #A03D30;
+}
+</style>
+</head>
+<body>
+
+<div id="accessGate" data-access="praktykum" style="
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #0A0F1E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  padding: 1.5rem;
+">
+  <div style="
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    color: #F5EFE6;
+  ">
+    <div style="
+      font-family: Georgia, serif;
+      font-size: 1.6rem;
+      color: #C9A84C;
+      margin-bottom: 0.8rem;
+    ">The Results Formula</div>
+    <p style="
+      color: rgba(245,239,230,0.7);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    ">This material opens with an access code.<br>Enter the code you received after payment.</p>
+    <input type="text" id="accessCode" placeholder="Access code" style="
+      width: 100%;
+      padding: 0.9rem 1rem;
+      background: rgba(255,255,255,0.07);
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      color: #F5EFE6;
+      font-size: 1rem;
+      text-align: center;
+      letter-spacing: 0.05em;
+      outline: none;
+      margin-bottom: 1rem;
+      box-sizing: border-box;
+    ">
+    <button onclick="checkAccessCode()" style="
+      width: 100%;
+      padding: 0.9rem;
+      background: #B85042;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    ">Unlock</button>
+    <p id="accessError" style="
+      color: #D4695A;
+      font-size: 0.85rem;
+      margin-top: 1rem;
+      min-height: 1.2rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+    ">Wrong code. Check it and try again.</p>
+    <p style="
+      color: rgba(245,239,230,0.4);
+      font-size: 0.8rem;
+      margin-top: 1.5rem;
+      line-height: 1.5;
+    ">No code? <a href="/en/formula-rezultatu-sales.html" style="color:#C9A84C; text-decoration:none;">Learn about the program →</a></p>
+  </div>
+</div>
+
+<script>
+(function() {
+  if (window.self !== window.top) { document.getElementById('accessGate').style.display='none'; return; }
+  var CODES = {
+    'KARTA-2026':     ['lekciya'],
+    'MARSHRUT-2026':  ['lekciya', 'praktykum'],
+    'PROVIDNYK-2026': ['lekciya', 'praktykum']
+  };
+
+  var gate = document.getElementById('accessGate');
+  var pageLevel = gate.getAttribute('data-access'); 
+  var STORAGE_KEY = 'formula_access';
+  function hasStoredAccess() {
+    try {
+      var saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return false;
+      var levels = JSON.parse(saved);
+      return levels.indexOf(pageLevel) !== -1;
+    } catch(e) { return false; }
+  }
+
+  function unlock() {
+    gate.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  function checkAccessCode() {
+    var input = document.getElementById('accessCode').value.trim().toUpperCase();
+    var err = document.getElementById('accessError');
+    var levels = CODES[input];
+
+    if (levels && levels.indexOf(pageLevel) !== -1) {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(levels)); } catch(e) {}
+      unlock();
+    } else {
+      err.style.opacity = '1';
+    }
+  }
+  window.checkAccessCode = checkAccessCode;
+  document.getElementById('accessCode').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') checkAccessCode();
+  });
+  if (hasStoredAccess()) {
+    unlock();
+  } else {
+    document.body.style.overflow = 'hidden';
+  }
+})();
+</script>
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <span class="progress-label">Your path:</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-count" id="progressCount">0 / 10</span>
+  </div>
+</div>
+
+<header class="top">
+  <div class="series">Beyond the Horizon · Workbook</div>
+  <span class="beta-glyph">β</span>
+  <h1 class="title">How to learn to grow from your own experience</h1>
+  <p class="subtitle">Ten exercises on the most powerful component of the Results Formula</p>
+  <div class="divider-deco"></div>
+</header>
+
+<section class="wrap">
+  <p class="lead">
+    Remember the β component from the lecture, the one I called the heart of the formula? It's the ability to learn from your own experience. Not from books, not from other people's advice, but from what you live through yourself.
+  </p>
+  <p>
+    Why does the workbook start with it? Because β multiplies everything. You can train your actions, look for opportunities, protect your resources, but if you can't turn what you've lived through into conclusions, every day starts from zero. With a good β, even a failure becomes a step up.
+  </p>
+  <p>
+    And here's the most important thing to hear right away: <strong>β isn't a character trait you're born with</strong>. It's a skill. You can train it just like a muscle. That's exactly what we're going to do.
+  </p>
+
+  <div class="wow">Some people live ten years and grow. Others live the same ten years and stay where they were. The difference is β.</div>
+
+  <p>
+    Below are ten exercises, arranged in sequence. They take you through three levels: first <em>noticing</em> your experience, then <em>extracting</em> conclusions from it, and finally <em>applying</em> them in your next step. That's how the loop closes, and that loop is where growth comes from.
+  </p>
+</section>
+
+<div class="howto">
+  <div class="howto-inner">
+    <span class="kicker">Before you begin</span>
+    <h2 class="section-title">How to use this workbook</h2>
+    <div class="howto-list">
+      <div class="howto-item">
+        <div class="howto-num">1</div>
+        <div class="howto-text"><strong>This isn't reading, it's work.</strong> The exercises are meant to be done, not skimmed. A workbook you've read changes nothing. A workbook you've done changes a lot.</div>
+      </div>
+      <div class="howto-item">
+        <div class="howto-num">2</div>
+        <div class="howto-text"><strong>In order.</strong> The exercises follow a logical sequence. The first level is the foundation for the second, the second for the third. Don't skip ahead.</div>
+      </div>
+      <div class="howto-item">
+        <div class="howto-num">3</div>
+        <div class="howto-text"><strong>Don't rush.</strong> This isn't a one-day marathon. Take one exercise, live with it for a few days until it becomes familiar, and only then move on.</div>
+      </div>
+      <div class="howto-item">
+        <div class="howto-num">4</div>
+        <div class="howto-text"><strong>Tick an exercise when it has become yours.</strong> Not when you've read it, but when you actually do it without effort. The progress bar at the top shows how much of the path is behind you.</div>
+      </div>
+      <div class="howto-item">
+        <div class="howto-num">5</div>
+        <div class="howto-text"><strong>Don't fool yourself.</strong> There's no one here to show your results to. All the value lies in being honest with yourself.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LEVEL 1 -->
+<div class="wrap">
+  <div class="level-head">
+    <span class="level-tag">Level 1 · Foundation</span>
+    <div class="level-title">Notice</div>
+    <p class="level-desc">Before you can learn from experience, you have to learn to see it at all. We live most of the day on autopilot, and then we're surprised that nothing changes.</p>
+  </div>
+
+  <!-- Exercise 1 -->
+  <div class="ex" data-ex="1">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div>
+        <div class="ex-num">Exercise 1</div>
+        <div class="ex-title">The after-action journal</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: metacognition · prefrontal cortex</span>
+        <span class="tag tag-pain">pain: "living on autopilot"</span>
+      </div>
+      <p>The simplest and most important exercise in the whole workbook. The idea is to stop for a few minutes every day and look at what you've lived through from the outside. It's the basic training ground for β: you teach your brain not just to live through events, but to notice them.</p>
+
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Pick a fixed time, ideally in the evening before bed. Tie it to something you already do every day (after dinner, after your shower).</li>
+        <li>Ask yourself three questions and answer briefly, out loud or in your notes: <em>What important thing happened today? What do I feel about it? What do I notice about myself?</em></li>
+        <li>Keep it short. Two or three sentences. The goal isn't "keeping a diary", it's training your attention to stop.</li>
+      </ol>
+
+      <div class="ex-example">
+        <strong>Example:</strong> "At today's meeting I kept quiet, even though I had something to say. I feel annoyed with myself. I notice I go quiet every time my manager is in the room."
+      </div>
+
+      <div class="ex-control"><span><strong>Checkpoint:</strong> the exercise is working when you catch yourself observing in the middle of the day: "oh, that's worth writing down". It means your attention has learned to notice.</span></div>
+    </div>
+  </div>
+
+  <!-- Exercise 2 -->
+  <div class="ex" data-ex="2">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div>
+        <div class="ex-num">Exercise 2</div>
+        <div class="ex-title">The weekly β ritual</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: memory consolidation · reflection</span>
+        <span class="tag tag-pain">pain: "I'm capable of more, but I'm standing still"</span>
+      </div>
+      <p>If the after-action journal is daily hygiene, this ritual is your weekly review. A week is long enough to see a pattern, not just a single event.</p>
+
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Choose one day and time each week, and keep it fixed. Mine is Sunday evening. Fifteen minutes, no more.</li>
+        <li>Reread your daily notes for the week (if you have them) and answer three questions.</li>
+        <li><em>What did I learn this week, and what's important for me to take from it? What principle do I draw from it? What do I take forward to apply in the future?</em></li>
+      </ol>
+
+      <div class="ex-example">
+        <strong>Example:</strong> "This week I twice agreed to things I didn't want. Conclusion: I say 'yes' automatically when I'm caught off guard. What I take forward: in moments like that, say 'let me think and get back to you'."
+      </div>
+
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you haven't skipped the ritual three weeks in a row, and it no longer feels like a duty. You start to feel that the week has been "completed", not just ended.</span></div>
+    </div>
+  </div>
+
+  <!-- Exercise 3 -->
+  <div class="ex" data-ex="3">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div>
+        <div class="ex-num">Exercise 3</div>
+        <div class="ex-title">Catch the autopilot</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: awareness of habitual patterns · basal ganglia</span>
+        <span class="tag tag-pain">pain: "I don't know what I really want"</span>
+      </div>
+      <p>A large part of life runs on autopilot, and that's not a flaw, it's the brain's way of saving energy. But it's right there, on autopilot, that the reactions you're not happy with are hiding. This exercise teaches you to catch them.</p>
+
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>During the day, catch the moments when you do something without thinking: a habitual reaction, an automatic "yes", the usual route, the usual irritation.</li>
+        <li>In that moment, don't scold yourself. Just make a mental note: "that was autopilot".</li>
+        <li>In the evening, write down one or two of these moments. You don't need to change anything yet. First, just see.</li>
+      </ol>
+
+      <div class="ex-example">
+        <strong>Example:</strong> "Again I open my phone the moment I'm alone, without even deciding to. Autopilot. I notice I do it every time I start feeling anxious."
+      </div>
+
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you start catching the autopilot <em>in the moment</em>, not only when looking back in the evening. That's the first crack in the habit. Next comes choice.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- LEVEL 2 -->
+<div class="wrap">
+  <div class="level-head">
+    <span class="level-tag">Level 2 · Core</span>
+    <div class="level-title">Extract</div>
+    <p class="level-desc">Noticing isn't enough. Now for the most important part: turning what you've seen into conclusions. An event into a principle you can apply again.</p>
+  </div>
+
+  <!-- Exercise 4 -->
+  <div class="ex" data-ex="4">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div>
+        <div class="ex-num">Exercise 4</div>
+        <div class="ex-title">Extracting the principle</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: generalisation · abstracting from experience</span>
+        <span class="tag tag-pain">pain: "whatever I do, it never feels like enough"</span>
+      </div>
+      <p>This is the core of β. An event teaches nothing by itself. What teaches is the <em>principle</em> you draw from it. Because a principle can be applied again, and an event can't: it's already over.</p>
+
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Take any significant event from the week, good or bad.</li>
+        <li>Ask yourself: "What does this say about how I usually act?" Look not for a judgement of the event, but for a pattern.</li>
+        <li>Phrase it as a rule: briefly, in your own words, in the form "when…, I…".</li>
+      </ol>
+
+      <div class="ex-example">
+        <strong>Example:</strong> "I'm bad at negotiating" isn't a principle, it's a verdict. But "when I don't decide my price in advance, I always agree to less" is a principle. You can take it into account next time.
+      </div>
+
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you have a personal list of principles, and you turn to it from time to time. It's your own book of wisdom, drawn from your own life, not someone else's.</span></div>
+    </div>
+  </div>
+
+  <!-- Exercise 5 -->
+  <div class="ex" data-ex="5">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div>
+        <div class="ex-num">Exercise 5</div>
+        <div class="ex-title">Unpacking a failure without beating yourself up</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: separating fact from self-worth · working with the amygdala</span>
+        <span class="tag tag-pain">pain: "I'm always waiting for something to go wrong"</span>
+      </div>
+      <p>β suffers most when a failure turns into self-blame. If a setback becomes "I'm a failure", the brain wants to forget it as fast as possible, and the lesson never gets recorded. The rake stays right where it was, waiting for you to step on it again. This exercise teaches you to unpack a failure calmly.</p>
+
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Name what happened as a fact, without judging yourself. Not "I ruin everything", but "the project was handed in a week late".</li>
+        <li>Separate the action from the person: it's not about you, a specific step didn't work.</li>
+        <li>Ask: "What exactly will I do differently next time?" One specific change, not ten.</li>
+      </ol>
+
+      <div class="ex-example">
+        <strong>Example:</strong> Instead of "nothing ever works out for me, it all went wrong again" → "I take on more than I can manage. Next time I'll state the real deadlines right away, not the ones people want to hear".
+      </div>
+
+      <div class="ex-control"><span><strong>Checkpoint:</strong> after a failure you feel not only pain, but curiosity too: "what can I learn here?". It means β has started digesting setbacks into experience, not into guilt.</span></div>
+    </div>
+  </div>
+
+  <!-- Exercise 6 -->
+  <div class="ex" data-ex="6">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div>
+        <div class="ex-num">Exercise 6</div>
+        <div class="ex-title">Own your success</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: attribution · reinforcing positive experience</span>
+        <span class="tag tag-pain">pain: "I need to be praised, recognised"</span>
+      </div>
+      <p>Strangely, we unpack success even less often than failure. "I just got lucky", "anyone could have done it", and the lesson never gets recorded. Years later, what's left inside is a long list of failures and not a single success, although there were some. This exercise fixes that.</p>
+
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Recall something that went well this week, even something small.</li>
+        <li>Ask honestly: "What was <em>my</em> part here, not luck?" Not "I got lucky", but your own specific contribution.</li>
+        <li>Write it down as one of your strong moves. Something worth repeating on purpose.</li>
+      </ol>
+
+      <div class="ex-example">
+        <strong>Example:</strong> "The conversation with the client went well, and not by accident. I'd thought through my questions in advance and didn't interrupt. That worked. I'll keep doing it."
+      </div>
+
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you can name three of your strong moves that really work. Not abstract "virtues", but specific skills you notice in yourself and acknowledge.</span></div>
+    </div>
+  </div>
+
+  <!-- Exercise 7 -->
+  <div class="ex" data-ex="7">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div>
+        <div class="ex-num">Exercise 7</div>
+        <div class="ex-title">Calibrating your beliefs</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: checking beliefs against facts · working with B(i)</span>
+        <span class="tag tag-pain">pain: "my mood and self-esteem depend on other people"</span>
+      </div>
+      <p>Here β meets the B component: beliefs. We often carry "that's just the kind of person I am" as an unquestionable truth, even though the facts say otherwise. This exercise checks an inner belief against reality.</p>
+
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Write down one limiting belief about yourself. "I can't speak in public", "nobody listens to me", "I always put things off".</li>
+        <li>Now honestly look for facts that contradict it. When was it different? Even just once.</li>
+        <li>Rephrase the belief so it has room for the facts too. Not "I can't", but "it's sometimes hard for me, but I've done it before".</li>
+      </ol>
+
+      <div class="ex-example">
+        <strong>Example:</strong> "Nobody listens to me" → I remember: at the last meeting, people did listen to my suggestion. So the truth is more like: "I'm not heard when I speak unsure of myself. When I speak with confidence, I'm heard".
+      </div>
+
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you catch yourself in the old belief and immediately recall a fact that contradicts it. The rigid "that's just the kind of person I am" starts to soften into "sometimes it's like that, sometimes it isn't".</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- LEVEL 3 -->
+<div class="wrap">
+  <div class="level-head">
+    <span class="level-tag">Level 3 · Consolidation</span>
+    <div class="level-title">Apply</div>
+    <p class="level-desc">The last and decisive level. A conclusion that goes nowhere is dead. Here we close the loop: we carry what we've extracted into the next step.</p>
+  </div>
+
+  <!-- Exercise 8 -->
+  <div class="ex" data-ex="8">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div>
+        <div class="ex-num">Exercise 8</div>
+        <div class="ex-title">Preloading the next step</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: closing the loop · implementation intention</span>
+        <span class="tag tag-pain">pain: "living on autopilot"</span>
+      </div>
+      <p>This is the bridge from understanding to action. A conclusion by itself doesn't change behaviour. What changes it is an intention, set in advance, to apply that conclusion in a specific situation.</p>
+
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Take one principle you've already extracted (from exercise 4).</li>
+        <li>Imagine a specific situation in the next few days where you'll need it.</li>
+        <li>Phrase it in advance: "When X happens, I'll do Y". Clearly, like an agreement with yourself.</li>
+      </ol>
+
+      <div class="ex-example">
+        <strong>Example:</strong> Principle: "I say 'yes' automatically when I'm caught off guard". Preloading: "When I'm asked on Friday to take on another task, I'll say 'let me think about it until tomorrow', not an instant 'yes'".
+      </div>
+
+      <div class="ex-control"><span><strong>Checkpoint:</strong> at least once, in a real situation, you acted on the intention you'd set in advance, not on the old autopilot. That's the moment the β loop closed for the first time.</span></div>
+    </div>
+  </div>
+
+  <!-- Exercise 9 -->
+  <div class="ex" data-ex="9">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div>
+        <div class="ex-num">Exercise 9</div>
+        <div class="ex-title">A map of the rakes you keep stepping on</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: spotting patterns · long-term memory</span>
+        <span class="tag tag-pain">pain: "I'm capable of more, but I'm standing still"</span>
+      </div>
+      <p>Once you've collected a few weeks of observations, an unpleasant but very useful picture emerges: you keep stepping on the same rakes. The same situations, the same reactions. Seeing them together is half the job.</p>
+
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Look through your notes from the last month and search for repeats. What comes up more than once?</li>
+        <li>Write down 2–3 of your most frequent "rakes": recurring situations with the same unwanted ending.</li>
+        <li>Next to each, note the rescue move: what you already know how to do differently (from the previous exercises).</li>
+      </ol>
+
+      <div class="ex-example">
+        <strong>Example:</strong> "The rake: I take on too much because I'm afraid to say no → I get exhausted → I snap at the people close to me. The rescue move: answer 'I'll think about it' and check any new load against what I already have."
+      </div>
+
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you recognise your rakes while you're still <em>approaching</em> them ("oh, this is that same situation again") and manage to turn aside. Before, you only saw it after the fact.</span></div>
+    </div>
+  </div>
+
+  <!-- Exercise 10 -->
+  <div class="ex" data-ex="10">
+    <div class="ex-head">
+      <div class="ex-check" role="checkbox" aria-checked="false" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div>
+        <div class="ex-num">Exercise 10</div>
+        <div class="ex-title">The monthly β review</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-mech">
+        <span class="tag tag-mech">mechanism: meta-reflection · assessing your own growth</span>
+        <span class="tag tag-pain">pain: "I don't know what I really want"</span>
+      </div>
+      <p>The highest level is observing not events, but <em>how you yourself are changing</em>. Once a month, you rise above the weeks and look at your trajectory as a whole. It's β turned on β itself.</p>
+
+      <div class="ex-section-label">How to do it</div>
+      <ol class="ex-steps">
+        <li>Once a month, at a quiet time, set aside half an hour. Reread your weekly reviews.</li>
+        <li>Answer: "What has changed in me this month? What do I now understand about myself that was invisible a month ago?"</li>
+        <li>Give yourself one focus for the next month: one thing you'll work on consciously.</li>
+      </ol>
+
+      <div class="ex-example">
+        <strong>Example:</strong> "In a month, I've started noticing when I say 'yes' out of fear. I don't always stop yet, but I can see it now. My focus for next month: say an honest 'no' at least three times."
+      </div>
+
+      <div class="ex-control"><span><strong>Checkpoint:</strong> you can say in two sentences how you differ from who you were a month ago. If you can, β is working. You are literally growing from your own experience.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKPOINTS -->
+<div class="wrap">
+  <div class="checkpoints">
+    <span class="kicker">How to tell your β is growing</span>
+    <h2 class="section-title" style="font-size:1.5rem;">Signs, not numbers</h2>
+    <p style="font-size:.95rem; color:var(--ink2); margin-bottom:.5rem;">You can't measure β in points. But there are clear signs that it's getting stronger. Check in with them once a month.</p>
+    <div class="cp-list">
+      <div class="cp-item"><span>You catch your reactions <strong>in the moment</strong> more and more often, not only when looking back in the evening.</span></div>
+      <div class="cp-item"><span>After a failure there's not only pain, but <strong>curiosity</strong> too: "what can I learn here?".</span></div>
+      <div class="cp-item"><span>You have your own <strong>list of principles</strong>, drawn from life, and you use it.</span></div>
+      <div class="cp-item"><span>You recognise your "rakes" <strong>on the approach</strong> and manage to turn aside.</span></div>
+      <div class="cp-item"><span>You can name how you <strong>differ from yourself</strong> a month ago.</span></div>
+    </div>
+  </div>
+
+  <div class="mistakes">
+    <span class="kicker">Careful</span>
+    <h2 class="section-title" style="font-size:1.5rem;">What lowers β</h2>
+    <p style="font-size:.95rem; color:var(--ink2); margin-bottom:.5rem;">Three things quietly undo all the work. Know them by sight.</p>
+    <div class="mk-list">
+      <div class="mk-item"><span><strong>Avoiding what hurts.</strong> "Let's just forget it, like a bad dream." Then the lesson never gets recorded, and you'll step on the same rake again.</span></div>
+      <div class="mk-item"><span><strong>Taking all the blame for defeat and no credit for success.</strong> "It's my fault" gets recorded, "I got lucky there" doesn't. Years later, all that's left inside is a list of failures.</span></div>
+      <div class="mk-item"><span><strong>Confusing reflection with self-flagellation.</strong> Unpacking experience is a calm look from the outside. If the exercises become an excuse to beat yourself up, stop and go back to exercise 5.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- REFLECTION -->
+<div class="reflect">
+  <div class="reflect-inner">
+    <span class="kicker">To finish</span>
+    <h2 class="section-title">Questions worth sitting with</h2>
+    <div class="reflect-q"><span>1.</span> What experience from the past year have I still not allowed myself to make sense of, because it hurt too much?</div>
+    <div class="reflect-q"><span>2.</span> Which "rakes" have been with me for many years? What do I never take away from them?</div>
+    <div class="reflect-q"><span>3.</span> Which of my successes do I never claim as my own, putting it all down to luck or other people?</div>
+    <div class="reflect-q"><span>4.</span> If I turned every week I live through into a conclusion, how different would my year be?</div>
+    <div class="reflect-q"><span>5.</span> What's stopping me from starting today?</div>
+  </div>
+</div>
+
+<!-- ENDING -->
+<section class="ending wrap">
+  <span class="kicker">And finally</span>
+  <p style="max-width:34em; margin:0 auto 1.5rem;">
+    Remember the main thing: you don't have to do all ten exercises in a week. It's enough to start with the first one, the after-action journal, and let it become a habit. One exercise lived well changes more than ten you've read.
+  </p>
+  <p style="max-width:34em; margin:0 auto 2rem;">
+    β is the percentage by which you grow from each day you live. It seems like a trifle. But over time, it's exactly what turns two almost identical trajectories into two completely different lives.
+  </p>
+
+  <div class="ending-q">What small step will you take today?</div>
+
+  <p class="signature">Svitlana Slipchenko, psychologist, author of Beyond the Horizon</p>
+
+  <a href="formula-rezultata.html" class="back-link" target="_blank" rel="noopener">← Back to the lecture "The Results Formula"</a>
+
+  <div style="margin-top:2.5rem;">
+    <button class="reset-btn" id="resetBtn">Reset my progress</button>
+  </div>
+</section>
+
+<footer>Beyond the Horizon · Workbook β · a workbook for the lecture "The Results Formula"</footer>
+
+<script>
+(function() {
+  const STORAGE_KEY = 'metodychka-beta-progress';
+  const cards = Array.from(document.querySelectorAll('.ex[data-ex]'));
+  const total = cards.length;
+  const fill = document.getElementById('progressFill');
+  const count = document.getElementById('progressCount');
+
+  // load saved state
+  let done = {};
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) done = JSON.parse(saved) || {};
+  } catch (e) { done = {}; }
+
+  function save() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(done)); } catch (e) {}
+  }
+
+  function updateProgress() {
+    const n = Object.values(done).filter(Boolean).length;
+    const pct = total ? Math.round((n / total) * 100) : 0;
+    if (fill) fill.style.width = pct + '%';
+    if (count) count.textContent = n + ' / ' + total;
+  }
+
+  function applyState(card) {
+    const id = card.dataset.ex;
+    const check = card.querySelector('.ex-check');
+    const isDone = !!done[id];
+    card.classList.toggle('done', isDone);
+    if (check) check.setAttribute('aria-checked', isDone ? 'true' : 'false');
+  }
+
+  function toggle(card) {
+    const id = card.dataset.ex;
+    done[id] = !done[id];
+    applyState(card);
+    save();
+    updateProgress();
+  }
+
+  cards.forEach(card => {
+    const check = card.querySelector('.ex-check');
+    applyState(card);
+    if (check) {
+      check.addEventListener('click', () => toggle(card));
+      check.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(card); }
+      });
+    }
+  });
+
+  updateProgress();
+
+  const resetBtn = document.getElementById('resetBtn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      done = {};
+      save();
+      cards.forEach(applyState);
+      updateProgress();
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
